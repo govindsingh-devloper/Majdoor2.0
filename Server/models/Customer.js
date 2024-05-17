@@ -5,27 +5,27 @@ const mongoose=require("mongoose");
 const customerSchema= new mongoose.Schema({
     firstName:{
         type:String,
-        reuired:true,
+        required:true,
         trim:true,
     },
     lastName:{
         type:String,
-        reuired:true,
+        required:true,
         trim:true,
     },
     email:{
         type:String,
-        reuired:true,
+        required:true,
         trim:true,
     },
     password:{
         type:String,
-        reuired:true,
+        required:true,
     },
     accountType:{
         type:String,
         enum:["Admin","Customer","Majdoor","Thekedar"],
-        reuired:true,
+        required:true,
     },
     services:[
         {
@@ -35,7 +35,7 @@ const customerSchema= new mongoose.Schema({
     ],
     addtionalDetails:{
         type:mongoose.Schema.Types.ObjectId,
-        reuired:true,
+        required:true,
         ref:"Profile",
     },
     image:{
