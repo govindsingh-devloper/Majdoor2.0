@@ -1,7 +1,7 @@
 // import "./App.css";
 import { Route,Routes } from "react-router-dom";
 // import Home from "./pages/Home";
-// import Navbar from "./components/common/Navbar";
+import Navbar from "./components/common/Navbar";
 import Login from "./pages/login";
 import Signup from "./pages/signup";
 
@@ -61,6 +61,13 @@ const App = () => {
 
   return (
     <div>
+      <Navbar/>
+      <Routes>
+      <Route path="/" element={<Home/>} />
+
+      <Route path="/login" element={<Login/>}/>
+      <Route path="/signup" element={<Signup/>}/>
+      </Routes>
       <Header />
       <Home />
       
@@ -75,3 +82,29 @@ const App = () => {
 };
 
 export default App;
+// =======
+// import "./App.css";
+// import { Route,Routes } from "react-router-dom";
+// import Home from "./pages/Home";
+// import Navbar from "./components/common/Navbar";
+// import Login from "./pages/login";
+// import Signup from "./pages/signup";
+
+// function App() {
+//   return (
+    
+//     <div>
+//     <Navbar/>
+//       <Routes>
+//       <Route path="/" element={<Home/>} />
+
+//       <Route path="/login" element={<Login/>}/>
+//       <Route path="/signup" element={<Signup/>}/>
+//       </Routes>
+
+//     </div>
+//   );
+// }
+
+// export default App;
+// >>>>>>> 5295a03b91be99f54e9b3a615b80e3c798f7b87d
