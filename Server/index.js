@@ -1,5 +1,6 @@
 const express=require("express");
 const app=express();
+const cors = require("cors");
 
 
 
@@ -12,7 +13,12 @@ const serviceRoutes=require("./routes/Service");
 const database=require("./config/database");
 const cookieParser=require("cookie-parser");
 
-// const cors=require("cors")
+app.use(
+	cors({
+		origin:"http://localhost:3000",
+		credentials:true,
+	})
+)
 
 const {cloudinaryConnect}=require("./config/cloudinary")
 const fileupload=require("express-fileupload")

@@ -4,6 +4,7 @@ import { Route,Routes } from "react-router-dom";
 import Navbar from "./components/common/Navbar";
 import Login from "./pages/login";
 import Signup from "./pages/signup";
+import VerifyEmail from "./pages/VerifyEmail"
 
 // function App() {
 //   return (
@@ -61,22 +62,17 @@ const App = () => {
 
   return (
     <div>
-      {/* <Navbar/>
       <Routes>
-      <Route path="/" element={<Home/>} />
+      <Route path="/verify-email" element={<VerifyEmail/>}/>
+      </Routes>
 
-      <Route path="/login" element={<Login/>}/>
-      <Route path="/signup" element={<Signup/>}/>
-      </Routes> */}
-      <Header />
-      <Home />
-      
-      <About />
-      <Services />
-      <Gallery />
-      <Facilities />
-      <Reviews />
-      <Footer />
+    <Header />
+    <Home />
+    <About />
+    <Services />
+    <Gallery />
+    <Reviews />
+    <Footer /> 
     </div>
   );
 };
