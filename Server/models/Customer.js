@@ -22,11 +22,11 @@ const customerSchema= new mongoose.Schema({
         type:String,
         required:true,
     },
-    accountType:{
-        type:String,
-        enum:["Admin","Customer","Majdoor","Thekedar"],
-        required:true,
-    },
+    // accountType:{
+    //     type:String,
+    //     enum:["Admin","Customer","Majdoor","Thekedar"],
+    //     required:true,
+    // },
     services:[
         {
             type:mongoose.Schema.Types.ObjectId,

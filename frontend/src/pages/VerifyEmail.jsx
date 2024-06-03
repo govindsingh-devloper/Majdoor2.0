@@ -24,7 +24,6 @@ function VerifyEmail() {
   const handleVerifyAndSignup = (e) => {
     e.preventDefault();
     const {
-      accountType,
       firstName,
       lastName,
       email,
@@ -34,7 +33,6 @@ function VerifyEmail() {
 
     dispatch(
       signUp(
-        accountType,
         firstName,
         lastName,
         email,

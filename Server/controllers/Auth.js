@@ -80,7 +80,6 @@ exports.signup=async(req,res)=>{
           email,
           password,
           confirmPassword,
-          accountType,
           otp }=req.body
      //validate kro
      if(!firstName || !lastName || !password || !confirmPassword || !otp){
@@ -139,7 +138,6 @@ exports.signup=async(req,res)=>{
          lastName,
          email,
          password:hashedPassword,
-         accountType,
          addtionalDetails:profileDetails._id,
          image:`https://api.dicebear.com/5.x/initials/svg?seed=${firstName}${lastName}`,
      })

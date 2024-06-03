@@ -77,7 +77,6 @@ export function login(email, password, navigate) {
     }
   }
   export function signUp(
-    accountType,
     firstName,
     lastName,
     email,
@@ -91,7 +90,6 @@ export function login(email, password, navigate) {
       dispatch(setLoading(true))
       try {
         const response = await apiConnector("POST", SIGNUP_API, {
-          accountType,
           firstName,
           lastName,
           email,
