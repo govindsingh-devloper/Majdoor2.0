@@ -68,15 +68,57 @@ const App = () => {
       <Route path="/login" element={<Login/>}/>
       <Route path="/signup" element={<Signup/>}/>
       </Routes>
-      <Header />
-      <Home />
-      
-      <About />
-      <Services />
-      <Gallery />
-      <Facilities />
-      <Reviews />
-      <Footer />
+
+    <Header />
+    <Routes>
+      <Route path="/" element={<Home/>} />
+
+      <Route path="/login" element={<Login/>}/>
+      <Route path="/signup" element={<Signup/>}/>
+      </Routes>
+    <Home />
+    <Routes>
+      <Route path="/" element={<Home/>} />
+
+      <Route path="/login" element={<Login/>}/>
+      <Route path="/signup" element={<Signup/>}/>
+      </Routes>
+    <About />
+    <Routes>
+      <Route path="/" element={<Home/>} />
+
+      <Route path="/login" element={<Login/>}/>
+      <Route path="/signup" element={<Signup/>}/>
+      </Routes>
+    <Services />
+    <Routes>
+      <Route path="/" element={<Home/>} />
+
+      <Route path="/login" element={<Login/>}/>
+      <Route path="/signup" element={<Signup/>}/>
+      </Routes> 
+    <Gallery />
+    <Routes>
+      <Route path="/" element={<Home/>} />
+
+      <Route path="/login" element={<Login/>}/>
+      <Route path="/signup" element={<Signup/>}/>
+      </Routes>
+    <Reviews />
+    <Routes>
+      <Route path="/" element={<Home/>} />
+
+      <Route path="/login" element={<Login/>}/>
+      <Route path="/signup" element={<Signup/>}/>
+      </Routes>
+    <Footer /> 
+    <Routes>
+      <Route path="/" element={<Home/>} />
+
+      <Route path="/login" element={<Login/>}/>
+      <Route path="/signup" element={<Signup/>}/>
+      </Routes>
+
     </div>
   );
 };
