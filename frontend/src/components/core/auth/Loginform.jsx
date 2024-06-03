@@ -24,7 +24,7 @@ const Loginform = () => {
 
     const handleOnSubmit=(e)=>{
         e.preventDefault()
-        dispatch(login(email,password),navigate)
+        dispatch(login(email,password,navigate))
     }
   return (
     <form onSubmit={handleOnSubmit}>
@@ -56,7 +56,7 @@ const Loginform = () => {
     </label>
 
     <button>
-        Sign In
+        Login
     </button>
 
     </form>

@@ -27,7 +27,7 @@ import VerifyEmail from "./pages/VerifyEmail"
 import React, { useEffect } from 'react';
 import './App.css';
 import Header from './components/common/Header';
-import Home from './components/common/Home';
+import Home from './pages/Home';
 //import FunFact from './components/common/FunFact';
 import About from './components/common/About';
 import Services from './components/common/Services';
@@ -35,6 +35,7 @@ import Gallery from './components/common/Gallery';
 import Facilities from './components/common/Facilities';
 import Reviews from './components/common/Reviews';
 import Footer from './components/common/Footer';
+import CustHome from "./components/core/auth/Customer/CustHome";
 
 const App = () => {
   useEffect(() => {
@@ -62,17 +63,30 @@ const App = () => {
 
   return (
     <div>
+     <Header /> 
       <Routes>
+      <Route path="/login" element={<Login/>}/>
       <Route path="/verify-email" element={<VerifyEmail/>}/>
+      <Route path="/" element={<Home />}/>
+      <Route path="/about" element={<About/>}/>
+      <Route path="/services" element={<Services/>}/>
+      <Route path="/reviews" element={<Reviews/>}/>
+      <Route path="/gallery" element={<Gallery/>}/>
+      
+
+
+      <Route path="/CustHome" element={<CustHome />}/>
+      
       </Routes>
 
-    <Header />
-    <Home />
-    <About />
+   
+    
+    {/* <About />
     <Services />
     <Gallery />
     <Reviews />
-    <Footer /> 
+    <Footer />  */}
+    <Footer/>
     </div>
   );
 };
