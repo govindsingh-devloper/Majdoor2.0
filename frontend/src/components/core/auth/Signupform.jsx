@@ -54,15 +54,34 @@ const Signupform = () => {
       })
 }
     return (
-    <form onSubmit={handleOnSubmit}>
+      <div className="container mx-auto h-full flex flex-1 justify-center items-center">
+            <div className="w-full max-w-lg">
+                <div className="leading-loose">
+                    <div id="form-main">
+                        <div id="form-div" className="max-w-xl m-4 p-10 bg-white rounded shadow-xl">
+                            <h2 className="sign">Signup Here</h2>
+    <form onSubmit={handleOnSubmit} className="form" id="form1" method="post">
     <div>
-       <label>
+       <label className="block text-sm text-gray-600" for="us">
        <p>FirstName<sup>*</sup></p>
-        <input
+        <input className="w-full px-5 py-4 text-gray-700 bg-gray-200 rounded" 
+                                       
             required
             type="text"
             name="firstName"
             value={firstName}
+            onChange={handleOnChange}
+            placeholder="firstName"
+        />
+       </label>
+       <label className="block text-sm text-gray-600" for="us">
+       <p>lastName<sup>*</sup></p>
+        <input className="w-full px-5 py-4 text-gray-700 bg-gray-200 rounded" 
+                                       
+            required
+            type="text"
+            name="lastName"
+            value={lastName}
             onChange={handleOnChange}
             placeholder="firstName"
         />
@@ -78,9 +97,9 @@ const Signupform = () => {
             placeholder="lastName"
         />
        </label> */}
-       <label>
+       <label className="block text-sm text-gray-600" for="us">
        <p>Email<sup>*</sup></p>
-        <input
+        <input className="w-full px-5 py-4 text-gray-700 bg-gray-200 rounded" 
             required
             type="text"
             name="email"
@@ -89,9 +108,9 @@ const Signupform = () => {
             placeholder="Enter email address"
         />
        </label>
-       <label>
+       <label className="block text-sm text-gray-600" for="us">
        <p>Create Password<sup>*</sup></p>
-        <input
+        <input className="w-full px-5 py-4 text-gray-700 bg-gray-200 rounded" 
             required
             type={showPassword?"text":"password"}
             name="password"
@@ -100,12 +119,12 @@ const Signupform = () => {
             placeholder="Enter password"
         />
        </label>
-       <label>
-       <p>Create Password<sup>*</sup></p>
-        <input
+       <label className="block text-sm text-gray-600" for="us">
+       <p>Confirm Password<sup>*</sup></p>
+        <input className="w-full px-5 py-4 text-gray-700 bg-gray-200 rounded" 
             required
             type={showConfirmPassword?"text":"password"}
-            name="password"
+            name="confirmPassword"
             value={confirmPassword}
             onChange={handleOnChange}
             placeholder="Enter confirm Passsword"
@@ -119,6 +138,11 @@ const Signupform = () => {
     </button>
 
     </form>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
   )
 }
 
