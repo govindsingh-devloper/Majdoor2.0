@@ -1,4 +1,5 @@
 import React from 'react';
+import "../../css/style.css";
 
 const Reviews = () => {
   return (
@@ -18,7 +19,7 @@ const Reviews = () => {
             <p>Easy to use application. It offers a variety of payment options, including digital payments, making it easier for clients to pay for services and for workers to receive their earnings. </p>
           </div>
           <div className="user">
-            <img src="assets/images/pic-1.png" alt="Anil Malhotra" />
+            <img src="../../images/pic-1.png" alt="Anil Malhotra" />
             <h3>Anil Malhotra</h3>
           </div>
         </div>
@@ -34,7 +35,7 @@ const Reviews = () => {
             <p>I have been using Majdoor for 4 months now, and I had found it very easy to find construction workers for my project.</p>
           </div>
           <div className="user">
-            <img src="assets/images/pic-2.png" alt="Sneha Gupta" />
+            <img src="../../images/pic-2.png" alt="Sneha Gupta" />
             <h3>Sneha Gupta</h3>
           </div>
         </div>
@@ -49,7 +50,7 @@ const Reviews = () => {
             <p>The process of hiring is straightforward and efficient. This accelerated our construction project with skilled construction workers.</p>
           </div>
           <div className="user">
-            <img src="assets/images/pic-3.png" alt="Sajan Rajput" />
+            <img src="../../images/pic-3.png" alt="Sajan Rajput" />
             <h3>Sajan Rajput</h3>
           </div>
         </div>

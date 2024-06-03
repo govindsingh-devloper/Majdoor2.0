@@ -62,12 +62,7 @@ const App = () => {
 
   return (
     <div>
-      <Navbar/>
       <Routes>
-      <Route path="/" element={<Home/>} />
-
-      <Route path="/login" element={<Login/>}/>
-      <Route path="/signup" element={<Signup/>}/>
       <Route path="/verify-email" element={<VerifyEmail/>}/>
       </Routes>
 
@@ -78,8 +73,6 @@ const App = () => {
     <Gallery />
     <Reviews />
     <Footer /> 
-
-
     </div>
   );
 };

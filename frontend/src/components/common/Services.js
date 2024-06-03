@@ -1,4 +1,5 @@
 import React from 'react';
+import "../../css/style.css";
 
 const Services = () => {
   return (
@@ -6,7 +7,7 @@ const Services = () => {
       <h1 className="heading"> our <span>services</span> </h1>
       <div className="box-container">
         <div className="box">
-          <img src="assets/images/carpenter-svgrepo-com.svg" alt="Carpenter" />
+          <img src="././images/carpenter_icon.png" alt="Carpenter" />
           <h3>Carpenter</h3>
           <p>We bring traditional charm to modern spaces with our exceptional Carpenter Services.</p>
         </div>
