@@ -43,6 +43,16 @@ const Home = () => {
     <Routes>
     <Route path="/" element={<Home/>}/>
       <Route path="/verify-email" element={<VerifyEmail/>}/>
+      <Route path="/" element={<Home />}/>
+      <Route path="/about" element={<About/>}/>
+      <Route path="/services" element={<Services/>}/>
+      <Route path="/reviews" element={<Reviews/>}/>
+      <Route path="/gallery" element={<Gallery/>}/>
+      
+
+
+      <Route path="/CustHome" element={<CustHome />}/>
+      
       </Routes>
     
     <About />
