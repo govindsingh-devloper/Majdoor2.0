@@ -13,6 +13,8 @@ import Navbar from "./components/common/Navbar";
 import Login from "./pages/login";
 import Signup from "./pages/signup";
 import VerifyEmail from "./pages/VerifyEmail"
+import ForgotPassword from './pages/ForgotPassword';
+import UpdatePassword from './pages/UpdatePassword';
 
 const Home = () => {
   useEffect(() => {
@@ -43,6 +45,9 @@ const Home = () => {
     <Routes>
     <Route path="/" element={<Homes/>}/>
       <Route path="/verify-email" element={<VerifyEmail/>}/>
+      <Route path='/login' element={<Login/>}/>
+      <Route path='/forgotpassword' element={<ForgotPassword/>}/>
+      <Route path='/Update-password/:id' element={<UpdatePassword/>}/>
       </Routes>
     
     <About />
