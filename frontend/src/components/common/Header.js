@@ -13,7 +13,7 @@ const Header = () => {
           <a href="#about">about</a>
           <a href="#services">services</a>
           <a href="#reviews">reviews</a>
-          <a href="/Logas" className="btn">Log in</a>
+          <a href="/Login" className="btn">Log in</a>
         </div>
         <div id="menu-btn" className="fa fa-bars"></div>
       </nav>
