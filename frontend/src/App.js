@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import './App.css';
 import Header from './components/common/Header';
-import Home from './pages/Home';
+import Homes from './pages/Home';
 import About from './components/common/About';
 import Services from './components/common/Services';
 import Gallery from './components/common/Gallery';
@@ -41,7 +41,7 @@ const Home = () => {
     <div>
     <Header />
     <Routes>
-    <Route path="/" element={<Home/>}/>
+    <Route path="/" element={<Homes/>}/>
       <Route path="/verify-email" element={<VerifyEmail/>}/>
       </Routes>
     
