@@ -131,7 +131,7 @@ exports.signup=async(req,res)=>{
          gender:null,
          dateOfBirth:null,
          about:null,
-         contactNumber:null,
+        //  contactNumber:null,
      })
      const user=await Customer.create({
          firstName,

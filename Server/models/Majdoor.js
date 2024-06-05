@@ -16,18 +16,19 @@ const majdoorSchema= new mongoose.Schema({
         required:true,
         trim:true,
     },
-    password:{
-        type:Number,
+    contactNumber:{
+        type:String,
         required:true,
+        trim:true,
     },
     addtionalDetails:{
         type:mongoose.Schema.Types.ObjectId,
         ref:"Profile",
     },
-    contactNumber:{
-        type:String,
-        trim:true,
-    },
+    // contactNumber:{
+    //     type:String,
+    //     trim:true,
+    // },
     image:{
         type:String,
         // required:true,

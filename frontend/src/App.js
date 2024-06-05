@@ -14,14 +14,15 @@ import Gallery from './components/common/Gallery';
 import Facilities from './components/common/Facilities';
 import Reviews from './components/common/Reviews';
 import Footer from './components/common/Footer';
-import { Route,Routes } from "react-router-dom";
-import Navbar from "./components/common/Navbar";
-import Login from "./pages/login";
-import Signup from "./pages/signup";
+// import { Route,Routes } from "react-router-dom";
+// import Navbar from "./components/common/Navbar";
+// import Login from "./pages/login";
+// import Signup from "./pages/signup";
 import CustHome from './components/core/auth/Customer/CustHome';
-import VerifyEmail from "./pages/VerifyEmail"
+// import VerifyEmail from "./pages/VerifyEmail"
 import ForgotPassword from './pages/ForgotPassword';
 import UpdatePassword from './pages/UpdatePassword';
+import LoginForm from "./pages/LoginAsMajdoor";
 
 const Home = () => {
   useEffect(() => {
@@ -58,6 +59,7 @@ const Home = () => {
       <Route path='/forgotpassword' element={<ForgotPassword/>}/>
       <Route path='/Update-password/:id' element={<UpdatePassword/>}/>
       <Route path='/CustHome' element={<CustHome/>}/>
+      <Route path='/majdoor-login' element={<LoginForm/>}/>
       </Routes>
     
     <About />

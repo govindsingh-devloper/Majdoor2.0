@@ -4,9 +4,9 @@ const router=express.Router();
 const{
     login,
     signup,
-    sendOTP,
-    changePassword
-}=require("../controllers/Auth");
+    // sendOTP,
+    // changePassword
+}=require("../controllers/MajdoorSignup");
 
 const{
     resetPasswordToken,
@@ -27,10 +27,10 @@ router.post("/majdoor-login", login)
 router.post("/majdoor-signup", signup)
 
 // Route for sending OTP to the user's email
-router.post("/majdoor-sendotp", sendOTP)
+// router.post("/majdoor-sendotp", sendOTP)
 
 // Route for Changing the password
-router.post("/m-changepassword", auth, changePassword)
+// router.post("/m-changepassword", auth, changePassword)
 
 // ********************************************************************************************************
 //                                      Reset Password

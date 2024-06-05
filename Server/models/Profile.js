@@ -11,10 +11,10 @@ const profileSchema= new mongoose.Schema({
         type:String,
         trim:true,
     },
-    contactNumber:{
-        type:String,
-        trim:true,
-    }
+    // contactNumber:{
+    //     type:String,
+    //     trim:true,
+    // }
     
 })
 
