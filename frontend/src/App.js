@@ -19,6 +19,7 @@ import VerifyEmail from "./pages/VerifyEmail"
 import ForgotPassword from './pages/ForgotPassword';
 import UpdatePassword from './pages/UpdatePassword';
 import Service from "./components/common/Services";
+import EditProfile from "./components/core/auth/Customer/Edit/EditProfile";
 
 const Home = () => {
   useEffect(() => {
@@ -56,6 +57,7 @@ const Home = () => {
       <Route path='/Update-password/:id' element={<UpdatePassword/>}/>
       <Route path='/Service' element={<Service/>}/>
       <Route path='/CustHome' element={<CustHome/>}/>
+      <Route path="/CustHome/Edit" element={<EditProfile/>}/>
       </Routes>
     
     {/* <About />
