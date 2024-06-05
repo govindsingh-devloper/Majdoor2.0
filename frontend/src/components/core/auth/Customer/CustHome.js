@@ -49,18 +49,7 @@ const CustHome = () => {
               </p>
             </div>
             
-=======
-    <div className="profile-container">
-      <div className="profile-image">
-        <img src={user?.image} alt="User Profile" />
-      </div>
-      <div className="profile-details">
-        <h1>My Profile</h1>
-        <p>{user?.firstName + " " + user?.lastName}</p>
-        <p>{user?.email}</p>
-        <p>{user?.additionalDetails?.about ?? "Write Something About Yourself"}</p>
-      </div>
->>>>>>> Stashed changes
+
     </div>
   );
 };
