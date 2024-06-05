@@ -8,6 +8,8 @@ const cors = require("cors");
 const userRoutes=require("./routes/User");
 const profileRoutes=require("./routes/Profile");
 const serviceRoutes=require("./routes/Service");
+const thekedarRoutes=require("./routes/ThekedarRoutes");
+const majdoorRoutes=require("./routes/MajdoorRoutes");
 
 
 const database=require("./config/database");
@@ -54,6 +56,9 @@ cloudinaryConnect();
 app.use("/api/v1/auth",userRoutes);
 app.use("/api/v1/auth",profileRoutes);
 app.use("/api/v1/auth",serviceRoutes);
+app.use("/api/v1/auth",thekedarRoutes);
+app.use("/api/v1/auth",majdoorRoutes);
+
 
 //default rouite
 app.get("/",(req,res)=>{
