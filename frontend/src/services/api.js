@@ -14,5 +14,5 @@ export const endpoints={
 }
 
 export const settingsEndpoints={
-    UPDATE_PROFILE_API: BASE_URL + "/profile/updateProfile",
+    UPDATE_PROFILE_API: BASE_URL + "/auth/updateProfile",
 }

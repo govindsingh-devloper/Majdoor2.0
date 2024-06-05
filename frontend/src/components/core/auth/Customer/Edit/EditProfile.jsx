@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form"
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
+import IconBtn from "../../../../common/IconBtn"
 
 import { updateProfile } from "../../../../../services/operations/editingAPI"
 
@@ -190,10 +191,10 @@ export default function EditProfile() {
           >
             Cancel
           </button>
-          {/* <IconBtn type="submit" text="Save" /> */}
-          <button type="submit" text="save">
+          <IconBtn type="submit" text="Save" />
+          {/* <button type="submit" text="save">
             Save
-          </button>
+          </button> */}
         </div>
       </form>
     </>
