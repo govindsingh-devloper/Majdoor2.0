@@ -14,7 +14,14 @@ import Gallery from './components/common/Gallery';
 import Facilities from './components/common/Facilities';
 import Reviews from './components/common/Reviews';
 import Footer from './components/common/Footer';
-import CustHome from "./components/core/auth/Customer/CustHome";
+import { Route,Routes } from "react-router-dom";
+import Navbar from "./components/common/Navbar";
+import Login from "./pages/login";
+import Signup from "./pages/signup";
+import CustHome from './components/core/auth/Customer/CustHome';
+import VerifyEmail from "./pages/VerifyEmail"
+import ForgotPassword from './pages/ForgotPassword';
+import UpdatePassword from './pages/UpdatePassword';
 
 const Home = () => {
   useEffect(() => {
@@ -46,11 +53,13 @@ const Home = () => {
     <Routes>
       <Route path="/" element={<Homes/>}/>
       <Route path="/verify-email" element={<VerifyEmail/>}/>
-      <Route path="/login" element={<Login/>}/>
-      <Route path="/signup" element={<Signup/>}/>
-      <Route path="/CustHome" element={<CustHome/>}/>
-    </Routes>
-
+      <Route path='/login' element={<Login/>}/>
+      <Route path='/signup' element={<Signup/>}/>
+      <Route path='/forgotpassword' element={<ForgotPassword/>}/>
+      <Route path='/Update-password/:id' element={<UpdatePassword/>}/>
+      <Route path='/CustHome' element={<CustHome/>}/>
+      </Routes>
+    
     <About />
     <Services />
     <Gallery />
