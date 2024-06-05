@@ -1,4 +1,5 @@
 import React from 'react'
+import "../../../../css/style.css";
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom';
 import { RiEditBoxLine } from "react-icons/ri"
@@ -6,10 +7,11 @@ import { formattedDate } from "../../../../utilis/dateFormatter"
 import IconBtn from '../../../common/IconBtn';
 
 const CustHome = () => {
-  const { user } = useSelector((state) => state.profile)
-  const navigate=useNavigate();
+  const { user } = useSelector((state) => state.profile);
+  const navigate = useNavigate();
 
   return (
+<<<<<<< Updated upstream
     <div>
       <h1>My Profile</h1>
       <img
@@ -47,8 +49,21 @@ const CustHome = () => {
               </p>
             </div>
             
+=======
+    <div className="profile-container">
+      <div className="profile-image">
+        <img src={user?.image} alt="User Profile" />
+      </div>
+      <div className="profile-details">
+        <h1>My Profile</h1>
+        <p>{user?.firstName + " " + user?.lastName}</p>
+        <p>{user?.email}</p>
+        <p>{user?.additionalDetails?.about ?? "Write Something About Yourself"}</p>
+      </div>
+>>>>>>> Stashed changes
     </div>
-  )
-}
+  );
+};
 
-export default CustHome
+export default CustHome;
+
