@@ -1,11 +1,7 @@
 import "./App.css";
-import { Route,Routes } from "react-router-dom";
+import { useEffect } from "react";
 import Homes from "./pages/Home";
-import Navbar from "./components/common/Navbar";
-import Login from "./pages/login";
-import Signup from "./pages/signup";
-import VerifyEmail from "./pages/VerifyEmail"
-import React, { useEffect } from 'react';
+
 import './App.css';
 import Header from './components/common/Header';
 import About from './components/common/About';
@@ -23,6 +19,9 @@ import CustHome from './components/core/auth/Customer/CustHome';
 import ForgotPassword from './pages/ForgotPassword';
 import UpdatePassword from './pages/UpdatePassword';
 import LoginForm from "./pages/LoginAsMajdoor";
+import Service from "./components/common/Services";
+import EditProfile from "./components/core/auth/Customer/Edit/EditProfile";
+
 
 const Home = () => {
   useEffect(() => {
@@ -58,15 +57,17 @@ const Home = () => {
       <Route path='/signup' element={<Signup/>}/>
       <Route path='/forgotpassword' element={<ForgotPassword/>}/>
       <Route path='/Update-password/:id' element={<UpdatePassword/>}/>
+      <Route path='/Service' element={<Service/>}/>
       <Route path='/CustHome' element={<CustHome/>}/>
       <Route path='/majdoor-login' element={<LoginForm/>}/>
+      <Route path="/CustHome/Edit" element={<EditProfile/>}/>
       </Routes>
     
-    <About />
+    {/* <About />
     <Services />
     <Gallery />
     <Reviews />
-    <Footer /> 
+    <Footer />  */}
     </div>
   );
 };
