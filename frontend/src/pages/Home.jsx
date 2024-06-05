@@ -1,10 +1,11 @@
-import React from 'react'
+import React from 'react';
 import gImg6 from '../images/19340.jpg';
 
 const Home = () => {
   return (
     <section className="home" id="home">
     <div className="image">
+      <img src={gImg6} alt="Home" />
       <img src={gImg6} alt="Home" />
     </div>
     <div className="content">

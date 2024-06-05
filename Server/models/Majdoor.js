@@ -24,9 +24,13 @@ const majdoorSchema= new mongoose.Schema({
         type:mongoose.Schema.Types.ObjectId,
         ref:"Profile",
     },
+    contactNumber:{
+        type:String,
+        trim:true,
+    },
     image:{
         type:String,
-        required:true,
+        // required:true,
     }
 });
 module.exports=mongoose.model("Majdoor",majdoorSchema);

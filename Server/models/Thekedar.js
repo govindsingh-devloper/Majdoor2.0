@@ -11,11 +11,11 @@ const thekedarSchema= new mongoose.Schema({
         required:true,
         trim:true,
     },
-    skills:{
-        type:String,
-        required:true,
-        trim:true,
-    },
+    // skills:{
+    //     type:String,
+    //     required:true,
+    //     trim:true,
+    // },
     email:{
         type:String,
         required:true,
@@ -36,6 +36,13 @@ const thekedarSchema= new mongoose.Schema({
     image:{
         type:String,
         required:true,
+    },
+    token:{
+        type:String,
+        required:true,
+    },
+    resetPasswordExpires:{
+        type:Date,
     }
 });
 module.exports=mongoose.model("Thekedar",thekedarSchema);
