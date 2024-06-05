@@ -11,10 +11,29 @@ const CustHome = () => {
   const navigate = useNavigate();
 
   return (
-
-    <div className="profile-container">
+ <div className="profile-container">
       <div className="profile-image">
         <img src={user?.image} alt="User Profile" />
+
+    <div>
+      <h1>My Profile</h1>
+      <img
+        src={user?.image}
+      />
+      <p>{user?.firstName + " "+user?.lastName}</p>
+      <p>{user?.email}</p>
+      <div><p>
+        About
+      </p>
+      <span
+            text="Edit"
+            onclick={() => {
+              navigate("/CustHome/Edit")
+            }}
+          >
+            <RiEditBoxLine />
+          </span>
+
       </div>
       <div className="profile-details">
         <h1>My Profile</h1>
@@ -46,10 +65,15 @@ const CustHome = () => {
                   "Add Date Of Birth"}
               </p>
             </div>
-            </div>
-  
+            
+
+    </div>
+    </div>
+    </div>
+
   );
 };
 
 export default CustHome;
+
 
