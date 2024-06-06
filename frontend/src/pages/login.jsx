@@ -11,7 +11,7 @@ const Login = () => {
           <div class="box">
             <img src="../images/60.jpg" alt="Customer icon"/>
             <h3>Login as a Customer</h3>
-            <a href="/" class="btn">Login as a Customer</a>
+            <a href="/login" class="btn">Login as a Customer</a>
           </div>
           <div class="box">
             <img src="../images/60.jpg" alt="Majdoor icon"/>
@@ -25,6 +25,13 @@ const Login = () => {
           </div>
         </div>
       </section>
+      {/* <Template
+        title="Welcome Back "
+        description1="build skills for today, tomorrow and beyond"
+        description2="ihkcqold;ljqwidlkwoinqw"
+        // image={};
+        formType="login"
+    /> */}
     </div>
     </>
   )

@@ -18,6 +18,7 @@ const Header = () => {
           <a href="/about">about</a>
           <a href="/services">services</a>
           <a href="/reviews">reviews</a>
+          <Link to='/contact'>Contact US</Link>
           {
             token ===null &&(
               <Link to='/login'>Login</Link>

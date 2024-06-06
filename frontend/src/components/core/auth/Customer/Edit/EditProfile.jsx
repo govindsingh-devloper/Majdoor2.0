@@ -21,7 +21,7 @@ export default function EditProfile() {
   } = useForm()
 
   const submitProfileForm = async (data) => {
-    // console.log("Form Data - ", data)
+    console.log("Form Data - ", data)
     try {
       dispatch(updateProfile(token, data))
     } catch (error) {
@@ -191,7 +191,11 @@ export default function EditProfile() {
           >
             Cancel
           </button>
-          <IconBtn type="submit" text="Save" />
+          <IconBtn type="submit" text="Save"
+          onclick={() => {
+              navigate("/CustHome")
+            }}
+           />
           {/* <button type="submit" text="save">
             Save
           </button> */}

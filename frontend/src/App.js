@@ -1,7 +1,7 @@
 import "./App.css";
 import { useEffect } from "react";
 import Homes from "./pages/Home";
-
+import { Route,Routes } from "react-router-dom";
 import './App.css';
 import Header from './components/common/Header';
 import About from './components/common/About';
@@ -12,8 +12,8 @@ import Reviews from './components/common/Reviews';
 import Footer from './components/common/Footer';
 // import { Route,Routes } from "react-router-dom";
 // import Navbar from "./components/common/Navbar";
-// import Login from "./pages/login";
-// import Signup from "./pages/signup";
+import Login from "./pages/login";
+import Signup from "./pages/signup";
 import CustHome from './components/core/auth/Customer/CustHome';
 // import VerifyEmail from "./pages/VerifyEmail"
 import ForgotPassword from './pages/ForgotPassword';
@@ -21,6 +21,9 @@ import UpdatePassword from './pages/UpdatePassword';
 import LoginForm from "./pages/LoginAsMajdoor";
 import Service from "./components/common/Services";
 import EditProfile from "./components/core/auth/Customer/Edit/EditProfile";
+import VerifyEmail from "./pages/VerifyEmail";
+import Contact from "./pages/Contact";
+
 
 
 const Home = () => {
@@ -61,6 +64,8 @@ const Home = () => {
       <Route path='/CustHome' element={<CustHome/>}/>
       <Route path='/majdoor-login' element={<LoginForm/>}/>
       <Route path="/CustHome/Edit" element={<EditProfile/>}/>
+
+      <Route path="/contact" element={<Contact />} />
       </Routes>
     
     {/* <About />
