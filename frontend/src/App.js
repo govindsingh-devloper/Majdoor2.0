@@ -5,7 +5,7 @@ import { Route,Routes } from "react-router-dom";
 import './App.css';
 import Header from './components/common/Header';
 import About from './components/common/About';
-import Services from './components/common/Services';
+import Services from "./components/core/auth/Customer/Services";
 import Gallery from './components/common/Gallery';
 import Facilities from './components/common/Facilities';
 import Reviews from './components/common/Reviews';
@@ -60,7 +60,7 @@ const Home = () => {
       <Route path='/signup' element={<Signup/>}/>
       <Route path='/forgotpassword' element={<ForgotPassword/>}/>
       <Route path='/Update-password/:id' element={<UpdatePassword/>}/>
-      <Route path='/Service' element={<Service/>}/>
+      <Route path='/serviceS' element={<Services/>}/>
       <Route path='/CustHome' element={<CustHome/>}/>
       <Route path='/majdoor-login' element={<LoginForm/>}/>
       <Route path="/CustHome/Edit" element={<EditProfile/>}/>
