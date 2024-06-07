@@ -16,7 +16,7 @@ const Navbar = () => {
                         <li key={index}>
                         { link.title==="Categories" ?(<div></div>):(
                             <Link to={link?.path}>
-                            <p>
+                            <p >
                                 {link.title}
                             </p>
 

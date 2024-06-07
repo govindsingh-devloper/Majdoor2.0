@@ -25,6 +25,13 @@ const Login = () => {
           </div>
         </div>
       </section>
+      {/* <Template
+        title="Welcome Back "
+        description1="build skills for today, tomorrow and beyond"
+        description2="ihkcqold;ljqwidlkwoinqw"
+        // image={};
+        formType="login"
+    /> */}
     </div>
     </>
   )

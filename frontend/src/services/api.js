@@ -18,8 +18,14 @@ export const endpoints={
     LOGIN_API_T: BASE_URL + "/auth/thekedar-login",
     SIGNUP_API_T:BASE_URL + "/auth/thekedar-signup",
 }
-
+//Profile Endpoints
 export const settingsEndpoints={
     UPDATE_PROFILE_API: BASE_URL + "/auth/updateProfile",
+    UPDATE_DISPLAY_PICTURE_API:BASE_URL + "/auth/updateDisplayPicture"
 
 }
+
+//Contact Api
+export const contactusEndpoint = {
+    CONTACT_US_API: BASE_URL + "/reach/contact",
+  }

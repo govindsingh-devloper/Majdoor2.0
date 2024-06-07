@@ -16,8 +16,9 @@ const Header = () => {
         <div className="links">
           <a href="/">home</a>
           <a href="/about">about</a>
-          <a href="/services">services</a>
+          <Link to ="/services">services</Link>
           <a href="/reviews">reviews</a>
+          <Link to='/contact'>Contact US</Link>
           {
             token ===null &&(
               <Link to='/login'>Login</Link>
@@ -33,6 +34,7 @@ const Header = () => {
           }
         
           {token !== null && <ProfileDropDown />}
+
         </div>
         <div id="menu-btn" className="fa fa-bars"></div>
       </nav>

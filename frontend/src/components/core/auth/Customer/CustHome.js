@@ -16,13 +16,14 @@ const CustHome = () => {
         <img src={user?.image} alt="User Profile" />
 
     <div>
-      <h1>My Profile</h1>
-      <img
+      {/* <h1>My Profile</h1> */}
+      {/* <img
         src={user?.image}
-      />
-      <p>{user?.firstName + " "+user?.lastName}</p>
-      <p>{user?.email}</p>
-      <div><p>
+      /> */}
+      {/* <p>{user?.firstName + " "+user?.lastName}</p>
+      <p>{user?.email}</p> */}
+      {/* <div>
+      <p>
         About
       </p>
       <span
@@ -34,11 +35,11 @@ const CustHome = () => {
             <RiEditBoxLine />
           </span>
 
-      </div>
+      </div> */}
       <div className="profile-details">
         <h1>My Profile</h1>
-        <p>{user?.firstName + " " + user?.lastName}</p>
-        <p>{user?.email}</p>
+        <p>FULL Name :{user?.firstName + " " + user?.lastName}</p>
+        <p> Email : {user?.email}</p>
         <p>
           About
         </p>
@@ -58,13 +59,57 @@ const CustHome = () => {
               <RiEditBoxLine />
         </IconBtn>
       </div>
+      <div className="flex max-w-[500px] justify-between">
+          <div className="flex flex-col gap-y-5">
+            <div>
+              <p className="mb-2 text-sm text-richblack-600">First Name</p>
+              <p className="text-sm font-medium text-richblack-5">
+                {user?.firstName}
+              </p>
+            </div>
+            <div>
+              <p className="mb-2 text-sm text-richblack-600">Email</p>
+              <p className="text-sm font-medium text-richblack-5">
+                {user?.email}
+              </p>
+            </div>
+            <div>
+              <p className="mb-2 text-sm text-richblack-600">Gender</p>
+              <p className="text-sm font-medium text-richblack-5">
+                {user?.additionalDetails?.gender ?? "Add Gender"}
+              </p>
+            </div>
+          </div>
+          <div className="flex flex-col gap-y-5">
+            <div>
+              <p className="mb-2 text-sm text-richblack-600">Last Name</p>
+              <p className="text-sm font-medium text-richblack-5">
+                {user?.lastName}
+              </p>
+            </div>
+            <div>
+              <p className="mb-2 text-sm text-richblack-600">Phone Number</p>
+              <p className="text-sm font-medium text-richblack-5">
+                {user?.additionalDetails?.contactNumber ?? "Add Contact Number"}
+              </p>
+            </div>
+
+          </div>
+        </div>
+
+
+
+
       <div>
+              <h1>
               <p className="mb-2 text-sm text-richblack-600">Date Of Birth</p>
+              </h1>
               <p className="text-sm font-medium text-richblack-5">
                 {formattedDate(user?.additionalDetails?.dateOfBirth) ??
                   "Add Date Of Birth"}
               </p>
             </div>
+
             
 
     </div>
