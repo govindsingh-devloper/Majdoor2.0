@@ -14,10 +14,12 @@ const Header = () => {
           <a href="#about">about</a>
           <a href="#services">services</a>
           <a href="#reviews">reviews</a>
+          {/*<a href="#contactUs">contactUs</a>*/}
           <a href="/Login" className="btn">Log in</a>
           <Link to='/signup'>
             Sign In
           </Link>
+          <Link to='/contactUs'>contactUs</Link>
         </div>
         <div id="menu-btn" className="fa fa-bars"></div>
       </nav>

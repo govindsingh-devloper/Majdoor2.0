@@ -1,6 +1,5 @@
 import React from 'react';
 import gImg6 from '../images/19340.jpg';
-
 const Home = () => {
   return (
     <section className="home" id="home">
@@ -13,7 +12,8 @@ const Home = () => {
       <p>Majdoor is more than just a platform for connecting workers and clients.</p>
       <a href="#about" className="btn">get started</a>
     </div>
-  </section>
+    
+      </section>
   )
 }
 

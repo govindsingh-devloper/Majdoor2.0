@@ -14,15 +14,18 @@ import Gallery from './components/common/Gallery';
 import Facilities from './components/common/Facilities';
 import Reviews from './components/common/Reviews';
 import Footer from './components/common/Footer';
-import { Route,Routes } from "react-router-dom";
-import Navbar from "./components/common/Navbar";
-import Login from "./pages/login";
-import Signup from "./pages/signup";
+// import { Route,Routes } from "react-router-dom";
+// import Navbar from "./components/common/Navbar";
+// import Login from "./pages/login";
+// import Signup from "./pages/signup";
 import CustHome from './components/core/auth/Customer/CustHome';
-import VerifyEmail from "./pages/VerifyEmail"
+//import VerifyEmail from "./pages/VerifyEmail"
 import ForgotPassword from './pages/ForgotPassword';
 import UpdatePassword from './pages/UpdatePassword';
+import ContactUsForm from "./components/ContactPage/ContactUsForm";
+import ContactFormSection from "./components/core/auth/Customer/ContactFormSection";
 
+//import Navbar from "./components/common/Navbar";
 const Home = () => {
   useEffect(() => {
     const lightGalleryScript = document.createElement('script');
@@ -49,6 +52,7 @@ const Home = () => {
 
   return (
     <div>
+   {/* <Navbar /> */}
     <Header />
     <Routes>
       <Route path="/" element={<Homes/>}/>
@@ -58,13 +62,16 @@ const Home = () => {
       <Route path='/forgotpassword' element={<ForgotPassword/>}/>
       <Route path='/Update-password/:id' element={<UpdatePassword/>}/>
       <Route path='/CustHome' element={<CustHome/>}/>
+      <Route path="/contactUs" element={<ContactFormSection/>}/>
       </Routes>
-    
+      {/*<ContactFormSection />*/}
+     
     <About />
     <Services />
     <Gallery />
     <Reviews />
     <Footer /> 
+    
     </div>
   );
 };
