@@ -72,11 +72,11 @@ const Home = () => {
       <Route path="/contact" element={<Contact />} />
       </Routes>
     
-    {/* <About />
-    <Services />
+    <About />
+    {/* <Services /> */}
     <Gallery />
     <Reviews />
-    <Footer />  */}
+    <Footer /> 
     </div>
   );
 };
