@@ -33,7 +33,7 @@ const customerSchema= new mongoose.Schema({
             ref:"Service"
         }
     ],
-    addtionalDetails:{
+    additionalDetails:{
         type:mongoose.Schema.Types.ObjectId,
         required:true,
         ref:"Profile",

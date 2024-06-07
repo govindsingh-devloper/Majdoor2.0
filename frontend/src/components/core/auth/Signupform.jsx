@@ -4,6 +4,7 @@ import { sendOtp } from "../../../services/operations/authAPI"
 import { setSignupData } from "../../../slices/authslice"
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import '../../../css/style.css';
 
 
 const Signupform = () => {
@@ -53,7 +54,8 @@ const Signupform = () => {
         confirmPassword: "",
       })
 }
-    return (
+
+  return (
       <div className="container mx-auto h-full flex flex-1 justify-center items-center">
             <div className="w-full max-w-lg">
                 <div className="leading-loose">
@@ -105,7 +107,7 @@ const Signupform = () => {
             name="email"
             value={email}
             onChange={handleOnChange}
-            placeholder="Enter email address"
+            placeholder="Enter Email Address"
         />
        </label>
        <label className="block text-sm text-gray-600" for="us">
@@ -116,7 +118,7 @@ const Signupform = () => {
             name="password"
             value={password}
             onChange={handleOnChange}
-            placeholder="Enter password"
+            placeholder="Enter Password"
         />
        </label>
        <label className="block text-sm text-gray-600" for="us">
@@ -127,7 +129,7 @@ const Signupform = () => {
             name="confirmPassword"
             value={confirmPassword}
             onChange={handleOnChange}
-            placeholder="Enter confirm Passsword"
+            placeholder="Enter Confirm Password"
         />
        </label>
 
@@ -143,7 +145,9 @@ const Signupform = () => {
     </div>
     </div>
     </div>
-  )
-}
+    
+    );
+  };
+
 
 export default Signupform

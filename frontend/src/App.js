@@ -10,17 +10,19 @@ import Gallery from './components/common/Gallery';
 import Facilities from './components/common/Facilities';
 import Reviews from './components/common/Reviews';
 import Footer from './components/common/Footer';
-// import { Route,Routes } from "react-router-dom";
+import { Route,Routes } from "react-router-dom";
 // import Navbar from "./components/common/Navbar";
-// import Login from "./pages/login";
-// import Signup from "./pages/signup";
+import Login from "./pages/login";
+import Signup from "./pages/signup";
 import CustHome from './components/core/auth/Customer/CustHome';
-// import VerifyEmail from "./pages/VerifyEmail"
+import VerifyEmail from "./pages/VerifyEmail"
 import ForgotPassword from './pages/ForgotPassword';
 import UpdatePassword from './pages/UpdatePassword';
 import LoginForm from "./pages/LoginAsMajdoor";
 import Service from "./components/common/Services";
 import EditProfile from "./components/core/auth/Customer/Edit/EditProfile";
+import Loginform from "./components/core/auth/Loginform";
+import Signupform from "./components/core/auth/MajdoorSignUpForm";
 
 
 const Home = () => {
@@ -60,7 +62,11 @@ const Home = () => {
       <Route path='/Service' element={<Service/>}/>
       <Route path='/CustHome' element={<CustHome/>}/>
       <Route path='/majdoor-login' element={<LoginForm/>}/>
+      <Route path='/majdoor-signup' element={<Signupform/>}/>
       <Route path="/CustHome/Edit" element={<EditProfile/>}/>
+      <Route path="/customer-login" element={<Loginform/>}/>
+      <Route path="/thekedar-login" element={<Loginform/>}/>
+      
       </Routes>
     
     {/* <About />

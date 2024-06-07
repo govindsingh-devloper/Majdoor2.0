@@ -30,10 +30,10 @@ const Signupform = () => {
   const handleOnSubmit = (e) => {
     e.preventDefault()
 
-    if (password !== confirmPassword) {
-      toast.error("Passwords Do Not Match")
-      return
-    }
+    // if (password !== confirmPassword) {
+    //   toast.error("Passwords Do Not Match")
+    //   return
+    // }
     const signupData = {
       ...formData,
     //   accountType,
@@ -42,14 +42,13 @@ const Signupform = () => {
     // To be used after otp verification
     dispatch(setSignupData(signupData))
     // Send OTP to user for verification
-    dispatch(sendOtp(formData.email, navigate))
+    // dispatch(sendOtp(formData.email, navigate))
      // Reset
      setFormData({
         firstName: "",
         lastName: "",
-        email: "",
-        password: "",
-        confirmPassword: "",
+        skills:"",
+        contactNumber:"",
       })
 }
     return (
@@ -62,7 +61,7 @@ const Signupform = () => {
     <form onSubmit={handleOnSubmit} className="form" id="form1" method="post">
     <div>
        <label className="block text-sm text-gray-600" for="us">
-       <p>FirstName<sup>*</sup></p>
+       <p>First Name<sup>*</sup></p>
         <input className="w-full px-5 py-4 text-gray-700 bg-gray-200 rounded" 
                                        
             required
@@ -70,11 +69,11 @@ const Signupform = () => {
             name="firstName"
             value={firstName}
             onChange={handleOnChange}
-            placeholder="firstName"
+            placeholder="First Name"
         />
        </label>
        <label className="block text-sm text-gray-600" for="us">
-       <p>lastName<sup>*</sup></p>
+       <p>Last Name<sup>*</sup></p>
         <input className="w-full px-5 py-4 text-gray-700 bg-gray-200 rounded" 
                                        
             required
@@ -82,7 +81,7 @@ const Signupform = () => {
             name="lastName"
             value={lastName}
             onChange={handleOnChange}
-            placeholder="firstName"
+            placeholder="Last Name"
         />
        </label>
        {/* <label>
@@ -97,28 +96,28 @@ const Signupform = () => {
         />
        </label> */}
        <label className="block text-sm text-gray-600" for="us">
-       <p>Email<sup>*</sup></p>
+       <p>Skills<sup>*</sup></p>
         <input className="w-full px-5 py-4 text-gray-700 bg-gray-200 rounded" 
             required
             type="text"
-            name="email"
-            value={email}
+            name="skills"
+            value={skills}
             onChange={handleOnChange}
-            placeholder="Enter email address"
+            placeholder="Enter type of skill"
         />
        </label>
        <label className="block text-sm text-gray-600" for="us">
-       <p>Create Password<sup>*</sup></p>
+       <p>Contact Number<sup>*</sup></p>
         <input className="w-full px-5 py-4 text-gray-700 bg-gray-200 rounded" 
             required
-            type={showPassword?"text":"password"}
-            name="password"
-            value={password}
+            type={contactNumber?"text":"contactNumber"}
+            name="contactNumber"
+            value={contactNumber}
             onChange={handleOnChange}
-            placeholder="Enter password"
+            placeholder="Enter Contact Number"
         />
        </label>
-       <label className="block text-sm text-gray-600" for="us">
+       {/* <label className="block text-sm text-gray-600" for="us">
        <p>Confirm Password<sup>*</sup></p>
         <input className="w-full px-5 py-4 text-gray-700 bg-gray-200 rounded" 
             required
@@ -128,12 +127,12 @@ const Signupform = () => {
             onChange={handleOnChange}
             placeholder="Enter confirm Passsword"
         />
-       </label>
+       </label> */}
 
     </div>
 
     <button>
-        Create Button
+        Sign Up
     </button>
 
     </form>

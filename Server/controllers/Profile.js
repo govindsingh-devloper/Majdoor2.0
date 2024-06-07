@@ -21,7 +21,7 @@ exports.updateProfile=async(req,res)=>{
         }
         //find Profile
         const userDetails=await Customer.findById(id);
-        const profileId=userDetails.addtionalDetails;
+        const profileId=userDetails.additionalDetails;
         const profileDetails=await Profile.findById(profileId);
         //Update Profile
         profileDetails.dateofBirth=dateOfbirtth;
@@ -60,7 +60,7 @@ exports.deleteAccount=async(req,res)=>{
             })
         }
         //delete profile
-        await Profile.findByIdAndDelete({_id:userDetails.addtionalDetails});
+        await Profile.findByIdAndDelete({_id:userDetails.additionalDetails});
         //delete user
         await Customer.findByIdAndDelete({_id:id});
         //return response
