@@ -27,39 +27,49 @@ const Loginform = () => {
         dispatch(login(email,password,navigate))
     }
   return (
-    <form onSubmit={handleOnSubmit}>
-    <label>
-        <p>Email Address</p>
-        <input
-            required
-            type='text'
-            name="email"
-            value={email}
-            onChange={handleOnChange}
-            placeholder='Enter Email Address'
-        />
-    </label>
-    <label>
-        <p>Password</p>
-        <input
-            required
-            type={showPassword?"text":"password"}
-            name="password"
-            value={password}
-            onChange={handleOnChange}
-            placeholder='Enter Password'
-            
-        />
-        <Link to="/forgotPassword">
-            <p>Forgot Password</p>
-        </Link>
-    </label>
+    <div id="form-main">
+        <div id="form-div">
+            <h2 className="sign">Login Here</h2>
+            <form className="form" id="form1" onSubmit={handleOnSubmit}>           
+                <p className="name">
+                    <input
+                        required
+                        type='text'
+                        name="email"
+                        value={email}
+                        onChange={handleOnChange}
+                        className="validate[required,custom[email]] feedback-input"
+                        placeholder='Enter Email Address'
+                    />
+                </p>
+                <p className="contact">
+                    <input
+                        required
+                        type={showPassword?"text":"password"}
+                        name="password"
+                        value={password}
+                        onChange={handleOnChange}
+                        className="validate[required,custom[email]] feedback-input"
+                        placeholder='Enter Password'
+                    />
+                </p>
+                <div className="submit">
+                        <input type="submit" value="Login" id="button-blue" />
+                        <div className="ease"></div>
+                </div>
+            </form>
+                <Link to="/forgotPassword">
+                    <p>Forgot Password</p>
+                </Link>
+                <Link to="/signup">
+                    <p>Create Account</p> 
+                </Link>
 
-    <button>
+    {/* <button>
         Sign In
-    </button>
-
-    </form>
+    </button> */}
+        </div>
+    </div>
   )
 }
 

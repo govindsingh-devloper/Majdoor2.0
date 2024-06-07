@@ -34,6 +34,7 @@ const Header = () => {
           }
         
           {token !== null && <ProfileDropDown />}
+
         </div>
         <div id="menu-btn" className="fa fa-bars"></div>
       </nav>

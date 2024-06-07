@@ -13,6 +13,10 @@ export const endpoints={
     // Majdoor Auth Login
     LOGIN_API_M: BASE_URL + "/auth/majdoor-login",
     SIGNUP_API_M:BASE_URL + "/auth/majdoor-signup",
+
+    // Thekedar Auth Login
+    LOGIN_API_T: BASE_URL + "/auth/thekedar-login",
+    SIGNUP_API_T:BASE_URL + "/auth/thekedar-signup",
 }
 //Profile Endpoints
 export const settingsEndpoints={

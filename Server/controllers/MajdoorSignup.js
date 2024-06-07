@@ -75,7 +75,7 @@ exports.signup=async(req,res)=>{
          lastName,
          skills,
          contactNumber:hashedPassword,
-         addtionalDetails:profileDetails._id,
+         additionalDetails:profileDetails._id,
          image:`https://api.dicebear.com/5.x/initials/svg?seed=${firstName}${lastName}`,
      })
      //return res
@@ -108,7 +108,7 @@ exports.login=async(req,res)=>{
             })
         }
         //check user exist or not
-        const user=await Majdoor.findOne({contactNumber}).populate("addtionalDetails");
+        const user=await Majdoor.findOne({contactNumber}).populate("additionalDetails");
         if(!user){
             return res.status(401).json({
                 success:false,

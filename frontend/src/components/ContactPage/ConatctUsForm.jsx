@@ -5,6 +5,7 @@ import CountryCode from "../../data/countrycode.json"
 import { apiConnector } from "../../services/apiconnector"
 import { contactusEndpoint } from "../../services/api"
 import toast from "react-hot-toast"
+import ContactDetails from "./ContactDetails"
 
 const ContactUsForm = () => {
   const [loading, setLoading] = useState(false)
@@ -51,6 +52,7 @@ const ContactUsForm = () => {
       onSubmit={handleSubmit(submitContactForm)}
     >
       <div className="flex flex-col gap-5 lg:flex-row">
+      <ContactDetails/>
         <div className="flex flex-col gap-2 lg:w-[48%]">
           <label htmlFor="firstname" className="lable-style">
             First Name

@@ -25,7 +25,7 @@ const thekedarSchema= new mongoose.Schema({
         type:Number,
         required:true,
     },
-    addtionalDetails:{
+    additionalDetails:{
         type:mongoose.Schema.Types.ObjectId,
         ref:"Profile",
     },
