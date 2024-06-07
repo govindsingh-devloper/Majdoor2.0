@@ -1062,3 +1062,30 @@ input.search-submit {
       font-size: 16px;
   }
 }
+
+
+/* Forgot password link */
+.for {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.for a {
+  color: #007bff;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.for a:hover {
+  color: #0056b3;
+}
+
+
+/* Ease div */
+.ease {
+  position: relative;
+  top: -10px;
+  height: 10px;
+  background-color: transparent;
+  transition: all 0.3s;
+}

@@ -21,7 +21,7 @@ const majdoorSchema= new mongoose.Schema({
         required:true,
         trim:true,
     },
-    addtionalDetails:{
+    additionalDetails:{
         type:mongoose.Schema.Types.ObjectId,
         ref:"Profile",
     },

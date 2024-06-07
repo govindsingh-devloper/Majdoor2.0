@@ -44,7 +44,7 @@ exports.auth=async(req,res,next)=>{
 }
 
 
-//iscustomer
+//isCustomer
 exports.isCustomer=async(req,res)=>{
     try {
         if(req.user.accountType!=="Customer"){
