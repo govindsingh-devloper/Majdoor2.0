@@ -39,7 +39,7 @@ export function login(email, password, navigate) {
         
         localStorage.setItem("token", JSON.stringify(response.data.token))
         localStorage.setItem("user", JSON.stringify(response.data.user))
-        navigate("/CustHome")
+        navigate("/Service")
       } catch (error) {
         console.log("LOGIN API ERROR............", error)
         toast.error("Login Failed")
@@ -156,5 +156,17 @@ export function login(email, password, navigate) {
         
       }
       dispatch(setLoading(false));
+    }
+  }
+
+  export function logout(navigate) {
+    return (dispatch) => {
+      dispatch(setToken(null))
+      dispatch(setUser(null))
+      // dispatch(resetCart())
+      localStorage.removeItem("token")
+      localStorage.removeItem("user")
+      toast.success("Logged Out")
+      navigate("/")
     }
   }

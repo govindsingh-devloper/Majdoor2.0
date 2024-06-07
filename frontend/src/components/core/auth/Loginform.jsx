@@ -51,7 +51,7 @@ const Loginform = () => {
             
         />
         <Link to="/forgotPassword">
-            <p>forgot Password</p>
+            <p>Forgot Password</p>
         </Link>
     </label>
 

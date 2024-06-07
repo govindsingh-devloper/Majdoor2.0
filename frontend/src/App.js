@@ -1,29 +1,31 @@
 import "./App.css";
-import { Route,Routes } from "react-router-dom";
+import { useEffect } from "react";
 import Homes from "./pages/Home";
-import Navbar from "./components/common/Navbar";
-import Login from "./pages/login";
-import Signup from "./pages/signup";
-import VerifyEmail from "./pages/VerifyEmail"
-import React, { useEffect } from 'react';
+import { Route,Routes } from "react-router-dom";
 import './App.css';
 import Header from './components/common/Header';
 import About from './components/common/About';
-import Services from './components/common/Services';
+import Services from "./components/core/auth/Customer/Services";
 import Gallery from './components/common/Gallery';
 import Facilities from './components/common/Facilities';
 import Reviews from './components/common/Reviews';
 import Footer from './components/common/Footer';
 // import { Route,Routes } from "react-router-dom";
 // import Navbar from "./components/common/Navbar";
-// import Login from "./pages/login";
-// import Signup from "./pages/signup";
+import Login from "./pages/login";
+import Signup from "./pages/signup";
 import CustHome from './components/core/auth/Customer/CustHome';
-//import VerifyEmail from "./pages/VerifyEmail"
+// import VerifyEmail from "./pages/VerifyEmail"
 import ForgotPassword from './pages/ForgotPassword';
 import UpdatePassword from './pages/UpdatePassword';
-import ContactUsForm from "./components/ContactPage/ContactUsForm";
-import ContactFormSection from "./components/core/auth/Customer/ContactFormSection";
+import LoginForm from "./pages/LoginAsMajdoor";
+import Service from "./components/common/Services";
+import EditProfile from "./components/core/auth/Customer/Edit/EditProfile";
+import VerifyEmail from "./pages/VerifyEmail";
+import Contact from "./pages/Contact";
+
+
+
 
 //import Navbar from "./components/common/Navbar";
 const Home = () => {
@@ -61,17 +63,20 @@ const Home = () => {
       <Route path='/signup' element={<Signup/>}/>
       <Route path='/forgotpassword' element={<ForgotPassword/>}/>
       <Route path='/Update-password/:id' element={<UpdatePassword/>}/>
+      <Route path='/serviceS' element={<Services/>}/>
       <Route path='/CustHome' element={<CustHome/>}/>
-      <Route path="/contactUs" element={<ContactFormSection/>}/>
+
+      <Route path='/majdoor-login' element={<LoginForm/>}/>
+      <Route path="/CustHome/Edit" element={<EditProfile/>}/>
+
+      <Route path="/contact" element={<Contact />} />
       </Routes>
-      {/*<ContactFormSection />*/}
-     
-    <About />
+    
+    {/* <About />
     <Services />
     <Gallery />
     <Reviews />
-    <Footer /> 
-    
+    <Footer />  */}
     </div>
   );
 };

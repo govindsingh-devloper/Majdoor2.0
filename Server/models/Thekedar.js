@@ -31,6 +31,7 @@ const thekedarSchema= new mongoose.Schema({
     },
     contactNumber:{
         type:String,
+        // required:true,
         trim:true,
     },
     image:{
@@ -44,5 +45,6 @@ const thekedarSchema= new mongoose.Schema({
     resetPasswordExpires:{
         type:Date,
     }
+    
 });
 module.exports=mongoose.model("Thekedar",thekedarSchema);
