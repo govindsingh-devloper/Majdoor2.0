@@ -1,11 +1,11 @@
-// import "./App.css";
+import "./App.css";
 import { useEffect } from "react";
 import Homes from "./pages/Home";
 // import { Route,Routes } from "react-router-dom";
 import './App.css';
 import Header from './components/common/Header';
 import About from './components/common/About';
-import Services from "./components/core/auth/Customer/Services";
+import Services from "./components/common/Services";
 import Gallery from './components/common/Gallery';
 import Facilities from './components/common/Facilities';
 import Reviews from './components/common/Reviews';
@@ -74,11 +74,11 @@ const Home = () => {
       <Route path="/Mdashboard" element={<Mdashboard />} />
       </Routes>
     
-    {/* <About />
+    <About />
     <Services />
     <Gallery />
     <Reviews />
-    <Footer />  */}
+    <Footer /> 
     </div>
   );
 };

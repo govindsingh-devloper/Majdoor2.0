@@ -1,5 +1,8 @@
 import React from 'react'
 import Template from '../components/core/auth/Template'
+import thekedaaricon from '../images/thekedaaricon.jpg';
+import majdooricon from '../images/majdooricon.jpg';
+import customericon from '../images/customericon.jpg';
 
 const Login = () => {
   return (
@@ -9,17 +12,17 @@ const Login = () => {
         <h3 class="heading">Please select<span> your account type!</span> </h3>
         <div class="box-container">
           <div class="box">
-            <img src="../images/60.jpg" alt="Customer icon"/>
+            <img src={customericon} alt="Customer icon"/>
             <h3>Login as a Customer</h3>
             <a href="/customer-login" class="btn">Login as a Customer</a>
           </div>
           <div class="box">
-            <img src="../images/60.jpg" alt="Majdoor icon"/>
+            <img src={majdooricon} alt="Majdoor icon"/>
             <h3>Login as a Majdoor</h3>
             <a href="/majdoor-login" class="btn">Login as a Majdoor</a>
           </div>
           <div class="box">
-            <img src="../images/admin1.jpg" alt="Thekedar icon"/>
+            <img src={thekedaaricon} alt="Thekedar icon"/>
             <h3>Login as an Thekedar</h3>
             <a href="/thekedar-login" class="btn">Login as an Thekedar</a>
           </div>

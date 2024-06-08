@@ -47,77 +47,79 @@ const ContactUsForm = () => {
   }, [reset, isSubmitSuccessful])
 
   return (
-    <form
-      className="flex flex-col gap-7"
-      onSubmit={handleSubmit(submitContactForm)}
+    <form onSubmit={handleSubmit(submitContactForm)}
     >
-      <div className="flex flex-col gap-5 lg:flex-row">
-      <ContactDetails/>
-        <div className="flex flex-col gap-2 lg:w-[48%]">
-          <label htmlFor="firstname" className="lable-style">
-            First Name
-          </label>
-          <input
-            type="text"
-            name="firstname"
-            id="firstname"
-            placeholder="Enter first name"
-            className="form-style"
-            {...register("firstname", { required: true })}
-          />
-          {errors.firstname && (
-            <span className="-mt-1 text-[12px] text-yellow-100">
-              Please enter your name.
-            </span>
-          )}
+<div className="mx-auto  mt-2 flex w-11/12 max-w-maxContent flex-col justify-between gap-10 text-black lg:flex-row">
+        {/* Contact Details */}
+        <div className="lg:w-[40%] ">
+          <ContactDetails />
         </div>
-        <div className="flex flex-col gap-2 lg:w-[48%]">
-          <label htmlFor="lastname" className="lable-style">
-            Last Name
-          </label>
-          <input
-            type="text"
-            name="lastname"
-            id="lastname"
-            placeholder="Enter last name"
-            className="form-style"
-            {...register("lastname")}
-          />
-        </div>
-      </div>
+        <div className='container mx-auto h-full flex flex-1 flex-col justify-center items-center gap-14 '>
+        <div className='flex flex-col gap-5 '>
+        {/* firstName */}
+        <div className='flex flex-col'>
+        <label  htmlFor='firstname'  >First Name<sup>*</sup></label>
+        <input  className="w-full px-5 py-4 text-gray-700 bg-gray-200 rounded"
+           type="text"
+           name="firstname"
+           id="firstname"
+           placeholder='Enter first name' 
+        {...register("firstname",{required:true})}
 
-      <div className="flex flex-col gap-2">
-        <label htmlFor="email" className="lable-style">
-          Email Address
-        </label>
-        <input
-          type="email"
-          name="email"
-          id="email"
-          placeholder="Enter email address"
-          className="form-style"
-          {...register("email", { required: true })}
         />
-        {errors.email && (
-          <span className="-mt-1 text-[12px] text-yellow-100">
-            Please enter your Email address.
-          </span>
-        )}
-      </div>
+        {
+            errors.firstname&&(
+                <span>
+                    please enter your  name
+                </span>
+            )
+        }
 
+
+    </div>
+        {/* secondName */}
+        <div className='flex flex-col'>
+        <label   htmlFor='lastname' >Last Name<sup>*</sup></label>
+        <input className="w-full px-5 py-4 text-gray-700 bg-gray-200 rounded"
+           type="text"
+           name="lastname"
+           id="lastname"
+           placeholder='Enter last name' 
+        {...register("lastname",{required:true})}
+
+        />
+        </div>
+      
+        {/*email*/}
+        <div className='flex  flex-col '>
+            <label  htmlFor='email'>Email Address<sup>*</sup></label>
+            <input  className="w-full px-5 py-4 text-gray-700 bg-gray-200 rounded "
+              type="email"
+              name='email'
+                id='email'
+                placeholder='Enter email address'
+                {...register("email",{required:true})}
+            />
+            {
+                errors.email&&(
+                 <span>Please enter your email</span>   
+                )
+            }
+        </div>
+            {/*contact number*/}
       <div className="flex flex-col gap-2">
         <label htmlFor="phonenumber" className="lable-style">
-          Phone Number
+          Phone Number <sup>*</sup>
         </label>
 
         <div className="flex gap-5">
           <div className="flex w-[81px] flex-col gap-2">
-            <select
+            <select className="w-full px-5 py-4 text-gray-700 bg-gray-200 rounded "
               type="text"
               name="firstname"
               id="firstname"
               placeholder="Enter first name"
-              className="form-style"
+              //className="form-style"
               {...register("countrycode", { required: true })}
             >
               {CountryCode.map((ele, i) => {
@@ -130,12 +132,12 @@ const ContactUsForm = () => {
             </select>
           </div>
           <div className="flex w-[calc(100%-90px)] flex-col gap-2">
-            <input
+            <input className="w-full px-5 py-4 text-gray-700 bg-gray-200 rounded "
               type="number"
               name="phonenumber"
               id="phonenumber"
               placeholder="12345 67890"
-              className="form-style"
+             // className="form-style"
               {...register("phoneNo", {
                 required: {
                   value: true,
@@ -148,31 +150,31 @@ const ContactUsForm = () => {
           </div>
         </div>
         {errors.phoneNo && (
-          <span className="-mt-1 text-[12px] text-yellow-100">
+          <span className="-mt-1 text-[12px] text-gray-700">
             {errors.phoneNo.message}
           </span>
         )}
       </div>
+        {/*message */}
+        <div className='flex flex-col'>
+    <label  htmlFor='message'>Message<sup>*</sup></label>
+    <textarea  className="w-full px-5 py-4 text-gray-700 bg-gray-200 rounded"
+name='message'
+id='message'
+cols={30}
+rows={3}
+placeholder='Enter your message here'
+{...register("message",{required:true})}
 
-      <div className="flex flex-col gap-2">
-        <label htmlFor="message" className="lable-style">
-          Message
-        </label>
-        <textarea
-          name="message"
-          id="message"
-          cols="30"
-          rows="7"
-          placeholder="Enter your message here"
-          className="form-style"
-          {...register("message", { required: true })}
-        />
-        {errors.message && (
-          <span className="-mt-1 text-[12px] text-yellow-100">
-            Please enter your Message.
-          </span>
-        )}
+    />
+    {
+        errors.message&&(
+            <span>Please enter your message</span>
+        )
+    }
+</div>
       </div>
+
 
       <button
         disabled={loading}
@@ -185,6 +187,8 @@ const ContactUsForm = () => {
       >
         Send Message
       </button>
+      </div>
+      </div>
     </form>
   )
 }
