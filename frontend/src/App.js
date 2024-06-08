@@ -24,6 +24,7 @@ import EditProfile from "./components/core/auth/Customer/Edit/EditProfile";
 import Contact from "./pages/Contact";
 import Loginform from "./components/core/auth/Loginform";
 import Signupform from "./components/core/auth/MajdoorSignUpForm";
+import Mdashboard from "./pages/Mdashboard";
 
 
 //import Navbar from "./components/common/Navbar";
@@ -70,6 +71,7 @@ const Home = () => {
       <Route path="/customer-login" element={<Loginform/>}/>
       <Route path="/thekedar-login" element={<Loginform/>}/>
       <Route path="/contact" element={<Contact />} />
+      <Route path="/Mdashboard" element={<Mdashboard />} />
       </Routes>
     
     {/* <About />

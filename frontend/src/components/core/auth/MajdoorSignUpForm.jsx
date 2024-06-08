@@ -4,6 +4,7 @@ import toast from 'react-hot-toast'
 import { setSignupData } from "../../../slices/authslice"
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import  { signUp } from '../../../services/operations/MajdoorAuthAPI'
 
 
 const Signupform = () => {
@@ -14,6 +15,7 @@ const Signupform = () => {
         firstName:"",
         skills:"",
         contactNumber:"",
+        navigate,
     })
 
     const [showPassword,setshowPassword]=useState(false);
@@ -38,9 +40,17 @@ const Signupform = () => {
       ...formData,
     //   accountType,
     }
+    console.log(signupData)
+    dispatch(signUp(
+      firstName,
+      lastName,
+      skills,
+      contactNumber,
+      navigate
+    ))
      // Setting signup data to state
     // To be used after otp verification
-    dispatch(setSignupData(signupData))
+    // dispatch(setSignupData(signupData))
     // Send OTP to user for verification
     // dispatch(sendOtp(formData.email, navigate))
      // Reset
@@ -50,6 +60,7 @@ const Signupform = () => {
         skills:"",
         contactNumber:"",
       })
+      // toast.success("Sign In Successfully")
 }
     return (
       <div className="container mx-auto h-full flex flex-1 justify-center items-center">

@@ -25,14 +25,7 @@ exports.signup=async(req,res)=>{
              message:"ALL fields are required",
          })
      }
-     //2 password match krlo
-    //  if(password!==confirmPassword){
-    //      return res.status(400).json({
-    //          success:false,
-    //          message:"Password and ConfirmPassword Value does not match, please try again",
-    //      })
  
-    //  }
      //check user already exist
      const existingUser=await Majdoor.findOne({contactNumber});
      if(existingUser){
@@ -41,25 +34,7 @@ exports.signup=async(req,res)=>{
              message:"USer Already Existed",
          });
      }
-     //find most recent otp
-    //  const recentOtp=await OTP.find({email}).sort({createdAt:-1}).limit(1);
-    //  console.log(recentOtp)
-    //  //validate otp
-    //  if(recentOtp.length==0){
-    //      //OTP not found
-    //      return res.status(400).json({
-    //          success:false,
-    //          message:"OTP Notfound",
-    //      })
-    //  }
-    //  else if(otp!==recentOtp[0].otp){
-    //      //Inavlid OTP
-    //      return res.status(400).json({
-    //          success:false,
-    //          message:"Inavlid OTP",
-    //      })
- 
-    //  }
+    
      //hashPassword
  
      const hashedPassword=await bcrypt.hash(contactNumber,10);
@@ -78,6 +53,7 @@ exports.signup=async(req,res)=>{
          additionalDetails:profileDetails._id,
          image:`https://api.dicebear.com/5.x/initials/svg?seed=${firstName}${lastName}`,
      })
+     console.log(user)
      //return res
      return res.status(200).json({
         success:true,
@@ -108,7 +84,7 @@ exports.login=async(req,res)=>{
             })
         }
         //check user exist or not
-        const user=await Majdoor.findOne({contactNumber}).populate("additionalDetails");
+        const user=await Majdoor.findOne({firstName}).populate("additionalDetails");
         if(!user){
             return res.status(401).json({
                 success:false,

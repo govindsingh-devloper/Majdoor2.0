@@ -11,18 +11,14 @@ const thekedarSchema= new mongoose.Schema({
         required:true,
         trim:true,
     },
-    // skills:{
-    //     type:String,
-    //     required:true,
-    //     trim:true,
-    // },
+   
     email:{
         type:String,
         required:true,
         trim:true,
     },
     password:{
-        type:Number,
+        type:String,
         required:true,
     },
     additionalDetails:{

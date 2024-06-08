@@ -32,6 +32,9 @@ const majdoorSchema= new mongoose.Schema({
     image:{
         type:String,
         // required:true,
-    }
+    },
+    token:{
+        type:String,
+    },
 });
 module.exports=mongoose.model("Majdoor",majdoorSchema);
