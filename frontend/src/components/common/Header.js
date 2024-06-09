@@ -15,9 +15,9 @@ const Header = () => {
         </a>
         <div className="links">
           <a href="/">home</a>
-          <a href="/about">about</a>
-          <Link to ="/services">services</Link>
-          <a href="/reviews">reviews</a>
+          <a href="#about">about</a>
+          <a href ="#services">services</a>
+          <a href="#reviews">reviews</a>
           <Link to='/contact'>Contact US</Link>
           {
             token ===null &&(
