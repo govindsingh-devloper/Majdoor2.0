@@ -139,3 +139,22 @@ exports.showAllServices=async(req,res)=>{
         
     }
 }
+
+exports.singleservice=async(req,res)=>{
+    try {
+        const service=await Service.find({_id:serviceId}).populate("Majdoor").exec();
+        console.log(service);
+        return res.status(200).json({
+            success:true,
+            message:"Service Fetched Succesfully",
+            data:service,
+        })
+        
+    } catch (error) {
+        return res.status(500).json({
+            success:false,
+            message:"Service Not Fetched Succesfully",
+            error:error.message,
+        })
+    }
+}

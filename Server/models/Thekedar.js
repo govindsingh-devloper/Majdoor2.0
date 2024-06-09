@@ -4,7 +4,7 @@ const thekedarSchema= new mongoose.Schema({
     firstName:{
         type:String,
         required:true,
-        trim:true,
+        trim:true, //It removes all leading and trailing white-spaces characters from the current string/
     },
     lastName:{
         type:String,

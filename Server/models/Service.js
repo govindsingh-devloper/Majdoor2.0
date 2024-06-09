@@ -3,15 +3,11 @@ const mongoose=require("mongoose");
 
 const serviceSchema=new mongoose.Schema({
     name:{
-        type:String,
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"Majdoor"
     },
     description:{
         type:String,
-    },
-    admin:{
-        type:mongoose.Schema.Types.ObjectId,
-        ref:"customer",
-        required:true,
     },
     ratingAndReviews:{
         type:mongoose.Schema.Types.ObjectId,
@@ -23,15 +19,6 @@ const serviceSchema=new mongoose.Schema({
     thumbnail:{
         type:String,
     },
-    category:{
-        type:mongoose.Schema.Types.ObjectId,
-        ref:"Category",
-
-    },
-    status: {
-        type: String,
-        enum: ["Draft", "Published"],
-      },
       createdAt: { type: Date, default: Date.now },
       
     BookedService:{
