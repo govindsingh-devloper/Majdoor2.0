@@ -1,5 +1,6 @@
 const express=require("express")
 const router=express.Router();
+const {getallServices}=require("../controllers/MajdoorSignup")
 
 const{
     login,
@@ -43,4 +44,7 @@ router.post("/reset-password-token", resetPasswordToken)
 router.post("/reset-password", resetPassword)
 
 // Export the router for use in the main application
+
+//Get all Services Routes
+router.post("/searchMajdoor",getallServices)
 module.exports = router

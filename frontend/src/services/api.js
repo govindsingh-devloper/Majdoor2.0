@@ -29,3 +29,9 @@ export const settingsEndpoints={
 export const contactusEndpoint = {
     CONTACT_US_API: BASE_URL + "/reach/contact",
   }
+
+  //Search Api
+
+  export const SearchEndpoint={
+    SEARCH_API:BASE_URL + "/auth/searchMajdoor"
+  }

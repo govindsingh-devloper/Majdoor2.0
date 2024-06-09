@@ -25,7 +25,7 @@ import Contact from "./pages/Contact";
 import Loginform from "./components/core/auth/Loginform";
 import Signupform from "./components/core/auth/MajdoorSignUpForm";
 import Mdashboard from "./pages/Mdashboard";
-
+import SearchMajdoor from "./pages/searchMajdoor";
 
 //import Navbar from "./components/common/Navbar";
 const Home = () => {
@@ -72,6 +72,8 @@ const Home = () => {
       <Route path="/thekedar-login" element={<Loginform/>}/>
       <Route path="/contact" element={<Contact />} />
       <Route path="/Mdashboard" element={<Mdashboard />} />
+      <Route path="/searchMajdoor" element={<SearchMajdoor />} />
+
       </Routes>
     
     <About />

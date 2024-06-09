@@ -136,3 +136,28 @@ exports.login=async(req,res)=>{
         
     }
 }
+
+exports.getallServices=async(req,res)=>{
+    try {
+        const {skills} =req.body;
+        console.log(skills);
+        const response=await Majdoor.find({skills});
+        if(!response){
+            return res.status(401).json({
+                success:false,
+                message:"No Related service was found"
+            })
+        }
+        console.log(response)
+        return res.status(200).json({
+            success:true,
+            data:response,
+        })
+    } catch (error) {
+        return res.status(500).json({
+            success:true,
+            meaasge:error.meaasge,
+        })
+        
+    }
+}
