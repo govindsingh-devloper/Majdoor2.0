@@ -1,14 +1,8 @@
 import React from 'react';
 import gImg6 from '../images/19340.jpg';
-import About from '../components/common/About';
-import Services from '../components/common/Services';
-import Gallery from '../components/common/Gallery';
-import Reviews from '../components/common/Reviews';
-// import "../css/style.css";
-
 const Home = () => {
   return (
-    <div className="home" id="home">
+    <section className="home" id="home">
     <div className="image">
       <img src={gImg6} alt="Home" />
       <img src={gImg6} alt="Home" />
@@ -18,15 +12,8 @@ const Home = () => {
       <p>Majdoor is more than just a platform for connecting workers and clients.</p>
       <a href="#about" className="btn">get started</a>
     </div>
-    <div>
-    <About />
-      <Services />
-      <Gallery />
-      <Reviews />
-    </div>
-      
     
-      </div>
+      </section>
   )
 }
 
