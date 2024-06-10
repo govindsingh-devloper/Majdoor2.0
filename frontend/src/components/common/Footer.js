@@ -1,16 +1,38 @@
 import React from 'react';
 import "../../css/style.css";
+import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const Footer = () => {
+  const { token } = useSelector((state) => state.auth);
   return (
     <section className="footer">
       <div className="box-container">
         <div className="box">
           <h3>quick links</h3>
-          <a className="link" href="#home"><i className="fas fa-angle-right"></i> Home</a>
-          <a className="link" href="#about"><i className="fas fa-angle-right"></i> About</a>
-          <a className="link" href="#services"><i className="fas fa-angle-right"></i> Services</a>
-          <a className="link" href="#reviews"><i className="fas fa-angle-right"></i> Reviews</a>
+          {
+            token === null ?
+            (
+            <>
+            <Link className="link" to='/'><i className="fas fa-angle-right"></i>Home</Link>
+            <Link className="link" to='/about'><i className="fas fa-angle-right"></i>About</Link>
+            <Link className="link" to='/services'><i className="fas fa-angle-right"></i>Services</Link>
+            <Link className="link" to='/reviews'><i className="fas fa-angle-right"></i>Reviews</Link>
+            </> ):(
+              <>
+              <Link className="link" to='/'><i className="fas fa-angle-right"></i>Home</Link>
+              <Link className="link" to='/about'><i className="fas fa-angle-right"></i>About</Link>
+              <Link className="link" to='/services'><i className="fas fa-angle-right"></i>Services</Link>
+              <Link className="link" to='/reviews'><i className="fas fa-angle-right"></i>Reviews</Link>
+              
+              <Link className="link" to='/'>
+                <i className="fas fa-angle-right"></i>
+              My Page
+              </Link>
+              </>
+              
+            )
+          }
         </div>
         <div className="box">
           <h3>newsletter</h3>

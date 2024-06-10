@@ -1,5 +1,5 @@
 import React from 'react'
-import Services from "../components/core/auth/Customer/Services"
+import Services from "../components/core/auth/Customer/CustomerHome"
 
 const Mdashboard = () => {
   return (
