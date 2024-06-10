@@ -139,6 +139,7 @@ exports.login=async(req,res)=>{
 
 exports.getallServices=async(req,res)=>{
     try {
+        const {name}=req.body
         const {skills} =req.body;
         console.log(skills);
         const response=await Majdoor.find({skills});
