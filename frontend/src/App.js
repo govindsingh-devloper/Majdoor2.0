@@ -24,11 +24,12 @@ import Contact from "./pages/Contact";
 import Loginform from "./components/core/auth/Loginform";
 import Signupform from "./components/core/auth/MajdoorSignUpForm";
 import Mdashboard from "./pages/Mdashboard";
-import SearchMajdoor from "./pages/searchMajdoor";
+import SearchMajdoor from "./components/core/auth/Customer/searchMajdoor";
 import About from "./pages/About";
 import Reviews from "./pages/Reviews";
 import Services from "./pages/Services";
 import CustomerHome from "./components/core/auth/Customer/CustomerHome";
+
 
 ////////////////////////////////////////
 const App = () => {
@@ -81,6 +82,7 @@ const App = () => {
             <Route path="/about" element={<About />} />
             <Route path="/reviews" element={<Reviews />} />
             <Route path="/services" element={<Services />} />
+            
 
             </Routes>
           
