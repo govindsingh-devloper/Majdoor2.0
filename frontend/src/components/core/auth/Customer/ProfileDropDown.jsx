@@ -33,7 +33,7 @@ export default function ProfileDropdown() {
         
           ref={ref}
         >
-          <Link to="/CustHome" onClick={() => setOpen(false)}>
+          <Link to="/CustomerDashboard" onClick={() => setOpen(false)}>
             <div >
               <VscDashboard className="text-lg" />
               Dashboard

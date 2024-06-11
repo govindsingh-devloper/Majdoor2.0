@@ -14,7 +14,7 @@ import Footer from './components/common/Footer';
 
 import Login from "./pages/login";
 import Signup from "./pages/signup";
-import CustHome from './components/core/auth/Customer/CustHome';
+import CustomerDashboard from './components/core/auth/Customer/CustomerDashboard';
 import VerifyEmail from "./pages/VerifyEmail"
 import ForgotPassword from './pages/ForgotPassword';
 import UpdatePassword from './pages/UpdatePassword';
@@ -67,10 +67,10 @@ const App = () => {
             <Route path='/signup' element={<Signup/>}/>
             <Route path='/forgotpassword' element={<ForgotPassword/>}/>
             <Route path='/Update-password/:id' element={<UpdatePassword/>}/>
-            <Route path='/CustHome' element={<CustHome/>}/>
+            <Route path='/CustomerDashboard' element={<CustomerDashboard/>}/>
             <Route path='/majdoor-login' element={<LoginForm/>}/>
             <Route path='/majdoor-signup' element={<Signupform/>}/>
-            <Route path="/CustHome/Edit" element={<EditProfile/>}/>
+            <Route path="/CustomerDashboard/Edit" element={<EditProfile/>}/>
             <Route path="/customer-login" element={<Loginform/>}/>
             <Route path="/thekedar-login" element={<Loginform/>}/>
             <Route path="/contact" element={<Contact />} />

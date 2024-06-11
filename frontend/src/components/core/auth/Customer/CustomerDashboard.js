@@ -6,7 +6,7 @@ import { RiEditBoxLine } from "react-icons/ri"
 import { formattedDate } from "../../../../utilis/dateFormatter"
 import IconBtn from '../../../common/IconBtn';
 
-const CustHome = () => {
+const CustDashboard = () => {
   const { user } = useSelector((state) => state.profile);
   const navigate = useNavigate();
 
@@ -46,7 +46,7 @@ const CustHome = () => {
         <IconBtn
         text="Edit"
             onclick={() => {
-              navigate("/CustHome/Edit")
+              navigate("/CustomerDashboard/Edit")
             }}>
               <RiEditBoxLine />
         </IconBtn>
@@ -54,7 +54,7 @@ const CustHome = () => {
         <IconBtn
         text="Edit"
             onclick={() => {
-              navigate("/CustHome/Edit")
+              navigate("/CustomerDashboard/Edit")
             }}>
               <RiEditBoxLine />
         </IconBtn>
@@ -119,6 +119,6 @@ const CustHome = () => {
   );
 };
 
-export default CustHome;
+export default CustDashboard;
 
 
