@@ -1,50 +1,3 @@
-// import React from 'react';
-// import "../../css/style.css"
-// import { Link } from 'react-router-dom';
-// import { useSelector } from 'react-redux';
-// import ProfileDropDown from '../core/auth/ProfileDropDown';
-
-// const Header = () => {
-//   const { token } = useSelector((state) => state.auth)
-//   const { user } = useSelector((state) => state.profile)
-//   return (
-//     <header className="header">
-//       <nav className="navbar">
-//         <a href="/index.html" className="logo">
-//           <i className="fas fa-user-hard-hat"></i> Majdoor
-//         </a>
-//         <div className="links">
-//           {token=== null}
-//           <a href="/">Home</a>
-//           <a href="#about">About</a>
-//           <a href ="#services">Services</a>
-//           <a href="#reviews">Reviews</a>
-//           <Link to='/contact'>Contact Us</Link>
-//           {
-//             token ===null &&(
-//               <Link to='/login'>Login</Link>
-//             )
-
-//           }
-//           {
-//             token===null &&(
-//               <Link to='/signup'>
-//             Sign In
-//           </Link>
-//             )
-//           }
-        
-//           {token !== null && <ProfileDropDown />}
-
-//         </div>
-//         <div id="menu-btn" className="fa fa-bars"></div>
-//       </nav>
-//     </header>
-//   );
-// };
-
-// export default Header;
-
 import React from 'react';
 import "../../css/style.css"
 import { Link } from 'react-router-dom';
@@ -62,7 +15,7 @@ const Header = () => {
         <a href="/index.html" className="logo">
           <i className="fas fa-user-hard-hat"></i> Majdoor
         </a>
-        <div className="links">
+        <div className="links" >
           {token === null ? (
             <>
               <Link to='/'>Home</Link>
@@ -74,7 +27,14 @@ const Header = () => {
               <Link to='/signup'>Sign Up</Link>
             </>
           ) : (
-            <ProfileDropDown />
+            <>
+              <Link to='/CustomerHome' style={{ marginRight: '20px' }}>
+              {user?.firstName && `${user.firstName}'s`} Page
+              </Link>
+              <ProfileDropDown />
+        
+            </>
+            
           )}
         </div>
         <div id="menu-btn" className="fa fa-bars"></div>
