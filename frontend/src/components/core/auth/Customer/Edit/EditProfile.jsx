@@ -183,7 +183,7 @@ export default function EditProfile() {
         <div className="flex justify-end gap-2">
           <button
             onClick={() => {
-              navigate("/CustHome")
+              navigate("/CustomerDashboard")
             }}
            
           >
@@ -191,7 +191,7 @@ export default function EditProfile() {
           </button>
           <IconBtn type="submit" text="Save"
           onclick={() => {
-              navigate("/CustHome")
+              navigate("/CustomerDashboard")
             }}
            />
           {/* <button type="submit" text="save">

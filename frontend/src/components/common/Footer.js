@@ -27,14 +27,14 @@ const Footer = () => {
             <Link className="link" to='/reviews' onClick={scrollToTop}><i className="fas fa-angle-right"></i>Reviews</Link>
             </> ):(
               <>
-              <Link className="link" to='/' onClick={scrollToTop}><i className="fas fa-angle-right"></i>Our Home</Link>
-              <Link className="link" to='/about' onClick={scrollToTop}><i className="fas fa-angle-right"></i>About Us</Link>
-              <Link className="link" to='/services' onClick={scrollToTop}><i className="fas fa-angle-right"></i>Our Services</Link>
-              <Link className="link" to='/reviews' onClick={scrollToTop}><i className="fas fa-angle-right"></i>Reviews We got</Link>
+              <Link className="link" to='/' onClick={scrollToTop}><i className="fas fa-angle-right"></i>Website-Home</Link>
+              <Link className="link" to='/about' onClick={scrollToTop}><i className="fas fa-angle-right"></i>About</Link>
+              <Link className="link" to='/services' onClick={scrollToTop}><i className="fas fa-angle-right"></i>Services</Link>
+              <Link className="link" to='/reviews' onClick={scrollToTop}><i className="fas fa-angle-right"></i>Reviews</Link>
               
               <Link className="link" to='/CustomerHome' onClick={scrollToTop}>
                 <i className="fas fa-angle-right"></i>
-              Your Page
+                Your HomePage
               </Link>
               </>
               
