@@ -21,7 +21,7 @@ export default function EditProfile() {
   const submitProfileForm = async (data) => {
     console.log("Form Data - ", data)
     try {
-      dispatch(updateProfile(token, data))
+      await dispatch(updateProfile(token, data))
     } catch (error) {
       console.log("ERROR MESSAGE - ", error.message)
     }
@@ -82,8 +82,8 @@ export default function EditProfile() {
               </label>
               <input
                 type="date"
-                name="dateOfBirth"
-                id="dateOfBirth"
+                name="dateOfbirth"
+                id="dateOfbirth"
                 className="form-style"
                 {...register("dateOfBirth", {
                   required: {
@@ -95,11 +95,11 @@ export default function EditProfile() {
                     message: "Date of Birth cannot be in the future.",
                   },
                 })}
-                defaultValue={user?.additionalDetails?.dateOfBirth}
+                defaultValue={user?.additionalDetails?.dateOfbirth}
               />
-              {errors.dateOfBirth && (
+              {errors.dateOfbirth && (
                 <span>
-                  {errors.dateOfBirth.message}
+                  {errors.dateOfbirth.message}
                 </span>
               )}
             </div>
@@ -190,7 +190,7 @@ export default function EditProfile() {
             Cancel
           </button>
           <IconBtn type="submit" text="Save"
-          onclick={() => {
+          onClick={() => {
               navigate("/CustomerDashboard")
             }}
            />
