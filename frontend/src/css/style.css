@@ -68,6 +68,29 @@ section {
   
 }
 
+/* Header.css */
+
+.header {
+  background-color: #fff;
+  color: #fff;
+  text-align: center;
+  padding: 15px 0;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000; /* Adjust the z-index as necessary */
+  margin-bottom: 30px;
+}
+
+.main-content {
+  margin-top: 100px;
+  padding: 20px; /* Example padding to avoid content being hidden under the fixed header */
+  /* Add more styles as per your application layout */
+}
+
+
+
 .header .contact-info {
   padding: 2rem 10%;
   display: -webkit-box;

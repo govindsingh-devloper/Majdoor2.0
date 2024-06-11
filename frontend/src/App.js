@@ -59,6 +59,8 @@ const App = () => {
     <>
       <div>
           <Header />
+          <div className="main-content">
+
           <Routes>
             <Route path="/" element={<Homes/>}/>
             <Route path="/CustomerHome" element={<CustomerHome/>}/>
@@ -83,6 +85,8 @@ const App = () => {
             </Routes>
           
           <Footer /> 
+          </div>
+          
           
           </div>
     </>
