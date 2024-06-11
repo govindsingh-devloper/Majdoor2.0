@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom';
+import SearchMajdoors from './SearchMajdoor';
 import carpenter_icon from '../../../../images/carpenter-svgrepo-com.svg';
 import plumber_icon from '../../../../images/plumber-svgrepo-com.svg';
 import electrician_icon from '../../../../images/electrician-svgrepo-com.svg';
@@ -11,6 +12,8 @@ import mason_icon from '../../../../images/wall-brick-svgrepo-com.svg';
 import welder_icon from '../../../../images/welder-worker-svgrepo-com.svg';
 import labour_icon from '../../../../images/engineer-worker-svgrepo-com.svg';
 import history_icon from '../../../../images/history_icon.jpg';
+import { apiConnector } from '../../../../services/apiconnector';
+import { SearchEndpoint } from '../../../../services/api';
 
 const categories = [
   { name: 'Painter', image: painter_icon },
@@ -24,14 +27,32 @@ const categories = [
 ];
 
 function App() {
-  const [searchQuery, setSearchQuery] = useState('');
+  const [skills, setSkills] = useState('');
+
+  const [searchresults,setSearchResults]=useState([]);
   const [location, setLocation] = useState('');
   const { user } = useSelector((state) => state.profile);
   const navigate = useNavigate();
 
-  const handleSearch = () => {
-    // Implement search functionality
-    console.log(`Searching for ${searchQuery} in ${location}`);
+  const handleOnSubmit = async(e) => {
+    e.preventDefault();
+    const response=await apiConnector("POST",SearchEndpoint.SEARCH_API,{skills});
+    setSearchResults(response.data.data);
+    const navigationUrl = "/searchMajdoor";
+    console.log("Navigation URL:", navigationUrl);
+    navigate(navigationUrl, { state: { searchresults: response.data.data } });
+    console.log(response);
+  
+// //  try {
+// //      e.preventDefault();
+// //      // Implement search functionality
+// //      // console.log(`Searching for ${searchQuery} in ${location}`);
+// //      const response=await apiConnector("POST",SearchEndpoint.SEARCH_API,{searchQuery});
+// //      console.log(response);
+// //      setSearchResults(response.data.data)
+// //  } catch (error) {
+// //   console.error("Error occurred during search:", error);
+//  }//
   };
   return (
     <div className="min-h-screen p-4 bg-white">
@@ -41,12 +62,14 @@ function App() {
 
 
       <div className="mb-6">
+      <form onSubmit={handleOnSubmit}>
           <div className="flex space-x-4">
             <input
               type="text"
               placeholder="Search services..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
+              name='skills'
+              value={skills}
+              onChange={(e) => setSkills(e.target.value)}
               className="flex-1 p-3 border rounded-lg"
             />
             <input
@@ -56,8 +79,10 @@ function App() {
               onChange={(e) => setLocation(e.target.value)}
               className="flex-1 p-3 border rounded-lg"
             />
-            <button onClick={handleSearch} className="p-3 bg-blue-500 text-white rounded-lg">Search</button>
+            <button type='submit'
+            className="p-3 bg-blue-500 text-white rounded-lg">Search</button>
           </div>
+          </form>
         </div>
         <h3 className="text-lg mb-2">Your Past Bookings</h3>
         <div className="p-4 rounded-lg mb-6 border bg-white">
@@ -81,8 +106,10 @@ function App() {
               <button className="p-2 bg-blue-500 text-white rounded">Explore</button>
             </div>
           ))}
+
         </div>
       </div>
+      <SearchMajdoors searchresults={searchresults} />
     </div>
   );
 }

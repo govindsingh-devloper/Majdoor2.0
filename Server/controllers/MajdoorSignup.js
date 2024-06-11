@@ -139,10 +139,11 @@ exports.login=async(req,res)=>{
 
 exports.getallServices=async(req,res)=>{
     try {
-        const {name}=req.body
+        // const {name}=req.body
+        const {firstName}=req.body
         const {skills} =req.body;
         console.log(skills);
-        const response=await Majdoor.find({skills});
+        const response=await Majdoor.find({skills},{ firstName: 1, skills: 1 });
         if(!response){
             return res.status(401).json({
                 success:false,

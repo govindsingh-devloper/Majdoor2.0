@@ -24,7 +24,7 @@ import Contact from "./pages/Contact";
 import Loginform from "./components/core/auth/Loginform";
 import Signupform from "./components/core/auth/MajdoorSignUpForm";
 import Mdashboard from "./pages/Mdashboard";
-import SearchMajdoor from "./components/core/auth/Customer/searchMajdoor";
+import SearchMajdoor from "./components/core/auth/Customer/SearchMajdoor";
 import About from "./pages/About";
 import Reviews from "./pages/Reviews";
 import Services from "./pages/Services";
