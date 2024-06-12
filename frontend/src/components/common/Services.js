@@ -23,7 +23,7 @@ const Services = () => {
   return (
   <div>
      
-     {/* <form onSubmit={handleOnSubmit}>
+      <form onSubmit={handleOnSubmit}>
      <p>
      <input type='text' name='skills' value={skills}
        placeholder='Search Skills'
@@ -33,7 +33,7 @@ const Services = () => {
     
         <button>Search</button>
 
-     </form> */}
+     </form> 
      
       <section className="services" id="services">
     
