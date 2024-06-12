@@ -30,7 +30,6 @@ import Reviews from "./pages/Reviews";
 import Services from "./pages/Services";
 import CustomerHome from "./components/core/auth/Customer/CustomerHome";
 
-
 ////////////////////////////////////////
 const App = () => {
   useEffect(() => {
@@ -78,12 +77,10 @@ const App = () => {
             <Route path="/thekedar-login" element={<Loginform/>}/>
             <Route path="/contact" element={<Contact />} />
             <Route path="/Mdashboard" element={<Mdashboard />} />
-            <Route path="/searchMajdoor" element={<SearchMajdoor />} />
             <Route path="/about" element={<About />} />
             <Route path="/reviews" element={<Reviews />} />
             <Route path="/services" element={<Services />} />
             
-
             </Routes>
           
           <Footer /> 
