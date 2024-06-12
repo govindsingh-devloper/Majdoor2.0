@@ -42,7 +42,7 @@ export function login(firstName, contactNumber, navigate) {
         
         localStorage.setItem("token", JSON.stringify(response.data.token))
         localStorage.setItem("user", JSON.stringify(response.data.user))
-        navigate("/Mdashboard")
+        navigate("/MajdoorDashboard")
       } catch (error) {
         console.log("LOGIN API ERROR............", error)
         toast.error("Login Failed")

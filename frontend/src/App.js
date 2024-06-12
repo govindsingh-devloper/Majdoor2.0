@@ -15,6 +15,7 @@ import Footer from './components/common/Footer';
 import Login from "./pages/login";
 import Signup from "./pages/signup";
 import CustomerDashboard from './components/core/auth/Customer/CustomerDashboard';
+import MajdoorDashboard from './components/core/auth/Majdoor/MajdoorDashboard';
 import VerifyEmail from "./pages/VerifyEmail"
 import ForgotPassword from './pages/ForgotPassword';
 import UpdatePassword from './pages/UpdatePassword';
@@ -29,6 +30,7 @@ import About from "./pages/About";
 import Reviews from "./pages/Reviews";
 import Services from "./pages/Services";
 import CustomerHome from "./components/core/auth/Customer/CustomerHome";
+
 
 ////////////////////////////////////////
 const App = () => {
@@ -80,7 +82,9 @@ const App = () => {
             <Route path="/about" element={<About />} />
             <Route path="/reviews" element={<Reviews />} />
             <Route path="/services" element={<Services />} />
-            
+            <Route path="/MajdoorDashboard" element={<MajdoorDashboard />} />
+
+
             </Routes>
           
           <Footer /> 
