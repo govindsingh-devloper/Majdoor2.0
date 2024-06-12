@@ -47,8 +47,9 @@ exports.sendOTP=async(req,res)=>{
             result=await OTP.findOne({otp:otp});
         }
 
-      //create this otp entry in DB
+     
       const otpPayload={email,otp};
+       //create this otp entry in DB
       const otpBody=await OTP.create(otpPayload);
       console.log(otpBody)
 
@@ -131,7 +132,7 @@ exports.signup=async(req,res)=>{
          gender:null,
          dateOfBirth:null,
          about:null,
-        //  contactNumber:null,
+         contactNumber:null,
      })
      const user=await Customer.create({
          firstName,
@@ -158,71 +159,66 @@ exports.signup=async(req,res)=>{
 };
 
 //Login
-
-exports.login=async(req,res)=>{
+exports.login = async (req, res) => {
     try {
-        //get data from req.body
-        const{email,password}=req.body;
-        //validation
-        if(!email || !password){
+        const { email, password } = req.body;
+
+        if (!email || !password) {
             return res.status(403).json({
-                success:false,
-                message:"ALL fields are required,please try again",
-            })
-        }
-        //check user exist or not
-        const user=await Customer.findOne({email}).populate("additionalDetails");
-        if(!user){
-            return res.status(401).json({
-                success:false,
-                message:"User is not registered,Please signup",
+                success: false,
+                message: "Email and password are required.",
             });
         }
-        //generate JWT, after passsword matching
-        if(await bcrypt.compare(password,user.password)){
-            const payload={
-                email:user.email,
-                id:user._id,
-                accountType:user.accountType,
-            }
-            const token=Jwt.sign(payload,process.env.JWT_SECRET,{
-                expiresIn:"2h",
-            });
-            user.token=token;
-            user.password=undefined;
-            
-            //Cookie
-            const options={
-                expires:new Date(Date.now()+3*34*60*60*1000),
-                httpOnly:true,
-            }
-            res.cookie("token",token,options).status(200).json({
-                success:true,
-                token,
-                user,
-                message:"User Logged In Successfully"
-            })
 
-        }
-        else{
+        const user = await Customer.findOne({ email }).populate("additionalDetails");
+
+        if (!user) {
             return res.status(401).json({
-                success:false,
-                message:"Password is incorrect"
-            })
-            
-
+                success: false,
+                message: "User not found. Please sign up.",
+            });
         }
-      
-        
+
+        const isPasswordValid = await bcrypt.compare(password, user.password);
+
+        if (!isPasswordValid) {
+            return res.status(401).json({
+                success: false,
+                message: "Incorrect password.",
+            });
+        }
+
+        const payload = {
+            email: user.email,
+            id: user._id,
+            accountType: user.accountType,
+        };
+
+        const token = Jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: "2h" });
+
+        user.token = token;
+        user.password = undefined;
+
+        const options = {
+            expires: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000), // Example expiry time
+            httpOnly: true,
+        };
+
+        res.cookie("token", token, options).status(200).json({
+            success: true,
+            token,
+            user,
+            message: "User logged in successfully.",
+        });
     } catch (error) {
-        console.log(error)
-        return res.status(401).json({
-            success:false,
-            message:"Login Failure Please Try Again"
-        })
-        
+        console.error("Login error:", error);
+        return res.status(500).json({
+            success: false,
+            message: "Internal server error. Please try again later.",
+        });
     }
-}
+};
+
 
 //ChangePassword
 

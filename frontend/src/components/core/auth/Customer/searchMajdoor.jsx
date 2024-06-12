@@ -1,6 +1,7 @@
 import React from 'react'
 import majdoor_icon from '../../../../images/default_majdoor.png';
 import { useLocation } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const profiles = [
   { id:'M0001', name: 'Baldev', image: majdoor_icon, skills: 'Painter', contact:'9818373994' },
@@ -11,6 +12,7 @@ const profiles = [
 ];
 
 const SearchMajdoor = () => {
+  const {user}=useSelector((state)=>state.profile)
   const location = useLocation();
 const searchresults = location.state?.searchresults;
   console.log(searchresults); 
@@ -20,7 +22,7 @@ const searchresults = location.state?.searchresults;
      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-6">
       { searchresults && searchresults.map(profile => (
           <div key={profile.id} className="bg-white border border-gray-200 rounded-lg shadow-md p-6 text-center">
-            <img src={profile.image} alt={profile.name} className="w-32 h-32 mx-auto rounded-full mb-4 object-cover" />
+            <img src={user?.image} alt={user?.firstNamen} className="w-32 h-32 mx-auto rounded-full mb-4 object-cover" />
             <h3 className="text-xl font-semibold mb-2">{profile.firstName}</h3>
             <p className="text-gray-700 mb-2">Skills: {profile.skills}</p>
             <p className="text-gray-700 mb-4">Contact: {profile.contactNumber}</p>

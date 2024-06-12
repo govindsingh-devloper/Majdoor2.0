@@ -14,7 +14,7 @@ const {
 // ********************************************************************************************************
 // Delet User Account
 router.delete("/deleteProfile", auth, deleteAccount)
-router.put("/updateProfile",updateProfile)
+router.put("/updateProfile",auth,updateProfile)
 router.get("/getUserDetails", auth, getAllCustomers)
 router.put("/updateDisplayPicture", auth, updateDisplayPicture)
 

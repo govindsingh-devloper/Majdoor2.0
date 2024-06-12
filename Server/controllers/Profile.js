@@ -11,8 +11,8 @@ exports.updateProfile=async(req,res)=>{
         //get data
         const{dateOfBirtth="",about="",contactNumber,gender}=req.body
         //get UserID
-        // const id=req.user.id;
-        const id = req.user ? req.user.id : null; 
+        const id=req.user.id;
+        // const id = req.user ? req.user.id : null; 
         //validation
         if(!contactNumber || !gender){
             return res.status(400).json({
@@ -38,11 +38,12 @@ exports.updateProfile=async(req,res)=>{
 
         const profileDetails = await Profile.findById(profileId);
         //Update Profile
-        profileDetails.dateofBirth=dateOfBirtth;
+        profileDetails.dateOfBirth=dateOfBirtth;
         profileDetails.about=about;
         profileDetails.contactNumber=contactNumber,
         profileDetails.gender=gender;
         await profileDetails.save();
+        console.log(profileDetails)
         //return response
         return res.status(200).json({
             success:true,
