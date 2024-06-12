@@ -14,6 +14,7 @@ import labour_icon from '../../../../images/engineer-worker-svgrepo-com.svg';
 import history_icon from '../../../../images/history_icon.jpg';
 import { apiConnector } from '../../../../services/apiconnector';
 import { SearchEndpoint } from '../../../../services/api';
+// import SearchMajdoors from './SearchMajdoor';
 
 const categories = [
   { name: 'Painter', image: painter_icon },
