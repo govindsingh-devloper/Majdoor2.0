@@ -9,9 +9,10 @@ exports.updateProfile=async(req,res)=>{
         //middleware k ander decode krte time req mei id send ki thi
 
         //get data
-        const{dateOfbirtth="",about="",contactNumber,gender}=req.body
+        const{dateOfBirtth="",about="",contactNumber,gender}=req.body
         //get UserID
-        const id=req.user.id;
+        // const id=req.user.id;
+        const id = req.user ? req.user.id : null; 
         //validation
         if(!contactNumber || !gender){
             return res.status(400).json({
@@ -21,10 +22,23 @@ exports.updateProfile=async(req,res)=>{
         }
         //find Profile
         const userDetails=await Customer.findById(id);
-        const profileId=userDetails.additionalDetails;
-        const profileDetails=await Profile.findById(profileId);
+        if (!userDetails) {
+            return res.status(404).json({
+                success: false,
+                message: "User not found"
+            });
+        }
+        const profileId = userDetails.additionalDetails;
+        if (!profileId) {
+            return res.status(404).json({
+                success: false,
+                message: "Profile not found for this user"
+            });
+        }
+
+        const profileDetails = await Profile.findById(profileId);
         //Update Profile
-        profileDetails.dateofBirth=dateOfbirtth;
+        profileDetails.dateofBirth=dateOfBirtth;
         profileDetails.about=about;
         profileDetails.contactNumber=contactNumber,
         profileDetails.gender=gender;
