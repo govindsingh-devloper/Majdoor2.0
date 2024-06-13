@@ -31,8 +31,8 @@ import Reviews from "./pages/Reviews";
 import Services from "./pages/Services";
 import CustomerHome from "./components/core/auth/Customer/CustomerHome";
 import MajdoorConfirmation from "./components/core/auth/Majdoor/MajdoorConfirmation";
-
-
+import Edit from "./components/core/auth/Customer/Edit";
+import ChangeProfilePicture from "./components/core/auth/Customer/Edit/ChangeProfilePicture";
 ////////////////////////////////////////
 const App = () => {
   useEffect(() => {
@@ -75,7 +75,7 @@ const App = () => {
             <Route path='/CustomerDashboard' element={<CustomerDashboard/>}/>
             <Route path='/majdoor-login' element={<LoginForm/>}/>
             <Route path='/majdoor-signup' element={<Signupform/>}/>
-            <Route path="/CustomerDashboard/Edit" element={<EditProfile/>}/>
+            {/*<Route path="/CustomerDashboard/Edit" element={<EditProfile/>}/>*/}
             <Route path="/customer-login" element={<Loginform/>}/>
             <Route path="/thekedar-login" element={<Loginform/>}/>
             <Route path="/contact" element={<Contact />} />
@@ -86,8 +86,8 @@ const App = () => {
             <Route path="/services" element={<Services />} />
             <Route path="/MajdoorDashboard" element={<MajdoorDashboard />} />
             <Route path="/MajdoorConfirmation" element={<MajdoorConfirmation />} />
-
-
+            <Route path="/CustomerDashboard/Edit" element={<Edit />}/>
+            {/*<Route path="/CustomerDashboard/Edit" element={<ChangeProfilePicture />}/>*/}
 
             </Routes>
           
