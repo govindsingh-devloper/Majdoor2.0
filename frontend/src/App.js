@@ -31,8 +31,8 @@ import Reviews from "./pages/Reviews";
 import Services from "./pages/Services";
 import CustomerHome from "./components/core/auth/Customer/CustomerHome";
 import Signupformm from "./components/core/auth/Signupform";
+import MajdoorConfirmation from "./components/core/auth/Majdoor/MajdoorConfirmation";
 
-////////////////////////////////////////
 const App = () => {
   useEffect(() => {
     const lightGalleryScript = document.createElement('script');
@@ -85,6 +85,8 @@ const App = () => {
             <Route path="/reviews" element={<Reviews />} />
             <Route path="/services" element={<Services />} />
             <Route path="/MajdoorDashboard" element={<MajdoorDashboard />} />
+            <Route path="/MajdoorConfirmation" element={<MajdoorConfirmation />} />
+
 
 
             </Routes>
