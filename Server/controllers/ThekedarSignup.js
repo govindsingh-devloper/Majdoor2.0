@@ -95,7 +95,7 @@ exports.signup=async(req,res)=>{
  
      }
      //check user already exist
-     const existingUser=await Customer.findOne({email});
+     const existingUser=await Thekedar.findOne({email});
      if(existingUser){
          return res.status(400).json({
              success:false,

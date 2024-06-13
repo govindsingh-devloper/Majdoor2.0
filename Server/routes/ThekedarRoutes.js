@@ -6,14 +6,14 @@ const{
     signup,
     sendOTP,
     changePassword
-}=require("../controllers/Auth");
+}=require("../controllers/ThekedarSignup");
 
 const{
     resetPasswordToken,
       resetPassword
     }=require("../controllers/ResetPassword");
 
-const {auth}=require("../middlewares/auth")    
+// const {auth}=require("../middlewares/auth")    
 // Routes for Login, Signup, and Authentication
 
 // ********************************************************************************************************
@@ -30,7 +30,7 @@ router.post("/thekedar-signup", signup)
 router.post("/t-sendotp", sendOTP)
 
 // Route for Changing the password
-router.post("/t-changepassword", auth, changePassword)
+// router.post("/t-changepassword", auth, changePassword)
 
 // ********************************************************************************************************
 //                                      Reset Password

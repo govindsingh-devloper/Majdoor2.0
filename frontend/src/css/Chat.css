@@ -1,0 +1,175 @@
+.chatPage{
+    background-color: rgb(30, 28, 28);
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.chatContainer{
+    background-color: white;
+    height: 60%;
+    width: 50%;
+}
+
+.header{
+    background-color: rgb(91, 197, 233);
+    height: 15%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header>h2{
+    font-size: 1.5vmax;
+    margin: 2.5vmax;
+    color: white;
+}
+
+.header img{
+    margin: 2.5vmax;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.header img:hover{
+    transform: scale(1.2);
+}
+
+.chatBox{
+    height: 70%;
+    box-sizing: border-box;
+}
+
+.inputBox{
+    
+    height: 15%;
+    box-sizing: border-box;
+    display: flex;
+}
+
+#chatInput{
+    width: 80%;
+    border: none;
+    background-color: white;
+    padding: 2vmax;
+    box-sizing: border-box;
+    outline: none;
+    font-size: 1.2vmax;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border-top: 0.2vmax solid rgb(47, 54, 57);
+}
+
+.sendBtn{
+    background-color: rgb(91, 197, 233);
+    transition: all 0.3s;
+    border: none;
+    width: 21%;
+    color: white;
+    cursor: pointer;
+}
+
+.sendBtn>img{
+    width: 2.5vmax;
+    filter: brightness(100) invert();
+    transition: all 0.3s;
+}
+
+.sendBtn:hover{
+    background-color: rgb(42, 169, 212);
+}
+
+.sendBtn:hover img{
+    transform: translateX(6px);
+}
+
+/* Join Page */
+
+.JoinPage{
+    background-color: rgb(30, 28, 28);
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.JoinContainer{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.JoinContainer > img{
+    width: 8vmax;
+    padding: 2vmax;
+}
+
+.JoinContainer > h1{
+    color: white;
+    font-size: 2.5vmax;
+    font-family: "Roboto";
+    width: 25vmax;
+    border-bottom: 0.2vmax solid white;
+    padding: 1vmax;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+#joininput{
+    width: 25vmax;
+    padding: 1vmax;
+    border: none;
+    outline: none;
+    font-size: 1.5vmax;
+    margin: 2vmax;
+    box-sizing: border-box;
+}
+
+.joinbtn{
+    width: 25vmax;
+    padding: 1vmax;
+    border: none;
+    outline: none;
+    font-size: 1.5vmax;
+    /* margin: 2vmax; */
+    background-color: rgb(91, 197, 233);
+    box-sizing: border-box;
+    color: white;
+    font-family: "Roboto";
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.joinbtn:hover{
+    background-color:  rgb(42, 169, 212);
+}
+
+
+/* Message css */
+
+.messageBox{
+    background-color: gainsboro;
+    padding: 0.5vmax;
+    margin: 1vmax;
+    border-radius: 0.5vmax;
+    display: inline-block;
+    clear: both;
+    font-size: 1.2vmax;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.right{
+    text-align: right;
+    float: right;
+    color: black;
+    background-color: rgb(87, 198, 228);
+}
+
+.left{
+    text-align: left;
+    float: left;
+    background-color: rgb(68, 118, 162);
+}

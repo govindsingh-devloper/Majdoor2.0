@@ -15,8 +15,11 @@ export const endpoints={
     SIGNUP_API_M:BASE_URL + "/auth/majdoor-signup",
 
     // Thekedar Auth Login
+    SENDOTP_API_T: BASE_URL + "/auth/t-sendotp",
     LOGIN_API_T: BASE_URL + "/auth/thekedar-login",
     SIGNUP_API_T:BASE_URL + "/auth/thekedar-signup",
+    RESETPASSTOKEN_API_T:BASE_URL + "/auth/t-reset-password-token",
+    RESETPASSWORD_API_T:BASE_URL + "auth/t-reset-password",
 }
 //Profile Endpoints
 export const settingsEndpoints={
@@ -33,5 +36,6 @@ export const contactusEndpoint = {
   //Search Api
 
   export const SearchEndpoint={
-    SEARCH_API:BASE_URL + "/auth/searchMajdoor"
+    SEARCH_API:BASE_URL + "/auth/searchMajdoor",
+    ALL_CATEGORIES:BASE_URL+ "/auth/CustomerHome"
   }

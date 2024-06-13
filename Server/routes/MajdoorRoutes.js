@@ -4,7 +4,7 @@ const router=express.Router();
 const{
     login,
     signup,
-    // sendOTP,
+    allCategories,
     // changePassword
 }=require("../controllers/MajdoorSignup");
 
@@ -41,6 +41,7 @@ router.post("/m-reset-password-token", resetPasswordToken)
 
 // Route for resetting user's password after verification
 router.post("/m-reset-password", resetPassword)
+router.get("/CustomerHome",allCategories)
 
 // Export the router for use in the main application
 module.exports = router

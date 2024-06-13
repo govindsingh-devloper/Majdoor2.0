@@ -23,17 +23,18 @@ import LoginForm from "./pages/LoginAsMajdoor";
 import EditProfile from "./components/core/auth/Customer/Edit/EditProfile";
 import Contact from "./pages/Contact";
 import Loginform from "./components/core/auth/Loginform";
-import Signupform from "./components/core/auth/MajdoorSignUpForm";
+import Signupformm from "./components/core/auth/MajdoorSignUpForm";
 import Mdashboard from "./pages/Mdashboard";
-import SearchMajdoor from "./components/core/auth/Customer/SearchMajdoor";
+import SearchMajdoor from "./components/core/auth/Customer/searchMajdoor";
 import About from "./pages/About";
 import Reviews from "./pages/Reviews";
 import Services from "./pages/Services";
 import CustomerHome from "./components/core/auth/Customer/CustomerHome";
-import MajdoorConfirmation from "./components/core/auth/Majdoor/MajdoorConfirmation";
+import Signupform from "./components/core/auth/Signupform";
+import TSignupform from "./components/core/auth/TSignupform";
+import MajdoorConfirmation from "./components/core/auth/Majdoor/MajdoorConfirmation"
 import Edit from "./components/core/auth/Customer/Edit";
 import ChangeProfilePicture from "./components/core/auth/Customer/Edit/ChangeProfilePicture";
-////////////////////////////////////////
 const App = () => {
   useEffect(() => {
     const lightGalleryScript = document.createElement('script');
@@ -69,7 +70,7 @@ const App = () => {
             <Route path="/CustomerHome" element={<CustomerHome/>}/>
             <Route path="/verify-email" element={<VerifyEmail/>}/>
             <Route path='/login' element={<Login/>}/>
-            <Route path='/signup' element={<Signup/>}/>
+            <Route path='/signup' element={<Signupform/>}/>
             <Route path='/forgotpassword' element={<ForgotPassword/>}/>
             <Route path='/Update-password/:id' element={<UpdatePassword/>}/>
             <Route path='/CustomerDashboard' element={<CustomerDashboard/>}/>
@@ -78,6 +79,7 @@ const App = () => {
             {/*<Route path="/CustomerDashboard/Edit" element={<EditProfile/>}/>*/}
             <Route path="/customer-login" element={<Loginform/>}/>
             <Route path="/thekedar-login" element={<Loginform/>}/>
+            <Route path="/thekedar-signup" element={<TSignupform/>}/>
             <Route path="/contact" element={<Contact />} />
             <Route path="/Mdashboard" element={<Mdashboard />} />
             <Route path="/searchMajdoor" element={<SearchMajdoor/>}/>

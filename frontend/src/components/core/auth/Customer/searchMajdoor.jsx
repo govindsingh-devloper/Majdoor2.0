@@ -1,7 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import majdoor_icon from '../../../../images/default_majdoor.png';
 import { useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPhone } from '@fortawesome/free-solid-svg-icons';
+import AudioUploadForm from './AudioUploadForm';
+import "../../../../css/Audio.css";
+
+
 
 const SearchMajdoor = () => {
   const { user } = useSelector((state) => state.profile);
@@ -23,7 +29,18 @@ const SearchMajdoor = () => {
             <h3 className="text-xl font-semibold mb-2">{profile.firstName}</h3>
             <p className="text-gray-700 mb-2">Skills: {profile.skills}</p>
             <p className="text-gray-700 mb-4">Contact: {profile.contactNumber}</p>
-            <button className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">Chat</button>
+              <a href={`tel:${profile.contactNumber}`} className="call-button">
+                <FontAwesomeIcon icon={faPhone} />Call
+              </a>
+              {/* <div className='bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600'> */}
+              <div className="App">
+      {/* <header className="App-header"> */}
+        <h1 className="text-gray-700 mb-2">Send Audio Notes</h1>
+          <button><AudioUploadForm /></button>
+      {/* </header> */}
+    </div>
+              {/* </div> */}
+
           </div>
         ))}
       </div>

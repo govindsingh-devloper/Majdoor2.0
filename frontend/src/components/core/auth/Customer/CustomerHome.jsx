@@ -1,8 +1,8 @@
 
-import React, { useState } from 'react';
-import { useSelector } from 'react-redux'
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom';
-import SearchMajdoors from './SearchMajdoor';
+import SearchMajdoors from './searchMajdoor';
 import carpenter_icon from '../../../../images/carpenter-svgrepo-com.svg';
 import plumber_icon from '../../../../images/plumber-svgrepo-com.svg';
 import electrician_icon from '../../../../images/electrician-svgrepo-com.svg';
@@ -14,26 +14,32 @@ import labour_icon from '../../../../images/engineer-worker-svgrepo-com.svg';
 import history_icon from '../../../../images/history_icon.jpg';
 import { apiConnector } from '../../../../services/apiconnector';
 import { SearchEndpoint } from '../../../../services/api';
-// import SearchMajdoors from './SearchMajdoor';
+import { getCategories } from '../../../../services/operations/MajdoorAuthAPI';
 
-const categories = [
-  { name: 'Painter', image: painter_icon },
-  { name: 'Labour', image: labour_icon },
-  { name: 'Electrician', image: electrician_icon },
-  { name: 'Carpenter', image: carpenter_icon},
-  { name: 'Plumber', image: plumber_icon },
-  { name: 'Worker', image: worker_icon },
-  { name: 'Mason', image: mason_icon },
-  { name: 'Welder', image: welder_icon },
-];
+// const categories = [
+//   { name: 'Painter', image: painter_icon },
+//   { name: 'Labour', image: labour_icon },
+//   { name: 'Electrician', image: electrician_icon },
+//   { name: 'Carpenter', image: carpenter_icon},
+//   { name: 'Plumber', image: plumber_icon },
+//   { name: 'Worker', image: worker_icon },
+//   { name: 'Mason', image: mason_icon },
+//   { name: 'Welder', image: welder_icon },
+// ];
 
 function App() {
+  const dispatch=useDispatch();
   const [skills, setSkills] = useState('');
+  const {categories}=useSelector((state)=>state.categories);
+
+  console.log(categories);
 
   const [searchresults,setSearchResults]=useState([]);
   const [location, setLocation] = useState('');
   const { user } = useSelector((state) => state.profile);
   const navigate = useNavigate();
+
+ 
 
   const handleOnSubmit = async(e) => {
     e.preventDefault();
@@ -43,6 +49,9 @@ function App() {
     console.log("Navigation URL:", navigationUrl);
     navigate(navigationUrl, { state: { searchresults: response.data.data } });
     console.log(response);
+
+
+ 
   
 // //  try {
 // //      e.preventDefault();
@@ -55,6 +64,12 @@ function App() {
 // //   console.error("Error occurred during search:", error);
 //  }//
   };
+
+  useEffect(()=>{
+    dispatch(getCategories())
+  },[])
+
+  const uniqueCategories = [...new Map(categories.map(category => [category.skills, category])).values()];
   return (
     <div className="min-h-screen p-4 bg-white">
       
@@ -98,12 +113,13 @@ function App() {
 
         <h3 className="text-lg mb-2">Recommended Services For You</h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          {categories.map((category) => (
-            <div key={category.name} className="p-4 text-center border rounded-lg shadow-lg bg-white">
+          {uniqueCategories && uniqueCategories.map((category) => (
+            <div key={category._id} className="p-4 text-center border rounded-lg shadow-lg bg-white">
               <div className="w-24 h-24 mx-auto mb-4 ">
-                <img src={category.image} alt={category.name} className="w-full h-full object-cover rounded" />
+                <img src={category.image} alt={category} className="w-full h-full object-cover rounded" />
               </div>
-              <p className="mb-2">{category.name}</p>
+              {/* <p className="mb-2">{category.firstName}</p> */}
+              <p className="mb-2">{category.skills}</p>
               <button className="p-2 bg-blue-500 text-white rounded">Explore</button>
             </div>
           ))}

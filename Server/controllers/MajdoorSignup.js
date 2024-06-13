@@ -163,3 +163,34 @@ exports.getallServices=async(req,res)=>{
         
     }
 }
+
+exports.allCategories=async(req,res)=>{
+    try {
+        const allservices=await Majdoor.find({},{
+            firstName:true,
+            lastName:true,
+            skills:true
+
+        }
+            
+        )
+        if(!allservices){
+            return res.status(401).json({
+                success:false,
+                message:"No services was found"
+            })
+        }
+        return res.status(200).json({
+            success:true,
+            message:"Data Fetched Successfully",
+            allservices
+        })
+        
+    } catch (error) {
+        return res.status(500).json({
+            success:false,
+            message:error.message
+        })
+        
+    }
+}
