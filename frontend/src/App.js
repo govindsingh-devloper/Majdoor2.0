@@ -30,6 +30,7 @@ import About from "./pages/About";
 import Reviews from "./pages/Reviews";
 import Services from "./pages/Services";
 import CustomerHome from "./components/core/auth/Customer/CustomerHome";
+import MajdoorConfirmation from "./components/core/auth/Majdoor/MajdoorConfirmation";
 
 
 ////////////////////////////////////////
@@ -84,6 +85,8 @@ const App = () => {
             <Route path="/reviews" element={<Reviews />} />
             <Route path="/services" element={<Services />} />
             <Route path="/MajdoorDashboard" element={<MajdoorDashboard />} />
+            <Route path="/MajdoorConfirmation" element={<MajdoorConfirmation />} />
+
 
 
             </Routes>

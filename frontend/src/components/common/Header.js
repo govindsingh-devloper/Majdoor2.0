@@ -28,9 +28,9 @@ const Header = () => {
             </>
           ) : (
             <>
-              <Link to='/CustomerHome' style={{ marginRight: '20px' }}>
+              {/* <Link to='/CustomerHome' style={{ marginRight: '20px' }}>
               {user?.firstName && `${user.firstName}'s`} Page
-              </Link>
+              </Link> */}
               <ProfileDropDown />
         
             </>
