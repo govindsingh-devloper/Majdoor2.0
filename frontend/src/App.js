@@ -30,19 +30,15 @@ import About from "./pages/About";
 import Reviews from "./pages/Reviews";
 import Services from "./pages/Services";
 import CustomerHome from "./components/core/auth/Customer/CustomerHome";
-<<<<<<< Updated upstream
 import Signupform from "./components/core/auth/Signupform";
 import TSignupform from "./components/core/auth/TSignupform";
-import MajdoorConfirmation from "./components/core/auth/Majdoor/MajdoorConfirmation"
 import Edit from "./components/core/auth/Customer/Edit";
 import ChangeProfilePicture from "./components/core/auth/Customer/Edit/ChangeProfilePicture";
-=======
 import MajdoorConfirmation from "./components/core/auth/Majdoor/MajdoorConfirmation";
 import ThekedarDashbord from '../src/components/core/auth/thekedar/ThekedarDashbord'
 
 
-////////////////////////////////////////
->>>>>>> Stashed changes
+
 const App = () => {
   useEffect(() => {
     const lightGalleryScript = document.createElement('script');
@@ -96,15 +92,12 @@ const App = () => {
             <Route path="/services" element={<Services />} />
             <Route path="/MajdoorDashboard" element={<MajdoorDashboard />} />
             <Route path="/MajdoorConfirmation" element={<MajdoorConfirmation />} />
-<<<<<<< Updated upstream
             <Route path="/CustomerDashboard/Edit" element={<Edit />}/>
             {/*<Route path="/CustomerDashboard/Edit" element={<ChangeProfilePicture />}/>*/}
-=======
             <Route path="/ThekedarDashbord" element={<ThekedarDashbord />} />
 
 
 
->>>>>>> Stashed changes
 
             </Routes>
           
