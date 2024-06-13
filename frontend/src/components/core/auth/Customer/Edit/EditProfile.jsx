@@ -22,12 +22,9 @@ const EditProfile = () => {
   const submitProfileForm = async (data) => {
     console.log("Form Data - ", data);
     try {
-<<<<<<< Updated upstream
      dispatch(updateProfile(token, data))
-=======
       await dispatch(updateProfile(token, data));
       navigate("/CustomerDashboard");
->>>>>>> Stashed changes
     } catch (error) {
       console.log("ERROR MESSAGE - ", error.message);
     }
@@ -166,10 +163,11 @@ const EditProfile = () => {
           <IconBtn type="submit" text="Save" />
         </div>
       </form>
-<<<<<<< Updated upstream
-    </>
-  )
-}
+</div>
+  );
+};
+
+export default EditProfile;
 
 
 //////////////////////////////////////////////
@@ -351,10 +349,3 @@ const EditProfile = () => {
 //     </div>
 //   )
 // }
-=======
-    </div>
-  );
-};
-
-export default EditProfile;
->>>>>>> Stashed changes
