@@ -6,7 +6,7 @@ const{
     signup,
     sendOTP,
     changePassword
-}=require("../controllers/Auth");
+}=require("../controllers/ThekedarSignup");
 
 const{
     resetPasswordToken,

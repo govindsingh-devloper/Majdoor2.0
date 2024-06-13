@@ -1111,3 +1111,28 @@ input.search-submit {
   background-color: transparent;
   transition: all 0.3s;
 }
+
+
+
+
+
+/* src/CallButton.css */
+.call-button {
+  display: inline-flex;
+  align-items: center;
+  padding: 7px 14px;
+  font-size: 14px;
+  color: white;
+  background-color: green;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.call-button:hover {
+  background-color: darkgreen;
+}
+
+.call-button .svg-inline--fa {
+  margin-right: 10px;
+}

@@ -57,6 +57,8 @@ export function login(firstName, contactNumber, navigate) {
     lastName,
     skills,
     contactNumber,
+    thekedarId,
+    preferredLocation,
     navigate
   ) {
     return async (dispatch) => {
@@ -68,6 +70,8 @@ export function login(firstName, contactNumber, navigate) {
           lastName,
           skills,
           contactNumber,
+          thekedarId,
+          preferredLocation,
         })
   
         console.log("SIGNUP API RESPONSE............", response)

@@ -7,6 +7,8 @@ const cors = require("cors");
 
 const userRoutes=require("./routes/User");
 const profileRoutes=require("./routes/Profile");
+const MProfileRoutes=require("./routes/MProfile");
+const TProfileRoutes=require("./routes/TProfile");
 const serviceRoutes=require("./routes/Service");
 const thekedarRoutes=require("./routes/ThekedarRoutes");
 const majdoorRoutes=require("./routes/MajdoorRoutes");
@@ -56,10 +58,13 @@ cloudinaryConnect();
 //routes
 app.use("/api/v1/auth",userRoutes);
 app.use("/api/v1/auth",profileRoutes);
+app.use("/api/v1/auth",MProfileRoutes);
+app.use("/api/v1/auth",TProfileRoutes);
 app.use("/api/v1/auth",serviceRoutes);
 app.use("/api/v1/auth",thekedarRoutes);
 app.use("/api/v1/auth",majdoorRoutes);
-app.use("/api/v1/reach",contactUsRoute)
+app.use("/api/v1/reach",contactUsRoute);
+
 
 
 //default rouite

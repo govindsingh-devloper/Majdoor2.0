@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom'
 import  { signUp } from '../../../services/operations/MajdoorAuthAPI'
 
 
-const Signupform = () => {
+const Signupformm = () => {
     const dispatch=useDispatch();
     const navigate=useNavigate();
     const [formData,setFormData]=useState({
@@ -15,12 +15,14 @@ const Signupform = () => {
         firstName:"",
         skills:"",
         contactNumber:"",
+        thekedarId:"",
+        preferredLocation:"",
         navigate,
     })
 
     const [showPassword,setshowPassword]=useState(false);
     const[showConfirmPassword,setShowConfirmPassword]=useState(false)
-    const{firstName,lastName,skills,contactNumber }=formData
+    const{firstName,lastName,skills,contactNumber,thekedarId,preferredLocation }=formData
      // Handle input fields, when some value changes
   const handleOnChange = (e) => {
     setFormData((prevData) => ({
@@ -46,6 +48,8 @@ const Signupform = () => {
       lastName,
       skills,
       contactNumber,
+      thekedarId,
+      preferredLocation,
       navigate
     ))
      // Setting signup data to state
@@ -59,6 +63,8 @@ const Signupform = () => {
         lastName: "",
         skills:"",
         contactNumber:"",
+        thekedarId:"",
+        preferredLocation:"",
       })
       // toast.success("Sign In Successfully")
 }
@@ -128,6 +134,28 @@ const Signupform = () => {
             placeholder="Enter Contact Number"
         />
        </label>
+       <label className="block text-sm text-gray-600" for="us">
+       <p>Thekadar ID</p>
+        <input className="w-full px-5 py-4 text-gray-700 bg-gray-200 rounded" 
+            // required
+            type={thekedarId?"text":"thekedarId"}
+            name="thekedarId"
+            value={thekedarId}
+            onChange={handleOnChange}
+            placeholder="Enter Thekedar ID if any"
+        />
+       </label>
+       <label className="block text-sm text-gray-600" for="us">
+       <p>Preferred Location</p>
+        <input className="w-full px-5 py-4 text-gray-700 bg-gray-200 rounded" 
+            // required
+            type={preferredLocation?"text":"preferredLocation"}
+            name="preferredLocation"
+            value={preferredLocation}
+            onChange={handleOnChange}
+            placeholder="Enter Preferred Location"
+        />
+       </label>
        {/* <label className="block text-sm text-gray-600" for="us">
        <p>Confirm Password<sup>*</sup></p>
         <input className="w-full px-5 py-4 text-gray-700 bg-gray-200 rounded" 
@@ -155,4 +183,4 @@ const Signupform = () => {
   )
 }
 
-export default Signupform
+export default Signupformm

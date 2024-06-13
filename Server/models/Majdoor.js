@@ -21,6 +21,14 @@ const majdoorSchema= new mongoose.Schema({
         required:true,
         trim:true,
     },
+    preferredLocation:{
+        type:String,
+        trim:true,
+    },
+    thekedarID:{
+        type:String,
+        trim:true,
+    },
     additionalDetails:{
         type:mongoose.Schema.Types.ObjectId,
         ref:"Profile",
