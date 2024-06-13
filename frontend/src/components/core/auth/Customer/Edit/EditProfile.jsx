@@ -23,6 +23,7 @@ const EditProfile = () => {
     console.log("Form Data - ", data);
     try {
      dispatch(updateProfile(token, data))
+     navigate("/CustomerDashboard")
     } catch (error) {
       console.log("ERROR MESSAGE - ", error.message);
     }
@@ -158,7 +159,11 @@ const EditProfile = () => {
           >
             Cancel
           </button>
-          <IconBtn type="submit" text="Save" />
+          <IconBtn type="submit" text="Save" 
+            // onClick={()=>{
+            //   navigate("/CustomerDashboard")
+            // }}
+          />
         </div>
       </form>
     </div>
