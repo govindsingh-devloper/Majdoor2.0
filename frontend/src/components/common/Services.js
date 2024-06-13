@@ -16,24 +16,14 @@ const Services = () => {
   const navigate=useNavigate();
   const [skills,setSkills]=useState()
 
-  const handleOnSubmit=(e)=>{
-    e.preventDefault();
-    dispacth(search(skills,navigate))
-  }
+  // const handleOnSubmit=(e)=>{
+  //   e.preventDefault();
+  //   dispacth(search(skills,navigate))
+  // }
   return (
   <div>
      
-      <form onSubmit={handleOnSubmit}>
-     <p>
-     <input type='text' name='skills' value={skills}
-       placeholder='Search Skills'
-       onChange={(e) => setSkills(e.target.value)}
-     />
-     </p>
-    
-        <button>Search</button>
-
-     </form> 
+   
      
       <section className="services" id="services">
     

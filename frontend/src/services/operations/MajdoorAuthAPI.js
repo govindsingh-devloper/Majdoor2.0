@@ -4,6 +4,8 @@ import { setLoading, setToken } from "../../slices/authslice"
 import { apiConnector } from "../apiconnector"
 import { endpoints } from "../api"
 import { SearchEndpoint } from "../api"
+import { setCategories} from "../../slices/categoriesslice"
+
 
 
 const {
@@ -14,7 +16,7 @@ const {
 //   RESETPASSWORD_API,
 } = endpoints
 
-const {SEARCH_API}=SearchEndpoint
+const {ALL_CATEGORIES}=SearchEndpoint
 
 
 export function login(firstName, contactNumber, navigate) {
@@ -92,11 +94,11 @@ export function login(firstName, contactNumber, navigate) {
   }
 
 
-  export function search(skills,navigate){
+  export function getCategories(){
     return async (dispatch)=>{
       dispatch(setLoading(true))
       try {
-        const response=await apiConnector("POST",SEARCH_API,{skills
+        const response=await apiConnector("GET",ALL_CATEGORIES,{
 
         })
         console.log("Search Response....",response)
@@ -104,13 +106,13 @@ export function login(firstName, contactNumber, navigate) {
           throw new Error(response.data.message)
        
         }
-        navigate('/searchMajdoor')
-        
+      dispatch(setCategories(response.data.allservices))
       } catch (error) {
         console.log("SIGNUP API ERROR............", error)
         toast.error("No Related Skills Found")
         // navigate("/majdoor-signup")
       }
+      dispatch(setLoading(false));
     }
 
   }

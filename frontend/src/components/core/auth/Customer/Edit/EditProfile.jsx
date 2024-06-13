@@ -160,7 +160,11 @@ const EditProfile = () => {
           >
             Cancel
           </button>
-          <IconBtn type="submit" text="Save" />
+          <IconBtn type="submit" text="Save" 
+            // onClick={()=>{
+            //   navigate("/CustomerDashboard")
+            // }}
+          />
         </div>
       </form>
 
