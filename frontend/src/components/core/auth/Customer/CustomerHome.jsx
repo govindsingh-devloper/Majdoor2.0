@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom';
-import SearchMajdoors from './SearchMajdoor';
+import SearchMajdoors from './searchMajdoor';
 import carpenter_icon from '../../../../images/carpenter-svgrepo-com.svg';
 import plumber_icon from '../../../../images/plumber-svgrepo-com.svg';
 import electrician_icon from '../../../../images/electrician-svgrepo-com.svg';

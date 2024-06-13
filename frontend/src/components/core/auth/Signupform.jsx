@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom'
 import '../../../css/style.css';
 
 
-const Signupform = () => {
+const Signupformm = () => {
     const dispatch=useDispatch();
     const navigate=useNavigate();
     const [formData,setFormData]=useState({
@@ -150,4 +150,4 @@ const Signupform = () => {
   };
 
 
-export default Signupform
+export default Signupformm
