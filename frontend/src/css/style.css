@@ -8,8 +8,8 @@
   outline: none;
   border: none;
   text-decoration: none;
-  -webkit-transition: all .2s linear;
-  transition: all .2s linear;
+  /* -webkit-transition: all .2s linear; */
+  /* transition: all .2s linear; */
 }
 
 html {
