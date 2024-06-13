@@ -163,11 +163,15 @@ const EditProfile = () => {
           <IconBtn type="submit" text="Save" />
         </div>
       </form>
+
 </div>
+    // </div>
+
   );
 };
 
 export default EditProfile;
+
 
 
 //////////////////////////////////////////////
