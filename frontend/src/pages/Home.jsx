@@ -12,7 +12,7 @@ const Home = () => {
     <div className="home" id="home">
     <div className="image">
       <img src={gImg6} alt="Home" />
-      <img src={gImg6} alt="Home" />
+     
     </div>
     <div className="content">
       <h3>Why fix it yourself? Leave it to the majdoors.</h3>

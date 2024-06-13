@@ -1,153 +1,153 @@
-import React, { useState } from 'react'
-import toast from 'react-hot-toast'
-import { sendOtp } from "../../../services/operations/authAPI"
-import { setSignupData } from "../../../slices/authslice"
-import { useDispatch } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
+import React, { useState } from 'react';
+import toast from 'react-hot-toast';
+import { sendOtp } from "../../../services/operations/authAPI";
+import { setSignupData } from "../../../slices/authslice";
+import { useDispatch } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
 import '../../../css/style.css';
+import backgroundImage from "../../../images/SignUp.png"
 
+const inputClasses = "block w-full text-gray-700 dark:text-black-300 border border-black-300 dark:border-black-600 rounded-lg p-2 mt-1";
+const buttonClasses = "bg-black-600 hover:bg-blue-700 text-white dark:bg-yellow-700 dark:hover:bg-black-800 px-4 py-2 rounded-lg mt-4";
+const labelClasses = "block text-black-700 dark:text-black-300 mb-2";
+const containerClasses = "min-w-screen flex items-center justify-center bg-cover bg-center pt-20";
+const formContainerClasses = "bg-white light:bg-black-800 shadow-md rounded-lg p-8 max-w-md w-full";
 
 const Signupform = () => {
-    const dispatch=useDispatch();
-    const navigate=useNavigate();
-    const [formData,setFormData]=useState({
-        lastName:"",
-        firstName:"",
-        password:"",
-        email:"",
-        confirmPassword:""
-    })
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const [formData, setFormData] = useState({
+    lastName: "",
+    firstName: "",
+    password: "",
+    email: "",
+    confirmPassword: ""
+  });
 
-    const [showPassword,setshowPassword]=useState(false);
-    const[showConfirmPassword,setShowConfirmPassword]=useState(false)
-    const{firstName,lastName,email,password,confirmPassword }=formData
-     // Handle input fields, when some value changes
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const { firstName, lastName, email, password, confirmPassword } = formData;
+
+  // Handle input fields, when some value changes
   const handleOnChange = (e) => {
     setFormData((prevData) => ({
       ...prevData,
       [e.target.name]: e.target.value,
-    }))
-  }
+    }));
+  };
+
   // Handle Form Submission
   const handleOnSubmit = (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
     if (password !== confirmPassword) {
-      toast.error("Passwords Do Not Match")
-      return
+      toast.error("Passwords Do Not Match");
+      return;
     }
     const signupData = {
       ...formData,
-    //   accountType,
-    }
-     // Setting signup data to state
+    };
+    // Setting signup data to state
     // To be used after otp verification
-    dispatch(setSignupData(signupData))
+    dispatch(setSignupData(signupData));
     // Send OTP to user for verification
-    dispatch(sendOtp(formData.email, navigate))
-     // Reset
-     setFormData({
-        firstName: "",
-        lastName: "",
-        email: "",
-        password: "",
-        confirmPassword: "",
-      })
-}
-
-  return (
-      <div className="container mx-auto h-full flex flex-1 justify-center items-center">
-            <div className="w-full max-w-lg">
-                <div className="leading-loose">
-                    <div id="form-main">
-                        <div id="form-div" className="max-w-xl m-4 p-10 bg-white rounded shadow-xl">
-                            <h2 className="sign">Signup Here</h2>
-    <form onSubmit={handleOnSubmit} className="form" id="form1" method="post">
-    <div>
-       <label className="block text-sm text-gray-600" for="us">
-       <p>FirstName<sup>*</sup></p>
-        <input className="w-full px-5 py-4 text-gray-700 bg-gray-200 rounded" 
-                                       
-            required
-            type="text"
-            name="firstName"
-            value={firstName}
-            onChange={handleOnChange}
-            placeholder="firstName"
-        />
-       </label>
-       <label className="block text-sm text-gray-600" for="us">
-       <p>lastName<sup>*</sup></p>
-        <input className="w-full px-5 py-4 text-gray-700 bg-gray-200 rounded" 
-                                       
-            required
-            type="text"
-            name="lastName"
-            value={lastName}
-            onChange={handleOnChange}
-            placeholder="firstName"
-        />
-       </label>
-       {/* <label>
-       <p>LastName<sup>*</sup></p>
-        <input
-            required
-            type="text"
-            name="lasttName"
-            value={lastName}
-            onChange={handleOnChange}
-            placeholder="lastName"
-        />
-       </label> */}
-       <label className="block text-sm text-gray-600" for="us">
-       <p>Email<sup>*</sup></p>
-        <input className="w-full px-5 py-4 text-gray-700 bg-gray-200 rounded" 
-            required
-            type="text"
-            name="email"
-            value={email}
-            onChange={handleOnChange}
-            placeholder="Enter Email Address"
-        />
-       </label>
-       <label className="block text-sm text-gray-600" for="us">
-       <p>Create Password<sup>*</sup></p>
-        <input className="w-full px-5 py-4 text-gray-700 bg-gray-200 rounded" 
-            required
-            type={showPassword?"text":"password"}
-            name="password"
-            value={password}
-            onChange={handleOnChange}
-            placeholder="Enter Password"
-        />
-       </label>
-       <label className="block text-sm text-gray-600" for="us">
-       <p>Confirm Password<sup>*</sup></p>
-        <input className="w-full px-5 py-4 text-gray-700 bg-gray-200 rounded" 
-            required
-            type={showConfirmPassword?"text":"password"}
-            name="confirmPassword"
-            value={confirmPassword}
-            onChange={handleOnChange}
-            placeholder="Enter Confirm Password"
-        />
-       </label>
-
-    </div>
-
-    <button>
-        Create Button
-    </button>
-
-    </form>
-    </div>
-    </div>
-    </div>
-    </div>
-    </div>
-    
-    );
+    dispatch(sendOtp(formData.email, navigate));
+    // Reset
+    setFormData({
+      firstName: "",
+      lastName: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
+    });
   };
 
+  return (
+    <div className={`${containerClasses}`} style={{ backgroundImage: `url(${backgroundImage})`}}>
+      <div className={formContainerClasses}>
+        <h2 className="text-2xl font-semibold mb-6 text-center">Sign Up</h2>
+        <form onSubmit={handleOnSubmit}>
+          <div className="mb-4">
+            <label className={labelClasses}>First Name</label>
+            <input
+              type="text"
+              name="firstName"
+              className={inputClasses}
+              value={firstName}
+              onChange={handleOnChange}
+              required
+              placeholder="First Name"
+            />
+          </div>
+          <div className="mb-4">
+            <label className={labelClasses}>Last Name</label>
+            <input
+              type="text"
+              name="lastName"
+              className={inputClasses}
+              value={lastName}
+              onChange={handleOnChange}
+              required
+              placeholder="Last Name"
+            />
+          </div>
+          <div className="mb-4">
+            <label className={labelClasses}>Email</label>
+            <input
+              type="email"
+              name="email"
+              className={inputClasses}
+              value={email}
+              onChange={handleOnChange}
+              required
+              placeholder="Enter Email Address"
+            />
+          </div>
+          <div className="mb-4">
+            <label className={labelClasses}>Create Password</label>
+            <input
+              type={showPassword ? "text" : "password"}
+              name="password"
+              className={inputClasses}
+              value={password}
+              onChange={handleOnChange}
+              required
+              placeholder="Enter Password"
+            />
+          </div>
+          <div className="mb-4">
+            <label className={labelClasses}>Confirm Password</label>
+            <input
+              type={showConfirmPassword ? "text" : "password"}
+              name="confirmPassword"
+              className={inputClasses}
+              value={confirmPassword}
+              onChange={handleOnChange}
+              required
+              placeholder="Enter Confirm Password"
+            />
+          </div>
+          <div class="flex justify-between items-center">
+        <button
+          type="submit"
+          class="bg-black text-white dark:bg-zinc-700 dark:text-zinc-300 px-4 py-2 rounded-lg"
+        >
+          Register
+        </button>
+        <Link to="/login" class="text-zinc-700 dark:text-black-300"
+          >Already have an account?
+          <button
+            class="bg-black text-white dark:bg-zinc-700 dark:text-zinc-300 px-4 py-2 rounded-lg"
+          >
+            Login
+          </button></Link>
+      </div>
+        </form>
+      </div>
+    </div>
+  );
+};
 
-export default Signupform
+export default Signupform;
+
+

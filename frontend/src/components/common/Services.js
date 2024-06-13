@@ -22,8 +22,12 @@ const Services = () => {
   // }
   return (
   <div>
+<<<<<<< Updated upstream
      
    
+=======
+ 
+>>>>>>> Stashed changes
      
       <section className="services" id="services">
     

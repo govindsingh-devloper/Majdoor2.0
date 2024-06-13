@@ -80,7 +80,7 @@ section {
   top: 0;
   left: 0;
   z-index: 1000; /* Adjust the z-index as necessary */
-  margin-bottom: 30px;
+  
 }
 
 .main-content {
@@ -160,7 +160,7 @@ section {
 }
 
 .header .navbar .links a:hover {
-  text-decoration: underline;
+  text-decoration: none;
   color: #2597f4;
 }
 

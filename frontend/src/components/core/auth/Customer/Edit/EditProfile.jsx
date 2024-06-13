@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import IconBtn from '../../../../common/IconBtn';
 import { updateProfile } from '../../../../../services/operations/editingAPI';
+import Sidebar from '../../thekedar/ThekedarSidebar';
 
 const genders = ["Male", "Female", "Non-Binary", "Prefer not to say", "Other"];
 
@@ -31,7 +32,9 @@ const EditProfile = () => {
   };
 
   return (
+
     <div className="max-w-4xl mx-auto p-6 bg-white rounded-lg shadow-md">
+      <Sidebar/>
       <h2 className="text-xl font-semibold text-gray-900 mb-4">Edit Profile</h2>
       <form onSubmit={handleSubmit(submitProfileForm)}>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
