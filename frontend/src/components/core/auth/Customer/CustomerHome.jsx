@@ -16,17 +16,16 @@ import { apiConnector } from '../../../../services/apiconnector';
 import { SearchEndpoint } from '../../../../services/api';
 import { getCategories } from '../../../../services/operations/MajdoorAuthAPI';
 
-// const categories = [
-//   { name: 'Painter', image: painter_icon },
-//   { name: 'Labour', image: labour_icon },
-//   { name: 'Electrician', image: electrician_icon },
-//   { name: 'Carpenter', image: carpenter_icon},
-//   { name: 'Plumber', image: plumber_icon },
-//   { name: 'Worker', image: worker_icon },
-//   { name: 'Mason', image: mason_icon },
-//   { name: 'Welder', image: welder_icon },
-// ];
-
+const categoryIcons = {
+  'Painter': painter_icon,
+  'Labour': labour_icon,
+  'Electrician': electrician_icon,
+  'Carpenter': carpenter_icon,
+  'Plumber': plumber_icon,
+  'Worker': worker_icon,
+  'Mason': mason_icon,
+  'Welder': welder_icon,
+};
 function App() {
   const dispatch=useDispatch();
   const [skills, setSkills] = useState('');
@@ -80,14 +79,19 @@ function App() {
       <div className="mb-6">
       <form onSubmit={handleOnSubmit}>
           <div className="flex space-x-4">
-            <input
-              type="text"
-              placeholder="Search services..."
+            <select
               name='skills'
               value={skills}
               onChange={(e) => setSkills(e.target.value)}
               className="flex-1 p-3 border rounded-lg"
-            />
+            >
+              <option value=""> Select a skill...</option>
+              {uniqueCategories.map((category)=>(
+                <option key={category.skills} value={category.skills}>
+                  {category.skills}
+                  </option>
+              ))}
+            </select>  
             <input
               type="text"
               placeholder="Location..."
@@ -116,7 +120,7 @@ function App() {
           {uniqueCategories && uniqueCategories.map((category) => (
             <div key={category._id} className="p-4 text-center border rounded-lg shadow-lg bg-white">
               <div className="w-24 h-24 mx-auto mb-4 ">
-                <img src={category.image} alt={category} className="w-full h-full object-cover rounded" />
+                <img src={categoryIcons[category.skills]} alt={category} className="w-full h-full object-cover rounded" />
               </div>
               {/* <p className="mb-2">{category.firstName}</p> */}
               <p className="mb-2">{category.skills}</p>
