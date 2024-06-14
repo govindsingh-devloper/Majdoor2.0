@@ -37,5 +37,6 @@ export const contactusEndpoint = {
 
   export const SearchEndpoint={
     SEARCH_API:BASE_URL + "/auth/searchMajdoor",
-    ALL_CATEGORIES:BASE_URL+ "/auth/CustomerHome"
+    ALL_CATEGORIES:BASE_URL+ "/auth/CustomerHome",
+    SINGLE_SERVICE:BASE_URL + "/auth/searchMajdoor/:id"
   }

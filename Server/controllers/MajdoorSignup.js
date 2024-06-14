@@ -194,3 +194,29 @@ exports.allCategories=async(req,res)=>{
         
     }
 }
+
+exports.singleService=async(req,res)=>{
+    try {
+        const {id}=req.params;
+        const singleService=await Majdoor.findById({_id:id});
+        if(!singleService){
+            return res.status(401).json({
+                success:false,
+                message:"Service Not Found"
+            })
+        }
+
+        console.log("Selected Majdoor",singleService);
+        return res.status(200).json({
+            success:true,
+            message:"Your Selected Service is Here",
+            data:singleService
+        })
+    } catch (error) {
+        return res.status(200).json({
+            success:false,
+            message:error.message,
+        })
+        
+    }
+}

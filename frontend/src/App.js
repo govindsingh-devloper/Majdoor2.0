@@ -35,7 +35,8 @@ import TSignupform from "./components/core/auth/TSignupform";
 import Edit from "./components/core/auth/Customer/Edit";
 import ChangeProfilePicture from "./components/core/auth/Customer/Edit/ChangeProfilePicture";
 import MajdoorConfirmation from "./components/core/auth/Majdoor/MajdoorConfirmation";
-import ThekedarDashbord from '../src/components/core/auth/thekedar/ThekedarDashbord'
+import ThekedarDashbord from '../src/components/core/auth/thekedar/ThekedarDashbord';
+import SelectedMajdoor from "./components/core/auth/Customer/selectedMajdoor";
 
 
 
@@ -87,6 +88,7 @@ const App = () => {
             <Route path="/contact" element={<Contact />} />
             <Route path="/Mdashboard" element={<Mdashboard />} />
             <Route path="/searchMajdoor" element={<SearchMajdoor/>}/>
+            <Route path="/searchMajdoor/:id" element={<SelectedMajdoor/>}/>
             <Route path="/about" element={<About />} />
             <Route path="/reviews" element={<Reviews />} />
             <Route path="/services" element={<Services />} />

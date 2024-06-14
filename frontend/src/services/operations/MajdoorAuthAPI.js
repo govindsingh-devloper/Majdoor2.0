@@ -5,6 +5,7 @@ import { apiConnector } from "../apiconnector"
 import { endpoints } from "../api"
 import { SearchEndpoint } from "../api"
 import { setCategories} from "../../slices/categoriesslice"
+const BASE_URL=process.env.REACT_APP_BASE_URL
 
 
 
@@ -16,7 +17,9 @@ const {
 //   RESETPASSWORD_API,
 } = endpoints
 
-const {ALL_CATEGORIES}=SearchEndpoint
+const {ALL_CATEGORIES,
+  SINGLE_SERVICE
+}=SearchEndpoint
 
 
 export function login(firstName, contactNumber, navigate) {
@@ -115,5 +118,26 @@ export function login(firstName, contactNumber, navigate) {
       dispatch(setLoading(false));
     }
 
+  }
+  export const getSingleService = async (id) => {
+    // const toastId = toast.loading("Loading...")
+    //   dispatch(setLoading(true));
+    let result = null
+    try {
+      const response = await apiConnector("GET", `${BASE_URL}/auth/searchMajdoor/${id}`)
+      console.log("Single Service..........", response)
+  
+      if (!response.data.success) {
+        throw new Error(response.data.message)
+      }
+      result = response.data
+    } catch (error) {
+      console.log("SingleService API............", error)
+      result = error.response.data
+      // toast.error(error.response.data.message);
+    }
+    // toast.dismiss(toastId)
+    //   dispatch(setLoading(false));
+    return result
   }
 
