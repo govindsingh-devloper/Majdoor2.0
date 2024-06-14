@@ -16,27 +16,34 @@ const majdoorSchema= new mongoose.Schema({
         required:true,
         trim:true,
     },
-    contactNumber:{
+    // phoneNumber:{
+    //     type:String,
+    //     required:true,
+    //     trim:true,
+        
+    // }
+    password:{
         type:String,
         required:true,
         trim:true,
+        minLength:[10,"Contact number should be atleast 10 digits"],
+        maxLength:[10,"Contact number should be 10 digits"],
     },
     preferredLocation:{
         type:String,
         trim:true,
+        required:true,
     },
     thekedarID:{
-        type:String,
+        type:mongoose.Schema.Types.ObjectId, 
+        ref:'Thekedar', 
+        // required: true,
         trim:true,
     },
     additionalDetails:{
         type:mongoose.Schema.Types.ObjectId,
         ref:"Profile",
     },
-    // contactNumber:{
-    //     type:String,
-    //     trim:true,
-    // },
     image:{
         type:String,
         // required:true,
@@ -45,4 +52,7 @@ const majdoorSchema= new mongoose.Schema({
         type:String,
     },
 });
-module.exports=mongoose.model("Majdoor",majdoorSchema);
+
+const Majdoor = mongoose.model("Majdoor",majdoorSchema);
+
+module.exports = { Majdoor };

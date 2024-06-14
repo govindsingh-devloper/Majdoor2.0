@@ -16,7 +16,8 @@ exports.signup=async(req,res)=>{
      const{firstName,
            lastName,
            skills,
-           contactNumber, 
+           contactNumber,
+           thekedarID  
         }=req.body
      //validate kro
      if(!firstName || !lastName || !skills || !contactNumber){
@@ -45,11 +46,13 @@ exports.signup=async(req,res)=>{
          about:null,
         //  contactNumber:null,
      })
+
      const user=await Majdoor.create({
          firstName,
          lastName,
          skills,
          contactNumber:hashedPassword,
+         thekedarID,
          additionalDetails:profileDetails._id,
          image:`https://api.dicebear.com/5.x/initials/svg?seed=${firstName}${lastName}`,
      })

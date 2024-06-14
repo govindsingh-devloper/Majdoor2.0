@@ -2,6 +2,7 @@ const Profile=require("../models/Profile")
 // const Customer=require("../models/Customer");
 const { uploadImageToCloudinary } = require("../utilis/imageUploader");
 const Majdoor = require("../models/Majdoor");
+const Thekedar = require('../models/Thekedar');
 
 
 exports.updateProfile=async(req,res)=>{

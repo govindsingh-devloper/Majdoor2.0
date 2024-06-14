@@ -60,4 +60,6 @@ const thekedarSchema = new mongoose.Schema({
 
 });
 
-module.exports = mongoose.model('Thekedar', thekedarSchema);
+const Thekedar = mongoose.model('Thekedar', thekedarSchema);
+
+module.exports = { Thekedar };
