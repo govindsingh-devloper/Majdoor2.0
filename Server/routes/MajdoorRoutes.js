@@ -5,7 +5,7 @@ const{
     login,
     signup,
     allCategories,
-    // changePassword
+    singleService
 }=require("../controllers/MajdoorSignup");
 
 const{
@@ -41,7 +41,9 @@ router.post("/m-reset-password-token", resetPasswordToken)
 
 // Route for resetting user's password after verification
 router.post("/m-reset-password", resetPassword)
+//Route For Services
 router.get("/CustomerHome",allCategories)
+router.get("/searchMajdoor/:id",singleService)
 
 // Export the router for use in the main application
 module.exports = router

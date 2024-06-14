@@ -33,6 +33,8 @@ import MajdoorConfirmation from "./components/core/auth/Majdoor/MajdoorConfirmat
 import ThekedarDashbord from '../src/components/core/auth/thekedar/ThekedarDashbord'
 import CustomerSidebar from '../src/components/core/auth/Customer/CustomerSidebar'
 import CustomerLayout from './components/core/auth/Customer/CustomerLayout';
+import ThekedarDashbord from '../src/components/core/auth/thekedar/ThekedarDashbord';
+import SelectedMajdoor from "./components/core/auth/Customer/selectedMajdoor";
 
 
 
@@ -83,6 +85,8 @@ const App = () => {
             
             {/* components */}
             <Route path="/contact" element={<Contact />} />
+            <Route path="/Mdashboard" element={<Mdashboard />} />
+            <Route path="/searchMajdoor" element={<SearchMajdoor/>}/>
             <Route path="/about" element={<About />} />
             <Route path="/reviews" element={<Reviews />} />
             <Route path="/services" element={<Services />} />

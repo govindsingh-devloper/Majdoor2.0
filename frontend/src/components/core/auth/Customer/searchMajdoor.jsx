@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPhone } from '@fortawesome/free-solid-svg-icons';
 import AudioUploadForm from './AudioUploadForm';
 import "../../../../css/Audio.css";
+import { Link } from 'react-router-dom';
 
 
 
@@ -20,7 +21,10 @@ const SearchMajdoor = () => {
       
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-6">
         { searchresults && searchresults.map(profile => (
-          <div key={profile.id} className="bg-white border border-gray-200 rounded-lg shadow-md p-6 text-center">
+          
+          <div key={profile._id} className="bg-white border border-gray-200 rounded-lg shadow-md p-6 text-center">
+         
+
             <img 
               src={profile?.image ? profile.image : majdoor_icon} 
               alt={user?.firstName || 'Default Majdoor'} 
@@ -37,9 +41,12 @@ const SearchMajdoor = () => {
       {/* <header className="App-header"> */}
         <h1 className="text-gray-700 mb-2">Send Audio Notes</h1>
           <button><AudioUploadForm /></button>
+
+          <Link to={`/searchMajdoor/${profile._id}`}> <button>Hire</button></Link>
       {/* </header> */}
     </div>
               {/* </div> */}
+              
 
           </div>
         ))}
