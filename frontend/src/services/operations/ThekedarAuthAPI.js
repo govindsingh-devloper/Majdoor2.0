@@ -14,7 +14,7 @@ const {
 } = endpoints
 
 
-export function login(email, password, navigate) {
+export function Tlogin(email, password, navigate) {
     return async (dispatch) => {
       const toastId = toast.loading("Loading...")
       dispatch(setLoading(true))
@@ -39,7 +39,7 @@ export function login(email, password, navigate) {
         
         localStorage.setItem("token", JSON.stringify(response.data.token))
         localStorage.setItem("user", JSON.stringify(response.data.user))
-        navigate("/Service")
+        navigate("/ThekedarDashbord")
       } catch (error) {
         console.log("LOGIN API ERROR............", error)
         toast.error("Login Failed")

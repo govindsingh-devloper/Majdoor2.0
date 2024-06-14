@@ -24,6 +24,7 @@ import LoginForm from "./pages/LoginAsMajdoor";
 import EditProfile from "./components/core/auth/Customer/Edit/EditProfile";
 import Contact from "./pages/Contact";
 import Loginform from "./components/core/auth/Loginform";
+import TLoginform from "./components/core/auth/TLoginForm";
 import Signupformm from "./components/core/auth/MajdoorSignUpForm";
 import Mdashboard from "./pages/Mdashboard";
 import SearchMajdoor from "./components/core/auth/Customer/searchMajdoor";
@@ -36,7 +37,7 @@ import TSignupform from "./components/core/auth/TSignupform";
 import Edit from "./components/core/auth/Customer/Edit";
 import ChangeProfilePicture from "./components/core/auth/Customer/Edit/ChangeProfilePicture";
 import MajdoorConfirmation from "./components/core/auth/Majdoor/MajdoorConfirmation";
-import ThekedarDashbord from '../src/components/core/auth/thekedar/ThekedarDashbord';
+import ThekedarDashbord from '../src/components/core/auth/Thekedar/ThekedarDashbord';
 import SelectedMajdoor from "./components/core/auth/Customer/selectedMajdoor";
 import CustomerLayout from "./components/core/auth/Customer/CustomerLayout";
 
@@ -85,7 +86,7 @@ const App = () => {
             <Route path='/majdoor-login' element={<LoginForm/>}/>
             <Route path='/majdoor-signup' element={<Signupform/>}/>
             <Route path="/customer-login" element={<Loginform/>}/>
-            <Route path="/thekedar-login" element={<Loginform/>}/>
+            <Route path="/thekedar-login" element={<TLoginform/>}/>
             <Route path="/thekedar-signup" element={<TSignupform/>}/>
             <Route path="/contact" element={<Contact />} />
             
