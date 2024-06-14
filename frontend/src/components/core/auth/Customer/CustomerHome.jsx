@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom';
 import SearchMajdoors from './searchMajdoor';
+import Layout from './CustomerLayout';
 import carpenter_icon from '../../../../images/carpenter-svgrepo-com.svg';
 import plumber_icon from '../../../../images/plumber-svgrepo-com.svg';
 import electrician_icon from '../../../../images/electrician-svgrepo-com.svg';
@@ -69,9 +70,10 @@ function App() {
   },[])
 
   const uniqueCategories = [...new Map(categories.map(category => [category.skills, category])).values()];
-  return (
+  return (<>
+          
     <div className="min-h-screen p-4 bg-white">
-      
+     
       <div className="bg-gray-100 p-6 rounded-lg shadow-lg">
       <h1 className="text-4xl font-bold mb-4">Welcome {user?.firstName + " " + user?.lastName}! </h1>
 
@@ -132,6 +134,9 @@ function App() {
       </div>
       <SearchMajdoors searchresults={searchresults} />
     </div>
+    
+  </>
+  
   );
 }
 

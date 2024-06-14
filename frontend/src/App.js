@@ -1,19 +1,14 @@
 // import "./App.css";
 import { useEffect } from "react";
-import { Route,Routes } from "react-router-dom";
+// import { Route,Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 import Homes from "./pages/Home";
 import Header from './components/common/Header';
 import Footer from './components/common/Footer';
-
-
-// import Services from "./components/common/Services";
-// import Gallery from './components/common/Gallery';
-// import Facilities from './components/common/Facilities';
-// import Reviews from './components/common/Reviews';
-
 import Login from "./pages/login";
 import Signup from "./pages/signup";
+
 import CustomerDashboard from './components/core/auth/Customer/CustomerDashboard';
 import MajdoorDashboard from './components/core/auth/Majdoor/MajdoorDashboard';
 import VerifyEmail from "./pages/VerifyEmail"
@@ -36,6 +31,8 @@ import Edit from "./components/core/auth/Customer/Edit";
 import ChangeProfilePicture from "./components/core/auth/Customer/Edit/ChangeProfilePicture";
 import MajdoorConfirmation from "./components/core/auth/Majdoor/MajdoorConfirmation";
 import ThekedarDashbord from '../src/components/core/auth/thekedar/ThekedarDashbord'
+import CustomerSidebar from '../src/components/core/auth/Customer/CustomerSidebar'
+import CustomerLayout from './components/core/auth/Customer/CustomerLayout';
 
 
 
@@ -71,36 +68,50 @@ const App = () => {
 
           <Routes>
             <Route path="/" element={<Homes/>}/>
-            <Route path="/CustomerHome" element={<CustomerHome/>}/>
             <Route path="/verify-email" element={<VerifyEmail/>}/>
             <Route path='/login' element={<Login/>}/>
             <Route path='/signup' element={<Signupform/>}/>
             <Route path='/forgotpassword' element={<ForgotPassword/>}/>
             <Route path='/Update-password/:id' element={<UpdatePassword/>}/>
-            <Route path='/CustomerDashboard' element={<CustomerDashboard/>}/>
+           
+           {/* loginsignup */}
             <Route path='/majdoor-login' element={<LoginForm/>}/>
             <Route path='/majdoor-signup' element={<Signupform/>}/>
-            {/*<Route path="/CustomerDashboard/Edit" element={<EditProfile/>}/>*/}
             <Route path="/customer-login" element={<Loginform/>}/>
             <Route path="/thekedar-login" element={<Loginform/>}/>
             <Route path="/thekedar-signup" element={<TSignupform/>}/>
+            
+            {/* components */}
             <Route path="/contact" element={<Contact />} />
-            <Route path="/Mdashboard" element={<Mdashboard />} />
-            <Route path="/searchMajdoor" element={<SearchMajdoor/>}/>
             <Route path="/about" element={<About />} />
             <Route path="/reviews" element={<Reviews />} />
             <Route path="/services" element={<Services />} />
+
+            {/* Customer */}
+            <Route 
+              element={
+                  <CustomerLayout />
+              }
+            >   <Route path="/searchMajdoor" element={<SearchMajdoor/>}/>
+                <Route path="/CustomerDashboard" element={<CustomerDashboard />} />
+                <Route path="/CustomerHome" element={<CustomerHome />} />
+                <Route path="/CustomerDashboard/Edit" element={<Edit />} />
+                
+
+            </Route>
+
+            <Route path="/customersidebar" element={<CustomerSidebar />} />
+
+            {/* Thekedaar */}
+            <Route path="/ThekedarDashbord" element={<ThekedarDashbord />} />
+            
+            {/* Majdoor */}
             <Route path="/MajdoorDashboard" element={<MajdoorDashboard />} />
             <Route path="/MajdoorConfirmation" element={<MajdoorConfirmation />} />
-            <Route path="/CustomerDashboard/Edit" element={<Edit />}/>
-            {/*<Route path="/CustomerDashboard/Edit" element={<ChangeProfilePicture />}/>*/}
-            <Route path="/ThekedarDashbord" element={<ThekedarDashbord />} />
-
-
-
+            <Route path="/Mdashboard" element={<Mdashboard />} />
 
             </Routes>
-          
+            
           <Footer /> 
           </div>
           
