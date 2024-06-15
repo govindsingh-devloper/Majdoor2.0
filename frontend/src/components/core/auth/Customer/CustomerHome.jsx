@@ -81,9 +81,10 @@ function App() {
       <div className="mb-6">
       <form onSubmit={handleOnSubmit}>
           <div className="flex space-x-4">
-            <select
+            <input
               name='skills'
               value={skills}
+              placeholder="Search"
               onChange={(e) => setSkills(e.target.value)}
               className="flex-1 p-3 border rounded-lg"
             >
@@ -93,7 +94,7 @@ function App() {
                   {category.skills}
                   </option>
               ))}
-            </select>  
+            </input>  
             <input
               type="text"
               placeholder="Location..."

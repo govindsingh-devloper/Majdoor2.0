@@ -37,7 +37,7 @@ import TSignupform from "./components/core/auth/TSignupform";
 import Edit from "./components/core/auth/Customer/Edit";
 import ChangeProfilePicture from "./components/core/auth/Customer/Edit/ChangeProfilePicture";
 import MajdoorConfirmation from "./components/core/auth/Majdoor/MajdoorConfirmation";
-import ThekedarDashbord from '../src/components/core/auth/Thekedar/ThekedarDashbord';
+import ThekedarDashbord from '../src/components/core/auth/thekedar/ThekedarDashbord';
 import SelectedMajdoor from "./components/core/auth/Customer/selectedMajdoor";
 import CustomerLayout from "./components/core/auth/Customer/CustomerLayout";
 

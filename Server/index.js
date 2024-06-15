@@ -13,6 +13,8 @@ const serviceRoutes=require("./routes/Service");
 const thekedarRoutes=require("./routes/ThekedarRoutes");
 const majdoorRoutes=require("./routes/MajdoorRoutes");
 const contactUsRoute = require("./routes/Contact");
+const orderRoutes=require("./routes/order")
+
 
 
 const database=require("./config/database");
@@ -64,6 +66,8 @@ app.use("/api/v1/auth",serviceRoutes);
 app.use("/api/v1/auth",thekedarRoutes);
 app.use("/api/v1/auth",majdoorRoutes);
 app.use("/api/v1/reach",contactUsRoute);
+app.use("/api/v1/orders",orderRoutes)
+
 
 
 
