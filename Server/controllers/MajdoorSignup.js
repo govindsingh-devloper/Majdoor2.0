@@ -142,6 +142,7 @@ exports.login=async(req,res)=>{
 
 exports.getallServices=async(req,res)=>{
     try {
+        const {name}=req.body
         // const {name}=req.body
         const {firstName}=req.body
         const {skills} =req.body;
@@ -166,6 +167,7 @@ exports.getallServices=async(req,res)=>{
         
     }
 }
+
 
 exports.allCategories=async(req,res)=>{
     try {

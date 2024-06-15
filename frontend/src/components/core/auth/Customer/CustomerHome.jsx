@@ -17,6 +17,7 @@ import { apiConnector } from '../../../../services/apiconnector';
 import { SearchEndpoint } from '../../../../services/api';
 import { getCategories } from '../../../../services/operations/MajdoorAuthAPI';
 
+
 const categoryIcons = {
   'Painter': painter_icon,
   'Labour': labour_icon,
@@ -43,12 +44,18 @@ function App() {
 
   const handleOnSubmit = async(e) => {
     e.preventDefault();
-    const response=await apiConnector("POST",SearchEndpoint.SEARCH_API,{skills});
-    setSearchResults(response.data.data);
-    const navigationUrl = "/searchMajdoor";
-    console.log("Navigation URL:", navigationUrl);
-    navigate(navigationUrl, { state: { searchresults: response.data.data } });
-    console.log(response);
+   try {
+     const response=await apiConnector("POST",SearchEndpoint.SEARCH_API,{skills});
+     setSearchResults(response.data.data);
+     const navigationUrl = "/searchMajdoor";
+     console.log("Navigation URL:", navigationUrl);
+     navigate(navigationUrl, { state: { searchresults: response.data.data } });
+     console.log(response);
+   } catch (error) {
+    console.error('Error fetching data:', error);
+    
+   }
+  };
 
 
  
@@ -63,14 +70,15 @@ function App() {
 // //  } catch (error) {
 // //   console.error("Error occurred during search:", error);
 //  }//
-  };
+
 
   useEffect(()=>{
     dispatch(getCategories())
   },[])
 
   const uniqueCategories = [...new Map(categories.map(category => [category.skills, category])).values()];
-  return (<>
+  return (
+  <>
           
     <div className="min-h-screen p-4 bg-white">
      
@@ -87,14 +95,13 @@ function App() {
               placeholder="Search"
               onChange={(e) => setSkills(e.target.value)}
               className="flex-1 p-3 border rounded-lg"
-            >
+            />
               <option value=""> Select a skill...</option>
               {uniqueCategories.map((category)=>(
                 <option key={category.skills} value={category.skills}>
                   {category.skills}
                   </option>
               ))}
-            </input>  
             <input
               type="text"
               placeholder="Location..."
