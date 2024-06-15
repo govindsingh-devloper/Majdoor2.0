@@ -40,7 +40,7 @@ import MajdoorConfirmation from "./components/core/auth/Majdoor/MajdoorConfirmat
 import ThekedarDashbord from '../src/components/core/auth/thekedar/ThekedarDashboard';
 import SelectedMajdoor from "./components/core/auth/Customer/selectedMajdoor";
 import CustomerLayout from "./components/core/auth/Customer/CustomerLayout";
-
+import DeleteAccount from "./components/core/auth/Customer/Edit/DeleteAccount";
 
 
 const App = () => {
