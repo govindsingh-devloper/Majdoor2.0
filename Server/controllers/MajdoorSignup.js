@@ -16,8 +16,7 @@ exports.signup=async(req,res)=>{
      const{firstName,
            lastName,
            skills,
-           contactNumber,
-           thekedarID  
+           contactNumber,  
         }=req.body
      //validate kro
      if(!firstName || !lastName || !skills || !contactNumber){
@@ -52,7 +51,6 @@ exports.signup=async(req,res)=>{
          lastName,
          skills,
          contactNumber:hashedPassword,
-         thekedarID,
          additionalDetails:profileDetails._id,
          image:`https://api.dicebear.com/5.x/initials/svg?seed=${firstName}${lastName}`,
      })
@@ -142,12 +140,13 @@ exports.login=async(req,res)=>{
 
 exports.getallServices=async(req,res)=>{
     try {
+        console.log(Majdoor)
         const {name}=req.body
         // const {name}=req.body
         const {firstName}=req.body
         const {skills} =req.body;
         console.log(skills);
-        const response=await Majdoor.find({skills},{ firstName: 1, skills: 1 });
+        const response=await Majdoor.find({skills});
         if(!response){
             return res.status(401).json({
                 success:false,
@@ -161,8 +160,9 @@ exports.getallServices=async(req,res)=>{
         })
     } catch (error) {
         return res.status(500).json({
-            success:true,
-            meaasge:error.meaasge,
+            success:false,
+            messge:"No data found",
+            error:error.message
         })
         
     }

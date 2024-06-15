@@ -16,30 +16,30 @@ const majdoorSchema= new mongoose.Schema({
         required:true,
         trim:true,
     },
-    // phoneNumber:{
+    contactNumber:{
+        type:String,
+        required:true,
+        trim:true,
+        
+    },
+    // password:{
     //     type:String,
     //     required:true,
     //     trim:true,
-        
-    // }
-    password:{
-        type:String,
-        required:true,
-        trim:true,
-        minLength:[10,"Contact number should be atleast 10 digits"],
-        maxLength:[10,"Contact number should be 10 digits"],
-    },
-    preferredLocation:{
-        type:String,
-        trim:true,
-        required:true,
-    },
-    thekedarID:{
-        type:mongoose.Schema.Types.ObjectId, 
-        ref:'Thekedar', 
-        // required: true,
-        trim:true,
-    },
+    //     minLength:[10,"Contact number should be atleast 10 digits"],
+    //     maxLength:[10,"Contact number should be 10 digits"],
+    // },
+    // preferredLocation:{
+    //     type:String,
+    //     trim:true,
+    //     // required:true,
+    // },
+    // thekedarID:{
+    //     type:mongoose.Schema.Types.ObjectId, 
+    //     ref:'Thekedar', 
+    //     // required: true,
+    //     trim:true,
+    // },
     additionalDetails:{
         type:mongoose.Schema.Types.ObjectId,
         ref:"Profile",
