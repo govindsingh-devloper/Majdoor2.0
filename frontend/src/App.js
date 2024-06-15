@@ -116,6 +116,9 @@ const App = () => {
               
             {/* thekedar */}
             <Route path="/ThekedarDashbord" element={<ThekedarDashbord />} />
+   
+            {/*<Route path="/CustomerDashboard/Edit" element={<ChangeProfilePicture />}/>*/}
+            <Route path="/ThekedarDashboard" element={<ThekedarDashboard />} />
 
             </Routes>
           

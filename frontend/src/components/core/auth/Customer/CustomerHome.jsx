@@ -16,6 +16,7 @@ import history_icon from '../../../../images/history_icon.jpg';
 import { apiConnector } from '../../../../services/apiconnector';
 import { SearchEndpoint } from '../../../../services/api';
 import { getCategories } from '../../../../services/operations/MajdoorAuthAPI';
+import Cards from './Cards';
 
 
 const categoryIcons = {
@@ -139,8 +140,10 @@ function App() {
           ))}
 
         </div>
+       <div className="container"><h1 className='text-3xl font-bold '>Thekedar near by your city</h1><div className='container flex'> <Cards/><Cards/><Cards/><Cards/></div></div>
       </div>
       <SearchMajdoors searchresults={searchresults} />
+     
     </div>
     
   </>

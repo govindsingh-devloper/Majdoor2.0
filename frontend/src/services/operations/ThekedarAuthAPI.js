@@ -39,7 +39,7 @@ export function Tlogin(email, password, navigate) {
         
         localStorage.setItem("token", JSON.stringify(response.data.token))
         localStorage.setItem("user", JSON.stringify(response.data.user))
-        navigate("/ThekedarDashbord")
+        navigate("/ThekedarDashboard")
       } catch (error) {
         console.log("LOGIN API ERROR............", error)
         toast.error("Login Failed")
