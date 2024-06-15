@@ -1,4 +1,4 @@
-const Majdoor=require("../models/Majdoor");
+const Majdoor2=require("../models/Majdoor2");
 // const OTP=require("../models/OTP");
 // const otpGenerator=require("otp-generator");
 const bcrypt=require("bcrypt");
@@ -16,10 +16,11 @@ exports.signup=async(req,res)=>{
      const{firstName,
            lastName,
            skills,
-           contactNumber,  
+           contactNumber,
+           location  
         }=req.body
      //validate kro
-     if(!firstName || !lastName || !skills || !contactNumber){
+     if(!firstName || !lastName || !skills || !contactNumber ||!location){
          return res.status(403).json({
              success:false,
              message:"ALL fields are required",
@@ -27,7 +28,7 @@ exports.signup=async(req,res)=>{
      }
  
      //check user already exist
-     const existingUser=await Majdoor.findOne({contactNumber});
+     const existingUser=await Majdoor2.findOne({contactNumber});
      if(existingUser){
          return res.status(400).json({
              success:false,
@@ -46,11 +47,12 @@ exports.signup=async(req,res)=>{
         //  contactNumber:null,
      })
 
-     const user=await Majdoor.create({
+     const user=await Majdoor2.create({
          firstName,
          lastName,
          skills,
          contactNumber:hashedPassword,
+         location,
          additionalDetails:profileDetails._id,
          image:`https://api.dicebear.com/5.x/initials/svg?seed=${firstName}${lastName}`,
      })
@@ -66,6 +68,7 @@ exports.signup=async(req,res)=>{
     return res.status(500).json({
         success:false,
         message:"User cannot be registered .Please Try again",
+        error:error.message
     })
     
    }
@@ -85,7 +88,7 @@ exports.login=async(req,res)=>{
             })
         }
         //check user exist or not
-        const user=await Majdoor.findOne({firstName}).populate("additionalDetails");
+        const user=await Majdoor2.findOne({firstName}).populate("additionalDetails");
         if(!user){
             return res.status(401).json({
                 success:false,
@@ -140,13 +143,13 @@ exports.login=async(req,res)=>{
 
 exports.getallServices=async(req,res)=>{
     try {
-        console.log(Majdoor)
+        console.log(Majdoor2)
         const {name}=req.body
         // const {name}=req.body
         const {firstName}=req.body
         const {skills} =req.body;
         console.log(skills);
-        const response=await Majdoor.find({skills});
+        const response=await Majdoor2.find({skills});
         if(!response){
             return res.status(401).json({
                 success:false,
@@ -171,7 +174,7 @@ exports.getallServices=async(req,res)=>{
 
 exports.allCategories=async(req,res)=>{
     try {
-        const allservices=await Majdoor.find({},{
+        const allservices=await Majdoor2.find({},{
             firstName:true,
             lastName:true,
             skills:true
@@ -203,7 +206,7 @@ exports.allCategories=async(req,res)=>{
 exports.singleService=async(req,res)=>{
     try {
         const {id}=req.params;
-        const singleService=await Majdoor.findById({_id:id});
+        const singleService=await Majdoor2.findById({_id:id});
         if(!singleService){
             return res.status(401).json({
                 success:false,

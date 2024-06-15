@@ -40,7 +40,7 @@ const bookedServiceSchema= new mongoose.Schema({
  service:[{
     orderedservice:{
         type:mongoose.Schema.Types.ObjectId,
-        ref:"Majdoor",
+        ref:"Majdoor2",
         required:true
     }
 }

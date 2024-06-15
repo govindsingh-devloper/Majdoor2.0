@@ -1,7 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import IconBtn from '../../../common/IconBtn';
+import {Country,State} from "country-state-city"
+
+
 const MajdoorBookingConfirmation = () => {
+
+const {categories}=useSelector((state)=>state.categories);
+const{user}=useSelector((state)=>state.profile);
+const {shippingInfo}=useSelector((state)=>state.shippingInfoReducer);
+const[email,setEmail]=useState(user.email);
+const[fullName,setFullName]=useState(user.fullName)
+
+const[address,setAddress]=useState(shippingInfo.address);
+const[country,setCountry]=useState(shippingInfo.country);
+const[state,setState]=useState(shippingInfo.state);
+const[phoneNumber,setPhoneNumber]=useState(shippingInfo.phone);
+const[pincode,setPincode]=useState(shippingInfo.pincode);
+const[street,setStreet]=useState(shippingInfo.street);
+
+const handleOnSubmit=(e)=>{
+  e.preventDefault();
+}
+
   return (
     <main class="bg-white shadow-md rounded-lg p-6 max-w-4xl mx-auto mt-6">
   <h2 class="text-center text-2xl font-semibold mb-4">Majdoor Booking Confirmation</h2>
@@ -19,7 +40,7 @@ const MajdoorBookingConfirmation = () => {
         </div>
         <div class="flex flex-col">
           <span class="font-semibold">Skills</span>
-          <span>painter</span>
+          <span>{categories.skills}</span>
         </div>
         <div class="flex flex-col">
           <span class="font-semibold">Phone Number</span>
@@ -32,31 +53,101 @@ const MajdoorBookingConfirmation = () => {
       </div>
     </div>
   </div>
-  <form class="space-y-4">
+  <form  onSubmit ={handleOnSubmit} class="space-y-4">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
       <div class="flex flex-col">
         <label for="email" class="font-semibold">Email:</label>
-        <input type="email" id="email" class="border rounded p-2" />
+        <input type="text" id="full-name" class="border rounded p-2" 
+          placeholder='email'
+          required
+          value={email}
+          onChange={(e)=>setFullName(e.target.value)}
+        />
       </div>
       <div class="flex flex-col">
-        <label for="full-name" class="font-semibold">Full Name:</label>
-        <input type="text" id="full-name" class="border rounded p-2" />
+        <label for="full-name" class="font-semibold">{user.name}</label>
+        <input type="text" id="full-name" class="border rounded p-2" 
+          placeholder='EnterFullName'
+          required
+          value={fullName}
+          onChange={(e)=>setFullName(e.target.value)}
+        />
       </div>
       <div class="flex flex-col">
         <label for="street-number" class="font-semibold">Street Number:</label>
-        <input type="text" id="street-number" class="border rounded p-2" />
+        <input type="text" id="full-name" class="border rounded p-2" 
+          placeholder='Street'
+          required
+          value={street}
+          onChange={(e)=>setStreet(e.target.value)}
+        />
       </div>
       <div class="flex flex-col">
         <label for="pin-code" class="font-semibold">Pin code:</label>
-        <input type="text" id="pin-code" class="border rounded p-2" />
+        <input type="text" id="full-name" class="border rounded p-2" 
+          placeholder='EnterFullName'
+          required
+          value={pincode}
+          onChange={(e)=>setPincode(e.target.value)}
+        />
       </div>
       <div class="flex flex-col">
         <label for="state" class="font-semibold">State:</label>
-        <input type="text" id="state" class="border rounded p-2" />
+        <input type="text" id="full-name" class="border rounded p-2" 
+          placeholder='EnterFullName'
+          required
+          value={state}
+          onChange={(e)=>setState(e.target.value)}
+        />
       </div>
       <div class="flex flex-col">
         <label for="contact-number" class="font-semibold">Contact Number:</label>
-        <input type="text" id="contact-number" class="border rounded p-2" />
+        <input type="text" id="full-name" class="border rounded p-2" 
+          placeholder='EnterFullName'
+          required
+          value={phoneNumber}
+          onChange={(e)=>setPhoneNumber(e.target.value)}
+        />
+         <input type="text" id="full-name" class="border rounded p-2" 
+          placeholder='ADDress'
+          required
+          value={address}
+          onChange={(e)=>setAddress(e.target.value)}
+        />
+         <select type="text" id="full-name" class="border rounded p-2" 
+          placeholder='EnterFullName'
+          required
+          value={country}
+          onChange={(e)=>setCountry(e.target.value)}
+          >
+          <option value="">Country</option>
+          {Country && Country.getAllCountries().map((item)=>(
+            <option key={item.isoCode} value={item.isoCode}>{item.name}</option>
+          ))}
+          </select>
+
+          {
+            country && (
+              <div>
+                <select
+                required
+                value={state}
+                onChange={(e)=>setState(e.target.value)}
+                >
+                <option value="">State</option>
+                {
+                  State &&
+                  State.getStatesOfCountry(country).map((item)=>(
+                    <option key={item.isoCode} value={item.isoCode}>{item.name}</option>
+                  ))
+                }
+
+                </select>
+              </div>
+            )
+          }
+
+
       </div>
     </div>
     <div class="flex items-center">

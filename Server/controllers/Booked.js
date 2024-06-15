@@ -54,7 +54,7 @@ exports.singleorder=async(req,res)=>{
         const order=await BookedService.findById(id).populate("user", "name email").
                                                     populate({
                                                     path: 'service.orderedservice',
-                                                    model: 'Majdoor',
+                                                    model: 'Majdoor2',
                                                     // select: 'skills' // Specify the fields you want to fetch from Majdoor model
         });
 

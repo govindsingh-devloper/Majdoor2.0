@@ -1,5 +1,5 @@
 import React, { useState,useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { getSingleService } from '../../../../services/operations/MajdoorAuthAPI';
 
 const SelectedMajdoor = () => {
@@ -41,7 +41,7 @@ const SelectedMajdoor = () => {
       <p>firstName: {response.data.firstName}</p>
       <p>lastName:{response.data.lastName}</p>
       <p>Skills: {response.data.skills}</p>
-      <button>Done Kree</button>
+     <Link to="/MajdoorConfirmation"> <button>Done Kree</button></Link>
       </div>
     )}
     {!response && <p>No response received</p>}
