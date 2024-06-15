@@ -1,7 +1,7 @@
 const Profile=require("../models/Profile")
 const Customer=require("../models/Customer");
-const { uploadImageToCloudinary } = require("../utilis/imageUploader");
-
+//const { uploadImageToCloudinary } = require("../utilis/imageUploader");
+const {uploadImageToCloudinary} =require("../utilis/imageUploader");
 
 exports.updateProfile=async(req,res)=>{
     try {
@@ -65,9 +65,10 @@ exports.updateProfile=async(req,res)=>{
 exports.deleteAccount=async(req,res)=>{
     try {
         //get id
+        console.log("Printing ID", req.user.id);
         const id=req.user.id
         //validation
-        const userDetails=await Customer.findById(id)
+        const userDetails=await Customer.findById({_id: id});
         if(!userDetails){
             return res.status(404).json({
                 success:false,

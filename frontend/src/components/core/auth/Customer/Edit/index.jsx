@@ -1,7 +1,7 @@
 import React from 'react'
 import ChangeProfilePicture from './ChangeProfilePicture'
 import EditProfile from './EditProfile'
-
+import DeleteAccount from './DeleteAccount'
 // const Edit = () => {
 //   return (
 //     <div>
@@ -28,7 +28,7 @@ export default function Edit() {
       {/* Password */}
      {/* <UpdatePassword />
       {/* Delete Account */}
-     {/* <DeleteAccount />*/}
+     <DeleteAccount />
     </>
   )
 }

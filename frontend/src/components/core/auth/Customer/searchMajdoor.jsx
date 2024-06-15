@@ -33,7 +33,7 @@ const SearchMajdoor = () => {
             <h3 className="text-xl font-semibold mb-2">{profile.firstName}</h3>
             <p className="text-gray-700 mb-2">Skills: {profile.skills}</p>
             <p className="text-gray-700 mb-4">Contact: {profile.contactNumber}</p>
-              <a href={`tel:${profile.contactNumber}`} className="call-button">
+              <a href={`tel:91${profile.contactNumber}`} className="call-button">
                 <FontAwesomeIcon icon={faPhone} />Call
               </a>
               {/* <div className='bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600'> */}
