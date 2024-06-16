@@ -41,3 +41,7 @@ export const contactusEndpoint = {
     ALL_CATEGORIES:BASE_URL+ "/auth/CustomerHome",
     SINGLE_SERVICE:BASE_URL + "/auth/searchMajdoor/:id"
   }
+
+  export const ORDER_ENDPOINT={
+    ORDER_API:BASE_URL + "/orders/order/new"
+  }

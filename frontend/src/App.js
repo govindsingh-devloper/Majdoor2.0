@@ -107,11 +107,12 @@ const App = () => {
             </Route>
             <Route path="/CustomerDashboard/Edit" element={<Edit />}/>
             <Route path="/searchMajdoor/:id" element={<SelectedMajdoor/>}/>
+            <Route path="/MajdoorConfirmation" element={<MajdoorConfirmation />} />
             
             {/* majdoor */}
             <Route path="/Mdashboard" element={<Mdashboard />} />
             <Route path="/MajdoorDashboard" element={<MajdoorDashboard />} />
-            <Route path="/MajdoorConfirmation" element={<MajdoorConfirmation />} />
+           
               
               
             {/* thekedar */}

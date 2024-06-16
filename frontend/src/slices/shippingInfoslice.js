@@ -1,7 +1,15 @@
 import {createSlice} from "@reduxjs/toolkit"
 
 const initialState = {
-    shippingInfo: localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")) : null,
+    shippingInfo: localStorage.getItem("shippingInfo") ? JSON.parse(localStorage.getItem("shippingInfo")) :  {
+        address: '',
+        country: '',
+        state: '',
+        phone: '',
+        pincode: '',
+        street: '',
+        city: ''
+      },
     loading: false,
 };
 
@@ -10,7 +18,7 @@ const shippingInfoslice = createSlice({
     initialState: initialState,
     reducers: {
         setShippingInfo(state, value) {
-            state.user = value.payload;
+            state.shippingInfo = value.payload;
         },
         setLoading(state, value) {
             state.loading = value.payload;

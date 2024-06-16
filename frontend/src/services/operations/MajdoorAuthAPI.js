@@ -2,9 +2,10 @@ import { toast } from "react-hot-toast"
 import { setUser } from "../../slices/profileSlice"
 import { setLoading, setToken } from "../../slices/authslice"
 import { apiConnector } from "../apiconnector"
-import { endpoints } from "../api"
+import { ORDER_ENDPOINT, endpoints } from "../api"
 import { SearchEndpoint } from "../api"
 import { setCategories} from "../../slices/categoriesslice"
+import { setShippingInfo } from "../../slices/shippingInfoslice"
 const BASE_URL=process.env.REACT_APP_BASE_URL
 
 
@@ -20,6 +21,8 @@ const {
 const {ALL_CATEGORIES,
   SINGLE_SERVICE
 }=SearchEndpoint
+
+const{ORDER_API}=ORDER_ENDPOINT
 
 
 export function login(firstName, contactNumber, navigate) {
@@ -140,4 +143,29 @@ export function login(firstName, contactNumber, navigate) {
     //   dispatch(setLoading(false));
     return result
   }
+
+  //orders API
+  export const getorders=async(token,data)=>{
+    return async(dispatch)=>{
+      const toastId = toast.loading("Loading...")
+      try {
+        const response=await apiConnector("POST",ORDER_API,data,{
+          Authorization: `Bearer ${token}`,
+        })
+        console.log("ORDER RESPONSE............", response)
+
+            if (!response.data.success) {
+              throw new Error(response.data.message)
+            }
+            dispatch(
+              setShippingInfo({...response.data.order})
+            )
+        
+      } catch (error) {
+        console.log("ORDER RESPONSE............", error)
+        toast.error("Could Not Create ORDER")
+      }
+      toast.dismiss(toastId)
+  }
+}
 

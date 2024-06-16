@@ -20,7 +20,7 @@ exports.neworder=async(req,res)=>{
             shippingInfo,
             service,
             user:userid,
-            // orderInfo,
+            orderStatus:'Processing'
 
 
         })
@@ -79,3 +79,74 @@ exports.singleorder=async(req,res)=>{
         
     }
 }
+
+exports.allorder=async(req,res)=>{
+    try {
+        const bookings = await BookedService.find().sort({ createdAt: -1 });
+        if(!bookings){
+            return res.status(403).json({
+                success:false,
+                messsgae:"No current Booking"
+            })
+        }
+        return res.status(200).json({
+            success:true,
+            message:"Your Booking Details Here",
+            data:bookings
+        })
+        
+    } catch (error) {
+        return res.status(500).json({
+            success:false,
+            message:"Cant find Booking",
+            error:error.message
+        })
+        
+    }
+}
+
+
+
+// PUT /api/bookedServices/:orderId/updateStatus
+exports.updateOrderStatus = async (req, res) => {
+  try {
+    const { orderId } = req.params;
+    const { status } = req.body;
+
+    // Validate status
+    if (!status) {
+      return res.status(400).json({
+        success: false,
+        message: 'Status is required.',
+      });
+    }
+
+    // Update order status
+    const updatedOrder = await BookedService.findByIdAndUpdate(
+      orderId,
+      { orderStatus: status },
+      { new: true }
+    );
+
+    if (!updatedOrder) {
+      return res.status(404).json({
+        success: false,
+        message: 'Order not found.',
+      });
+    }
+
+    // Return success response with the updated order
+    return res.status(200).json({
+      success: true,
+      message: 'Order status updated successfully.',
+      order: updatedOrder,
+    });
+  } catch (error) {
+    console.error('Error updating order status:', error);
+    return res.status(500).json({
+      success: false,
+      message: 'Failed to update order status.',
+      error: error.message,
+    });
+  }
+};

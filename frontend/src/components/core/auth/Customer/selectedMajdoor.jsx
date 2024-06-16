@@ -1,8 +1,10 @@
 import React, { useState,useEffect } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { Link,  useHistory,useNavigate,useParams } from 'react-router-dom'
 import { getSingleService } from '../../../../services/operations/MajdoorAuthAPI';
 
+
 const SelectedMajdoor = () => {
+  const navigate=useNavigate()
     const {id}=useParams();
     console.log("ID",id)
     //Declare kra variable uski state ko store krne k lyie
@@ -23,6 +25,17 @@ const SelectedMajdoor = () => {
             fetchSingleService();
         }
     }, [id]);
+
+    console.log("Response data:", response ? response.data : null);
+    const handleConfirmSelection = () => {
+      if (response) {
+        navigate(
+          // pathname: "/MajdoorConfirmation",
+          // state: { response } // Pass majdoorDetails as state
+          "/MajdoorConfirmation",{state:{response}}
+        );
+      }
+    };
     // if (loading) {
     //     return <p>Loading...</p>;
     // }
@@ -41,9 +54,16 @@ const SelectedMajdoor = () => {
       <p>firstName: {response.data.firstName}</p>
       <p>lastName:{response.data.lastName}</p>
       <p>Skills: {response.data.skills}</p>
-     <Link to="/MajdoorConfirmation"> <button>Done Kree</button></Link>
+      {/* <Link to={{
+  pathname: `/MajdoorConfirmation/${response.data._id}`,
+  state: { majdoorDetails: response.data}
+}}>
+  <button>Confirm Majdoor Selection</button>
+</Link> */}
+<button onClick={handleConfirmSelection}>Confirm Booking</button>
       </div>
     )}
+    {/* <MajdoorBookingConfirmation response ={response}/> */}
     {!response && <p>No response received</p>}
   </div>
 

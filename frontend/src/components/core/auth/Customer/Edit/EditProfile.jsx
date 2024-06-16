@@ -23,7 +23,7 @@ const EditProfile = () => {
     console.log("Form Data - ", data);
     try {
      dispatch(updateProfile(token, data))
-      await dispatch(updateProfile(token, data));
+      // await dispatch(updateProfile(token, data));
       navigate("/CustomerDashboard");
     } catch (error) {
       console.log("ERROR MESSAGE - ", error.message);

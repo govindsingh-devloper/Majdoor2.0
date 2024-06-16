@@ -56,6 +56,7 @@ const bookedServiceSchema= new mongoose.Schema({
  },
  orderStatus:{
     type:String,
+    enum: ['Processing', 'Accepted', 'Rejected'],
     default:"Proceesing"
  },
  deliveredAt:Date,
