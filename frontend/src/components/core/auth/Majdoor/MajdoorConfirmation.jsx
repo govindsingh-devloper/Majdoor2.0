@@ -4,11 +4,15 @@ import { toast } from 'react-hot-toast';
 import { apiConnector } from '../../../../services/apiconnector';
 import { ORDER_ENDPOINT } from '../../../../services/api';
 import { setShippingInfo } from '../../../../slices/shippingInfoslice';
+import{useLocation} from "react-router-dom"
+import { useEffect } from 'react';
 
 const BookingConfirmationForm = () => {
   const dispatch = useDispatch();
   const { token } = useSelector((state) => state.auth);
   const { user } = useSelector((state) => state.profile);
+  const location=useLocation()
+  const {response}=location.state || {};
 
   const [formData, setFormData] = useState({
     address: '',
@@ -18,12 +22,21 @@ const BookingConfirmationForm = () => {
     pincode: '',
     phoneNumber: '',
     country: '',
-    service: '', // You may get this from props or another source
     email: user?.email || '',
     firstName: `${user?.firstName} ${user?.lastName}` || '',
+    service:'',
   });
+    // Update formData state with response data on component mount
+    useEffect(() => {
+      if (response && response.data) {
+        setFormData((prevData) => ({
+          ...prevData,
+          service: response.data._id || '', // Assuming _id is the service ID field
+        }));
+      }
+    }, [response]);
 
-  const { address, city, street, state, pincode, phoneNumber, country, service, email, firstName } = formData;
+  const { address, city, street, state, pincode, phoneNumber, country,email, firstName } = formData;
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -39,14 +52,17 @@ const BookingConfirmationForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    // service:response?.response.data?._id
 
     try {
-      console.log(token)
+      console.log('Form Data:', formData); // Log form data before API call
+      console.log('Token:', token); // Log token before API call
       const response = await apiConnector('POST', ORDER_ENDPOINT.ORDER_API, formData, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
+      console.log('API Response:', response.data); // Log API response
 
       if (response.data.success) {
         toast.success('Your booking request has been submitted successfully.');
