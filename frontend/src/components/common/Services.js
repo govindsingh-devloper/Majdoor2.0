@@ -11,9 +11,11 @@ import labour_icon from '../../images/engineer-worker-svgrepo-com.svg';
 import {Link, useNavigate} from 'react-router-dom'
 import { useDispatch } from 'react-redux';
 import { search } from '../../services/operations/MajdoorAuthAPI';
+import {useTranslation} from 'react-i18next';
 const Services = () => {
   const dispacth=useDispatch();
   const navigate=useNavigate();
+  const { t }=useTranslation();
   const [skills,setSkills]=useState()
 
   // const handleOnSubmit=(e)=>{
@@ -24,47 +26,47 @@ const Services = () => {
   <div>
       <section className="services" id="services">
     
-    <h1 className="heading"> our <span>services</span> </h1>
+    <h1 className="heading">{t('services3')} <span>{t('services2')}</span> </h1>
     <div className="box-container">
       <div className="box">
         <img src={carpenter_icon} alt="Carpenter" />
-        <h3>Carpenter</h3>
-        <p>We bring traditional charm to modern spaces with our exceptional Carpenter Services.</p>
+        <h3>{t('services1')}</h3>
+        <p>{t('services4')}</p>
       </div>
       <div className="box">
         <img src={plumber_icon} alt="Plumber" />
-        <h3>Plumber</h3>
-        <p>We deal with everything from small repairs to new installations. Highly trained technicians quickly tackle all your plumbing issues.</p>
+        <h3>{t('s1')}</h3>
+        <p>{t('s2')}</p>
       </div>
       <div className="box">
         <img src={painter_icon} alt="Painter" />
-        <h3>Painter</h3>
-        <p>Transform your spaces with beauty and finesse, get the painting job done by our experts and reshape your dream home.</p>
+        <h3>{t('s3')}</h3>
+        <p>{t('s4')}</p>
       </div>
       <div className="box">
         <img src={electrician_icon} alt="Electrician" />
-        <h3>Electrician</h3>
-        <p>Count on us for all your professional and dependable electrical jobs that keep your property running smoothly and safely.</p>
+        <h3>{t('s5')}</h3>
+        <p>{t('s6')}</p>
       </div>
       <div className="box">
         <img src={worker_icon} alt="Shuttering and Barbending" />
-        <h3>Shuttering and Barbending</h3>
-        <p>Labour for binding bars for house construction or for industrial construction.</p>
+        <h3>{t('s7')}</h3>
+        <p>{t('s8')}</p>
       </div>
       <div className="box">
         <img src={welder_icon} alt="Welder" />
-        <h3>Welder</h3>
-        <p>Close attention to detail, ensuring each weld is executed with accuracy and meets specific project requirements.</p>
+        <h3>{t('s9')}</h3>
+        <p>{t('s10')}</p>
       </div>
       <div className="box">
         <img src={mason_icon} alt="Mason" />
-        <h3>Mason</h3>
-        <p>Elevate your work speed with expert Masons and reduce construction costs, just a click away.</p>
+        <h3>{t('s11')}</h3>
+        <p>{t('s12')}</p>
       </div>
       <div className="box">
         <img src={labour_icon} alt="Labour" />
-        <h3>Labour</h3>
-        <p>Quality talent at your finger tips, efficiently access semi-skilled and un-skilled workers for all your construction needs.</p>
+        <h3>{t('s13')}</h3>
+        <p>{t('s14')}</p>
       </div>
     </div>
   </section>

@@ -3,11 +3,13 @@ import "../../css/style.css"
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileDropDown from '../core/auth/ProfileDropDown';
-
+import { LANGUAGES } from '../../constants.js/constants';
+import Dropdown from '../Dropdown';
+import {useTranslation} from 'react-i18next';
 const Header = () => {
   const { token } = useSelector((state) => state.auth);
   const { user } = useSelector((state) => state.profile);
-
+  const { t }=useTranslation();
 
   return (
     <header className="header">
@@ -18,25 +20,29 @@ const Header = () => {
         <div className="links" >
           {token === null ? (
             <>
-              <Link to='/'>Home</Link>
-              <Link to='/about'>About</Link>
-              <Link to='/services'>Services</Link>
-              <Link to='/reviews'>Reviews</Link>
-              <Link to='/contact'>Contact Us</Link>
-              <Link to='/login'>Login</Link>
-              <Link to='/signup'>Sign Up</Link>
+              <Link to='/'>{t('h1')}</Link>
+              <Link to='/about'>{t('a1')}</Link>
+              <Link to='/services'>{t('S')}</Link>
+              <Link to='/reviews'>{t('R')}</Link>
+              <Link to='/contact'>{t('C')}</Link>
+              <Link to='/login'>{t('L')}</Link>
+              <Link to='/signup'>{t('S')}</Link>
+              
             </>
           ) : (
             <>
               {/* <Link to='/CustomerHome' style={{ marginRight: '20px' }}>
               {user?.firstName && `${user.firstName}'s`} Page
               </Link> */}
+              
               <ProfileDropDown />
         
             </>
             
           )}
         </div>
+
+        
         <div id="menu-btn" className="fa fa-bars"></div>
       </nav>
     </header>

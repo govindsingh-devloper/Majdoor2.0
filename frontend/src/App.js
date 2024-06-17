@@ -41,7 +41,7 @@ import ThekedarDashbord from '../src/components/core/auth/thekedar/ThekedarDashb
 import SelectedMajdoor from "./components/core/auth/Customer/selectedMajdoor";
 import CustomerLayout from "./components/core/auth/Customer/CustomerLayout";
 import DeleteAccount from "./components/core/auth/Customer/Edit/DeleteAccount";
-
+import Dropdown from "./components/Dropdown";
 
 const App = () => {
   useEffect(() => {
@@ -72,7 +72,7 @@ const App = () => {
       <div>
           <Header />
           <div className="main-content">
-
+         <Dropdown/>
           <Routes>
             <Route path="/" element={<Homes/>}/>
             
