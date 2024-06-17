@@ -43,5 +43,5 @@ export const contactusEndpoint = {
   }
 
   export const ORDER_ENDPOINT={
-    ORDER_API:BASE_URL + "/orders/order/new"
+    ORDER_API:BASE_URL + "/auth/order/new"
   }
