@@ -29,30 +29,28 @@ const majdoorSchema= new mongoose.Schema({
     //     minLength:[10,"Contact number should be atleast 10 digits"],
     //     maxLength:[10,"Contact number should be 10 digits"],
     // },
-    // preferredLocation:{
-    //     type:String,
-    //     trim:true,
-    //     // required:true,
-    // },
-    // thekedarID:{
-    //     type:mongoose.Schema.Types.ObjectId, 
-    //     ref:'Thekedar', 
-    //     // required: true,
-    //     trim:true,
-    // },
+    location:{
+        type:String,
+        trim:true,
+        required:true,
+        enum: ['Delhi', 'Mumbai', 'Pune','Chennai','Hyderabad','Bangalore'],
+        default: 'Delhi',
+    },
+    thekedarID:{
+        type:mongoose.Schema.Types.ObjectId, 
+        ref:'Thekedar', 
+        trim:true,
+    },
     additionalDetails:{
         type:mongoose.Schema.Types.ObjectId,
         ref:"Profile",
     },
     image:{
         type:String,
-        // required:true,
     },
     token:{
         type:String,
     },
 });
 
-const Majdoor = mongoose.model("Majdoor",majdoorSchema);
-
-module.exports = { Majdoor };
+module.exports = mongoose.model("Majdoor",majdoorSchema);

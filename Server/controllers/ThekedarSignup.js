@@ -21,7 +21,7 @@ exports.sendOTP=async(req,res)=>{
         if(checkUserPresent){
             return res.status(401).json({
                 success:false,
-                message:"User already exist"
+                message:"User already exists"
             })
         }
 
@@ -36,7 +36,7 @@ exports.sendOTP=async(req,res)=>{
         const result=await OTP.findOne({otp:otp});
 
         while(result){
-            opt=otpGenerator(6,{
+            otp=otpGenerator(6,{
                 upperCaseAlphabets:false,
                 lowerCaseAlphabets:false,
                 specialChars:false,
@@ -61,7 +61,7 @@ exports.sendOTP=async(req,res)=>{
     } catch (error) {
         console.log(error);
         return res.status(500).json({
-            success:true,
+            success:false,
             message:error.message,
         })
         
