@@ -5,8 +5,11 @@ import { useSelector } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPhone } from '@fortawesome/free-solid-svg-icons';
 import AudioUploadForm from './AudioUploadForm';
+import SoundRecorder from './AudioRecorder';
 import "../../../../css/Audio.css";
 import { Link } from 'react-router-dom';
+import FetchAudio from './FetchAudio';
+import AudioPlayer from './FetchAudio';
 
 
 
@@ -39,8 +42,9 @@ const SearchMajdoor = () => {
               {/* <div className='bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600'> */}
               <div className="App">
       {/* <header className="App-header"> */}
-        <h1 className="text-gray-700 mb-2">Send Audio Notes</h1>
-          <button><AudioUploadForm /></button>
+        {/* <h1 className="text-gray-700 mb-2">Send Audio Notes</h1> */}<br/>
+          <button><SoundRecorder /></button><br/>
+          <AudioPlayer /> <br/>
 
           <Link to={`/searchMajdoor/${profile._id}`}> <button>Hire</button></Link>
       {/* </header> */}

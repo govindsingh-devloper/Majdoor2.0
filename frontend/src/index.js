@@ -7,7 +7,8 @@ import {Provider} from "react-redux";
 import rootReducer from "./reducer";
 import { configureStore } from "@reduxjs/toolkit";
 import { Toaster } from "react-hot-toast";
-import { thunk } from "redux-thunk";
+import './i18n';
+import {useTranslation} from 'react-i18next';
 
 
 const store=configureStore({

@@ -2,9 +2,9 @@ import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom'
 import { login } from '../../../services/operations/authAPI';
-
+import {useTranslation} from 'react-i18next';
 const Loginform = () => {
-
+    const { t }=useTranslation();
     const navigate=useNavigate();
     const dispatch=useDispatch();
     const[formData,setFormData]=useState({
@@ -29,7 +29,7 @@ const Loginform = () => {
   return (
     <div id="form-main">
         <div id="form-div">
-            <h2 className="sign">Login Here</h2>
+            <h2 className="sign">{t('l1')}</h2>
             <form className="form" id="form1" onSubmit={handleOnSubmit}>           
                 <p className="name">
                     <input

@@ -18,6 +18,7 @@ import Signup from "./pages/signup";
 import CustomerDashboard from './components/core/auth/Customer/CustomerDashboard';
 import MajdoorDashboard from './components/core/auth/Majdoor/MajdoorDashboard';
 import VerifyEmail from "./pages/VerifyEmail"
+import TVerifyEmail from "./pages/TVerifyEmail"
 import ForgotPassword from './pages/ForgotPassword';
 import UpdatePassword from './pages/UpdatePassword';
 import LoginForm from "./pages/LoginAsMajdoor";
@@ -41,7 +42,7 @@ import ThekedarDashbord from '../src/components/core/auth/thekedar/ThekedarDashb
 import SelectedMajdoor from "./components/core/auth/Customer/selectedMajdoor";
 import CustomerLayout from "./components/core/auth/Customer/CustomerLayout";
 import DeleteAccount from "./components/core/auth/Customer/Edit/DeleteAccount";
-
+import Dropdown from "./components/Dropdown";
 
 const App = () => {
   useEffect(() => {
@@ -72,7 +73,7 @@ const App = () => {
       <div>
           <Header />
           <div className="main-content">
-
+         <Dropdown/>
           <Routes>
             <Route path="/" element={<Homes/>}/>
             
@@ -117,6 +118,7 @@ const App = () => {
               
             {/* thekedar */}
             <Route path="/ThekedarDashbord" element={<ThekedarDashbord />} />
+            <Route path="/Tverify-email" element={<TVerifyEmail/>}/>
    
             {/*<Route path="/CustomerDashboard/Edit" element={<ChangeProfilePicture />}/>*/}
             <Route path="/ThekedarDashboard" element={<ThekedarDashbord />} />

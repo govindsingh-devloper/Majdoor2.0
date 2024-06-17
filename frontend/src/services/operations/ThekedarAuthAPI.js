@@ -49,7 +49,7 @@ export function Tlogin(email, password, navigate) {
     }
   }
 
-  export function sendOtp(email, navigate) {
+  export function TsendOtp(email, navigate) {
     return async (dispatch) => {
       const toastId = toast.loading("Loading...")
       dispatch(setLoading(true))
@@ -67,7 +67,7 @@ export function Tlogin(email, password, navigate) {
         }
   
         toast.success("OTP Sent Successfully")
-        navigate("/verify-email")
+        navigate("/Tverify-email")
       } catch (error) {
         console.log("SENDOTP API ERROR............", error)
         toast.error("Could Not Send OTP")
@@ -76,7 +76,7 @@ export function Tlogin(email, password, navigate) {
       toast.dismiss(toastId)
     }
   }
-  export function signUp(
+  export function TsignUp(
     firstName,
     lastName,
     email,
