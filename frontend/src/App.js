@@ -84,7 +84,7 @@ const App = () => {
                         
             {/* login/signup */}
             <Route path='/majdoor-login' element={<LoginForm/>}/>
-            <Route path='/majdoor-signup' element={<Signupform/>}/>
+            <Route path='/majdoor-signup' element={<Signupformm/>}/>
             <Route path="/customer-login" element={<Loginform/>}/>
             <Route path="/thekedar-login" element={<TLoginform/>}/>
             <Route path="/thekedar-signup" element={<TSignupform/>}/>
