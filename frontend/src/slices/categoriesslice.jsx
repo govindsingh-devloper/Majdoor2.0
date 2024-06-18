@@ -2,9 +2,10 @@ import { createSlice } from "@reduxjs/toolkit"
 
 const initialState = {
   categories: [],
+  locations:[],
   loading: false,
 
-}
+};
 
 const categoriesslice= createSlice({
   name: "categories",
@@ -16,12 +17,17 @@ const categoriesslice= createSlice({
     setLoading(state, action) {
       state.loading = action.payload;
     },
+
+    setLocations: (state, action) => {
+      state.locations = action.payload;
+    },
   },
 })
 
 export const {
   setCategories,
-  setLoading
+  setLoading,
+  setLocations
   
 } = categoriesslice.actions
 
