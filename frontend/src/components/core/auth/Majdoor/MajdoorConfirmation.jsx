@@ -24,7 +24,7 @@ const BookingConfirmationForm = () => {
     country: '',
     email: user?.email || '',
     firstName: `${user?.firstName} ${user?.lastName}` || '',
-    service:'',
+    service:response?.data?._id || '',
   });
     // Update formData state with response data on component mount
     useEffect(() => {
@@ -36,7 +36,7 @@ const BookingConfirmationForm = () => {
       }
     }, [response]);
 
-  const { address, city, street, state, pincode, phoneNumber, country,email, firstName } = formData;
+  const { address, city, street, state, pincode, phoneNumber, country,email, firstName,service,} = formData;
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -103,6 +103,35 @@ const BookingConfirmationForm = () => {
               placeholder="Email"
               required
               value={email}
+              onChange={handleInputChange}
+              disabled // Prevent user from editing email
+            />
+          </div>
+
+          <div className="flex flex-col">
+            <label htmlFor="userID" className="font-semibold">UserId:</label>
+            <input
+              type="text"
+              id="id"
+              name="user"
+              className="border rounded p-2"
+              placeholder=""
+              required
+              value={user?._id}
+              onChange={handleInputChange}
+              disabled // Prevent user from editing email
+            />
+          </div>
+          <div className="flex flex-col">
+            <label htmlFor="email" className="font-semibold">Service ID:</label>
+            <input
+              type="text"
+              id="serviceID"
+              name="ID"
+              className="border rounded p-2"
+              placeholder="MajdoorID"
+              required
+              value={response?.data?._id}
               onChange={handleInputChange}
               disabled // Prevent user from editing email
             />

@@ -6,11 +6,11 @@ const Majdoor2=require("../models/Majdoor2")
 exports.neworder=async(req,res)=>{
     try {
         const{address,city,street,state,pincode,phoneNumber,country,service,email,firstName}=req.body
-        const userid=req.user.id;
+        // const userid=req.user.id;
         console.log(userid)
         console.log('Request Body:', req.body); // Log request body
         // console.log(shippingInfo)
-        if (!address || !city || !street || !state || !pincode || !phoneNumber || !country || !service || !email || !firstName) {
+        if (!address || !city || !street || !state || !pincode || !phoneNumber || !country || !service || !email || !firstName ||!user) {
             return res.status(403).json({
                 success: false,
                 message: " ALL fields are required.",
@@ -31,7 +31,7 @@ exports.neworder=async(req,res)=>{
         const order=await BookedService.create({
             address,city,street,state,pincode,phoneNumber,country,email,firstName,
             service,
-            user:userid,
+            user,
             orderStatus:'Processing'
 
 

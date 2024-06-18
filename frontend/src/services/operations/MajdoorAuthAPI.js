@@ -153,15 +153,14 @@ export const submitBooking = async (token, formData,) => {
   const toastId = toast.loading("Loading...");
   
   try {
-    const { service: serviceId, ...bookingData } = formData;
+    // const { service: serviceId, ...bookingData } = formData;
     setShippingInfo(formData)
     
-    const data = {
-      formData:bookingData,
-      service: serviceId,
-    };
+    // const data = {
+    //   formData:bookingData,
+    // };
     
-    const response = await apiConnector('POST',ORDER_API, data, {
+    const response = await apiConnector('POST',ORDER_API, formData, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
