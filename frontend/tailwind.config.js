@@ -4,5 +4,12 @@ module.exports = {
   theme: {
     extend: {},
   },
+  variants: {
+    extend: {
+      backgroundColor: ['peer-checked'],
+      translate: ['peer-checked'],
+      // Add other utilities as needed
+    },
+  },
   plugins: [],
 };

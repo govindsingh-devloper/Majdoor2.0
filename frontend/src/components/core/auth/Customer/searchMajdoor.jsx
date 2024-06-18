@@ -10,6 +10,33 @@ import { Link } from 'react-router-dom';
 
 
 
+
+
+
+const sharedClasses = {
+  bgZinc100: 'bg-zinc-100', // Light background for the overall layout
+  bgWhite: 'bg-white', // White background for cards
+  shadowLg: 'shadow-lg', // Shadow for cards
+  roundedLg: 'rounded-lg', // Rounded corners for cards
+  overflowHidden: 'overflow-hidden', // Hide overflow in cards
+  p4: 'p-4', // Padding inside cards
+  textLg: 'text-lg', // Large text size for headings
+  fontSemibold: 'font-semibold', // Semi-bold font weight for headings
+  textZinc800: 'text-zinc-800', // Dark text color for high contrast on light background
+  textSm: 'text-sm', // Small text size for details
+  mt4: 'mt-4', // Margin top for spacing between elements
+  flex: 'flex', // Flexbox layout for positioning elements
+  justifyBetween: 'justify-between', // Space between elements horizontally
+  bgBlue500: 'bg-blue-500', // Blue background for call button
+  bgGreen500: 'bg-green-500', // Green background for hire button
+  p2: 'p-2', // Padding for buttons
+  rounded: 'rounded-lg', // Rounded corners for buttons
+  bgPurple500: 'bg-purple-500',
+  textPurple500: 'text-purple-500',
+};
+
+
+
 const SearchMajdoor = () => {
   const { user } = useSelector((state) => state.profile);
   const location = useLocation();
@@ -17,41 +44,36 @@ const SearchMajdoor = () => {
   console.log(searchresults); 
 
   return (
-    <>
+    
       
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-6">
-        { searchresults && searchresults.map(profile => (
-          
-          <div key={profile._id} className="bg-white border border-gray-200 rounded-lg shadow-md p-6 text-center">
-         
-
-            <img 
-              src={profile?.image ? profile.image : majdoor_icon} 
-              alt={user?.firstName || 'Default Majdoor'} 
-              className="w-32 h-32 mx-auto rounded-full mb-4 object-cover" 
-            />
-            <h3 className="text-xl font-semibold mb-2">{profile.firstName}</h3>
-            <p className="text-gray-700 mb-2">Skills: {profile.skills}</p>
-            <p className="text-gray-700 mb-4">Contact: {profile.contactNumber}</p>
-              <a href={`tel:91${profile.contactNumber}`} className="call-button">
-                <FontAwesomeIcon icon={faPhone} />Call
+     <div className={`flex flex-row flex-wrap items-start justify-start mt-8 mx-4  ${sharedClasses.bgZinc100} ${sharedClasses.bgZinc800}`}>
+      {searchresults && searchresults.map(profile => (
+        <div key={profile._id} className={`m-2 ${sharedClasses.bgWhite} ${sharedClasses.shadowLg} ${sharedClasses.roundedLg} ${sharedClasses.overflowHidden}`}>
+          <img src={profile?.image ? profile.image : 'https://placehold.co/300'} alt={profile?.firstName || 'Profile Photo'} className="w-full h-48 object-cover" />
+          <div className={sharedClasses.p4}>
+            <h2 className={`${sharedClasses.textLg} ${sharedClasses.fontSemibold} ${sharedClasses.textZinc800} ${sharedClasses.textWhite}`}>{profile.firstName}</h2>
+            <p className={`${sharedClasses.textSm} ${sharedClasses.textZinc600} ${sharedClasses.textZinc300}`}>Skills: {profile.skills}</p>
+            <p className={`${sharedClasses.textSm} ${sharedClasses.textZinc600} ${sharedClasses.textZinc300}`}>Contact: {profile.contactNumber}</p>
+            <div className={`${sharedClasses.mt4} ${sharedClasses.flex} ${sharedClasses.justifyBetween}`}>
+              <a href={`tel:${profile.contactNumber}`} className={`${sharedClasses.bgBlue500} ${sharedClasses.textWhite} ${sharedClasses.p2} ${sharedClasses.rounded}`}>
+                <FontAwesomeIcon icon={faPhone} /> Call
               </a>
-              {/* <div className='bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600'> */}
-              <div className="App">
-      {/* <header className="App-header"> */}
-        <h1 className="text-gray-700 mb-2">Send Audio Notes</h1>
-          <button><AudioUploadForm /></button>
+              <Link to={`/profile/${profile._id}`} className={`${sharedClasses.bgGreen500} ${sharedClasses.textWhite} ${sharedClasses.p2} ${sharedClasses.rounded}`}>Hire</Link>
+            </div>
 
-          <Link to={`/searchMajdoor/${profile._id}`}> <button>Hire</button></Link>
-      {/* </header> */}
-    </div>
-              {/* </div> */}
+            <div className={`${sharedClasses.mt4} ${sharedClasses.flex} ${sharedClasses.justifyBetween}`}>
+            <button id="send-audio" className={`${sharedClasses.mt4} ${sharedClasses.bgPurple500} ${sharedClasses.textWhite} ${sharedClasses.p2} ${sharedClasses.rounded}`}>
+              Send Audio Notes
               
-
+            </button>
+            <div className={`${sharedClasses.mt4} ${sharedClasses.bgPurple500} ${sharedClasses.textWhite} ${sharedClasses.p2} ${sharedClasses.rounded}`}>   <AudioUploadForm /></div>
+       
+            </div>
+         
           </div>
-        ))}
-      </div>
-    </>
+        </div>
+      ))}
+    </div>
   )
 }
 

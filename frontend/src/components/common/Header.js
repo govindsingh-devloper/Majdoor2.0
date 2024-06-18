@@ -26,7 +26,7 @@ const Header = () => {
               <Link to='/reviews'>{t('R')}</Link>
               <Link to='/contact'>{t('C')}</Link>
               <Link to='/login'>{t('L')}</Link>
-              <Link to='/signup'>{t('S')}</Link>
+             
               
             </>
           ) : (
@@ -34,16 +34,18 @@ const Header = () => {
               {/* <Link to='/CustomerHome' style={{ marginRight: '20px' }}>
               {user?.firstName && `${user.firstName}'s`} Page
               </Link> */}
-              
-              <ProfileDropDown />
+
+            <div className='flex items-center justify-center gap-x-3'> <ProfileDropDown />
+            <Dropdown/></div>
+             
         
             </>
             
           )}
         </div>
 
+      {/* <div classname=''> <Dropdown/></div> */}
         
-        <div id="menu-btn" className="fa fa-bars"></div>
       </nav>
     </header>
   );

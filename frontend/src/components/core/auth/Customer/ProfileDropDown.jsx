@@ -18,7 +18,7 @@ export default function ProfileDropdown() {
 
   if (!user) return null
 
-  return (
+  return (<div><div className="container">
     <button onClick={() => setOpen(true)}>
       <div>
         <img
@@ -35,7 +35,7 @@ export default function ProfileDropdown() {
         >
           <Link to="/CustomerDashboard" onClick={() => setOpen(false)}>
             <div >
-              <VscDashboard className="text-lg" />
+              <VscDashboard className="text-dark" />
               Dashboard
             </div>
           </Link>
@@ -51,5 +51,5 @@ export default function ProfileDropdown() {
         </div>
       )}
     </button>
-  )
+ </div></div> )
 }
