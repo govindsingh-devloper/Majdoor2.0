@@ -120,7 +120,7 @@ const App = () => {
               
             {/* thekedar */}
         
-            <Route path="/ThekedarDashbord" element={<ThekedarDashbord />} />
+    
             <Route path="/Tverify-email" element={<TVerifyEmail/>}/>
    
             {/*<Route path="/CustomerDashboard/Edit" element={<ChangeProfilePicture />}/>*/}

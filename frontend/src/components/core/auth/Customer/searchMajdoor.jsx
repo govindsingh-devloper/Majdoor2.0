@@ -61,7 +61,7 @@ const SearchMajdoor = () => {
               <a href={`tel:${profile.contactNumber}`} className={`${sharedClasses.bgBlue500} ${sharedClasses.textWhite} ${sharedClasses.p2} ${sharedClasses.rounded}`}>
                 <FontAwesomeIcon icon={faPhone} /> Call
               </a>
-  <Link to={`/profile/${profile._id}`} className={`${sharedClasses.bgGreen500} ${sharedClasses.textWhite} ${sharedClasses.p2} ${sharedClasses.rounded}`}>Hire</Link>
+  <Link to={`/searchMajdoor/${profile._id}`} className={`${sharedClasses.bgGreen500} ${sharedClasses.textWhite} ${sharedClasses.p2} ${sharedClasses.rounded}`}>Hire</Link>
             </div >
               {/* <div className='bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600'> */}
               <div className="App">
