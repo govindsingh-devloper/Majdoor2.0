@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import IconBtn from '../../../common/IconBtn';
 import { Link, useNavigate } from "react-router-dom"
+import { apiConnector } from '../../../../services/apiconnector';
+import { ORDER_ENDPOINT } from '../../../../services/api';
 import { RiEditBoxLine } from 'react-icons/ri';
 
 
@@ -21,6 +23,7 @@ const sharedClasses = {
 const Sidebar = ({ activeContent, onContentChange }) => {
   const { token } = useSelector((state) => state.auth);
   const { user } = useSelector((state) => state.profile);
+
   const renderButton = (label) => (
     <button
       onClick={() => onContentChange(label)}
@@ -29,6 +32,7 @@ const Sidebar = ({ activeContent, onContentChange }) => {
       {label}
     </button>
   );
+ 
 
   return (
     <aside className="bg-zinc-800 text-zinc-200 w-72 space-y-6 py-8 px-4">
@@ -86,7 +90,8 @@ const MainContent = ({ activeContent }) => {
 };
 
 
-const BookingTable = () => {
+const BookingTable = ({bookings}) => {
+  const { user } = useSelector((state) => state.profile);
   return (
     <div className="bg-white shadow overflow-hidden sm:rounded-lg">
       <table className="min-w-full divide-y divide-zinc-200">
@@ -99,31 +104,27 @@ const BookingTable = () => {
             <th className={sharedClasses.tableHeader}>काम</th>
             <th className={sharedClasses.tableHeader}>तारीख</th>
             <th className={sharedClasses.tableHeader}>लागत</th>
-            <th className={sharedClasses.tableHeader}>स्थिति</th>
+            
+
+            <th className={sharedClasses.tableHeader}>status</th>
+            <th className={sharedClasses.tableHeader}>Actions</th>
           </tr>
         </thead>
         <tbody className="bg-white divide-y divide-zinc-200">
-          <TableRow 
-            name="राम"
-            bookingId="1234"
-            address="दिल्ली"
-            phoneNumber="9876543210"
-            work="इलेक्ट्रिकल"
-            date="2023-06-10"
-            cost="500"
-            status="✔️"
-          />
-          <TableRow 
-            name="सीता"
-            bookingId="5678"
-            address="मुंबई"
-            phoneNumber="9876543211"
-            work="प्लंबिंग"
-            date="2023-06-11"
-            cost="700"
-            status="❌"
-          />
-          {/* Add more TableRow components as needed */}
+        {bookings && bookings.map((booking) => (
+            <TableRow
+              key={booking._id} // Make sure each row has a unique key
+              name={booking.firstName}
+              bookingId={booking.bookingId}
+              address={booking.address}
+              phoneNumber={booking.phoneNumber}
+              work={user.skills}
+              date={booking.date}
+              cost={booking.cost}
+              status={booking.status}
+              n={booking.status}
+            />
+          ))}
         </tbody>
       </table>
     </div>
@@ -140,9 +141,18 @@ const TableRow = ({ name, bookingId, address, phoneNumber, work, date, cost, sta
       <td className={sharedClasses.tableRow}>{work}</td>
       <td className={sharedClasses.tableRow}>{date}</td>
       <td className={sharedClasses.tableRow}>{cost}</td>
+      <td className={sharedClasses.tableRow}>{status}</td>
       <td className={sharedClasses.tableRow}>
-        <span className="text-green-500">{status === "✔️" ? "✔️" : ""}</span>
-        <span className="text-red-500">{status === "❌" ? "❌" : ""}</span>
+
+        {/* <button className="text-green-500">{status === "Pending" ? "✔️" : ""}</button>
+        <button className="text-red-500">{status === "❌" ? "❌" : ""}</button> */}
+
+        {status==="Pending" &&(
+         <div>
+         <button>Approved</button>
+         <button>Reject</button>
+         </div>
+        )}
       </td>
     </tr>
   );
@@ -153,17 +163,49 @@ const TableRow = ({ name, bookingId, address, phoneNumber, work, date, cost, sta
 
 
 const DashboardContent = () => {
-  return <div> <div>
-  <section className="mb-8">
-    <h2 className="text-xl font-semibold mb-4">नई बुकिंग</h2>
-    <BookingTable />
-  </section>
-  
-  <section>
-    <h2 className="text-xl font-semibold mb-4">मेरा आरक्षण</h2>
-    <BookingTable />
-  </section>
-</div></div>;
+  const[bookings,setBookings]=useState([]);
+  const { token } = useSelector((state) => state.auth);
+  const { user } = useSelector((state) => state.profile);
+  const userid = user ? user._id : null;
+  console.log(userid)
+  const getMajdoorBookings=async()=>{
+    try {
+        const response=await apiConnector("POST",ORDER_ENDPOINT.MAJDOORBOOKING_API,{userid},{
+            headers:{
+                Authorization:`Bearer${token}`
+            }
+        })
+        console.log(response.data)
+        if(response.data.success){
+            setBookings([response.data.data])
+            console.log('Bookings:', response.data.data);
+        }
+        
+    } catch (error) {
+        console.log("Customer Booking ERROR",error)
+    }
+};
+
+useEffect(()=>{
+    getMajdoorBookings();
+
+},[userid, token])
+  return (
+    <>
+    <section className="mb-8">
+      <h2 className="text-xl font-semibold mb-4">नई बुकिंग</h2>
+      <BookingTable bookings={bookings}/>
+    </section>
+
+    <section>
+      <h2 className="text-xl font-semibold mb-4">मेरा आरक्षण</h2>
+      <BookingTable />
+    </section>
+
+   
+  </>
+
+  )
 };
 
 const RecordsContent = () => {

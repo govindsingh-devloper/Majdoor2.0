@@ -11,8 +11,12 @@ const bookedServiceSchema = new mongoose.Schema({
   street: { type: String, required: true },
   email: { type: String, required: true },
   firstName: { type: String, required: true },
-  service: { type: mongoose.Schema.Types.ObjectId, ref: 'Service' },
-  user: { type: mongoose.Schema.Types.ObjectId, ref: 'User'},
+  status:{type:String,
+    enum:["Pending","Booked"],
+    default:"Pending"
+  },
+  service: { type: mongoose.Schema.Types.ObjectId, ref: 'Majddor2' },
+  user: { type: mongoose.Schema.Types.ObjectId, ref: 'Customer'},
 });
 
 

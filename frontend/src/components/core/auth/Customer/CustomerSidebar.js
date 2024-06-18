@@ -12,8 +12,8 @@ const Sidebar = () => {
         <Link to="/CustomerHome" className="py-3 px-4 hover:bg-gray-700 text-xl">
           Home
         </Link>
-        <Link to="/searchMajdoor" className="py-3 px-4 hover:bg-gray-700 text-xl">
-          Search
+        <Link to="/CustomerBookings" className="py-3 px-4 hover:bg-gray-700 text-xl">
+          History
         </Link>
         <Link to="/CustomerDashboard" className="py-3 px-4 hover:bg-gray-700 text-xl">
           Profile

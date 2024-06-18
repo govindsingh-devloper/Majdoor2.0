@@ -43,6 +43,7 @@ import SelectedMajdoor from "./components/core/auth/Customer/selectedMajdoor";
 import CustomerLayout from "./components/core/auth/Customer/CustomerLayout";
 import DeleteAccount from "./components/core/auth/Customer/Edit/DeleteAccount";
 import Dropdown from "./components/Dropdown";
+import CustomerBooking from "./components/core/auth/Customer/CustomerBooking";
 
 const App = () => {
   useEffect(() => {
@@ -111,6 +112,7 @@ const App = () => {
             <Route path="/CustomerDashboard/Edit" element={<Edit />}/>
             <Route path="/searchMajdoor/:id" element={<SelectedMajdoor/>}/>
             <Route path="/MajdoorConfirmation" element={<MajdoorConfirmation />} />
+            <Route path="/CustomerBookings" element={<CustomerBooking/>}/>
             
             {/* majdoor */}
             <Route path="/Mdashboard" element={<Mdashboard />} />
