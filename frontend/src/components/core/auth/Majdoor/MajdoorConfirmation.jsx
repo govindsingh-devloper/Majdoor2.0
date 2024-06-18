@@ -472,9 +472,6 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from "react-hot-toast";
 import { setShippingInfo } from '../../../../slices/shippingInfoslice';
-import { useNavigate, useLocation } from 'react-router-dom'; 
-import { getorders } from '../../../../services/operations/MajdoorAuthAPI';
-import { Country, State } from "country-state-city";
 
 const MajdoorBookingConfirmation = () => {
   const location = useLocation();
@@ -484,46 +481,63 @@ const MajdoorBookingConfirmation = () => {
 
   const { token } = useSelector((state) => state.auth);
   const { user } = useSelector((state) => state.profile);
-  const { shippingInfo } = useSelector((state) => state.shippingInfoReducer);
 
-  const [email, setEmail] = useState(user.email);
-  const [fullName, setFullName] = useState(user.firstName + user.lastName);
-  const [address, setAddress] = useState(shippingInfo.address || '');
-  const [country, setCountry] = useState(shippingInfo.country || '');
-  const [state, setState] = useState(shippingInfo.state || '');
-  const [phoneNumber, setPhoneNumber] = useState(shippingInfo.phoneNumber || '');
-  const [pincode, setPincode] = useState(shippingInfo.pincode || '');
-  const [street, setStreet] = useState(shippingInfo.street || '');
-  const [city, setCity] = useState(shippingInfo.city || '');
+  const [formData, setFormData] = useState({
+    address: '',
+    city: '',
+    street: '',
+    state: '',
+    pincode: '',
+    phoneNumber: '',
+    country: '',
+    service: '', // You may get this from props or another source
+    email: user?.email || '',
+    firstName: `${user?.firstName} ${user?.lastName}` || '',
+  });
 
-  // const location=useLocation()
-  // const {response}=location.state || {};
-  
-  const handleOnSubmit = async (e) => {
+  const { address, city, street, state, pincode, phoneNumber, country, service, email, firstName } = formData;
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+    dispatch(setShippingInfo({
+      ...formData,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (phoneNumber.length !== 10) {
-      toast.error("Phone Number should be 10 digits");
-      return;
-    }
 
     try {
-      const data = {
-        address,
-        city,
-        state,
-        country,
-        pincode,
-        phoneNumber,
-        street,
-        email,
-        firstName: user.firstName,
-        service: response.data._id,
-        user: user._id,
-      };
+      console.log(token)
+      const response = await apiConnector('POST', ORDER_ENDPOINT.ORDER_API, formData, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
 
-      dispatch(getorders(token, data, navigate));
-      // toast.success("Your Request has been sent to Majdoor. Please wait for confirmation.");
-      // navigate('/CustomerHome');
+      if (response.data.success) {
+        toast.success('Your booking request has been submitted successfully.');
+        // Optionally, update local state or clear form fields after successful submission
+        setFormData({
+          address: '',
+          city: '',
+          street: '',
+          state: '',
+          pincode: '',
+          phoneNumber: '',
+          country: '',
+          service: '', // Reset service if needed
+          email: user?.email || '',
+          firstName: `${user?.firstName} ${user?.lastName}` || '',
+        });
+      } else {
+        toast.error('Failed to submit booking request. Please try again later.');
+      }
     } catch (error) {
       console.error('Error submitting booking:', error);
       // toast.error('Failed to submit booking. Please try again later.');
@@ -578,6 +592,35 @@ const MajdoorBookingConfirmation = () => {
               required
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
+
+          <div className="flex flex-col">
+            <label htmlFor="userID" className="font-semibold">UserId:</label>
+            <input
+              type="text"
+              id="id"
+              name="user"
+              className="border rounded p-2"
+              placeholder=""
+              required
+              value={user?._id}
+              onChange={handleInputChange}
+              disabled // Prevent user from editing email
+            />
+          </div>
+          <div className="flex flex-col">
+            <label htmlFor="email" className="font-semibold">Service ID:</label>
+            <input
+              type="text"
+              id="serviceID"
+              name="ID"
+              className="border rounded p-2"
+              placeholder="MajdoorID"
+              required
+              value={response?.data?._id}
+              onChange={handleInputChange}
+              disabled // Prevent user from editing email
             />
           </div>
           <div className="flex flex-col">

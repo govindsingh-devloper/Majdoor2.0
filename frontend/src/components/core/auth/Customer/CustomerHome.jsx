@@ -89,31 +89,39 @@ function App() {
 
       <div className="mb-6">
       <form onSubmit={handleOnSubmit}>
-          <div className="flex space-x-4">
-            <input
-              name='skills'
-              value={skills}
-              placeholder="Search"
-              onChange={(e) => setSkills(e.target.value)}
-              className="flex-1 p-3 border rounded-lg"
-            />
-              <option value=""> Select a skill...</option>
-              {uniqueCategories.map((category)=>(
-                <option key={category.skills} value={category.skills}>
-                  {category.skills}
-                  </option>
-              ))}
-            <input
-              type="text"
-              placeholder="Location..."
-              value={location}
-              onChange={(e) => setLocation(e.target.value)}
-              className="flex-1 p-3 border rounded-lg"
-            />
-            <button type='submit'
-            className="p-3 bg-blue-500 text-white rounded-lg">Search</button>
-          </div>
-          </form>
+  <div className="flex space-x-4">
+    <input
+      name='skills'
+      value={skills}
+      placeholder="Search"
+      onChange={(e) => setSkills(e.target.value)}
+      className="flex-1 p-3 border rounded-lg"
+    />
+    <select
+      value={skills}
+      onChange={(e) => setSkills(e.target.value)}
+      className="flex-1 p-3 border rounded-lg"
+    >
+      <option value="">Select a skill...</option>
+      {uniqueCategories.map((category) => (
+        <option key={category.skills} value={category.skills}>
+          {category.skills}
+        </option>
+      ))}
+    </select>
+    
+    <input
+      type="text"
+      placeholder="Location..."
+      value={location}
+      onChange={(e) => setLocation(e.target.value)}
+      className="flex-1 p-3 border rounded-lg"
+    />
+    <button type='submit'
+    className="p-3 bg-blue-500 text-white rounded-lg">Search</button>
+  </div>
+</form>
+
         </div>
         <h3 className="text-lg mb-2">Your Past Bookings</h3>
         <div className="p-4 rounded-lg mb-6 border bg-white">

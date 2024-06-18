@@ -38,7 +38,7 @@ import TSignupform from "./components/core/auth/TSignupform";
 import Edit from "./components/core/auth/Customer/Edit";
 import ChangeProfilePicture from "./components/core/auth/Customer/Edit/ChangeProfilePicture";
 import MajdoorConfirmation from "./components/core/auth/Majdoor/MajdoorConfirmation";
-import ThekedarDashbord from '../src/components/core/auth/thekedar/ThekedarDashboard';
+import ThekedarDashboard from '../src/components/core/auth/thekedar/ThekedarDashboard';
 import SelectedMajdoor from "./components/core/auth/Customer/selectedMajdoor";
 import CustomerLayout from "./components/core/auth/Customer/CustomerLayout";
 import DeleteAccount from "./components/core/auth/Customer/Edit/DeleteAccount";
@@ -71,9 +71,11 @@ const App = () => {
   return (
     <>
       <div>
+      <Dropdown/>
           <Header />
+          
           <div className="main-content">
-         <Dropdown/>
+         
           <Routes>
             <Route path="/" element={<Homes/>}/>
             
@@ -117,11 +119,12 @@ const App = () => {
               
               
             {/* thekedar */}
+        
             <Route path="/ThekedarDashbord" element={<ThekedarDashbord />} />
             <Route path="/Tverify-email" element={<TVerifyEmail/>}/>
    
             {/*<Route path="/CustomerDashboard/Edit" element={<ChangeProfilePicture />}/>*/}
-            <Route path="/ThekedarDashboard" element={<ThekedarDashbord />} />
+            <Route path="/ThekedarDashboard" element={<ThekedarDashboard/>} />
 
             </Routes>
           
