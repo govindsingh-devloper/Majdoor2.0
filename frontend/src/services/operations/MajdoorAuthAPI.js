@@ -8,6 +8,9 @@ import { setCategories} from "../../slices/categoriesslice"
 import { setShippingInfo } from "../../slices/shippingInfoslice"
 import { useNavigate } from "react-router-dom"
 
+import axios from 'axios';
+import { createSlice } from '@reduxjs/toolkit';
+
 const BASE_URL=process.env.REACT_APP_BASE_URL
 
 
@@ -183,6 +186,46 @@ export const submitBooking = async (token, formData,) => {
   }
 };
 
+///////////////////////////////////////////////////////
 
+
+export const getorders = (token, orderData, navigate) => async (dispatch) => {
+  try {
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+    };
+
+    const {data} = await apiConnector('POST', ORDER_API, orderData, config);
+
+    console.log(data);
+    toast.success("Your Request has been sent to Majdoor. Please wait for confirmation.");
+      navigate('/CustomerHome');
+    dispatch(orderCreated(data));
+    toast.success(data.message);
+  } catch (error) {
+    console.error('Error creating order:', error.message);
+    toast.error('Failed to create order. Please try again later.');
+  }
+};
+
+const orderSlice = createSlice({
+  name: 'order',
+  initialState: {
+    orders: [],
+    loading: false,
+    error: null,
+  },
+  reducers: {
+    orderCreated: (state, action) => {
+      state.orders.push(action.payload.order);
+    },
+  },
+});
+
+export const { orderCreated } = orderSlice.actions;
+export default orderSlice.reducer;
 
 
