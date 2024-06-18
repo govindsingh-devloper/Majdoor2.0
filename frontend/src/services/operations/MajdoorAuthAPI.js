@@ -6,6 +6,8 @@ import { ORDER_ENDPOINT, endpoints } from "../api"
 import { SearchEndpoint } from "../api"
 import { setCategories} from "../../slices/categoriesslice"
 import { setShippingInfo } from "../../slices/shippingInfoslice"
+import { useNavigate } from "react-router-dom"
+
 const BASE_URL=process.env.REACT_APP_BASE_URL
 
 
@@ -101,6 +103,7 @@ export function login(firstName, contactNumber, navigate) {
 
 
   export function getCategories(){
+    
     return async (dispatch)=>{
       dispatch(setLoading(true))
       try {
@@ -145,27 +148,40 @@ export function login(firstName, contactNumber, navigate) {
   }
 
   //orders API
-  export const getorders=async(token,data)=>{
-    return async(dispatch)=>{
-      const toastId = toast.loading("Loading...")
-      try {
-        const response=await apiConnector("POST",ORDER_API,data,{
-          Authorization: `Bearer ${token}`,
-        })
-        console.log("ORDER RESPONSE............", response)
+// MajdoorAuthAPI.js
+export const submitBooking = async (token, formData,) => {
+  const toastId = toast.loading("Loading...");
+  
+  try {
+    // const { service: serviceId, ...bookingData } = formData;
+    setShippingInfo(formData)
+    
+    // const data = {
+    //   formData:bookingData,
+    // };
+    
+    const response = await apiConnector('POST',ORDER_API, formData, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
 
-            if (!response.data.success) {
-              throw new Error(response.data.message)
-            }
-            dispatch(
-              setShippingInfo({...response.data.order})
-            )
-        
-      } catch (error) {
-        console.log("ORDER RESPONSE............", error)
-        toast.error("Could Not Create ORDER")
-      }
-      toast.dismiss(toastId)
+    // Handle success response
+    if (response.data.success) {
+      toast.success('Your request has been sent to Majdoor. Please wait for confirmation.');
+      return response.data; // Return the response data to handle success in the calling function
+    } else {
+      throw new Error(response.data.message); // Throw an error if response indicates failure
+    }
+  } catch (error) {
+    console.error('Error submitting booking:', error);
+    toast.error('Failed to submit booking. Please try again later.');
+    throw error; // Re-throw the error to handle it in the calling function
+  } finally {
+    toast.dismiss(toastId); // Dismiss the loading toast
   }
-}
+};
+
+
+
 

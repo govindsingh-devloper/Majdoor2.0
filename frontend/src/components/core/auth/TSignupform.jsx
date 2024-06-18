@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import toast from 'react-hot-toast'
-import { sendOtp } from "../../../services/operations/ThekedarAuthAPI"
+import { TsendOtp } from "../../../services/operations/ThekedarAuthAPI"
 import { setSignupData } from "../../../slices/authslice"
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
@@ -44,7 +44,7 @@ const TSignupform = () => {
     // To be used after otp verification
     dispatch(setSignupData(signupData))
     // Send OTP to user for verification
-    dispatch(sendOtp(formData.email, navigate))
+    dispatch(TsendOtp(formData.email, navigate))
      // Reset
      setFormData({
         firstName: "",

@@ -10,6 +10,7 @@ import { Toaster } from "react-hot-toast";
 import './i18n';
 import {useTranslation} from 'react-i18next';
 
+
 const store=configureStore({
   reducer:rootReducer,
 })

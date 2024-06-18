@@ -18,6 +18,7 @@ import Signup from "./pages/signup";
 import CustomerDashboard from './components/core/auth/Customer/CustomerDashboard';
 import MajdoorDashboard from './components/core/auth/Majdoor/MajdoorDashboard';
 import VerifyEmail from "./pages/VerifyEmail"
+import TVerifyEmail from "./pages/TVerifyEmail"
 import ForgotPassword from './pages/ForgotPassword';
 import UpdatePassword from './pages/UpdatePassword';
 import LoginForm from "./pages/LoginAsMajdoor";
@@ -86,7 +87,7 @@ const App = () => {
                         
             {/* login/signup */}
             <Route path='/majdoor-login' element={<LoginForm/>}/>
-            <Route path='/majdoor-signup' element={<Signupform/>}/>
+            <Route path='/majdoor-signup' element={<Signupformm/>}/>
             <Route path="/customer-login" element={<Loginform/>}/>
             <Route path="/thekedar-login" element={<TLoginform/>}/>
             <Route path="/thekedar-signup" element={<TSignupform/>}/>
@@ -119,6 +120,8 @@ const App = () => {
               
             {/* thekedar */}
         
+            <Route path="/ThekedarDashbord" element={<ThekedarDashbord />} />
+            <Route path="/Tverify-email" element={<TVerifyEmail/>}/>
    
             {/*<Route path="/CustomerDashboard/Edit" element={<ChangeProfilePicture />}/>*/}
             <Route path="/ThekedarDashboard" element={<ThekedarDashboard/>} />

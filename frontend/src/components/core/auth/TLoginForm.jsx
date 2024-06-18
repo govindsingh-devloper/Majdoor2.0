@@ -61,7 +61,7 @@ const TLoginform = () => {
                 <Link to="/forgotPassword">
                     <p>Forgot Password</p>
                 </Link>
-                <Link to="/signup">
+                <Link to="/thekedar-signup">
                     <p>Create Account</p> 
                 </Link>
 

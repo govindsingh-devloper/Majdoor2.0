@@ -5,8 +5,11 @@ import { useSelector } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPhone } from '@fortawesome/free-solid-svg-icons';
 import AudioUploadForm from './AudioUploadForm';
+import SoundRecorder from './AudioRecorder';
 import "../../../../css/Audio.css";
 import { Link } from 'react-router-dom';
+import FetchAudio from './FetchAudio';
+import AudioPlayer from './FetchAudio';
 
 
 
@@ -41,12 +44,12 @@ const SearchMajdoor = () => {
   const { user } = useSelector((state) => state.profile);
   const location = useLocation();
   const searchresults = location.state?.searchresults;
-  console.log(searchresults); 
+  console.log(searchresults);
 
   return (
-    
-      
-     <div className={`flex flex-row flex-wrap items-start justify-start mt-8 mx-4  ${sharedClasses.bgZinc100} ${sharedClasses.bgZinc800}`}>
+
+
+    <div className={`flex flex-row flex-wrap items-start justify-start mt-8 mx-4  ${sharedClasses.bgZinc100} ${sharedClasses.bgZinc800}`}>
       {searchresults && searchresults.map(profile => (
         <div key={profile._id} className={`m-2 ${sharedClasses.bgWhite} ${sharedClasses.shadowLg} ${sharedClasses.roundedLg} ${sharedClasses.overflowHidden}`}>
           <img src={profile?.image ? profile.image : 'https://placehold.co/300'} alt={profile?.firstName || 'Profile Photo'} className="w-full h-48 object-cover" />
@@ -58,22 +61,29 @@ const SearchMajdoor = () => {
               <a href={`tel:${profile.contactNumber}`} className={`${sharedClasses.bgBlue500} ${sharedClasses.textWhite} ${sharedClasses.p2} ${sharedClasses.rounded}`}>
                 <FontAwesomeIcon icon={faPhone} /> Call
               </a>
-              <Link to={`/profile/${profile._id}`} className={`${sharedClasses.bgGreen500} ${sharedClasses.textWhite} ${sharedClasses.p2} ${sharedClasses.rounded}`}>Hire</Link>
-            </div>
-
-            <div className={`${sharedClasses.mt4} ${sharedClasses.flex} ${sharedClasses.justifyBetween}`}>
-            <button id="send-audio" className={`${sharedClasses.mt4} ${sharedClasses.bgPurple500} ${sharedClasses.textWhite} ${sharedClasses.p2} ${sharedClasses.rounded}`}>
-              Send Audio Notes
-              
-            </button>
-            <div className={`${sharedClasses.mt4} ${sharedClasses.bgPurple500} ${sharedClasses.textWhite} ${sharedClasses.p2} ${sharedClasses.rounded}`}>   <AudioUploadForm /></div>
-       
-            </div>
-         
+  <Link to={`/profile/${profile._id}`} className={`${sharedClasses.bgGreen500} ${sharedClasses.textWhite} ${sharedClasses.p2} ${sharedClasses.rounded}`}>Hire</Link>
+            </div >
+              {/* <div className='bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600'> */}
+              <div className="App">
+      {/* <header className="App-header"> */}
+        {/* <h1 className="text-gray-700 mb-2">Send Audio Notes</h1> */}<br/>
+          <button><SoundRecorder /></button><br/>
+          <AudioPlayer /> <br/>
           </div>
-        </div>
+
+  <div className={`${sharedClasses.mt4} ${sharedClasses.flex} ${sharedClasses.justifyBetween}`}>
+    <button id="send-audio" className={`${sharedClasses.mt4} ${sharedClasses.bgPurple500} ${sharedClasses.textWhite} ${sharedClasses.p2} ${sharedClasses.rounded}`}>
+      Send Audio Notes
+
+    </button>
+    <div className={`${sharedClasses.mt4} ${sharedClasses.bgPurple500} ${sharedClasses.textWhite} ${sharedClasses.p2} ${sharedClasses.rounded}`}>   <AudioUploadForm /></div>
+
+  </div>
+         
+          </div >
+        </div >
       ))}
-    </div>
+    </div >
   )
 }
 

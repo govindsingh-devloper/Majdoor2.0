@@ -3,7 +3,16 @@ const mongoose=require("mongoose");
 
 
 const bookedServiceSchema= new mongoose.Schema({
-   shippingInfo:{
+    email:{
+        type:String,
+        required:true,
+        trim:true
+    },
+    firstName:{
+        type:String,
+        required:true,
+        trim:true
+    },
     address:{
         type:String,
         required:true,
@@ -32,20 +41,18 @@ const bookedServiceSchema= new mongoose.Schema({
         type:Number,
         required:true,
     },
-   },
  user:{
     type:mongoose.Schema.Types.ObjectId,
     ref:"Customer",
  },
  service:[{
-    orderedservice:{
         type:mongoose.Schema.Types.ObjectId,
         ref:"Majdoor2",
         required:true
-    }
-}
+    },],
 
-],
+
+
  orderInfo:{
     id:{
         type:String,

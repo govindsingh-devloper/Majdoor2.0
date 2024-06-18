@@ -17,11 +17,13 @@ const shippingInfoslice = createSlice({
     name:"shippingInfo",
     initialState: initialState,
     reducers: {
-        setShippingInfo(state, value) {
-            state.shippingInfo = value.payload;
+        setShippingInfo(state, action) {
+            state.shippingInfo = action.payload;
+            localStorage.setItem("shippingInfo", JSON.stringify(action.payload));
+
         },
-        setLoading(state, value) {
-            state.loading = value.payload;
+        setLoading(state, action) {
+            state.loading = action.payload;
           },
     },
 });

@@ -1,249 +1,277 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import IconBtn from '../../../common/IconBtn';
-import {Country,State} from "country-state-city"
-import { toast } from "react-hot-toast"
-import { setShippingInfo } from '../../../../slices/shippingInfoslice';
-import {Link, useNavigate} from 'react-router-dom'
-import { useLocation } from 'react-router-dom'; 
+import { toast } from 'react-hot-toast';
 import { apiConnector } from '../../../../services/apiconnector';
 import { ORDER_ENDPOINT } from '../../../../services/api';
+import { setShippingInfo } from '../../../../slices/shippingInfoslice';
+import{useLocation} from "react-router-dom"
 import { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import { getorders } from '../../../../services/operations/MajdoorAuthAPI';
 
+const BookingConfirmationForm = () => {
+  const dispatch = useDispatch();
+  const { token } = useSelector((state) => state.auth);
+  const { user } = useSelector((state) => state.profile);
+  const location=useLocation()
+  const {response}=location.state || {};
 
+  const [formData, setFormData] = useState({
+    address: '',
+    city: '',
+    street: '',
+    state: '',
+    pincode: '',
+    phoneNumber: '',
+    country: '',
+    email: user?.email || '',
+    firstName: `${user?.firstName} ${user?.lastName}` || '',
+    service:response?.data?._id || '',
+  });
+    // Update formData state with response data on component mount
+    useEffect(() => {
+      if (response && response.data) {
+        setFormData((prevData) => ({
+          ...prevData,
+          service: response.data._id || '', // Assuming _id is the service ID field
+        }));
+      }
+    }, [response]);
 
+  const { address, city, street, state, pincode, phoneNumber, country,email, firstName,service,} = formData;
 
-const MajdoorBookingConfirmation = () => {
-  // const {id}=useParams()
-  const location = useLocation();
-  const { response } = location.state || {};
-  console.log(response)
-  
-  const navigate=useNavigate();
-  const dispatch=useDispatch();
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+    dispatch(setShippingInfo({
+      ...formData,
+      [name]: value,
+    }));
+  };
 
-const {categories}=useSelector((state)=>state.categories);
-const { token } = useSelector((state) => state.auth);
-const{user}=useSelector((state)=>state.profile);
-const {shippingInfo}=useSelector((state)=>state.shippingInfoReducer);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    // service:response?.response.data?._id
 
+    try {
+      console.log('Form Data:', formData); // Log form data before API call
+      console.log('Token:', token); // Log token before API call
+      const response = await apiConnector('POST', ORDER_ENDPOINT.ORDER_API, formData, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      console.log('API Response:', response.data); // Log API response
 
-
-
-const[email,setEmail]=useState(user.email);
-const[fullName,setFullName]=useState(user.fullName)
-
-const[address,setAddress]=useState(shippingInfo.address  || '');
-const[country,setCountry]=useState(shippingInfo.country  || '');
-const[state,setState]=useState(shippingInfo.state  || '');
-const[phoneNumber,setPhoneNumber]=useState(shippingInfo.phoneNumber  || '');
-const[pincode,setPincode]=useState(shippingInfo.pincode  || '');
-const[street,setStreet]=useState(shippingInfo.street  || '')
-const[city,setCity]=useState(shippingInfo.city  || '')
-
-// const { id } = useParams();
-// const location = useLocation();
-// const majdoorDetails = location.state ? location.state.response : null;
-// console.log("Loactaion stae",location.state)
-// console.log(majdoorDetails)
-
-
-const handleOnSubmit=async(e)=>{
-  e.preventDefault();
-  if(phoneNumber.length<10 || phoneNumber.length>10){
-    toast.error("Phone Number should be 10 digit")
-  }
-
-  try {
-   
-    const data = {
-      shippingInfo: {
-        address,
-        city,
-        state,
-        country,
-        pincode,
-        phoneNumber,
-        street,
-      },
-      user:user._id,
-      service:response.data._id,
-     
-    };
-    dispatch(getorders(token,data))
-  
-    // const response1 = await apiConnector('POST', ORDER_ENDPOINT.ORDER_API,data);
-    // console.log(response1)
-  
-    toast.success("Your Request send to Majdoor Pls wait 4 confirmation")
-    navigate('/CustomerHome');
-  } catch (error) {
-    console.error('Error submitting booking:', error);
-    toast.error('Failed to submit booking. Please try again later.');
-  }
-}
+      if (response.data.success) {
+        toast.success('Your booking request has been submitted successfully.');
+        // Optionally, update local state or clear form fields after successful submission
+        setFormData({
+          address: '',
+          city: '',
+          street: '',
+          state: '',
+          pincode: '',
+          phoneNumber: '',
+          country: '',
+          service: '', // Reset service if needed
+          email: user?.email || '',
+          firstName: `${user?.firstName} ${user?.lastName}` || '',
+        });
+      } else {
+        toast.error('Failed to submit booking request. Please try again later.');
+      }
+    } catch (error) {
+      console.error('Error submitting booking request:', error);
+      toast.error('Failed to submit booking request. Please try again later.');
+    }
+  };
 
   return (
-    <main class="bg-white shadow-md rounded-lg p-6 max-w-4xl mx-auto mt-6">
-  <h2 class="text-center text-2xl font-semibold mb-4">Majdoor Booking Confirmation</h2>
-  <div class="flex flex-col md:flex-row items-center md:items-start mb-6">
-    <img
-      src="https://placehold.co/100x100"
-      alt="Worker"
-      class="rounded-full w-24 h-24 md:w-32 md:h-32 mb-4 md:mb-0 md:mr-6"
-    />
-    <div class="flex-1">
-      {response && response.data&&(
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div class="flex flex-col">
-          <span class="font-semibold">Name</span>
-          <span>{response.data.firstName}</span>
-        </div>
-        <div class="flex flex-col">
-          <span class="font-semibold">Skills</span>
-          <span>{response.data.skills}</span>
-        </div>
-        <div class="flex flex-col">
-          <span class="font-semibold">Phone Number</span>
-          <span>123456789</span>
-        </div>
-        <div class="flex flex-col">
-          <span class="font-semibold">MajdoorId</span>
-          <span>{response.data._id}</span>
-        </div>
-        <div class="flex flex-col">
-          <span class="font-semibold">Location</span>
-          <span>{response.data.location}</span>
-        </div>
-      </div>
-      )}
-    </div>
-  </div>
-  <form  onSubmit ={handleOnSubmit} class="space-y-4">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-      <div class="flex flex-col">
-        <label for="email" class="font-semibold">Email:</label>
-        <input type="text" id="full-name" class="border rounded p-2" 
-          placeholder='email'
-          required
-          value={email}
-          onChange={(e)=>setEmail(e.target.value)}
-        />
-      </div>
-      <div class="flex flex-col">
-        <label for="full-name" class="font-semibold">FullName</label>
-        <input type="text" id="full-name" class="border rounded p-2" 
-          placeholder='EnterFullName'
-          required
-          value={user?.firstName + user?.lastName}
-          onChange={(e)=>setFullName(e.target.value)}
-        />
-      </div>
-      <div class="flex flex-col">
-        <label for="street-number" class="font-semibold">Street Number:</label>
-        <input type="text" id="full-name" class="border rounded p-2" 
-          placeholder='Street'
-          required
-          value={street}
-          onChange={(e)=>setStreet(e.target.value)}
-        />
-      </div>
-      <div class="flex flex-col">
-        <label for="pin-code" class="font-semibold">Pin code:</label>
-        <input type="text" id="full-name" class="border rounded p-2" 
-          placeholder='EnterFullName'
-          required
-          value={pincode}
-          onChange={(e)=>setPincode(e.target.value)}
-        />
-      </div>
-      {/* <div class="flex flex-col">
-        <label for="state" class="font-semibold">State:</label>
-        <input type="text" id="full-name" class="border rounded p-2" 
-          placeholder='EnterFullName'
-          required
-          value={state}
-          onChange={(e)=>setState(e.target.value)}
-        />
-      </div> */}
-      <div class="flex flex-col">
-        <label for="contact-number" class="font-semibold">Contact Number:</label>
-        <input type="text" id="full-name" class="border rounded p-2" 
-          placeholder='EnterFullName'
-          required
-          value={phoneNumber}
-          onChange={(e)=>setPhoneNumber(e.target.value)}
-        />
-        <label for="contact-number" class="font-semibold">City:</label>
-         <input type="text" id="full-name" class="border rounded p-2" 
-          placeholder='ADDress'
-          required
-          value={city}
-          onChange={(e)=>setCity(e.target.value)}
-        />
-        <label for="contact-number" class="font-semibold">address:</label>
-         <input type="text" id="full-name" class="border rounded p-2" 
-          placeholder='ADDress'
-          required
-          value={address}
-          onChange={(e)=>setAddress(e.target.value)}
-        />
-         <select type="text" id="full-name" class="border rounded p-2" 
-          placeholder='EnterFullName'
-          required
-          value={country}
-          onChange={(e)=>setCountry(e.target.value)}
-          >
-          <option value="">Country</option>
-          {Country && Country.getAllCountries().map((item)=>(
-            <option key={item.isoCode} value={item.isoCode}>{item.name}</option>
-          ))}
-          </select>
+    <main className="bg-white shadow-md rounded-lg p-6 max-w-4xl mx-auto mt-6">
+      <h2 className="text-center text-2xl font-semibold mb-4">Majdoor Booking Confirmation</h2>
+      <form onSubmit={handleSubmit} className="space-y-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="flex flex-col">
+            <label htmlFor="email" className="font-semibold">Email:</label>
+            <input
+              type="text"
+              id="email"
+              name="email"
+              className="border rounded p-2"
+              placeholder="Email"
+              required
+              value={email}
+              onChange={handleInputChange}
+              disabled // Prevent user from editing email
+            />
+          </div>
 
-          {
-            country && (
-              <div>
-                <select
+          <div className="flex flex-col">
+            <label htmlFor="userID" className="font-semibold">UserId:</label>
+            <input
+              type="text"
+              id="id"
+              name="user"
+              className="border rounded p-2"
+              placeholder=""
+              required
+              value={user?._id}
+              onChange={handleInputChange}
+              disabled // Prevent user from editing email
+            />
+          </div>
+          <div className="flex flex-col">
+            <label htmlFor="email" className="font-semibold">Service ID:</label>
+            <input
+              type="text"
+              id="serviceID"
+              name="ID"
+              className="border rounded p-2"
+              placeholder="MajdoorID"
+              required
+              value={response?.data?._id}
+              onChange={handleInputChange}
+              disabled // Prevent user from editing email
+            />
+          </div>
+          <div className="flex flex-col">
+            <label htmlFor="full-name" className="font-semibold">Full Name:</label>
+            <input
+              type="text"
+              id="full-name"
+              name="firstName"
+              className="border rounded p-2"
+              placeholder="Full Name"
+              required
+              value={firstName}
+              onChange={handleInputChange}
+              disabled // Prevent user from editing full name
+            />
+          </div>
+          <div className="flex flex-col">
+            <label htmlFor="street" className="font-semibold">Street Number:</label>
+            <input
+              type="text"
+              id="street"
+              name="street"
+              className="border rounded p-2"
+              placeholder="Street"
+              required
+              value={street}
+              onChange={handleInputChange}
+            />
+          </div>
+          <div className="flex flex-col">
+            <label htmlFor="pincode" className="font-semibold">Pin code:</label>
+            <input
+              type="text"
+              id="pincode"
+              name="pincode"
+              className="border rounded p-2"
+              placeholder="Pin code"
+              required
+              value={pincode}
+              onChange={handleInputChange}
+            />
+          </div>
+          <div className="flex flex-col">
+            <label htmlFor="phoneNumber" className="font-semibold">Contact Number:</label>
+            <input
+              type="text"
+              id="phoneNumber"
+              name="phoneNumber"
+              className="border rounded p-2"
+              placeholder="Contact Number"
+              required
+              value={phoneNumber}
+              onChange={handleInputChange}
+            />
+          </div>
+          <div className="flex flex-col">
+            <label htmlFor="city" className="font-semibold">City:</label>
+            <input
+              type="text"
+              id="city"
+              name="city"
+              className="border rounded p-2"
+              placeholder="City"
+              required
+              value={city}
+              onChange={handleInputChange}
+            />
+          </div>
+          <div className="flex flex-col">
+            <label htmlFor="address" className="font-semibold">Address:</label>
+            <input
+              type="text"
+              id="address"
+              name="address"
+              className="border rounded p-2"
+              placeholder="Address"
+              required
+              value={address}
+              onChange={handleInputChange}
+            />
+          </div>
+          <div className="flex flex-col">
+            <label htmlFor="country" className="font-semibold">Country:</label>
+            <select
+              id="country"
+              name="country"
+              className="border rounded p-2"
+              placeholder="Country"
+              required
+              value={country}
+              onChange={handleInputChange}
+            >
+              <option value="">Select Country</option>
+              {/* Replace with actual country options */}
+              <option value="USA">USA</option>
+              <option value="Canada">Canada</option>
+              {/* Add more options as needed */}
+            </select>
+          </div>
+          {country && (
+            <div className="flex flex-col">
+              <label htmlFor="state" className="font-semibold">State:</label>
+              <select
+                id="state"
+                name="state"
+                className="border rounded p-2"
+                placeholder="State"
                 required
                 value={state}
-                onChange={(e)=>setState(e.target.value)}
-                >
-                <option value="">State</option>
-                {
-                  State &&
-                  State.getStatesOfCountry(country).map((item)=>(
-                    <option key={item.isoCode} value={item.isoCode}>{item.name}</option>
-                  ))
-                }
-
-                </select>
-              </div>
-            )
-          }
-
-
-      </div>
-    </div>
-    <div class="flex items-center">
-      <input type="checkbox" id="confirm-booking" class="mr-2" />
-      <label for="confirm-booking" class="font-semibold">I confirm that Booking.</label>
-    </div>
-    <div class="flex justify-between mt-4">
-      <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
-        REQUEST FOR BOOKING
-      </button>
-      <button
-        type="button"
-        class="border border-zinc-500 text-zinc-500 px-4 py-2 rounded hover:bg-zinc-100"
-      >
-        DISCARD
-      </button>
-    </div>
-  </form>
-</main>
+                onChange={handleInputChange}
+              >
+                <option value="">Select State</option>
+                {/* Replace with actual state options based on selected country */}
+                <option value="NY">New York</option>
+                <option value="CA">California</option>
+                {/* Add more options as needed */}
+              </select>
+            </div>
+          )}
+        </div>
+        <div className="flex items-center">
+          <input type="checkbox" id="confirm-booking" className="mr-2" required />
+          <label htmlFor="confirm-booking" className="font-semibold">I confirm this booking.</label>
+        </div>
+        <div className="flex justify-between mt-4">
+          <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+            REQUEST FOR BOOKING
+          </button>
+          <button
+            type="button"
+            className="border border-gray-500 text-gray-500 px-4 py-2 rounded hover:bg-gray-100"
+          >
+            DISCARD
+          </button>
+        </div>
+      </form>
+    </main>
   );
 };
 
-export default MajdoorBookingConfirmation;
+export default BookingConfirmationForm;

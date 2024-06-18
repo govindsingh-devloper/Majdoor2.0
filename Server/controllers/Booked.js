@@ -1,25 +1,37 @@
 const BookedService=require("../models/BookedService");
 const Customer=require("../models/Customer")
-const Majdoor=require("../models/Majdoor")
+const Majdoor2=require("../models/Majdoor2")
 
 
 exports.neworder=async(req,res)=>{
     try {
-        const{shippingInfo,service}=req.body
-        const userid=req.user.id;
+        const{address,city,street,state,pincode,phoneNumber,country,service,email,firstName}=req.body
+        // const userid=req.user.id;
         console.log(userid)
-        console.log(shippingInfo)
-        if(!shippingInfo){
+        console.log('Request Body:', req.body); // Log request body
+        // console.log(shippingInfo)
+        if (!address || !city || !street || !state || !pincode || !phoneNumber || !country || !service || !email || !firstName ||!user) {
             return res.status(403).json({
                 success: false,
-                message: "Shipping Info required.",
+                message: " ALL fields are required.",
+                error:error.message
             });
         }
+    //      // Fetch Majdoor details based on serviceId
+    //      const serviceId=req.body;
+    // const selectedMajdoor = await Majdoor2.findById({serviceId:_id});
+
+    // if (!selectedMajdoor) {
+    //   return res.status(404).json({
+    //     success: false,
+    //     message: "Majdoor not found."
+    //   });
+    // }
 
         const order=await BookedService.create({
-            shippingInfo,
+            address,city,street,state,pincode,phoneNumber,country,email,firstName,
             service,
-            user:userid,
+            user,
             orderStatus:'Processing'
 
 
@@ -31,7 +43,7 @@ exports.neworder=async(req,res)=>{
                 message:"No order Created"
             })
         }
-
+        console.log('Created Order:', order); // Log created order
         return res.status(200).json({
             sucess:true,
             message:"Order Created SuccessFully",
