@@ -8,10 +8,15 @@ import { setCategories} from "../../slices/categoriesslice"
 import { setShippingInfo } from "../../slices/shippingInfoslice"
 import { useNavigate } from "react-router-dom"
 
+
 import axios from 'axios';
 import { createSlice } from '@reduxjs/toolkit';
 
+
 const BASE_URL=process.env.REACT_APP_BASE_URL
+
+
+
 
 
 
@@ -23,11 +28,15 @@ const {
 //   RESETPASSWORD_API,
 } = endpoints
 
+
 const {ALL_CATEGORIES,
   SINGLE_SERVICE
 }=SearchEndpoint
 
+
 const{ORDER_API}=ORDER_ENDPOINT
+
+
 
 
 export function login(firstName, contactNumber, navigate) {
@@ -39,20 +48,20 @@ export function login(firstName, contactNumber, navigate) {
             firstName,
           contactNumber,
         })
-  
+ 
         console.log("LOGIN API RESPONSE............", response)
-  
+ 
         if (!response.data.success) {
           throw new Error(response.data.message)
         }
-  
+ 
         toast.success("Login Successful")
         dispatch(setToken(response.data.token))
         const userImage = response.data?.user?.image
           ? response.data.user.image
           : `https://api.dicebear.com/5.x/initials/svg?seed=${response.data.user.firstName} ${response.data.user.lastName}`
         dispatch(setUser({ ...response.data.user, image: userImage }))
-        
+       
         localStorage.setItem("token", JSON.stringify(response.data.token))
         localStorage.setItem("user", JSON.stringify(response.data.user))
         navigate("/MajdoorDashboard")
@@ -64,6 +73,7 @@ export function login(firstName, contactNumber, navigate) {
       toast.dismiss(toastId)
     }
   }
+
 
   export function signUp(
     firstName,
@@ -86,9 +96,9 @@ export function login(firstName, contactNumber, navigate) {
           thekedarId,
           preferredLocation,
         })
-  
+ 
         console.log("SIGNUP API RESPONSE............", response)
-  
+ 
         if (!response.data.success) {
           throw new Error(response.data.message)
         }
@@ -105,12 +115,15 @@ export function login(firstName, contactNumber, navigate) {
   }
 
 
+
+
   export function getCategories(){
-    
+   
     return async (dispatch)=>{
       dispatch(setLoading(true))
       try {
         const response=await apiConnector("GET",ALL_CATEGORIES,{
+
 
         })
         console.log("Search Response....",response)
@@ -127,6 +140,7 @@ export function login(firstName, contactNumber, navigate) {
       dispatch(setLoading(false));
     }
 
+
   }
   export const getSingleService = async (id) => {
     // const toastId = toast.loading("Loading...")
@@ -135,7 +149,7 @@ export function login(firstName, contactNumber, navigate) {
     try {
       const response = await apiConnector("GET", `${BASE_URL}/auth/searchMajdoor/${id}`)
       console.log("Single Service..........", response)
-  
+ 
       if (!response.data.success) {
         throw new Error(response.data.message)
       }
@@ -150,24 +164,27 @@ export function login(firstName, contactNumber, navigate) {
     return result
   }
 
+
   //orders API
 // MajdoorAuthAPI.js
 export const submitBooking = async (token, formData,) => {
   const toastId = toast.loading("Loading...");
-  
+ 
   try {
-    // const { service: serviceId, ...bookingData } = formData;
+    const { service: serviceId, ...bookingData } = formData;
     setShippingInfo(formData)
-    
-    // const data = {
-    //   formData:bookingData,
-    // };
-    
-    const response = await apiConnector('POST',ORDER_API, formData, {
+   
+    const data = {
+      formData:bookingData,
+      service: serviceId,
+    };
+   
+    const response = await apiConnector('POST',ORDER_API, data, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     });
+
 
     // Handle success response
     if (response.data.success) {
@@ -185,7 +202,10 @@ export const submitBooking = async (token, formData,) => {
   }
 };
 
+
 ///////////////////////////////////////////////////////
+
+
 
 
 export const getorders = (token, orderData, navigate) => async (dispatch) => {
@@ -197,7 +217,9 @@ export const getorders = (token, orderData, navigate) => async (dispatch) => {
       },
     };
 
+
     const {data} = await apiConnector('POST', ORDER_API, orderData, config);
+
 
     console.log(data);
     toast.success("Your Request has been sent to Majdoor. Please wait for confirmation.");
@@ -209,6 +231,7 @@ export const getorders = (token, orderData, navigate) => async (dispatch) => {
     toast.error('Failed to create order. Please try again later.');
   }
 };
+
 
 const orderSlice = createSlice({
   name: 'order',
@@ -224,7 +247,12 @@ const orderSlice = createSlice({
   },
 });
 
+
 export const { orderCreated } = orderSlice.actions;
 export default orderSlice.reducer;
+
+
+
+
 
 
