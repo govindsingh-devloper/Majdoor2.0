@@ -46,6 +46,7 @@
 
 import React, { useState } from 'react';
 import AudioRecorder from './AudioRecorder';
+const PORT=process.env.PORT ||4000;
 
 const AudioUploadForm = () => {
   const [audioURL, setAudioURL] = useState(null);
@@ -59,7 +60,7 @@ const AudioUploadForm = () => {
     formData.append('audio', blob);
 
     try {
-      const response = await fetch('http://localhost:3000/upload', {
+      const response = await fetch(`http://localhost:${PORT}/upload`, {
         method: 'POST',
         body: formData,
       });

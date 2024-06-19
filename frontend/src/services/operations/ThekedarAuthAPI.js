@@ -82,6 +82,7 @@ export function Tlogin(email, password, navigate) {
     email,
     password,
     confirmPassword,
+    location,
     otp,
     navigate
   ) {
@@ -95,6 +96,7 @@ export function Tlogin(email, password, navigate) {
           email,
           password,
           confirmPassword,
+          location,
           otp,
         })
   

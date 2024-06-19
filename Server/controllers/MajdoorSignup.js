@@ -1,4 +1,5 @@
 const Majdoor2=require("../models/Majdoor2");
+const Thekedar=require("../models/Thekedar");
 // const OTP=require("../models/OTP");
 // const otpGenerator=require("otp-generator");
 const bcrypt=require("bcrypt");
@@ -6,7 +7,7 @@ const Jwt=require("jsonwebtoken");
 const Profile = require("../models/Profile");
 const mailSender = require("../utilis/mailSender");
 require("dotenv").config();
-
+const mongoose=require("mongoose");
 
 //signup
 
@@ -17,50 +18,80 @@ exports.signup=async(req,res)=>{
            lastName,
            skills,
            contactNumber,
+           thekedarID,
            location  
         }=req.body
      //validate kro
-     if(!firstName || !lastName || !skills || !contactNumber ||!location){
+     if(!firstName || !lastName || !skills || !contactNumber || !location){
          return res.status(403).json({
              success:false,
              message:"ALL fields are required",
          })
      }
- 
-     //check user already exist
-     const existingUser=await Majdoor2.findOne({contactNumber});
-     if(existingUser){
-         return res.status(400).json({
-             success:false,
-             message:"USer Already Existed",
-         });
-     }
-    
-     //hashPassword
- 
-     const hashedPassword=await bcrypt.hash(contactNumber,10);
-     //entry in DB
-     const profileDetails=await Profile.create({
-         gender:null,
-         dateOfBirth:null,
-         about:null,
-        //  contactNumber:null,
-     })
 
-     const user=await Majdoor2.create({
-         firstName,
-         lastName,
-         skills,
-         contactNumber:hashedPassword,
-         location,
-         additionalDetails:profileDetails._id,
-         image:`https://api.dicebear.com/5.x/initials/svg?seed=${firstName}${lastName}`,
-     })
-     console.log(user)
+     // Check if thekedarID is a valid ObjectId
+    if (!mongoose.Types.ObjectId.isValid(thekedarID)) {
+        return res.status(400).json({
+          success: false,
+          message: "Invalid Thekedar ID format",
+        });
+      }
+
+     //check if thekedar exists
+     const thekedar = await Thekedar.findById({_id:thekedarID});
+     if(!thekedar){
+        return res.status(400).json({
+            success:false,
+            message:"Thekedar ID does not match, please try again",
+        })
+    }
+
+    //check if user already exists
+    const existingUser=await Majdoor2.findOne({contactNumber});
+    if(existingUser){
+        return res.status(400).json({
+            success:false,
+            message:"USer Already Existed",
+        });
+    }
+
+    //hashPassword
+    const hashedPassword=await bcrypt.hash(contactNumber,10);
+    
+    //entry in DB
+    const profileDetails=await Profile.create({
+        gender:null,
+        dateOfBirth:null,
+        about:null,
+    })
+   
+    // Create new majdoor
+    const newMajdoor=await Majdoor2.create({
+        firstName,
+        lastName,
+        skills,
+        contactNumber: hashedPassword,
+        thekedarID: thekedar._id,
+        location,
+        additionalDetails:profileDetails._id,
+        image:`https://api.dicebear.com/5.x/initials/svg?seed=${firstName}${lastName}`,
+    })
+
+    await newMajdoor.save();
+
+    // Add majdoor to thekedar's list of majdoors
+    if (!Array.isArray(thekedar.majdoors)) {
+        thekedar.majdoors = [];
+      }
+
+    thekedar.majdoors.push(newMajdoor._id);
+    await thekedar.save();
+   
+     console.log(newMajdoor)
      //return res
      return res.status(200).json({
         success:true,
-        user,
+        newMajdoor,
         message:"Majdoor Registered Successfully",
     })
    } catch (error) {
@@ -70,8 +101,7 @@ exports.signup=async(req,res)=>{
         message:"User cannot be registered .Please Try again",
         error:error.message
     })
-    
-   }
+   };
 };
 
 //Login

@@ -1,5 +1,7 @@
 import React from 'react';
 import DashboardContent from './DashbordContent';
+//import MyMajdoors from './MyMajdoors';
+import ThekedarPro from './thekedarPro';
 // import RecordsContent from './RecordsContent';
 // import AttendanceContent from './AttendanceContent';
 import ThekedarProfile from './ThekedarProfile';
@@ -10,34 +12,20 @@ import ThekedarProfile from './ThekedarProfile';
 
 
 
-
-
-const MainContent = ({ activeContent }) => {
+const MainContent = ({ activeContent, token }) => {
   let content;
   switch (activeContent) {
     case 'डैशबोर्ड':
       content = <DashboardContent />;
       break;
-    // case 'रिकॉर्ड':
-    //   content = <RecordsContent />;
-    //   break;
-    // case 'उपस्थिति':
-    //   content = <AttendanceContent />;
-    //   break;
     case 'प्रोफाइल':
       content = <ThekedarProfile />;
       break;
-    // case 'श्रम अधिकार':
-    //   content = <LaborRightsContent />;
-    //   break;
-    // case 'सहायता':
-    //   content = <HelpContent />;
-    //   break;
-    // case 'सेटिंग्स और समर्थन':
-    //   content = <SettingsAndSupportContent />;
-    //   break;
-    // default:
-    //   content = <DefaultContent />;
+    case 'मेरे मजदूर':
+      content = <ThekedarPro token={token} />;
+      break;
+    default:
+      content = <DashboardContent />;
   }
 
   return (

@@ -20,6 +20,7 @@ export const endpoints={
     SIGNUP_API_T:BASE_URL + "/auth/thekedar-signup",
     RESETPASSTOKEN_API_T:BASE_URL + "/auth/t-reset-password-token",
     RESETPASSWORD_API_T:BASE_URL + "auth/t-reset-password",
+    THEKEDAR_MAJDOORS: BASE_URL + "/auth/ThekadarMajdoors",
 }
 //Profile Endpoints
 export const settingsEndpoints={

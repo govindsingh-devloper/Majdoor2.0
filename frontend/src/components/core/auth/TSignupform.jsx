@@ -11,16 +11,17 @@ const TSignupform = () => {
     const dispatch=useDispatch();
     const navigate=useNavigate();
     const [formData,setFormData]=useState({
+        firstName:"",  
         lastName:"",
-        firstName:"",
         password:"",
         email:"",
-        confirmPassword:""
+        confirmPassword:"",
+        location:"",
     })
 
     const [showPassword,setshowPassword]=useState(false);
     const[showConfirmPassword,setShowConfirmPassword]=useState(false)
-    const{firstName,lastName,email,password,confirmPassword }=formData
+    const{firstName,lastName,email,password,confirmPassword,location }=formData
      // Handle input fields, when some value changes
   const handleOnChange = (e) => {
     setFormData((prevData) => ({
@@ -52,6 +53,7 @@ const TSignupform = () => {
         email: "",
         password: "",
         confirmPassword: "",
+        location:"",
       })
 }
 
@@ -88,17 +90,6 @@ const TSignupform = () => {
             placeholder="firstName"
         />
        </label>
-       {/* <label>
-       <p>LastName<sup>*</sup></p>
-        <input
-            required
-            type="text"
-            name="lasttName"
-            value={lastName}
-            onChange={handleOnChange}
-            placeholder="lastName"
-        />
-       </label> */}
        <label className="block text-sm text-gray-600" for="us">
        <p>Email<sup>*</sup></p>
         <input className="w-full px-5 py-4 text-gray-700 bg-gray-200 rounded" 
@@ -132,7 +123,17 @@ const TSignupform = () => {
             placeholder="Enter Confirm Password"
         />
        </label>
-
+       <label className="block text-sm text-gray-600" for="us">
+       <p>Location<sup>*</sup></p>
+        <input className="w-full px-5 py-4 text-gray-700 bg-gray-200 rounded" 
+            required
+            type={location?"text":"location"}
+            name="location"
+            value={location}
+            onChange={handleOnChange}
+            placeholder="Enter Location"
+        />
+       </label> 
     </div>
 
     <button>

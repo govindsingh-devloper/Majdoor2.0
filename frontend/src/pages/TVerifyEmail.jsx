@@ -30,6 +30,7 @@ function TVerifyEmail() {
       email,
       password,
       confirmPassword,
+      location,
     } = signupData;
 
     dispatch(
@@ -39,6 +40,7 @@ function TVerifyEmail() {
         email,
         password,
         confirmPassword,
+        location,
         otp,
         navigate
       )

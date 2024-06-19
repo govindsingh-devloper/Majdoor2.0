@@ -1,20 +1,5 @@
 const mongoose = require('mongoose');
 
-// // Connection URL
-// const url = 'mongodb://localhost:27017/yourDatabaseName';
-
-// // Connect to MongoDB
-// mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
-//     .then(() => {
-//         console.log('Connected successfully to MongoDB');
-//     })
-//     .catch(err => {
-//         console.error('Connection error', err);
-//     });
-
-
-// Define the schema for thekedar
-
 const thekedarSchema = new mongoose.Schema({
     firstName: { 
         type: String, 
@@ -36,6 +21,15 @@ const thekedarSchema = new mongoose.Schema({
         type: String, 
         required: true, 
     },
+    location:{
+        type:String,
+        trim:true,
+        required:true,
+    },
+    majdoors: [{                               
+        type: mongoose.Schema.Types.ObjectId, 
+        ref: 'Majddor2' 
+    }], 
     additionalDetails:{
         type:mongoose.Schema.Types.ObjectId,
         required:true,

@@ -20,7 +20,7 @@ const Sidebar = ({ activeContent, onContentChange }) => {
       <nav>
         {renderButton('डैशबोर्ड')}
         {renderButton('रिकॉर्ड')}
-        {renderButton('उपस्थिति')}
+        {renderButton('मेरे मजदूर')}
         {renderButton('प्रोफाइल')}
         {renderButton('श्रम अधिकार')}
         {renderButton('सहायता')}

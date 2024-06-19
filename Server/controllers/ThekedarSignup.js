@@ -78,9 +78,10 @@ exports.signup=async(req,res)=>{
           email,
           password,
           confirmPassword,
+          location,
           otp }=req.body
      //validate kro
-     if(!firstName || !lastName || !password || !confirmPassword || !otp){
+     if(!firstName || !lastName || !password || !confirmPassword || !location || !otp){
          return res.status(403).json({
              success:false,
              message:"ALL fields are required",
@@ -136,6 +137,7 @@ exports.signup=async(req,res)=>{
          lastName,
          email,
          password:hashedPassword,
+         location,
          additionalDetails:profileDetails._id,
          image:`https://api.dicebear.com/5.x/initials/svg?seed=${firstName}${lastName}`,
      })
@@ -290,3 +292,34 @@ exports.changePassword=async(req,res)=>{
    }
 
 }
+
+
+exports.getProfile = async (req, res) => {
+    try {
+      const {thekedarID} = req.body;
+        console.log(thekedarID);
+        console.log(req.body);
+      // Fetch thekedar and populate majdoors
+      const thekedar = await Thekedar.findOne(thekedarID).populate({path:"majdoors"});
+        console.log(thekedar);
+      if (!thekedar) {
+        return res.status(404).json({
+          success: false,
+          message: 'Thekedar not found',
+        });
+      }
+  
+      return res.status(200).json({
+        success: true,
+        thekedar,
+      });
+    } catch (error) {
+      console.error(error);
+      return res.status(500).json({
+        success: false,
+        message: 'Server error',
+        error: error.message,
+      });
+    }
+  };
+  
