@@ -144,13 +144,31 @@ exports.MajdoorBookings=async(req,res)=>{
   }
 }
 
-exports.updateStatus=async(req,res)=>{
-  try {
-    const {orderid,status}=req.body;
-    const updatedstatus=await Order.findByIdAndUpdate()
 
-    
+
+exports.updateStatus = async (req, res) => {
+  try {
+    const { bookingId, status } = req.body;
+    console.log(req.body);
+
+    // Update the status of the order in the database
+    const updatedOrder = await Order.findByIdAndUpdate(bookingId, { status }, { new: true });
+
+    if (!updatedOrder) {
+      return res.status(404).json({ 
+        error: 'Order not found' });
+    }
+    console.log(updatedOrder)
+
+    // Return the updated order as JSON response
+    // res.json(updatedOrder);
+    return res.status(200).json({
+      success:true,
+      message:"Status Updated SuccessFully",
+      updatedOrder
+    })
   } catch (error) {
-    
+    console.error(error);
+    res.status(500).json({ error: 'Internal server error' });
   }
-}
+};
