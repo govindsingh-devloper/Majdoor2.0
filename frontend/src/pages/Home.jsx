@@ -5,6 +5,7 @@ import Services from "../components/common/Services";
 import Gallery from '../components/common/Gallery';
 import Facilities from '../components/common/Facilities';
 import Reviews from '../components/common/Reviews';
+import Footer from '../components/common/Footer';
 
 
 const Home = () => {
@@ -25,6 +26,7 @@ const Home = () => {
       <Services />
       <Gallery />
       <Reviews />
+      <Footer/>
     </div>
       
     

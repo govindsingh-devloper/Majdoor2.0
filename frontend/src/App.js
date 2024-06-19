@@ -107,12 +107,13 @@ const App = () => {
                 <Route path="/CustomerDashboard" element={<CustomerDashboard />} />
                 <Route path="/CustomerHome" element={<CustomerHome />} />
                 <Route path="/CustomerDashboard/Edit" element={<Edit />} />
+                <Route path="/MajdoorConfirmation" element={<MajdoorConfirmation />} />
+                <Route path="/CustomerBookings" element={<CustomerBooking/>}/>
                 
             </Route>
             <Route path="/CustomerDashboard/Edit" element={<Edit />}/>
             <Route path="/searchMajdoor/:id" element={<SelectedMajdoor/>}/>
-            <Route path="/MajdoorConfirmation" element={<MajdoorConfirmation />} />
-            <Route path="/CustomerBookings" element={<CustomerBooking/>}/>
+
             
             {/* majdoor */}
             <Route path="/Mdashboard" element={<Mdashboard />} />
@@ -130,7 +131,7 @@ const App = () => {
 
             </Routes>
           
-          <Footer /> 
+          {/* <Footer />  */}
           </div>
           
           

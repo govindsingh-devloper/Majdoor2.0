@@ -203,7 +203,7 @@ const CustDashboard = () => {
 
   return (
    
-    <div className="max-w-6xl mx-auto p-6 bg-white rounded-lg shadow-md">
+    <div className="max-w-6xl mt-40 mx-auto p-6 bg-white rounded-lg shadow-md">
       <div className="flex flex-col md:flex-row items-center md:items-start">
         <img
           className="h-20 w-20 object-cover rounded-full"

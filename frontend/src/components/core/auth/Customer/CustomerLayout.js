@@ -6,9 +6,9 @@ import Footer from '../../../common/Footer';
 
 const CustomerLayout = ({ children }) => {
   return (
-    <div className="min-h-screen flex">
+    <div className="flex min-h-screen">
       <Sidebar />
-      <div className="flex flex-col flex-grow ml-90">
+      <div className="flex flex-col flex-grow ml-64">
       <main className="flex-grow bg-gray-100">
           <Outlet />
         </main>

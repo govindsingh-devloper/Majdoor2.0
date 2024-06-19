@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom';
 import SearchMajdoors from './searchMajdoor';
-import Layout from './CustomerLayout';
+
 import carpenter_icon from '../../../../images/carpenter-svgrepo-com.svg';
 import plumber_icon from '../../../../images/plumber-svgrepo-com.svg';
 import electrician_icon from '../../../../images/electrician-svgrepo-com.svg';
@@ -17,6 +17,9 @@ import { apiConnector } from '../../../../services/apiconnector';
 import { SearchEndpoint } from '../../../../services/api';
 import { getCategories } from '../../../../services/operations/MajdoorAuthAPI';
 import Cards from './Cards';
+
+import thekedaaricon from '../../../../images/thekedaaricon.jpg';
+import majdooricon from '../../../../images/majdooricon.jpg';
 
 
 const categoryIcons = {
@@ -86,74 +89,119 @@ function App() {
       <div className="bg-gray-100 p-6 rounded-lg shadow-lg">
       <h1 className="text-4xl font-bold mb-4">Welcome {user?.firstName + " " + user?.lastName}! </h1>
 
-
-      <div className="mb-6">
-      <form onSubmit={handleOnSubmit}>
-  <div className="flex space-x-4">
-    <input
-      name='skills'
-      value={skills}
-      placeholder="Search"
-      onChange={(e) => setSkills(e.target.value)}
-      className="flex-1 p-3 border rounded-lg"
-    />
-    <select
-      value={skills}
-      onChange={(e) => setSkills(e.target.value)}
-      className="flex-1 p-3 border rounded-lg"
-    >
-      <option value="">Select a skill...</option>
-      {uniqueCategories.map((category) => (
-        <option key={category.skills} value={category.skills}>
-          {category.skills}
-        </option>
-      ))}
-    </select>
-    
-    <input
-      type="text"
-      placeholder="Location..."
-      value={location}
-      onChange={(e) => setLocation(e.target.value)}
-      className="flex-1 p-3 border rounded-lg"
-    />
-    <button type='submit'
-    className="p-3 bg-blue-500 text-white rounded-lg">Search</button>
-  </div>
-</form>
-
+        <section className="py-12 bg-gray-50">
+      <div className="container mx-auto">
+        <h2 className="text-3xl font-bold text-gray-800 mb-8">Ready to Serve</h2>
+        <form onSubmit={handleOnSubmit}>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="p-6 bg-yellow-500 rounded-lg shadow-lg text-center text-black">
+            <h3 className="text-xl font-bold mb-2">Find Majdoors by Skills</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="flex justify-center mb-4">
+                  <img src={majdooricon} className="w-18 h-18  rounded-lg"></img>
+                </div>
+                < div className="flex flex-col items-center  justify-center mb-4">
+                    <select
+                    value={skills}
+                    onChange={(e) => setSkills(e.target.value)}
+                    className="w-full p-3 border rounded-lg mb-4"
+                  >
+                    <option value="">Select a skill...</option>
+                    {uniqueCategories.map((category) => (
+                      <option key={category.skills} value={category.skills}>
+                        {category.skills}
+                      </option>
+                    ))}
+                  </select>
+                  <button type='submit'className="w-full p-3 bg-blue-500 text-white rounded-lg">Search</button>  
+                </div>
+             </div>   
+          </div>
+          <div className="p-6 bg-yellow-500 rounded-lg shadow-lg text-center text-black"> 
+            <h3 className="text-xl font-bold mb-2">Find Thekedar by Location</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="flex justify-center mb-4">
+                  <img src={thekedaaricon} className="w-18 h-18  rounded-lg"></img>
+                </div>
+                < div className="flex flex-col items-center  justify-center mb-4">
+                    {/* <select
+                    value={skills}
+                    onChange={(e) => setSkills(e.target.value)}
+                    className="w-full p-3 border rounded-lg mb-4"
+                  >
+                    <option value="">Select a skill...</option>
+                    {uniqueCategories.map((category) => (
+                      <option key={category.skills} value={category.skills}>
+                        {category.skills}
+                      </option>
+                    ))}
+                  </select> */}
+                    <input
+                      type="text"
+                      placeholder="Location..."
+                      value={location}
+                      onChange={(e) => setLocation(e.target.value)}
+                      className="w-full p-3 border rounded-lg mb-4"
+                    />
+                  <button type='submit'className="w-full p-3 bg-blue-500 text-white rounded-lg">Search</button>  
+                </div>
+             </div>   
+          </div>
         </div>
-        <h3 className="text-lg mb-2">Your Past Bookings</h3>
-        <div className="p-4 rounded-lg mb-6 border bg-white">
-          <div className="flex justify-between items-center">
-            <div className="w-40 h-40 bg-gray-200 flex items-center justify-center">
-              <img className="w-40 h-40 object-cover" src={history_icon} alt="My Past Bookings" />
+        </form>
+        
+      </div>
+    </section>
+
+
+        <h3 className="text-3xl font-bold text-gray-800 mb-8 mt-8">Your Past Bookings</h3>
+        <div className="p-6 bg-gray-50 rounded-lg shadow-lg text-center text-black">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
+            <div className=" flex w-40 h-40">
+              <img src={history_icon} className=" ml-40 w-full h-full object cover rounded-lg" alt="History Icon" />
             </div>
-            <button className="p-2 bg-gray-200 text-black rounded">History</button>
+            <p className="text-xl md:text-3xl font-bold italic mb-4">
+                Rediscover past escapes with just a click. Your booking history, all in one place!
+              </p>
+            <div className="flex flex-col items-center justify-center">
+              
+              <button className="p-3 bg-blue-500 text-white font-bold rounded-lg">
+                History
+              </button>
+            </div>
           </div>
         </div>
 
 
-        <h3 className="text-lg mb-2">Recommended Services For You</h3>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        {/* /////////////////////////////////////////// */}
+        <h3 className="text-3xl font-bold text-gray-800 mb-8 mt-8">Recommended Services For You</h3>
+        <div className="p-6 bg-gray-50 rounded-lg shadow-lg text-center text-black">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
           {uniqueCategories && uniqueCategories.map((category) => (
-            <div key={category._id} className="p-4 text-center border rounded-lg shadow-lg bg-white">
-              <div className="w-24 h-24 mx-auto mb-4 ">
-                <img src={categoryIcons[category.skills]} alt={category} className="w-full h-full object-cover rounded" />
+            <div key={category._id} className="box bg-white border-2 border-gray-300 shadow-md hover:bg-gray-700 hover:text-white transition-all duration-300 ease-in-out">
+              <div className=" h-28 mx-auto mt-6 ">
+                <img src={categoryIcons[category.skills]} alt={category} className=" h-28 mx-auto mt-6 " />
               </div>
               {/* <p className="mb-2">{category.firstName}</p> */}
-              <p className="mb-2">{category.skills}</p>
-              <button className="p-2 bg-blue-500 text-white rounded">Explore</button>
+              <p className="text-2xl font-bold text-uppercase py-4">{category.skills}</p>
+              <button className="p-2 mb-3 bg-blue-500 text-white rounded">Explore</button>
             </div>
           ))}
 
         </div>
+
+        </div>
+
+  
+
        <div className="container"><h1 className='text-3xl font-bold '>Thekedar near by your city</h1><div className='container flex'> <Cards/><Cards/><Cards/><Cards/></div></div>
       </div>
       <SearchMajdoors searchresults={searchresults} />
      
     </div>
-    
+    <footer className="bg-gray-800 text-white py-4 text-center">
+          <p>&copy; 2024 5 Stars. All rights reserved.</p>
+    </footer>
   </>
   
   );

@@ -20,14 +20,15 @@ const Header = () => {
         <div className="links" >
           {token === null ? (
             <>
+              <div className='flex items-center justify-center gap-x-4'>
               <Link to='/'>{t('h1')}</Link>
               <Link to='/about'>{t('a1')}</Link>
               <Link to='/services'>{t('S')}</Link>
               <Link to='/reviews'>{t('R')}</Link>
               <Link to='/contact'>{t('C')}</Link>
               <Link to='/login'>{t('L')}</Link>
-             
-              
+              <Dropdown/>
+              </div>
             </>
           ) : (
             <>
