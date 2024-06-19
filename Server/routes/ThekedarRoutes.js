@@ -6,7 +6,8 @@ const{
     signup,
     sendOTP,
     changePassword,
-    getProfile
+    getProfile,
+    getlocations
 }=require("../controllers/ThekedarSignup");
 
 const{
@@ -44,6 +45,7 @@ router.post("/t-reset-password-token", resetPasswordToken)
 router.post("/t-reset-password", resetPassword)
 
 router.post("/ThekadarMajdoors",getProfile)
+router.post('/searchlocation',getlocations)
 
 // Export the router for use in the main application
 module.exports = router

@@ -17,6 +17,7 @@ const bookedServiceSchema = new mongoose.Schema({
   },
   service: { type: mongoose.Schema.Types.ObjectId, ref: 'Majddor2' },
   user: { type: mongoose.Schema.Types.ObjectId, ref: 'Customer'},
+  thekedar:{type:mongoose.Schema.Types.ObjectId,ref:'Thekedar'}
 });
 
 

@@ -294,6 +294,8 @@ exports.changePassword=async(req,res)=>{
 }
 
 
+
+
 exports.getProfile = async (req, res) => {
     try {
       const {thekedarID} = req.body;
@@ -322,4 +324,61 @@ exports.getProfile = async (req, res) => {
       });
     }
   };
+
+  
+//   exports.getallloactions=async(req,res)=>{
+//     try {
+//         console.log(Majdoor2)
+//         const {name}=req.body
+//         // const {name}=req.body
+//         const {firstName}=req.body
+//         const {location} =req.body;
+//         console.log(location);
+//         const response=await Majdoor2.find({location});
+//         if(!response){
+//             return res.status(401).json({
+//                 success:false,
+//                 message:"No Related service was found"
+//             })
+//         }
+//         console.log(response)
+//         return res.status(200).json({
+//             success:true,
+//             data:response,
+//         })
+//     } catch (error) {
+//         return res.status(500).json({
+//             success:false,
+//             messge:"No data found",
+//             error:error.message
+//         })
+        
+//     }
+// }
+exports.getlocations=async(req,res)=>{
+    try {
+    
+        const {location} =req.body;
+        console.log(location);
+        const response=await Thekedar.find({location}).populate({path:"majdoors"}).populate({path:"additionalDetails"})
+        if(!response){
+            return res.status(401).json({
+                success:false,
+                message:"No Related service was found"
+            })
+        }
+        console.log(response)
+        return res.status(200).json({
+            success:true,
+            data:response,
+        })
+    } catch (error) {
+        return res.status(500).json({
+            success:false,
+            messge:"No data found",
+            error:error.message
+        })
+        
+    }
+}  
   
