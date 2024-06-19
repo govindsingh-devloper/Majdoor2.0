@@ -177,7 +177,7 @@ const DashboardContent = () => {
         })
         console.log(response.data)
         if(response.data.success){
-            setBookings([response.data.data])
+            setBookings(response.data.data)
             console.log('Bookings:', response.data.data);
         }
         

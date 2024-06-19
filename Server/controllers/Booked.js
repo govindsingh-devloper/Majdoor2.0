@@ -117,7 +117,7 @@ exports.CustomerOrder=async(req,res)=>{
 exports.MajdoorBookings=async(req,res)=>{
   try {
     const {userid}=req.body;
-    const response=await Order.findOne({service:userid}).populate({
+    const response=await Order.find({service:userid}).populate({
       path:"user",
       select:"firstName lastName"
     })
