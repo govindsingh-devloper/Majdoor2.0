@@ -6,9 +6,10 @@ import Gallery from '../components/common/Gallery';
 import Facilities from '../components/common/Facilities';
 import Reviews from '../components/common/Reviews';
 import Footer from '../components/common/Footer';
-
+import {useTranslation} from 'react-i18next';
 
 const Home = () => {
+  const { t }=useTranslation();
   return (
     <div className="home" id="home">
     <div className="image">
@@ -16,9 +17,9 @@ const Home = () => {
      
     </div>
     <div className="content">
-      <h3>Why fix it yourself? Leave it to the majdoors.</h3>
-      <p>Majdoor is more than just a platform for connecting workers and clients.</p>
-      <a href="#about" className="btn">get started</a>
+      <h3>{t('t')}</h3>
+      <p>{t('l')}</p>
+      <a href="#about" className="btn">{t('h2')}</a>
     </div>
 
     <div>

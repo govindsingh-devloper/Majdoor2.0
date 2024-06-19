@@ -9,11 +9,12 @@ import gImg3 from '../../images/g-img-3.jpg';
 import gImg4 from '../../images/g-img-4.jpg';
 import gImg5 from '../../images/g-img-5.jpg';
 import gImg6 from '../../images/g-img-6.jpg';
-
+import {useTranslation} from 'react-i18next';
 const Gallery = () => {
+  const { t }=useTranslation();
   return (
     <section className="gallery" id="gallery">
-      <h1 className="heading"> our <span>gallery</span> </h1>
+      <h1 className="heading"> {t('G1')}<span>{t('G2')}</span> </h1>
       <div className="gallery-container">
         <a className="box" href={gImg1}><img src={gImg1} alt="Gallery 1" /></a>
         <a className="box" href={gImg2}><img src={gImg2} alt="Gallery 2" /></a>

@@ -3,28 +3,29 @@ import Template from '../components/core/auth/Template'
 import thekedaaricon from '../images/thekedaaricon.jpg';
 import majdooricon from '../images/majdooricon.jpg';
 import customericon from '../images/customericon.jpg';
-
+import {useTranslation} from 'react-i18next';
 const Login = () => {
+  const { t }=useTranslation();
   return (
     <>
     <div>
       <section className="services" id="services">
-        <h3 class="heading">Please select<span> your account type!</span> </h3>
+        <h3 class="heading">{t('l2')}<span> {t('l3')}</span> </h3>
         <div class="box-container">
           <div class="box">
             <img src={customericon} alt="Customer icon"/>
-            <h3>Login as a Customer</h3>
-            <a href="/customer-login" class="btn">Login as a Customer</a>
+            <h3>{t('l4')}</h3>
+            <a href="/customer-login" class="btn">{t('l4')}</a>
           </div>
           <div class="box">
             <img src={majdooricon} alt="Majdoor icon"/>
-            <h3>Login as a Majdoor</h3>
-            <a href="/majdoor-login" class="btn">Login as a Majdoor</a>
+            <h3>{t('l5')}</h3>
+            <a href="/majdoor-login" class="btn"> {t('l5')}</a>
           </div>
           <div class="box">
             <img src={thekedaaricon} alt="Thekedar icon"/>
-            <h3>Login as an Thekedar</h3>
-            <a href="/thekedar-login" class="btn">Login as an Thekedar</a>
+            <h3>{t('l6')}</h3>
+            <a href="/thekedar-login" class="btn">{t('l6')}</a>
           </div>
         </div>
       </section>

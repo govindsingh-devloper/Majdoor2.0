@@ -3,8 +3,10 @@ import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom'
 import "../css/style.css";
 import { login } from '../services/operations/MajdoorAuthAPI'; 
+import {useTranslation} from 'react-i18next';
 
 const LoginFormMajdoor = () => {
+    const { t }=useTranslation();
     const navigate=useNavigate();
     const dispatch=useDispatch();
     const[formData,setFormData]=useState({
@@ -30,14 +32,14 @@ const LoginFormMajdoor = () => {
     return (
         <div id="form-main">
             <div id="form-div">
-                <h2 className="sign">Login Here</h2>
+                <h2 className="sign">{t('l1')}</h2>
                 <form className="form" id="form1" onSubmit={handleOnSubmit}>
                     <p className="name">
                         <input
                             name="firstName"
                             type="text"
                             className="validate[required,custom[onlyLetter],length[0,100]] feedback-input"
-                            placeholder="Name"
+                            placeholder={t('g')}
                             id="name"
                             value={firstName}
                             onChange={handleOnChange}
@@ -49,13 +51,13 @@ const LoginFormMajdoor = () => {
                             type="password"
                             className="validate[required,custom[email]] feedback-input"
                             id="contact"
-                            placeholder="Contact"
+                            placeholder={t('g1')}
                             value={contactNumber}
                             onChange={handleOnChange}
                         />
                     </p>
                     <div className="submit">
-                        <input type="submit" value="Login" id="button-blue" />
+                        <input type="submit" value={t('L')} id="button-blue" />
                         <div className="ease"></div>
                     </div>
                 </form>
@@ -63,7 +65,7 @@ const LoginFormMajdoor = () => {
                     <p>Forgot Password</p>
                 </Link> */}
                 <Link to="/majdoor-signup">
-                    <p>Create Account</p>
+                    <p>{t('g2')}</p>
                 </Link>
             </div>
         </div>

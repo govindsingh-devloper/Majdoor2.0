@@ -2,10 +2,10 @@ import React from 'react';
 import "../../css/style.css";
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-
+import {useTranslation} from 'react-i18next';
 const Footer = () => {
   const { token } = useSelector((state) => state.auth);
-
+  const { t }=useTranslation();
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -16,32 +16,32 @@ const Footer = () => {
     <section className="footer">
       <div className="box-container">
         <div className="box">
-          <h3>quick links</h3>
+          <h3>{t('f1')}</h3>
           {
             token === null ?
             (
             <>
-            <Link className="link" to='/' onClick={scrollToTop}><i className="fas fa-angle-right"></i>Home</Link>
-            <Link className="link" to='/about' onClick={scrollToTop}><i className="fas fa-angle-right"></i>About</Link>
-            <Link className="link" to='/services' onClick={scrollToTop}><i className="fas fa-angle-right"></i>Services</Link>
-            <Link className="link" to='/reviews' onClick={scrollToTop}><i className="fas fa-angle-right"></i>Reviews</Link>
+            <Link className="link" to='/' onClick={scrollToTop}><i className="fas fa-angle-right"></i>{t('f2')}</Link>
+            <Link className="link" to='/about' onClick={scrollToTop}><i className="fas fa-angle-right"></i>{t('a1')}</Link>
+            <Link className="link" to='/services' onClick={scrollToTop}><i className="fas fa-angle-right"></i>{t('S')}</Link>
+            <Link className="link" to='/reviews' onClick={scrollToTop}><i className="fas fa-angle-right"></i>{t('R')}</Link>
             </> ):(
               <>
-              <Link className="link" to='/' onClick={scrollToTop}><i className="fas fa-angle-right"></i>Website-Home</Link>
-              <Link className="link" to='/about' onClick={scrollToTop}><i className="fas fa-angle-right"></i>About</Link>
-              <Link className="link" to='/services' onClick={scrollToTop}><i className="fas fa-angle-right"></i>Services</Link>
-              <Link className="link" to='/reviews' onClick={scrollToTop}><i className="fas fa-angle-right"></i>Reviews</Link>
+              <Link className="link" to='/' onClick={scrollToTop}><i className="fas fa-angle-right"></i>{t('f3')}</Link>
+              <Link className="link" to='/about' onClick={scrollToTop}><i className="fas fa-angle-right"></i>{t('a1')}</Link>
+              <Link className="link" to='/services' onClick={scrollToTop}><i className="fas fa-angle-right"></i>{t('S')}</Link>
+              <Link className="link" to='/reviews' onClick={scrollToTop}><i className="fas fa-angle-right"></i>{t('R')}</Link>
               </>
               
             )
           }
         </div>
         <div className="box">
-          <h3>newsletter</h3>
-          <p>Subscribe for latest updates</p>
+          <h3>{t('f4')}</h3>
+          <p>{t('f5')}</p>
           <form action="">
-            <input type="email" name="" placeholder="enter your email" id="" className="email" />
-            <input type="submit" value="subscribe" className="btn" />
+            <input type="email" name="" placeholder={t('f6')} id="" className="email" />
+            <input type="submit" value={t('f10')} className="btn" />
           </form>
           <div className="share">
             <a href="#" className="fab fa-facebook-f"></a>
@@ -51,7 +51,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className="credit">Created by <span>TEAM 5 STARS</span> | all rights reserved!</div>
+      <div className="credit">{t('f7')} <span>{t('f8')} </span>{t('f9')} </div>
     </section>
   );
 };

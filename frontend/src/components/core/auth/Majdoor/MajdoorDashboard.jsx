@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom"
 import { apiConnector } from '../../../../services/apiconnector';
 import { ORDER_ENDPOINT } from '../../../../services/api';
 import { RiEditBoxLine } from 'react-icons/ri';
-
+import {useTranslation} from 'react-i18next';
 
 
 
@@ -23,7 +23,7 @@ const sharedClasses = {
 const Sidebar = ({ activeContent, onContentChange }) => {
   const { token } = useSelector((state) => state.auth);
   const { user } = useSelector((state) => state.profile);
-
+  const { t }=useTranslation();
   const renderButton = (label) => (
     <button
       onClick={() => onContentChange(label)}
@@ -38,42 +38,43 @@ const Sidebar = ({ activeContent, onContentChange }) => {
     <aside className="bg-zinc-800 text-zinc-200 w-72 space-y-6 py-8 px-4">
       <div className="text-center text-3xl font-semibold">Hi, {user.firstName}!</div>
       <nav>
-        {renderButton('डैशबोर्ड')}
-        {renderButton('रिकॉर्ड')}
-        {renderButton('उपस्थिति')}
-        {renderButton('प्रोफाइल')}
-        {renderButton('श्रम अधिकार')}
+        {(renderButton(t('m1')))}
+        {(renderButton(t('m11')))}
+        {(renderButton(t('m15')))}
+        {(renderButton(t('m16')))}
+        {(renderButton(t('m17')))}
       </nav>
       <div className="border-t border-zinc-700 mt-6 pt-6">
-        {renderButton('सहायता')}
-        {renderButton('सेटिंग्स और समर्थन')}
+      {(renderButton(t('m18')))}
+      {(renderButton(t('m19')))}
       </div>
     </aside>
   );
 };
 
 const MainContent = ({ activeContent }) => {
+  const { t }=useTranslation();
   let content;
   switch (activeContent) {
-    case 'डैशबोर्ड':
+    case t('m1'):
       content = <DashboardContent />;
       break;
-    case 'रिकॉर्ड':
+    case t('m11'):
       content = <RecordsContent />;
       break;
-    case 'उपस्थिति':
+    case t('m15'):
       content = <AttendanceContent />;
       break;
-    case 'प्रोफाइल':
+    case t('m16'):
       content = <ProfileContent />;
       break;
-    case 'श्रम अधिकार':
+    case t('m17'):
       content = <LaborRightsContent />;
       break;
-    case 'सहायता':
+    case t('m18'):
       content = <HelpContent />;
       break;
-    case 'सेटिंग्स और समर्थन':
+    case t('m19'):
       content = <SettingsAndSupportContent />;
       break;
     default:
@@ -91,23 +92,25 @@ const MainContent = ({ activeContent }) => {
 
 
 const BookingTable = ({bookings}) => {
+  const { t }=useTranslation();
   const { user } = useSelector((state) => state.profile);
+  const {token}=useSelector((state)=>state.auth)
   return (
     <div className="bg-white shadow overflow-hidden sm:rounded-lg">
       <table className="min-w-full divide-y divide-zinc-200">
         <thead className="bg-zinc-50">
           <tr>
-            <th className={sharedClasses.tableHeader}>नाम</th>
-            <th className={sharedClasses.tableHeader}>बुकिंग आईडी</th>
-            <th className={sharedClasses.tableHeader}>पता</th>
-            <th className={sharedClasses.tableHeader}>फोन नंबर</th>
-            <th className={sharedClasses.tableHeader}>काम</th>
-            <th className={sharedClasses.tableHeader}>तारीख</th>
-            <th className={sharedClasses.tableHeader}>लागत</th>
+            <th className={sharedClasses.tableHeader}>{t("m2")}</th>
+            <th className={sharedClasses.tableHeader}>{t("m3")}</th>
+            <th className={sharedClasses.tableHeader}>{t("m4")}</th>
+            <th className={sharedClasses.tableHeader}>{t("m5")}</th>
+            <th className={sharedClasses.tableHeader}>{t("m6")}</th>
+            <th className={sharedClasses.tableHeader}>{t("m7")}</th>
+            <th className={sharedClasses.tableHeader}>{t("m8")}</th>
             
 
-            <th className={sharedClasses.tableHeader}>status</th>
-            <th className={sharedClasses.tableHeader}>Actions</th>
+            <th className={sharedClasses.tableHeader}>{t("m9")}</th>
+            <th className={sharedClasses.tableHeader}>{t("m10")}</th>
           </tr>
         </thead>
         <tbody className="bg-white divide-y divide-zinc-200">
@@ -163,6 +166,7 @@ const TableRow = ({ name, bookingId, address, phoneNumber, work, date, cost, sta
 
 
 const DashboardContent = () => {
+  const { t }=useTranslation();
   const[bookings,setBookings]=useState([]);
   const { token } = useSelector((state) => state.auth);
   const { user } = useSelector((state) => state.profile);
@@ -188,17 +192,21 @@ const DashboardContent = () => {
 
 useEffect(()=>{
     getMajdoorBookings();
+    
 
 },[userid, token])
+
+
+
   return (
     <>
     <section className="mb-8">
-      <h2 className="text-xl font-semibold mb-4">नई बुकिंग</h2>
+      <h2 className="text-xl font-semibold mb-4">{t("m12")}</h2>
       <BookingTable bookings={bookings}/>
     </section>
 
     <section>
-      <h2 className="text-xl font-semibold mb-4">मेरा आरक्षण</h2>
+      <h2 className="text-xl font-semibold mb-4">{t("m13")}</h2>
       <BookingTable />
     </section>
 
@@ -598,11 +606,12 @@ const HelpContent = () => {
 };
 
 const SettingsAndSupportContent = () => {
-  return <div>सेटिंग्स और समर्थन Content</div>;
+  return <div>सेटिंग्स और समर्थन </div>;
 };
 
 const DefaultContent = () => {
-  return <div>Welcome! Please select an option from the sidebar.</div>;
+  const { t }=useTranslation();
+  return <div>{t('m14')}</div>;
 };
 
 const ReactComponent = () => {
