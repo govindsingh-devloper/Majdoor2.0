@@ -95,7 +95,7 @@ function DashboardContent({ userName }) {
 
         {/* Alerts and Notifications Section */}
         <div className="mt-4">
-          <button className={BUTTON_CLASSES}>View Notifications</button>
+          {/* <button className={BUTTON_CLASSES}>View Notifications</button> */}
           {/* Notification list/modal can be implemented here */}
         </div>
       </main>
