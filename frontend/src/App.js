@@ -72,7 +72,7 @@ const App = () => {
   return (
     <>
       <div>
-      <Dropdown/>
+     
           <Header />
           
           <div className="main-content">
@@ -129,9 +129,9 @@ const App = () => {
             {/*<Route path="/CustomerDashboard/Edit" element={<ChangeProfilePicture />}/>*/}
             <Route path="/ThekedarDashboard" element={<ThekedarDashboard/>} />
 
-            </Routes>
+          </Routes>
           
-          {/* <Footer />  */}
+
           </div>
           
           

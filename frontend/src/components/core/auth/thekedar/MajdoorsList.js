@@ -43,17 +43,45 @@ const MajdoorsList = ({ token, user }) => {
     return (
         <div>
             <h2>Majdoors</h2>
-            <div className="majdoors-container">
-                {majdoors.map((majdoor) => (
-                    <div key={majdoor._id} className="card">
-                        <div className="card-body">
-                            <h3 className="card-title">{majdoor.firstName} {majdoor.lastName}</h3>
-                            <p className="card-text">Skills: {majdoor.skills}</p>
-                            {/* Example: Display other majdoor details here */}
-                        </div>
-                    </div>
-                ))}
-            </div>
+            <div className="overflow-x-auto">
+  <table className="min-w-full bg-white border border-zinc-200">
+    <thead>
+      <tr className="bg-zinc-100">
+        <th className="py-2 px-4 border-b">नाम</th>
+        <th className="py-2 px-4 border-b">आईडी</th>
+        <th className="py-2 px-4 border-b">पता</th>
+        <th className="py-2 px-4 border-b">फोन नंबर</th>
+        <th className="py-2 px-4 border-b">काम</th>
+        <th className="py-2 px-4 border-b">तारीख</th>
+        <th className="py-2 px-4 border-b">रकम</th>
+      </tr>
+    </thead>
+    <tbody>
+      {majdoors.map((majdoor) => (
+        <tr key={majdoor.id}>
+          <td className="py-2 px-4 border-b">{majdoor.name}</td>
+          <td className="py-2 px-4 border-b">{majdoor.id}</td>
+          <td className="py-2 px-4 border-b">{majdoor.address}</td>
+          <td className="py-2 px-4 border-b">{majdoor.phone}</td>
+          <td className="py-2 px-4 border-b">{majdoor.work}</td>
+          <td className="py-2 px-4 border-b">{majdoor.date}</td>
+          <td className="py-2 px-4 border-b">{majdoor.payment}</td>
+        </tr>
+      ))}
+      {/* Placeholder for new data entry */}
+      <tr>
+        <td className="py-2 px-4 border-b">Sia Mehta</td>
+        <td className="py-2 px-4 border-b">Placeholder ID</td>
+        <td className="py-2 px-4 border-b">Placeholder Address</td>
+        <td className="py-2 px-4 border-b">Placeholder Phone</td>
+        <td className="py-2 px-4 border-b">Placeholder Work</td>
+        <td className="py-2 px-4 border-b">Placeholder Date</td>
+        <td className="py-2 px-4 border-b">Placeholder Payment</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
         </div>
     );
 };

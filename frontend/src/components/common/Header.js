@@ -17,7 +17,7 @@ const Header = () => {
         <a href="/index.html" className="logo">
           <i className="fas fa-user-hard-hat"></i> Majdoor
         </a>
-        <div className="links" >
+        <div className="links flex items-center justify-center gap-x-4" >
           {token === null ? (
             <>
               <div className='flex items-center justify-center gap-x-4'>
@@ -27,7 +27,9 @@ const Header = () => {
               <Link to='/reviews'>{t('R')}</Link>
               <Link to='/contact'>{t('C')}</Link>
               <Link to='/login'>{t('L')}</Link>
+          
               <Dropdown/>
+         
               </div>
             </>
           ) : (
