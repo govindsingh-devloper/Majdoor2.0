@@ -67,16 +67,17 @@ const SearchMajdoor = () => {
               <div className="App">
       {/* <header className="App-header"> */}
         {/* <h1 className="text-gray-700 mb-2">Send Audio Notes</h1> */}<br/>
-          <button><SoundRecorder /></button><br/>
-          <AudioPlayer /> <br/>
+          {/* <button><SoundRecorder /></button><br/>
+          <AudioPlayer /> <br/> */}
           </div>
 
   <div className={`${sharedClasses.mt4} ${sharedClasses.flex} ${sharedClasses.justifyBetween}`}>
     <button id="send-audio" className={`${sharedClasses.mt4} ${sharedClasses.bgPurple500} ${sharedClasses.textWhite} ${sharedClasses.p2} ${sharedClasses.rounded}`}>
-      Send Audio Notes
+      {/* Send Audio Notes */}
+      <button><AudioUploadForm /></button>
 
     </button>
-    <div className={`${sharedClasses.mt4} ${sharedClasses.bgPurple500} ${sharedClasses.textWhite} ${sharedClasses.p2} ${sharedClasses.rounded}`}>   <AudioUploadForm /></div>
+    <div className={`${sharedClasses.mt4} ${sharedClasses.bgPurple500} ${sharedClasses.textWhite} ${sharedClasses.p2} ${sharedClasses.rounded}`}>   <FetchAudio /></div>
 
   </div>
          

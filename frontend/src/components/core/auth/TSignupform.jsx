@@ -67,7 +67,7 @@ const TSignupform = () => {
     <form onSubmit={handleOnSubmit} className="form" id="form1" method="post">
     <div>
        <label className="block text-sm text-gray-600" for="us">
-       <p>FirstName<sup>*</sup></p>
+       <p>First Name<sup>*</sup></p>
         <input className="w-full px-5 py-4 text-gray-700 bg-gray-200 rounded" 
                                        
             required
@@ -75,11 +75,11 @@ const TSignupform = () => {
             name="firstName"
             value={firstName}
             onChange={handleOnChange}
-            placeholder="firstName"
+            placeholder="Enter First Name"
         />
        </label>
        <label className="block text-sm text-gray-600" for="us">
-       <p>lastName<sup>*</sup></p>
+       <p>Last Name<sup>*</sup></p>
         <input className="w-full px-5 py-4 text-gray-700 bg-gray-200 rounded" 
                                        
             required
@@ -87,7 +87,7 @@ const TSignupform = () => {
             name="lastName"
             value={lastName}
             onChange={handleOnChange}
-            placeholder="firstName"
+            placeholder="Enter Last Name"
         />
        </label>
        <label className="block text-sm text-gray-600" for="us">

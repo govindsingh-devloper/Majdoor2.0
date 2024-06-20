@@ -6,7 +6,7 @@ import '../../../../css/style.css';
 
 const MajdoorsList = ({ token, user }) => {
     const [majdoors, setMajdoors] = useState([]);
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
     const userID = user._id;
 
     useEffect(() => {
