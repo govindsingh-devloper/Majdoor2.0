@@ -41,6 +41,8 @@ function App() {
 
   const [searchresults,setSearchResults]=useState([]);
   const [location, setLocation] = useState('');
+  const [thekedarLocation, setThekedarLocation] = useState('');
+  const [thekedarSearchResults, setThekedarSearchResults] = useState([]);
   const { user } = useSelector((state) => state.profile);
   const navigate = useNavigate();
 
@@ -59,6 +61,23 @@ function App() {
     console.error('Error fetching data:', error);
     
    }
+  };
+
+  //Thekedars Serach 
+  
+  const handleThekedarSearch = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await apiConnector('POST', SearchEndpoint.SEARCH_LOCATION, {
+        location: thekedarLocation,
+      });
+      console.log("Loaction k response",response.data);
+      setThekedarSearchResults(response.data.data);
+      // const navigationUrl = '/searchMajdoor';
+      // navigate(navigationUrl, { state: { thekedarSearchResults: response.data.data } });
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
   };
 
 
@@ -139,11 +158,12 @@ function App() {
                     <input
                       type="text"
                       placeholder="Location..."
-                      value={location}
-                      onChange={(e) => setLocation(e.target.value)}
+                      value={thekedarLocation}
+                      onChange={(e) => setThekedarLocation(e.target.value)}
                       className="w-full p-3 border rounded-lg mb-4"
                     />
-                  <button type='submit'className="w-full p-3 bg-blue-500 text-white rounded-lg">Search</button>  
+                  <button type='button'   onClick={handleThekedarSearch} 
+                  className="w-full p-3 bg-blue-500 text-white rounded-lg">Search</button>  
                 </div>
              </div>   
           </div>
@@ -194,9 +214,30 @@ function App() {
 
   
 
-       <div className="container"><h1 className='text-3xl font-bold '>Thekedar near by your city</h1><div className='container flex'> <Cards/><Cards/><Cards/><Cards/></div></div>
+       <div className="container"><h1 className='text-3xl font-bold '>Thekedar near by your city</h1><div className='container flex'>
+        
+        {/* <Cards
+
+
+        /><Cards/><Cards/><Cards/> */}
+        {thekedarSearchResults.map((thekedar) => (
+                <Cards
+                  key={thekedar._id}
+                  thekedarId={thekedar._id}
+                  title={thekedar.firstName}
+                  location={thekedar.location}
+                  description={thekedar.description}
+                  majdoors={thekedar.majdoors.length}
+                  image={thekedar.image}
+                  // Add other necessary props based on your Card component implementation
+                />
+              ))}
+
+          
+        </div></div>
       </div>
       <SearchMajdoors searchresults={searchresults} />
+      {/* <SeacrhThekedars thekedarSearchResults={thekedarSearchResults}/> */}
      
     </div>
     <footer className="bg-gray-800 text-white py-4 text-center">

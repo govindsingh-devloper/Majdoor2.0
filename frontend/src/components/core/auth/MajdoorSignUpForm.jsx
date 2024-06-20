@@ -16,13 +16,13 @@ const Signupformm = () => {
         skills:"",
         contactNumber:"",
         thekedarId:"",
-        preferredLocation:"",
-        navigate,
+        location:"",
+        // navigate,
     })
 
     const [showPassword,setshowPassword]=useState(false);
     const[showConfirmPassword,setShowConfirmPassword]=useState(false)
-    const{firstName,lastName,skills,contactNumber,thekedarId,preferredLocation }=formData
+    const{firstName,lastName,skills,contactNumber,thekedarId,location }=formData
      // Handle input fields, when some value changes
   const handleOnChange = (e) => {
     setFormData((prevData) => ({
@@ -43,15 +43,15 @@ const Signupformm = () => {
     //   accountType,
     }
     console.log(signupData)
-    dispatch(signUp(
-      firstName,
-      lastName,
-      skills,
-      contactNumber,
-      thekedarId,
-      preferredLocation,
-      navigate
-    ))
+    dispatch(signUp(signupData));
+      // firstName,
+      // lastName,
+      // skills,
+      // contactNumber,
+      // thekedarId,
+      // location,
+      // navigate
+    //))
      // Setting signup data to state
     // To be used after otp verification
     // dispatch(setSignupData(signupData))
@@ -64,10 +64,10 @@ const Signupformm = () => {
         skills:"",
         contactNumber:"",
         thekedarId:"",
-        preferredLocation:"",
+        location:"",
       })
-      // toast.success("Sign In Successfully")
-}
+      toast.success("Sign In Successfully")
+};
     return (
       <div className="container mx-auto h-full flex flex-1 justify-center items-center">
             <div className="w-full max-w-lg">
@@ -86,7 +86,7 @@ const Signupformm = () => {
             name="firstName"
             value={firstName}
             onChange={handleOnChange}
-            placeholder="First Name"
+            placeholder="Enter First Name"
         />
        </label>
        <label className="block text-sm text-gray-600" for="us">
@@ -98,20 +98,9 @@ const Signupformm = () => {
             name="lastName"
             value={lastName}
             onChange={handleOnChange}
-            placeholder="Last Name"
+            placeholder="Enter Last Name"
         />
        </label>
-       {/* <label>
-       <p>LastName<sup>*</sup></p>
-        <input
-            required
-            type="text"
-            name="lasttName"
-            value={lastName}
-            onChange={handleOnChange}
-            placeholder="lastName"
-        />
-       </label> */}
        <label className="block text-sm text-gray-600" for="us">
        <p>Skills<sup>*</sup></p>
         <input className="w-full px-5 py-4 text-gray-700 bg-gray-200 rounded" 
@@ -146,27 +135,16 @@ const Signupformm = () => {
         />
        </label>
        <label className="block text-sm text-gray-600" for="us">
-       <p>Preferred Location</p>
-        <input className="w-full px-5 py-4 text-gray-700 bg-gray-200 rounded" 
-            // required
-            type={preferredLocation?"text":"preferredLocation"}
-            name="preferredLocation"
-            value={preferredLocation}
-            onChange={handleOnChange}
-            placeholder="Enter Preferred Location"
-        />
-       </label>
-       {/* <label className="block text-sm text-gray-600" for="us">
-       <p>Confirm Password<sup>*</sup></p>
+       <p>Location</p>
         <input className="w-full px-5 py-4 text-gray-700 bg-gray-200 rounded" 
             required
-            type={showConfirmPassword?"text":"password"}
-            name="confirmPassword"
-            value={confirmPassword}
+            type={location?"text":"location"}
+            name="location"
+            value={location}
             onChange={handleOnChange}
-            placeholder="Enter confirm Passsword"
+            placeholder="Enter Location"
         />
-       </label> */}
+       </label>
 
     </div>
 

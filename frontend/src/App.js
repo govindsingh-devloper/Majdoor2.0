@@ -44,6 +44,7 @@ import CustomerLayout from "./components/core/auth/Customer/CustomerLayout";
 import DeleteAccount from "./components/core/auth/Customer/Edit/DeleteAccount";
 import Dropdown from "./components/Dropdown";
 import CustomerBooking from "./components/core/auth/Customer/CustomerBooking";
+import ThekedarConfirmation from "./components/core/auth/thekedar/ThekedarConfirmation";
 
 const App = () => {
   useEffect(() => {
@@ -128,6 +129,7 @@ const App = () => {
    
             {/*<Route path="/CustomerDashboard/Edit" element={<ChangeProfilePicture />}/>*/}
             <Route path="/ThekedarDashboard" element={<ThekedarDashboard/>} />
+            <Route path="/ThekedarConfirmation" element={<ThekedarConfirmation/>} />
 
           </Routes>
           
