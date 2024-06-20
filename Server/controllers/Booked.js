@@ -1,6 +1,7 @@
 const Order = require('../models/BookedService');
 const Customer=require('../models/Customer')
 const Majdoor2=require("../models/Majdoor2")
+const ThekedarBooking =require("../models/ThekedaarBooking");
 
 
 exports.createOrder = async (req, res) => {
@@ -18,7 +19,7 @@ exports.createOrder = async (req, res) => {
       service,
       user,
       status,
-      thekedar
+    
     } = req.body;
 
 
@@ -35,7 +36,7 @@ exports.createOrder = async (req, res) => {
       service,
       user,
       status,
-      thekedar
+      // thekedar
     });
 
 
@@ -172,5 +173,52 @@ exports.updateStatus = async (req, res) => {
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'Internal server error' });
+  }
+};
+
+
+
+//Thekedaar Ordering
+exports.thekedarOrder = async (req, res) => {
+  try {
+    const {
+      address,
+      city,
+      state,
+      country,
+      pincode,
+      phoneNumber,
+      street,
+      email,
+      firstName,
+      thekedar,
+      user,
+      status,
+    
+    } = req.body;
+
+
+    const newOrder = new ThekedarBooking({
+      address,
+      city,
+      state,
+      country,
+      pincode,
+      phoneNumber,
+      street,
+      email,
+      firstName,
+      thekedar,
+      user,
+      status,
+      // thekedar
+    });
+
+
+    await newOrder.save();
+    res.status(201).json({ success: true, message: 'Order created successfully', order: newOrder });
+  } catch (error) {
+    console.error('Error creating order:', error);
+    res.status(500).json({ success: false, message: 'Failed to create order', error });
   }
 };

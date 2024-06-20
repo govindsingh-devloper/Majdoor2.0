@@ -152,7 +152,7 @@ const BookingTable = ({ bookings }) => {
             <TableRow
               key={booking._id} // Make sure each row has a unique key
               name={booking.firstName}
-              bookingId={booking.bookingId}
+              bookingId={booking._id}
               address={booking.address}
               phoneNumber={booking.phoneNumber}
               work={user.skills}
@@ -180,6 +180,31 @@ const TableRow = ({ name, bookingId, address, phoneNumber, work, date, cost, sta
     // Call an API or perform any other action for rejection
   };
 
+  const {token}=useSelector((state)=>state.auth)
+
+  const handleAccountStatus=async(bookingId,status)=>{
+    try {
+      const ps=await apiConnector("PUT",ORDER_ENDPOINT.STATUSUPDATE_API,{bookingId,status},{
+        headers:{
+          Authorization:`Bearer${token}`
+        }
+      })
+      if(ps.data.success){
+        console.log(ps.data.message)
+      }
+      
+    } catch (error) {
+      console.log("Bhai Error aa gyi",error.message)
+
+      
+    }
+  }
+  // useEffect(()=>{
+  //   handleAccountStatus()
+  // },[])
+
+  // const {orders}=useSelector((state)=>state.orders)
+  // console.log("Mere saare Orders",orders)
   return (
     <tr>
       <td className={sharedClasses.tableRow}>{name}</td>
@@ -190,20 +215,15 @@ const TableRow = ({ name, bookingId, address, phoneNumber, work, date, cost, sta
       <td className={sharedClasses.tableRow}>{date}</td>
       <td className={sharedClasses.tableRow}>{cost}</td>
       <td className={sharedClasses.tableRow}>
-        {status === 'Pending' ? (
-          <>
-            <button className="text-green-500" onClick={handleApprove}>
-              ✔️
-            </button>
-            <button className="text-red-500" onClick={handleReject}>
-              ❌
-            </button>
-          </>
-        ) : (
-          <div>
-            {approvalStatus === 'approved' && <span>Approved</span>}
-            {approvalStatus === 'rejected' && <span>Rejected</span>}
-          </div>
+
+        {/* <button className="text-green-500">{status === "Pending" ? "✔️" : ""}</button>
+        <button className="text-red-500">{status === "❌" ? "❌" : ""}</button> */}
+
+        {status==="Pending" &&(
+         <div>
+         <button onClick={()=>handleAccountStatus(bookingId,"approved")}>Approved</button>
+         <button onClick={()=>handleAccountStatus(bookingId,"reject")}>Reject</button>
+         </div>
         )}
       </td>
     </tr>

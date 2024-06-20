@@ -47,7 +47,9 @@ export const contactusEndpoint = {
   export const ORDER_ENDPOINT={
     ORDER_API:BASE_URL + "/auth/orders",
     BOOKING_API:BASE_URL + "/auth/CustomerOrder",
-    MAJDOORBOOKING_API:BASE_URL + "/auth/MajdoorBookings"
+    MAJDOORBOOKING_API:BASE_URL + "/auth/MajdoorBookings",
+    STATUSUPDATE_API:BASE_URL + "/auth/updateStatus"
 
   }
+  
 
