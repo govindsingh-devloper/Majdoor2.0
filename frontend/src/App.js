@@ -36,6 +36,10 @@ import CustomerHome from "./components/core/auth/Customer/CustomerHome";
 import Signupform from "./components/core/auth/Signupform";
 import TSignupform from "./components/core/auth/TSignupform";
 import Edit from "./components/core/auth/Customer/Edit";
+import MEdit from "./components/core/auth/Majdoor/MEdit";
+//import TEdit from "./components/core/auth/thekedar/TEdit";
+
+import TEdit from "./components/core/auth/thekedar/TEdit.jsx";
 import ChangeProfilePicture from "./components/core/auth/Customer/Edit/ChangeProfilePicture";
 import MajdoorConfirmation from "./components/core/auth/Majdoor/MajdoorConfirmation";
 import ThekedarDashboard from '../src/components/core/auth/thekedar/ThekedarDashboard';
@@ -117,6 +121,7 @@ const App = () => {
 
             
             {/* majdoor */}
+            <Route path="/MajdoorDashboard/MEdit" element={<MEdit />} />
             <Route path="/Mdashboard" element={<Mdashboard />} />
             <Route path="/MajdoorDashboard" element={<MajdoorDashboard />} />
            
@@ -124,7 +129,7 @@ const App = () => {
               
             {/* thekedar */}
         
-    
+            <Route path="/ThekedarDashboard/TEdit" element={<TEdit />} />
             <Route path="/Tverify-email" element={<TVerifyEmail/>}/>
    
             {/*<Route path="/CustomerDashboard/Edit" element={<ChangeProfilePicture />}/>*/}
