@@ -71,18 +71,10 @@ const SearchMajdoor = () => {
           <AudioPlayer /> <br/> */}
             </div>
 
-<<<<<<< Updated upstream
             <div className={`${sharedClasses.mt4} ${sharedClasses.flex} ${sharedClasses.justifyBetween}`}>
               <button id="send-audio" className={`${sharedClasses.mt4} ${sharedClasses.bgPurple500} ${sharedClasses.textWhite} ${sharedClasses.p2} ${sharedClasses.rounded}`}>
                 {/* Send Audio Notes */}
                 <button><AudioUploadForm /></button>
-=======
-  <div className={`${sharedClasses.mt4} ${sharedClasses.flex} ${sharedClasses.justifyBetween}`}>
-  <div><SoundRecorder /></div>
-    <button id="send-audio" className={`${sharedClasses.mt4} ${sharedClasses.bgPurple500} ${sharedClasses.textWhite} ${sharedClasses.p2} ${sharedClasses.rounded}`}>
-      {/* Send Audio Notes */}
-      
->>>>>>> Stashed changes
 
               </button>
               <div className={`${sharedClasses.mt4} ${sharedClasses.bgPurple500} ${sharedClasses.textWhite} ${sharedClasses.p2} ${sharedClasses.rounded}`}>   <FetchAudio /></div>
