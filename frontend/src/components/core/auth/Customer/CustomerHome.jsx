@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom';
@@ -80,13 +79,20 @@ function App() {
     }
   };
 
-
+  const handleMajdoor = async (categorySkills) => {
+    try {
+      const response = await apiConnector("POST", SearchEndpoint.SEARCH_API, { skills: categorySkills });
+      navigate("/searchMajdoor", { state: { searchresults: response.data.data } });
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  };
  
   
 // //  try {
 // //      e.preventDefault();
 // //      // Implement search functionality
-// //      // console.log(`Searching for ${searchQuery} in ${location}`);
+// //      // console.log(Searching for ${searchQuery} in ${location});
 // //      const response=await apiConnector("POST",SearchEndpoint.SEARCH_API,{searchQuery});
 // //      console.log(response);
 // //      setSearchResults(response.data.data)
@@ -204,7 +210,8 @@ function App() {
               </div>
               {/* <p className="mb-2">{category.firstName}</p> */}
               <p className="text-2xl font-bold text-uppercase py-4">{category.skills}</p>
-              <button className="p-2 mb-3 bg-blue-500 text-white rounded">Explore</button>
+              <button className="p-2 mb-3 bg-blue-500 text-white rounded" onClick={() => handleMajdoor(category.skills)}>
+                Explore</button>
             </div>
           ))}
 
@@ -249,5 +256,3 @@ function App() {
 }
 
 export default App;
-
-

@@ -44,7 +44,7 @@ const SearchMajdoor = () => {
   const { user } = useSelector((state) => state.profile);
   const location = useLocation();
   const searchresults = location.state?.searchresults;
-  console.log(searchresults);
+
 
   return (
 
@@ -61,26 +61,26 @@ const SearchMajdoor = () => {
               <a href={`tel:${profile.contactNumber}`} className={`${sharedClasses.bgBlue500} ${sharedClasses.textWhite} ${sharedClasses.p2} ${sharedClasses.rounded}`}>
                 <FontAwesomeIcon icon={faPhone} /> Call
               </a>
-  <Link to={`/searchMajdoor/${profile._id}`} className={`${sharedClasses.bgGreen500} ${sharedClasses.textWhite} ${sharedClasses.p2} ${sharedClasses.rounded}`}>Hire</Link>
+              <Link to={`/searchMajdoor/${profile._id}`} className={`${sharedClasses.bgGreen500} ${sharedClasses.textWhite} ${sharedClasses.p2} ${sharedClasses.rounded}`}>Hire</Link>
             </div >
-              {/* <div className='bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600'> */}
-              <div className="App">
-      {/* <header className="App-header"> */}
-        {/* <h1 className="text-gray-700 mb-2">Send Audio Notes</h1> */}<br/>
-          {/* <button><SoundRecorder /></button><br/>
+            {/* <div className='bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600'> */}
+            <div className="App">
+              {/* <header className="App-header"> */}
+              {/* <h1 className="text-gray-700 mb-2">Send Audio Notes</h1> */}<br />
+              {/* <button><SoundRecorder /></button><br/>
           <AudioPlayer /> <br/> */}
-          </div>
+            </div>
 
-  <div className={`${sharedClasses.mt4} ${sharedClasses.flex} ${sharedClasses.justifyBetween}`}>
-    <button id="send-audio" className={`${sharedClasses.mt4} ${sharedClasses.bgPurple500} ${sharedClasses.textWhite} ${sharedClasses.p2} ${sharedClasses.rounded}`}>
-      {/* Send Audio Notes */}
-      <button><AudioUploadForm /></button>
+            <div className={`${sharedClasses.mt4} ${sharedClasses.flex} ${sharedClasses.justifyBetween}`}>
+              <button id="send-audio" className={`${sharedClasses.mt4} ${sharedClasses.bgPurple500} ${sharedClasses.textWhite} ${sharedClasses.p2} ${sharedClasses.rounded}`}>
+                {/* Send Audio Notes */}
+                <button><AudioUploadForm /></button>
 
-    </button>
-    <div className={`${sharedClasses.mt4} ${sharedClasses.bgPurple500} ${sharedClasses.textWhite} ${sharedClasses.p2} ${sharedClasses.rounded}`}>   <FetchAudio /></div>
+              </button>
+              <div className={`${sharedClasses.mt4} ${sharedClasses.bgPurple500} ${sharedClasses.textWhite} ${sharedClasses.p2} ${sharedClasses.rounded}`}>   <FetchAudio /></div>
 
-  </div>
-         
+            </div>
+
           </div >
         </div >
       ))}
