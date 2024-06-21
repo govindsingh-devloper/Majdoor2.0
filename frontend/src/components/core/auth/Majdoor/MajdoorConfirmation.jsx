@@ -5,7 +5,7 @@ import { setShippingInfo } from '../../../../slices/shippingInfoslice';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { getorders } from '../../../../services/operations/MajdoorAuthAPI';
 import { Country, State } from "country-state-city";
-
+import default_majdoor from '../../../../images/default_majdoor.png';
 
 const MajdoorBookingConfirmation = () => {
   const location = useLocation();
@@ -72,7 +72,7 @@ const MajdoorBookingConfirmation = () => {
       <h2 className="text-center text-2xl font-semibold mb-4">Majdoor Booking Confirmation</h2>
       <div className="flex flex-col md:flex-row items-center md:items-start mb-6">
         <img
-          src="https://placehold.co/100x100"
+          src={default_majdoor}
           alt="Worker"
           className="rounded-full w-24 h-24 md:w-32 md:h-32 mb-4 md:mb-0 md:mr-6"
         />
