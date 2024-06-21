@@ -1,11 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const {auth}=require("../middlewares/auth")    
-<<<<<<< Updated upstream
-const { createOrder,Customerhistory ,CustomerOrder,MajdoorBookings,updateStatus,thekedarOrder} = require('../controllers/Booked');
-=======
-const { createOrder,Customerhistory ,CustomerOrder,MajdoorBookings,ThekedarBookings,updateStatus} = require('../controllers/Booked');
->>>>>>> Stashed changes
+//const { createOrder,Customerhistory ,CustomerOrder,MajdoorBookings,updateStatus,thekedarOrder} = require('../controllers/Booked');
+const { createOrder,Customerhistory ,CustomerOrder,MajdoorBookings,ThekedarBookings,updateStatus,thekedarOrder,TCustomerhistory,TCustomerOrder,TupdateStatus} = require('../controllers/Booked');
 
 
 
@@ -20,13 +17,10 @@ router.post("/MajdoorBookings",MajdoorBookings)
 router.post("/ThekedarBookings",ThekedarBookings)
 router.put("/updateStatus",updateStatus)
 
-<<<<<<< Updated upstream
 //Thekedar Routes
+router.get("/TCustomerBookings",TCustomerhistory);
 router.post("/ThekedarOrder",thekedarOrder);
+router.post("/TCustomerOrder",TCustomerOrder)
+router.put("/TupdateStatus",TupdateStatus)
 
-
-
-
-=======
->>>>>>> Stashed changes
 module.exports = router
