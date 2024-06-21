@@ -147,7 +147,36 @@ exports.MajdoorBookings=async(req,res)=>{
   }
 }
 
+//Thekedar Ki Bookings
+exports.ThekedarBookings=async(req,res)=>{
+  try {
+    const {userid}=req.body;
+    const response=await Order.find({service:userid}).populate({
+      path:"user",
+      select:"firstName lastName"
+    })
+    if(!response){
+      return res.status(403).json({
+        success:false,
+        message:"No Thekedar Found"
+      })
+    }
+    console.log(response)
+    return res.status(200).json({
+      success:true,
+      message:"Data Fetched Successfully",
+      data:response
+    })
+   
+  } catch (error) {
+    return res.status(500).json({
+      success:false,
+      message:"No Related Thekedar",
+      error:error.message
 
+    })
+  }
+}
 
 exports.updateStatus = async (req, res) => {
   try {

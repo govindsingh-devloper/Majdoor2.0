@@ -39,10 +39,10 @@ export default function ProfileDropdown() {
       {open && (
         <div
           onClick={(e) => e.stopPropagation()}
-          className="absolute top-[118%] right-0 z-[1000] divide-y-[1px] divide-richblack-700 overflow-hidden rounded-md border-[1px] border-richblack-700 bg-richblack-800"
+          className="bg-gray-50 absolute top-[118%] right-0 z-[1000] divide-y-[1px] divide-richblack-700 overflow-hidden rounded-md border-[1px] border-richblack-700 bg-richblack-800"
           ref={ref}
         >
-          <Link
+          {/* <Link
             to="/CustomerDashboard"
             onClick={() => setOpen(false)}
             onMouseEnter={() => setHover(true)} // Manage hover state
@@ -52,7 +52,7 @@ export default function ProfileDropdown() {
               <VscDashboard className="text-richblack-900" />
               Dashboard
             </div>
-          </Link>
+          </Link> */}
           <div
             style={{ dashboardStyle,color: 'black', fontSize: '12px' }}
             onClick={() => {

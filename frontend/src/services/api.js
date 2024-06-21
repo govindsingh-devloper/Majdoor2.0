@@ -48,7 +48,8 @@ export const contactusEndpoint = {
     ORDER_API:BASE_URL + "/auth/orders",
     BOOKING_API:BASE_URL + "/auth/CustomerOrder",
     MAJDOORBOOKING_API:BASE_URL + "/auth/MajdoorBookings",
-    STATUSUPDATE_API:BASE_URL + "/auth/updateStatus"
+    STATUSUPDATE_API:BASE_URL + "/auth/updateStatus",
+    THEKEDARBOOKING_API:BASE_URL + "/auth/ThekedarBookings"
 
   }
   
