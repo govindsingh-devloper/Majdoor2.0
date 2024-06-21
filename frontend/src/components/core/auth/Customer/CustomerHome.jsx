@@ -45,7 +45,9 @@ function App() {
   const { user } = useSelector((state) => state.profile);
   const navigate = useNavigate();
 
- 
+  const handleHistoryClick = () => {
+    navigate('/CustomerBookings');
+  };
 
   const handleOnSubmit = async(e) => {
     e.preventDefault();
@@ -149,25 +151,25 @@ function App() {
                   <img src={thekedaaricon} className="w-18 h-18  rounded-lg"></img>
                 </div>
                 < div className="flex flex-col items-center  justify-center mb-4">
-                    {/* <select
-                    value={skills}
-                    onChange={(e) => setSkills(e.target.value)}
+                    <select
+                    value={thekedarLocation}
+                    onChange={(e) => setThekedarLocation(e.target.value)}
                     className="w-full p-3 border rounded-lg mb-4"
                   >
-                    <option value="">Select a skill...</option>
-                    {uniqueCategories.map((category) => (
-                      <option key={category.skills} value={category.skills}>
-                        {category.skills}
+                    <option value="">Select a Location...</option>
+                    {thekedarSearchResults.map((thekedar) => (
+                      <option key={thekedar.location} value={thekedar.location}>
+                        {thekedar.location}
                       </option>
                     ))}
-                  </select> */}
-                    <input
+                  </select>
+                    {/* <input
                       type="text"
                       placeholder="Location..."
                       value={thekedarLocation}
                       onChange={(e) => setThekedarLocation(e.target.value)}
                       className="w-full p-3 border rounded-lg mb-4"
-                    />
+                    /> */}
                   <button type='button'   onClick={handleThekedarSearch} 
                   className="w-full p-3 bg-blue-500 text-white rounded-lg">Search</button>  
                 </div>
@@ -191,7 +193,7 @@ function App() {
               </p>
             <div className="flex flex-col items-center justify-center">
               
-              <button className="p-3 bg-blue-500 text-white font-bold rounded-lg">
+              <button className="p-3 bg-blue-500 text-white font-bold rounded-lg" onClick={handleHistoryClick}>
                 History
               </button>
             </div>

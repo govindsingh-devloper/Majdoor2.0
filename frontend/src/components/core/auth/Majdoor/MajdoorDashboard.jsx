@@ -558,29 +558,31 @@ const LaborRightsContent = () => {
       <a href="https://www.youtube.com/watch?v=lP-y9_NXVAU?si=uq2DShO9Nk5h3KOx" className="block border rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300">
         <img src="https://img.youtube.com/vi/lP-y9_NXVAU/0.jpg" alt="Image 1" className="w-full h-55 object-fit" />
         <div className="p-4">
-          <h3 className="text-md font-semibold">ट्रेड यूनियन एक्ट, 1926 - परिचय</h3>
-          <p className="text-sm text-zinc-500 mt-2">ट्रेड यूनियन एक्ट, 1926 के बारे में जानें।</p>
+          <h3 className="text-md font-semibold">
+          श्रम अधिकार - परिचय</h3>
+          <p className="text-sm text-zinc-500 mt-2">
+          श्रम अधिकार के बारे में जानें।</p>
         </div>
       </a>
       <a href="https://www.youtube.com/watch?v=QcVPILsV84Q?si=r66LqomBDOssfn5j" className="block border rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300">
         <img src="https://img.youtube.com/vi/QcVPILsV84Q/0.jpg" alt="Image 2" className="w-full h-55 object-fit" />
         <div className="p-4">
-          <h3 className="text-md font-semibold">मजदूरी भुगतान एक्ट, 1936 - विवरण</h3>
-          <p className="text-sm text-zinc-500 mt-2">मजदूरी भुगतान एक्ट, 1936 का विवरण।</p>
+          <h3 className="text-md font-semibold">10 श्रम कानूनों को अवश्य जानना चाहिए - विवरण</h3>
+          <p className="text-sm text-zinc-500 mt-2">10 श्रम कानूनों को अवश्य जानना चाहिए का विवरण।</p>
         </div>
       </a>
       <a href="https://www.youtube.com/watch?v=xg43pudL1Ko?si=nBWVBumxMeguwHwg" className="block border rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300">
         <img src="https://img.youtube.com/vi/xg43pudL1Ko/0.jpg" alt="Image 3" className="w-full h-55 object-fit" />
         <div className="p-4">
-          <h3 className="text-md font-semibold">औद्योगिक विवाद एक्ट 1947 - जानकारी</h3>
-          <p className="text-sm text-zinc-500 mt-2">औद्योगिक विवाद एक्ट 1947 के मुख्य बिंदु।</p>
+          <h3 className="text-md font-semibold">श्रम कानून न्यूनतम वेतन 1948 जानकारी</h3>
+          <p className="text-sm text-zinc-500 mt-2">श्रम कानून न्यूनतम वेतन 1948 के मुख्य बिंदु।</p>
         </div>
       </a>
       <a href="https://www.youtube.com/watch?v=kePyliKqy0o?si=bPFVNYYPpjetmzq7" className="block border rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300">
         <img src="https://img.youtube.com/vi/kePyliKqy0o/0.jpg" alt="Image 4" className="w-full h-55 object-fit" />
         <div className="p-4">
-          <h3 className="text-md font-semibold">न्यूनतम मजदूरी एक्ट, 1948 - व्याख्या</h3>
-          <p className="text-sm text-zinc-500 mt-2">न्यूनतम मजदूरी एक्ट, 1948 की व्याख्या।</p>
+          <h3 className="text-md font-semibold">श्रम कानून की व्याख्या।</h3>
+          <p className="text-sm text-zinc-500 mt-2">श्रम कानून की व्याख्या।</p>
         </div>
       </a>
 
