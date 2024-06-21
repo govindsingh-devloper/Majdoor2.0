@@ -34,7 +34,7 @@ const ThekedarProfile = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {/* ... other profile details ... */}
           </div>
-          <IconBtn text="Edit" onClick={() => navigate("/ThekedarDashboard/TEdit")}>
+          <IconBtn text="Edit" onClick={() => navigate("/ThekedarDashboard/Edit")}>
             <RiEditBoxLine />
           </IconBtn>
         </div>

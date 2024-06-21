@@ -19,6 +19,7 @@ exports.createOrder = async (req, res) => {
       service,
       user,
       status,
+    
     } = req.body;
 
 
@@ -34,7 +35,8 @@ exports.createOrder = async (req, res) => {
       firstName,
       service,
       user,
-      status
+      status,
+      // thekedar
     });
 
 

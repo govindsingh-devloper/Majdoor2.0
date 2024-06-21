@@ -221,7 +221,7 @@ exports.allCategories=async(req,res)=>{
         return res.status(200).json({
             success:true,
             message:"Data Fetched Successfully",
-           data: allservices
+            allservices
         })
         
     } catch (error) {
