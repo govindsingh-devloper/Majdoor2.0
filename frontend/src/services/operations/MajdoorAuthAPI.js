@@ -17,10 +17,6 @@ import { setLocations } from "../../slices/categoriesslice";
 const BASE_URL=process.env.REACT_APP_BASE_URL
 
 
-
-
-
-
 const {
 //   SENDOTP_API,
   SIGNUP_API_M,
@@ -35,7 +31,7 @@ const {ALL_CATEGORIES,
 }=SearchEndpoint
 
 
-const{ORDER_API}=ORDER_ENDPOINT
+const{ORDER_API,THEKEDARBOOKING_API}=ORDER_ENDPOINT
 
 
 
@@ -74,7 +70,6 @@ export function login(firstName, contactNumber, navigate) {
       toast.dismiss(toastId)
     }
   }
-
 
   export function signUp(
     firstName,
@@ -115,9 +110,6 @@ export function login(firstName, contactNumber, navigate) {
     }
   }
 
-
-
-
   export function getCategories(){
    
     return async (dispatch)=>{
@@ -143,6 +135,7 @@ export function login(firstName, contactNumber, navigate) {
 
 
   }
+
   export const getSingleService = async (id) => {
     // const toastId = toast.loading("Loading...")
     //   dispatch(setLoading(true));
@@ -164,7 +157,6 @@ export function login(firstName, contactNumber, navigate) {
     //   dispatch(setLoading(false));
     return result
   }
-
 
   //orders API
   export const getorders = (token, orderData, navigate) => async (dispatch) => {
@@ -191,11 +183,34 @@ export function login(firstName, contactNumber, navigate) {
     }
   };
   
+  export const getorders1 = (token, orderData, navigate) => async (dispatch) => {
+    try {
+      const config = {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+      };
   
+  
+      const {data} = await apiConnector('POST', THEKEDARBOOKING_API, orderData, config);
+  
+  
+      console.log(data);
+      toast.success("Your Request has been sent to Thekedar. Please wait for confirmation.");
+        navigate('/CustomerHome');
+      dispatch(orderCreated1(data));
+      toast.success(data.message);
+    } catch (error) {
+      console.error('Error creating order:', error.message);
+      toast.error('Failed to create order. Please try again later.');
+    }
+  };
   const orderSlice = createSlice({
     name: 'order',
     initialState: {
       orders: [],
+      orders1: [],
       loading: false,
       error: null,
     },
@@ -203,11 +218,14 @@ export function login(firstName, contactNumber, navigate) {
       orderCreated: (state, action) => {
         state.orders.push(action.payload.order);
       },
+      orderCreated1: (state, action) => {
+        state.orders.push(action.payload.order);
+      },
     },
   });
   
   
-  export const { orderCreated } = orderSlice.actions;
+  export const { orderCreated,orderCreated1 } = orderSlice.actions;
   export default orderSlice.reducer;
   
 

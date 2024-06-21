@@ -7,10 +7,7 @@ import ThekedarPro from './thekedarPro';
 import ThekedarProfile from './ThekedarProfile';
 import AddMajdoors from './AddMajdoors';
 import MajdoorList from './MajdoorList';
-// import LaborRightsContent from './LaborRightsContent';
-// import HelpContent from './HelpContent';
-// import SettingsAndSupportContent from './SettingsAndSupportContent';
-// import DefaultContent from './DefaultContent';
+import BookingsContent from './BookingsContent';
 
 
 
@@ -18,7 +15,7 @@ const MainContent = ({ activeContent, token }) => {
   let content;
   switch (activeContent) {
     case 'Home':
-      content = <DashboardContent />;
+      content = <BookingsContent />;
       break;
     case 'प्रोफाइल':
       content = <ThekedarProfile />;
@@ -26,16 +23,15 @@ const MainContent = ({ activeContent, token }) => {
     case 'Majdoor List':
       content = <ThekedarPro token={token} />;
       break;
- 
     case 'Add Majdoors':
       content = <AddMajdoors/>;
       break;
     case 'Majdoor List':
       content = <MajdoorList/>;
       break;
-    // case 'Projects':
-    //   content = <ProjectsContent />;
-    //   break;
+    case 'Projects':
+       content = <DashboardContent />;
+      break;
     // case 'Schedules':
     //   content = <SchedulesContent />;
     //   break;
@@ -44,7 +40,7 @@ const MainContent = ({ activeContent, token }) => {
     //   break;
     // case 'Settings':
     default:
-      content = <DashboardContent />;
+      content = <BookingsContent />;
   
   }
 
@@ -55,9 +51,6 @@ const MainContent = ({ activeContent, token }) => {
         {content}
       </main>
     </div>
-    
-   
-
     
   );
 };

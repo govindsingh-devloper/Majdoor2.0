@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { toast } from "react-hot-toast";
 import { setShippingInfo } from '../../../../slices/shippingInfoslice';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { getorders } from '../../../../services/operations/MajdoorAuthAPI';
+import { getorders1 } from '../../../../services/operations/MajdoorAuthAPI';
 import { Country, State } from "country-state-city";
 
 const ThekedarConfirmation = ({thekedarId,title,location}) => {
@@ -53,13 +53,13 @@ const ThekedarConfirmation = ({thekedarId,title,location}) => {
         street,
         email,
         firstName: user.firstName,
-        service: thekedarId,
+        //service: thekedarId,
         user: user._id,
-        thekedarId:thekedarId
+        thekedar:thekedarId
       };
 
 
-      dispatch(getorders(token, data, navigate));
+      dispatch(getorders1(token, data, navigate));
       // toast.success("Your Request has been sent to Majdoor. Please wait for confirmation.");
       // navigate('/CustomerHome');
     } catch (error) {
@@ -143,7 +143,7 @@ const ThekedarConfirmation = ({thekedarId,title,location}) => {
               onChange={(e) => setStreet(e.target.value)}
             />
           </div>
-          <div className="flex flex-col">
+          {/* <div className="flex flex-col">
             <label htmlFor="street" className="font-semibold">Service:</label>
             {thekedarId && (
         <input
@@ -156,7 +156,7 @@ const ThekedarConfirmation = ({thekedarId,title,location}) => {
           required
         />
       )}
-          </div>
+          </div> */}
           <div className="flex flex-col">
             <label htmlFor="street" className="font-semibold">User Id:</label>
             <input

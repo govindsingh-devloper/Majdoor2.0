@@ -1,14 +1,12 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import { apiConnector } from '../../../../services/apiconnector';
+import { ORDER_ENDPOINT } from '../../../../services/api';
+import { useTranslation } from 'react-i18next';
+import gImg8 from "../../../../images/labour-day-5147441_1280.png"
 
-const NAV_ITEM_CLASSES = 'p-2 hover:bg-blue-100 light:hover:bg-zinc-800';
 const CARD_CLASSES = 'bg-blue-50 light:bg-zinc-700 p-4 rounded-lg shadow-md';
 const IMAGE_CLASSES = 'w-25 h-25';
-const BUTTON_CLASSES = 'bg-blue-400 text-white p-2 rounded-lg';
-
-
-
-
 
 function DashboardContent({ userName }) {
   const { user } = useSelector((state) => state.profile);

@@ -2,7 +2,19 @@ import { toast } from "react-hot-toast"
 import { setUser } from "../../slices/profileSlice"
 import { setLoading, setToken } from "../../slices/authslice"
 import { apiConnector } from "../apiconnector"
-import { endpoints } from "../api"
+import { ORDER_ENDPOINT, endpoints } from "../api"
+import { SearchEndpoint } from "../api"
+import { setCategories} from "../../slices/categoriesslice"
+import { setShippingInfo } from "../../slices/shippingInfoslice"
+import { useNavigate } from "react-router-dom"
+
+
+import axios from 'axios';
+import { createSlice } from '@reduxjs/toolkit';
+
+
+import { setLocations } from "../../slices/categoriesslice";
+const BASE_URL=process.env.REACT_APP_BASE_URL
 
 
 const {
@@ -12,6 +24,15 @@ const {
   RESETPASSTOKEN_API_T,
   RESETPASSWORD_API_T,
 } = endpoints
+
+
+const {ALL_CATEGORIES,
+  SINGLE_SERVICE
+}=SearchEndpoint
+
+
+const{ORDER_API}=ORDER_ENDPOINT
+
 
 
 export function Tlogin(email, password, navigate) {
@@ -76,6 +97,7 @@ export function Tlogin(email, password, navigate) {
       toast.dismiss(toastId)
     }
   }
+  
   export function TsignUp(
     firstName,
     lastName,
@@ -116,6 +138,25 @@ export function Tlogin(email, password, navigate) {
       toast.dismiss(toastId)
     }
   }
+
+
+
+  const orderSlice = createSlice({
+    name: 'order',
+    initialState: {
+      orders: [],
+      loading: false,
+      error: null,
+    },
+    reducers: {
+      orderCreated: (state, action) => {
+        state.orders.push(action.payload.order);
+      },
+    },
+  });
+  
+  export const { orderCreated } = orderSlice.actions;
+  export default orderSlice.reducer;
 
   export function getPasswordResetToken(email,setEmailSent){
     return async(dispatch)=>{
