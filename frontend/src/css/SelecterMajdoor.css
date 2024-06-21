@@ -1,0 +1,81 @@
+/* styles.css */
+
+/* Apply styles to the .majdoor-card class */
+.majdoor-card {
+    max-width: 20rem; /* Equivalent to max-w-sm */
+    margin: 0 auto; /* Equivalent to mx-auto */
+    background-color: #ffffff; /* Equivalent to bg-white */
+    border-radius: 0.5rem; /* Equivalent to rounded-lg */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Equivalent to shadow-md */
+    overflow: hidden;
+}
+
+/* Apply styles to the .card-header class */
+.card-header {
+    display: flex; /* Equivalent to flex */
+    align-items: center; /* Equivalent to items-center */
+    padding: 1rem; /* Equivalent to p-4 */
+}
+
+/* Apply styles to the .profile-pic class */
+.profile-pic {
+    width: 3rem; /* Equivalent to w-12 */
+    height: 3rem; /* Equivalent to h-12 */
+    border-radius: 50%; /* Equivalent to rounded-full */
+    margin-right: 1rem; /* Equivalent to mr-4 */
+}
+
+/* Apply styles to the .name class */
+.name {
+    font-size: 1.25rem; /* Equivalent to text-lg */
+    font-weight: bold; /* Equivalent to font-bold */
+}
+
+/* Apply styles to the .card-body class */
+.card-body {
+    padding: 1rem; /* Equivalent to p-4 */
+}
+
+/* Apply styles to the .skill, .contact, .location, and .ratings classes */
+.skill,
+.contact,
+.location,
+.ratings {
+    margin-bottom: 0.5rem; /* Equivalent to mb-2 */
+}
+
+/* Apply styles to the .card-footer class */
+.card-footer {
+    padding: 1rem; /* Equivalent to p-4 */
+    display: flex; /* Equivalent to flex */
+    flex-direction: column; /* Equivalent to flex-col */
+    align-items: center;
+}
+
+/* Apply styles to the .audio-controls class */
+.audio-controls {
+    display: flex; /* Equivalent to flex */
+    justify-content: space-between; /* Equivalent to space-x-2 */
+    margin-bottom: 0.5rem; /* Equivalent to mb-2 */
+}
+
+/* Apply styles to the .error-message class */
+.error-message {
+    color: #ff0000; /* Equivalent to text-red-500 */
+    font-size: 0.875rem; /* Equivalent to text-sm */
+    margin-top: 0.5rem; /* Equivalent to mt-2 */
+}
+
+/* Apply styles to the .confirm-booking class */
+.confirm-booking {
+    background-color: #0074d9; /* Equivalent to bg-blue-600 */
+    color: #ffffff; /* Equivalent to text-white */
+    padding: 0.5rem 1rem; /* Equivalent to px-4 py-2 */
+    border-radius: 0.25rem; /* Equivalent to rounded */
+    margin-top: 0.5rem; /* Equivalent to mt-2 */
+    cursor: pointer; /* Add hover effect */
+}
+
+.confirm-booking:hover {
+    background-color: #005cbf; /* Equivalent to hover:bg-blue-700 */
+}
