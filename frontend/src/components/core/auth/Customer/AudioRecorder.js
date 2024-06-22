@@ -55,22 +55,37 @@ const SoundRecorder = () => {
   };
 
   return (
-    <div>
-      <h3>Send Audio Notes</h3>
-      {!streamRecording ? (
-        <button onClick={startRec}>Start Recording</button>
-      ) : (
-        <button onClick={stopRec}>Stop Recording</button>
-      )}
-      {recordings.map((recUrl, index) => (
-        <div key={index}>
-          <audio controls src={recUrl} />
-          <a href={recUrl} download={`recording-${index}.wav`}>
-            Download
-          </a>
-        </div>
-      ))}
-    </div>
+    <div className="bg-gray-100 p-4 rounded-lg shadow-md">
+    <h3 className="text-lg font-semibold mb-4">Send Audio Notes</h3>
+    {!streamRecording ? (
+      <button
+        onClick={startRec}
+        className="bg-blue-500 text-white rounded-md px-4 py-2"
+      >
+        Start Recording
+      </button>
+    ) : (
+      <button
+        onClick={stopRec}
+        className="bg-red-500 text-white rounded-md px-4 py-2"
+      >
+        Stop Recording
+      </button>
+    )}
+    {recordings.map((recUrl, index) => (
+      <div key={index} className="mt-4">
+        <audio controls className="mb-2" src={recUrl} />
+        <a
+          href={recUrl}
+          download={`recording-${index}.wav`}
+          className="text-blue-500 hover:underline"
+        >
+          Download
+        </a>
+      </div>
+    ))}
+  </div>
+  
   );
 };
 

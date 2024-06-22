@@ -62,16 +62,18 @@ const AudioPlayer = () => {
   }, []);
 
   return (
-    <div>
-      <h3>Received Audio Notes</h3>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
-      {audios.length === 0 && !error && <p>No audio notes available</p>}
-      {audios.map((audio, index) => (
-        <div key={index}>
-          {/* <CustomAudioPlayer audioUrl={audio.audioUrl} /> */}
-        </div>
-      ))}
-    </div>
+    <div className="bg-gray-100 p-4 rounded-lg shadow-md">
+    <h3 className="text-lg font-semibold mb-4">Received Audio Notes</h3>
+    {error && <p style={{ color: 'red' }}>{error}</p>}
+    {audios.length === 0 && !error && <p>No audio notes available</p>}
+    {audios.map((audio, index) => (
+      <div key={index} className="mt-4">
+        {/* <CustomAudioPlayer audioUrl={audio.audioUrl} /> */}
+      </div>
+    ))}
+  </div>
+  
+
   );
 };
 
