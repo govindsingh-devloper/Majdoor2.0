@@ -108,6 +108,7 @@ const TSignupform = () => {
             type={showPassword?"text":"password"}
             name="password"
             value={password}
+            maxLength={10}
             onChange={handleOnChange}
             placeholder="Enter Password"
         />

@@ -119,6 +119,7 @@ const Signupformm = () => {
             type={contactNumber?"text":"contactNumber"}
             name="contactNumber"
             value={contactNumber}
+            maxLength={10}
             onChange={handleOnChange}
             placeholder="Enter Contact Number"
         />

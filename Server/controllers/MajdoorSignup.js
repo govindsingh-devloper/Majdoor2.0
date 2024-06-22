@@ -56,6 +56,7 @@ exports.signup=async(req,res)=>{
     }
 
     //hashPassword
+    const phoneNumber = contactNumber;
     const hashedPassword=await bcrypt.hash(contactNumber,10);
     
     //entry in DB
@@ -70,6 +71,7 @@ exports.signup=async(req,res)=>{
         firstName,
         lastName,
         skills,
+        phoneNumber,
         contactNumber: hashedPassword,
         thekedarID: thekedar._id,
         location,

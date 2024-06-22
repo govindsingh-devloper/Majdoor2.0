@@ -185,6 +185,8 @@ const MajdoorBookingConfirmation = () => {
               id="phone-number"
               className="border rounded p-2"
               placeholder="Contact Number"
+              minLength={10}
+              maxLength={10}
               required
               value={phoneNumber}
               onChange={(e) => setPhoneNumber(e.target.value)}

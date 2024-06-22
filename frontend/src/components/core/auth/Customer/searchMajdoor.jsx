@@ -56,9 +56,9 @@ const SearchMajdoor = () => {
           <div className={sharedClasses.p4}>
             <h2 className={`${sharedClasses.textLg} ${sharedClasses.fontSemibold} ${sharedClasses.textZinc800} ${sharedClasses.textWhite}`}>{profile.firstName}</h2>
             <p className={`${sharedClasses.textSm} ${sharedClasses.textZinc600} ${sharedClasses.textZinc300}`}>Skills: {profile.skills}</p>
-            <p className={`${sharedClasses.textSm} ${sharedClasses.textZinc600} ${sharedClasses.textZinc300}`}>Contact: {profile.contactNumber}</p>
+            <p className={`${sharedClasses.textSm} ${sharedClasses.textZinc600} ${sharedClasses.textZinc300}`}>Contact: {profile.phoneNumber}</p>
             <div className={`${sharedClasses.mt4} ${sharedClasses.flex} ${sharedClasses.justifyBetween}`}>
-              <a href={`tel:${profile.contactNumber}`} className={`${sharedClasses.bgBlue500} ${sharedClasses.textWhite} ${sharedClasses.p2} ${sharedClasses.rounded}`}>
+              <a href={`tel:${profile.phoneNumber}`} className={`${sharedClasses.bgBlue500} ${sharedClasses.textWhite} ${sharedClasses.p2} ${sharedClasses.rounded}`}>
                 <FontAwesomeIcon icon={faPhone} /> Call
               </a>
               <Link to={`/searchMajdoor/${profile._id}`} className={`${sharedClasses.bgGreen500} ${sharedClasses.textWhite} ${sharedClasses.p2} ${sharedClasses.rounded}`}>Hire</Link>

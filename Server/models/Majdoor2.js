@@ -22,6 +22,10 @@ const majdoor2Schema= new mongoose.Schema({
         trim:true,
         
     },
+    phoneNumber:{
+        type:String,
+        trim:true,
+    },
     // password:{
     //     type:String,
     //     required:true,

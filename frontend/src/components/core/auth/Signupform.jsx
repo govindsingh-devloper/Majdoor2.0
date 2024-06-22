@@ -110,6 +110,7 @@ const Signupform = () => {
               name="password"
               className={inputClasses}
               value={password}
+              maxLength={10}
               onChange={handleOnChange}
               required
               placeholder="Enter Password"
