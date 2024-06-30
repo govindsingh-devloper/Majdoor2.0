@@ -61,35 +61,7 @@ function DashboardContent({ userName }) {
           ))}
         </div>
 
-        {/* Majdoor Spotlight Area */}
-        <div className="mt-4">
-          <h2 className="text-lg font-bold">Majdoor Spotlight</h2>
-          {/* Replace with actual majdoor data */}
-         <div className="container flex row"> <div className={CARD_CLASSES}>
-            <img
-              src="https://placehold.co/400x200?text=Majdoor+of+the+Month"
-              alt="Majdoor Spotlight"
-              className={IMAGE_CLASSES}
-            />
-            {/* Majdoor details here */}
-          </div>
-          <div className={CARD_CLASSES}>
-            <img
-              src="https://placehold.co/400x200?text=Majdoor+of+the+Month"
-              alt="Majdoor Spotlight"
-              className={IMAGE_CLASSES}
-            />
-            {/* Majdoor details here */}
-          </div>
-          <div className={CARD_CLASSES}>
-            <img
-              src="https://placehold.co/400x200?text=Majdoor+of+the+Month"
-              alt="Majdoor Spotlight"
-              className={IMAGE_CLASSES}
-            />
-            {/* Majdoor details here */}
-          </div>
-        </div></div>
+       
 
         {/* Alerts and Notifications Section */}
         <div className="mt-4">
@@ -105,3 +77,4 @@ function DashboardContent({ userName }) {
 }
 
 export default DashboardContent;
+  

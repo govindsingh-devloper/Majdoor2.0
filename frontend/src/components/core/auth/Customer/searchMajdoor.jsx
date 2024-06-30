@@ -55,10 +55,10 @@ const WorkerCard = ({ profile, colorClass }) => {
         <div className="p-6">
           <h3 className={headerClasses}>{profile.firstName}</h3>
           <p className="text-lg text-zinc-600">Skills: {profile.skills}</p>
-          <p className="text-lg text-zinc-600">Contact: {profile.contactNumber}</p>
+          <p className="text-lg text-zinc-600">Contact: {profile.phoneNumber}</p>
           <p className="text-lg text-zinc-600">Rating: {getRandomRating()} ⭐</p>
           <div className="flex justify-between mt-4">
-            <a href={`tel:${profile.contactNumber}`} className={buttonClasses}>
+            <a href={`tel:${profile.phoneNumber}`} className={buttonClasses}>
               <FontAwesomeIcon icon={faPhone} /> Call
             </a>
             <Link to={`/searchMajdoor/${profile._id}`} className="bg-green-500 text-white text-xl py-2 px-4 rounded-full hover:bg-green-700">

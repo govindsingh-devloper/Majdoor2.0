@@ -190,6 +190,7 @@ const ConfirmationBookingTable = ({ bookings }) => {
 ConfirmationBookingTable.propTypes = {
   bookings: PropTypes.array.isRequired
 };
+
 const TableRow = ({ name, bookingId, address, phoneNumber, work, date, cost, status }) => {
   const [approvalStatus, setApprovalStatus] = useState(status);
   const { token } = useSelector((state) => state.auth);
@@ -245,79 +246,7 @@ TableRow.propTypes = {
   status: PropTypes.string.isRequired
 };
 
-
-
-
-
 const DashboardContent = () => {
-  const { t } = useTranslation();
-  const [bookings, setBookings] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const { token } = useSelector((state) => state.auth);
-  const { user } = useSelector((state) => state.profile);
-  const userid = user ? user._id : null;
-
-  const getMajdoorBookings = async () => {
-    try {
-      const response = await apiConnector("POST", ORDER_ENDPOINT.MAJDOORBOOKING_API, { userid }, {
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
-      });
-      if (response.data.success) {
-        setBookings(response.data.data);
-      }
-    } catch (error) {
-      console.error("Customer Booking ERROR", error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    if (userid && token) {
-      getMajdoorBookings();
-    }
-  }, [userid, token]);
-
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
-  return (
-    <>
-      <div className="container flex items-center justify-center gap-x-4">
-        <img width="24" height="24" src="https://img.icons8.com/external-obvious-line-kerismaker/48/external-eid-ramadan-kareem-line-obvious-line-kerismaker-7.png" alt="Greeting Icon" />
-        <div className="text-center text-3xl font-semibold">Namaste, {user.firstName}!</div>
-      </div>
-      <div className="container">
-        <section className={sectionClasses}>
-          <h2 className="text-xl font-semibold mb-4">Dashboard Overview</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            <div className={`bg-blue-400 light:bg-blue-800 ${cardClasses}`}>
-              <p className={`text-xl ${textClasses}`}>Completed Jobs</p>
-              <p className={`text-3xl ${valueClasses}`}>25</p>
-            </div>
-            <div className={`bg-green-400 light:bg-green-800 ${cardClasses}`}>
-              <p className={`text-xl ${textClasses}`}>Ratings</p>
-              <p className={`text-3xl ${valueClasses}`}>4.8</p>
-            </div>
-            <div className={`bg-yellow-400 light:bg-yellow-800 ${cardClasses}`}>
-              <p className={`text-xl ${textClasses}`}>Earnings</p>
-              <p className={`text-3xl ${valueClasses}`}>₹ 1500</p>
-            </div>
-          </div>
-          <h2 className="text-xl font-semibold mb-4">{t("m12")}</h2>
-          <ConfirmationBookingTable bookings={bookings} />
-        </section>
-        <img src={gImg8} alt="Dashboard Carousel" className={sharedClasses.HeaderImage} crossOrigin="anonymous" />
-      </div>
-    </>
-  );
-};
-
-
-const RecordsContent = () => {
   const { t } = useTranslation();
   const [bookings, setBookings] = useState([]);
   const { token } = useSelector((state) => state.auth);
@@ -360,13 +289,91 @@ const RecordsContent = () => {
     }
   };
 
-  return (
-    <div className="bg-zinc-100 p-4 rounded-lg shadow-lg">
-      <div className="mb-4">
+  return (<> 
+  <div className="container flex items-center justify-center gap-x-4">
+    <img width="24" height="24" src="https://img.icons8.com/external-obvious-line-kerismaker/48/external-eid-ramadan-kareem-line-obvious-line-kerismaker-7.png" alt="Greeting Icon" />
+    <div className="text-center text-3xl font-semibold">Namaste, {user.firstName}!</div>
+  </div>
+  <div className="container">
+    <section className={sectionClasses}>
+      <h2 className="text-xl font-semibold mb-4">Dashboard Overview</h2>
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div className={`bg-blue-400 light:bg-blue-800 ${cardClasses}`}>
+          <p className={`text-xl ${textClasses}`}>Completed Jobs</p>
+          <p className={`text-3xl ${valueClasses}`}>25</p>
+        </div>
+        <div className={`bg-green-400 light:bg-green-800 ${cardClasses}`}>
+          <p className={`text-xl ${textClasses}`}>Ratings</p>
+          <p className={`text-3xl ${valueClasses}`}>4.8</p>
+        </div>
+        <div className={`bg-yellow-400 light:bg-yellow-800 ${cardClasses}`}>
+          <p className={`text-xl ${textClasses}`}>Earnings</p>
+          <p className={`text-3xl ${valueClasses}`}>₹ 1500</p>
+        </div>
+      </div>
+      {/* <h2 className="text-xl font-semibold mb-4">{t("m12")}</h2> */}
+      <div className="bg-zinc-100 p-4 rounded-lg shadow-lg">
+      {/* <div className="mb-4">
         <nav className="text-sm text-zinc-500">
           <a href="#" className="text-blue-500">डैशबोर्ड</a> / <a href="#">मेरा डैशबोर्ड</a>
         </nav>
+      </div> */}
+      <h2 className="text-2xl font-bold mb-4">नई बुकिंग</h2>
+      <div className="overflow-x-auto">
+        <table className="min-w-full bg-white border border-zinc-200">
+          <thead>
+            <tr className="bg-zinc-100">
+              <th className="py-2 px-4 border-b">नाम</th>
+              <th className="py-2 px-4 border-b">बुकिंग आईडी</th>
+              <th className="py-2 px-4 border-b">पता</th>
+              <th className="py-2 px-4 border-b">फोन नंबर</th>
+              <th className="py-2 px-4 border-b">काम</th>
+              {/* <th className="py-2 px-4 border-b">तारीख</th> */}
+              {/* <th className="py-2 px-4 border-b">रकम</th> */}
+              <th className="py-2 px-4 border-b">स्थिति</th>
+            </tr>
+          </thead>
+          <tbody>
+            {bookings.filter(booking => booking.status === 'Pending').map(booking => (
+              <tr key={booking._id}>
+                <td className="py-2 px-4 border-b flex items-center">
+                  <div className="w-8 h-8 bg-green-500 text-white rounded-full flex items-center justify-center mr-2">
+                    {booking.firstName[0]}
+                  </div>
+                  {booking.firstName}
+                </td>
+                <td className="py-2 px-4 border-b">{booking._id}</td>
+                <td className="py-2 px-4 border-b">{booking.address}</td>
+                <td className="py-2 px-4 border-b">{booking.phoneNumber}</td>
+                <td className="py-2 px-4 border-b">{user.skills}</td>
+                {/* <td className="py-2 px-4 border-b">{booking.date}</td>
+                <td className="py-2 px-4 border-b">{booking.cost}</td> */}
+                <td className="py-2 px-4 border-b">
+                  <div>
+                    <button className="text-green-500 mr-2" onClick={() => handleAccountStatus(booking._id, "approved")}>Approve</button>
+                    <button className="text-red-500" onClick={() => handleAccountStatus(booking._id, "rejected")}>Reject</button>
+                  </div>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
+    </div>
+
+      
+    </section>
+
+
+    
+    <img src={gImg8} alt="Dashboard Carousel" className={sharedClasses.HeaderImage} crossOrigin="anonymous" />
+  </div>
+    <div className="bg-zinc-100 p-4 rounded-lg shadow-lg">
+      {/* <div className="mb-4">
+        <nav className="text-sm text-zinc-500">
+          <a href="#" className="text-blue-500">डैशबोर्ड</a> / <a href="#">मेरा डैशबोर्ड</a>
+        </nav>
+      </div> */}
       <h2 className="text-2xl font-bold mb-4">पिछली बुकिंग</h2>
       <div className="overflow-x-auto">
         <table className="min-w-full bg-white border border-zinc-200">
@@ -395,8 +402,8 @@ const RecordsContent = () => {
                 <td className="py-2 px-4 border-b">{booking.address}</td>
                 <td className="py-2 px-4 border-b">{booking.phoneNumber}</td>
                 <td className="py-2 px-4 border-b">{user.skills}</td>
-                <td className="py-2 px-4 border-b">{booking.date}</td>
-                <td className="py-2 px-4 border-b">{booking.cost}</td>
+                {/* <td className="py-2 px-4 border-b">{booking.date}</td>
+                <td className="py-2 px-4 border-b">{booking.cost}</td> */}
                 <td className="py-2 px-4 border-b">
                   <div>
                     <button className="text-green-500 mr-2" onClick={() => handleAccountStatus(booking._id, "approved")}>Approve</button>
@@ -409,8 +416,60 @@ const RecordsContent = () => {
         </table>
       </div>
     </div>
+    </>
   );
 };
+
+const RecordsContent = () => {
+  const { t } = useTranslation();
+  const [bookings, setBookings] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const { token } = useSelector((state) => state.auth);
+  const { user } = useSelector((state) => state.profile);
+  const userid = user ? user._id : null;
+
+  const getMajdoorBookings = async () => {
+    try {
+      const response = await apiConnector("POST", ORDER_ENDPOINT.MAJDOORBOOKING_API, { userid }, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+      if (response.data.success) {
+        setBookings(response.data.data);
+      }
+    } catch (error) {
+      console.error("Customer Booking ERROR", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    if (userid && token) {
+      getMajdoorBookings();
+    }
+  }, [userid, token]);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  return (
+    <>
+   
+      <div className="container">
+        <section className={sectionClasses}>
+          
+          <h2 className="text-xl font-semibold mb-4">{t("m12")}</h2>
+          <ConfirmationBookingTable bookings={bookings} />
+        </section>
+        <img src={gImg8} alt="Dashboard Carousel" className={sharedClasses.HeaderImage} crossOrigin="anonymous" />
+      </div>
+    </>
+  );
+};
+
 
 const AttendanceContent = () => {
   return <div><div class="bg-zinc-100 min-h-screen p-4">
@@ -436,7 +495,7 @@ const AttendanceContent = () => {
         <div class="text-2xl font-bold">4.0/5</div>
       </div>
 
-      <div class="mt-6 bg-zinc-100 p-4 rounded-lg shadow-md">
+      {/* <div class="mt-6 bg-zinc-100 p-4 rounded-lg shadow-md">
         <h3 class="text-lg font-semibold mb-4">कमेंट्स</h3>
         <div class="space-y-2">
           <div class="flex items-center space-x-2">
@@ -475,7 +534,7 @@ const AttendanceContent = () => {
       <div class="mt-6">
         <h3 class="text-lg font-semibold mb-4">मेरी उन्नति</h3>
         <img src="https://placehold.co/600x300" alt="Graph" />
-      </div>
+      </div> */}
     </div>
   </div>
   </div>;

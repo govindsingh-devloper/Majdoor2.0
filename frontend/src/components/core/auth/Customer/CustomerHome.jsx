@@ -243,7 +243,7 @@ function App() {
           
         </div></div>
       </div>
-      <SearchMajdoors searchresults={searchresults} />
+      {/* <SearchMajdoors searchresults={searchresults} /> */}
       {/* <SeacrhThekedars thekedarSearchResults={thekedarSearchResults}/> */}
      
     </div>

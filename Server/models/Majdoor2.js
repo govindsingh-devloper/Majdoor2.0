@@ -24,6 +24,10 @@ const majdoor2Schema= new mongoose.Schema({
     },
     phoneNumber:{
         type:String,
+<<<<<<< Updated upstream
+=======
+        //required:true,
+>>>>>>> Stashed changes
         trim:true,
     },
     // password:{
