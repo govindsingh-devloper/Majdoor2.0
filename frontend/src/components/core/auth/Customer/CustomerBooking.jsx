@@ -175,7 +175,7 @@ const CustomerBooking = () => {
                     <td class="py-2 px-4 border-b">{user._id}</td>
                     <td class="py-2 px-4 border-b">{`${item.thekedar.firstName} ${item.thekedar.lastName}`}</td>
                     <td class="py-2 px-4 border-b">{item.thekedar.location}</td>
-                    {/* <td class="py-2 px-4 border-b">{item.thekedar.majdoors.length}</td> */}
+                    <td class="py-2 px-4 border-b">{item.thekedar.majdoors.length}</td>
                     <td className={`py-2 px-4 border-b ${item.status === 'approved' ? 'bg-green-500' : 'bg-red-500'}`}>
                       {item.status}
                     </td>

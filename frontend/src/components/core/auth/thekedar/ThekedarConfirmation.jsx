@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { getorders1 } from '../../../../services/operations/MajdoorAuthAPI';
 import { Country, State } from "country-state-city";
 
-const ThekedarConfirmation = ({ thekedarId, title, location, onClose }) => {
+const ThekedarConfirmation = ({ thekedarId, title, location,onClose }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   console.log("Thekedar ki ID",thekedarId)

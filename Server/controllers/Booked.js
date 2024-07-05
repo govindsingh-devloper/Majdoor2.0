@@ -156,7 +156,7 @@ exports.TCustomerOrder=async(req,res)=>{
     const {userid}=req.body;
     const response=await ThekedaarBooking.find({user:userid}).populate({
       path:"thekedar",
-      select:"firstName lastName location"
+      select:"firstName lastName location majdoors"
     })
     if(!response){
       return res.status(403).json({
