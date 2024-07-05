@@ -4,6 +4,8 @@ import profileReducer from "../slices/profileSlice"
 import categoriesReducer from "../slices/categoriesslice"
 import shippingInfoReducer from "../slices/shippingInfoslice"
 import ordersReducer from "../services/operations/MajdoorAuthAPI"
+// import { orderCreated1 } from "../services/operations/MajdoorAuthAPI"
+import thekerdarbooked from "../services/operations/MajdoorAuthAPI"
 
 
 const rootReducer=combineReducers({
@@ -11,7 +13,8 @@ const rootReducer=combineReducers({
      profile:profileReducer,
      categories:categoriesReducer,
      shippingInfoReducer:shippingInfoReducer,
-     orders:ordersReducer
+     orders:ordersReducer,
+     orders1:thekerdarbooked
 })
 
 export default rootReducer;

@@ -31,7 +31,7 @@ const {ALL_CATEGORIES,
 }=SearchEndpoint
 
 
-const{ORDER_API,THEKEDARBOOKING_API}=ORDER_ENDPOINT
+const{ORDER_API,THEKEDAARBOOKING_API}=ORDER_ENDPOINT
 
 
 
@@ -193,10 +193,13 @@ export function login(firstName, contactNumber, navigate) {
       };
   
   
-      const {data} = await apiConnector('POST', THEKEDARBOOKING_API, orderData, config);
+      const response= await apiConnector('POST', THEKEDAARBOOKING_API, orderData, config);
   
   
-      console.log(data);
+      console.log("Thekedaar book hua h uska data",response);
+      const { data } = response;
+      console.log("response se fetch hua",data);
+
       toast.success("Your Request has been sent to Thekedar. Please wait for confirmation.");
         navigate('/CustomerHome');
       dispatch(orderCreated1(data));
@@ -219,7 +222,7 @@ export function login(firstName, contactNumber, navigate) {
         state.orders.push(action.payload.order);
       },
       orderCreated1: (state, action) => {
-        state.orders.push(action.payload.order);
+        state.orders.push(action.payload);
       },
     },
   });

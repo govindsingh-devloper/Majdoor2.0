@@ -49,11 +49,14 @@ export const contactusEndpoint = {
     BOOKING_API:BASE_URL + "/auth/CustomerOrder",
     MAJDOORBOOKING_API:BASE_URL + "/auth/MajdoorBookings",
     STATUSUPDATE_API:BASE_URL + "/auth/updateStatus",
+
+
     // THEKEDARBOOKING_API:BASE_URL + "/auth/ThekedarBookings",
     THEKEDARBOOKING_API:BASE_URL + "/auth/TCustomerOrder",
+
     //THEKEDAR_BOOKING:BASE_URL + "/auth/ThekedarBookings",
     STATUS_UPDATE_T:BASE_URL + "/auth/TupdateStatus",
-    THEKEDARBOOKING_API:BASE_URL + "/auth/ThekedarBookings"
+    THEKEDAARBOOKING_API:BASE_URL + "/auth/ThekedarOrder"
 
   }
   

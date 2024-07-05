@@ -3,12 +3,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { toast } from "react-hot-toast";
 import { setShippingInfo } from '../../../../slices/shippingInfoslice';
 import { useNavigate } from 'react-router-dom';
-import { getorders } from '../../../../services/operations/MajdoorAuthAPI';
+import { getorders1 } from '../../../../services/operations/MajdoorAuthAPI';
 import { Country, State } from "country-state-city";
 
 const ThekedarConfirmation = ({ thekedarId, title, location, onClose }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  console.log("Thekedar ki ID",thekedarId)
 
   const { token } = useSelector((state) => state.auth);
   const { user } = useSelector((state) => state.profile);
@@ -47,12 +48,12 @@ const ThekedarConfirmation = ({ thekedarId, title, location, onClose }) => {
         street,
         email,
         firstName: user.firstName,
-        service: thekedarId,
+        // service: thekedarId,
         user: user._id,
-        thekedarId: thekedarId,
+        thekedar: thekedarId,
       };
   
-      dispatch(getorders(token, data, navigate));
+      dispatch(getorders1(token, data, navigate));
       toast.success("Your request has been sent to Majdoor. Please wait for confirmation.");
       onClose(); // Close the confirmation modal after successful submission
     } catch (error) {
@@ -131,6 +132,30 @@ const ThekedarConfirmation = ({ thekedarId, title, location, onClose }) => {
                 onChange={(e) => setStreet(e.target.value)}
               />
             </div>
+            <div className="flex flex-col">
+            <label htmlFor="street" className="font-semibold">Thekedaar:</label>
+            <input
+              type="text"
+              id="street"
+              className="border rounded p-2"
+              placeholder="Street"
+              required
+              value={thekedarId}
+              onChange={(e) => setStreet(e.target.value)}
+            />
+          </div>
+          <div className="flex flex-col">
+            <label htmlFor="street" className="font-semibold">User Id:</label>
+            <input
+              type="text"
+              id="street"
+              className="border rounded p-2"
+              placeholder="Street"
+              required
+              value={user?._id}
+              onChange={(e) => setStreet(e.target.value)}
+            />
+          </div>
             <div className="flex flex-col">
               <label htmlFor="pincode" className="font-semibold">Pin Code:</label>
               <input

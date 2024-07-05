@@ -19,7 +19,7 @@ router.put("/updateStatus",updateStatus)
 
 //Thekedar Routes
 router.get("/TCustomerBookings",TCustomerhistory);
-router.post("/ThekedarOrder",thekedarOrder);
+router.post("/ThekedarOrder",thekedarOrder);//New Thehedaar Order
 router.post("/TCustomerOrder",TCustomerOrder)
 router.put("/TupdateStatus",TupdateStatus)
 

@@ -313,9 +313,10 @@ exports.thekedarOrder = async (req, res) => {
       street,
       email,
       firstName,
-      thekedar,
+     
       user,
       status,
+      thekedar,
     
     } = req.body;
 
@@ -330,8 +331,8 @@ exports.thekedarOrder = async (req, res) => {
       street,
       email,
       firstName,
-      thekedar,
       user,
+      thekedar,
       status,
       // thekedar
     });

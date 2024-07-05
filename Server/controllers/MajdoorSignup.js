@@ -54,7 +54,7 @@ exports.signup=async(req,res)=>{
             message:"USer Already Existed",
         });
     }
-    const phoneNumber = contactNumber;
+    // const phoneNumber = contactNumber;
     //hashPassword
     const phoneNumber = contactNumber;
     const hashedPassword=await bcrypt.hash(contactNumber,10);

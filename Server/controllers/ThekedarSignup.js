@@ -359,7 +359,7 @@ exports.getlocations=async(req,res)=>{
     try {
     
         const {location} =req.body;
-        console.log(location);
+        // console.log(location);
         const response=await Thekedar.find({location}).populate({path:"majdoors"}).populate({path:"additionalDetails"})
         if(!response){
             return res.status(401).json({
