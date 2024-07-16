@@ -54,7 +54,7 @@ export const contactusEndpoint = {
     // THEKEDARBOOKING_API:BASE_URL + "/auth/ThekedarBookings",
     THEKEDARBOOKING_API:BASE_URL + "/auth/TCustomerOrder",
 
-    //THEKEDAR_BOOKING:BASE_URL + "/auth/ThekedarBookings",
+    THEKEDAR_BOOKING:BASE_URL + "/auth/ThekedarBookings",
     STATUS_UPDATE_T:BASE_URL + "/auth/TupdateStatus",
     THEKEDAARBOOKING_API:BASE_URL + "/auth/ThekedarOrder"
 

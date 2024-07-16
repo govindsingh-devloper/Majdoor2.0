@@ -14,10 +14,11 @@ router.post("/CustomerOrder",CustomerOrder)
 
 //Majdoor Routes
 router.post("/MajdoorBookings",MajdoorBookings)
-router.post("/ThekedarBookings",ThekedarBookings)
+
 router.put("/updateStatus",updateStatus)
 
 //Thekedar Routes
+router.post("/ThekedarBookings",ThekedarBookings)
 router.get("/TCustomerBookings",TCustomerhistory);
 router.post("/ThekedarOrder",thekedarOrder);//New Thehedaar Order
 router.post("/TCustomerOrder",TCustomerOrder)
