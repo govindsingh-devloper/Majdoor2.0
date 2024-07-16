@@ -199,13 +199,14 @@ const sharedClasses = {
 
 const CustDashboard = () => {
   const { user } = useSelector((state) => state.profile);
+  console.log("USer Ki Details",user)
   const navigate = useNavigate();
 
   return (
    
     <div className="max-w-6xl mt-40 mx-auto p-6 bg-white rounded-lg shadow-md">
       <div className="flex flex-col md:flex-row items-center md:items-start">
-        <img
+       <img
           className="h-20 w-20 object-cover rounded-full"
           src={user?.image}
           alt="User Profile"
