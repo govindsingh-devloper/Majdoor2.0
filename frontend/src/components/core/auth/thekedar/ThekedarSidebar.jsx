@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link, useNavigate } from "react-router-dom";
 import { RiEditBoxLine } from 'react-icons/ri';
-
+// import BookingsContent from "./BookingsContent.js";
 
 
 
@@ -21,7 +21,7 @@ const sharedClasses = {
 
 const Sidebar = ({ activeContent, onContentChange }) => {
   const { user } = useSelector((state) => state.profile);
-
+  // const { pendingCount } = useSelector((state) => state.booking);
   const renderButton = (label) => (
     <button
       onClick={() => onContentChange(label)}
@@ -42,7 +42,8 @@ const Sidebar = ({ activeContent, onContentChange }) => {
         </svg>
         Notifications
         <div className={sharedClasses.arrow}>›</div>
-        <div className={sharedClasses.dot}>4</div>
+        <div className={sharedClasses.dot}>2</div>
+        {/* <div className={sharedClasses.dot}>{pendingCount}</div> */}
       </button>
 
       <nav>

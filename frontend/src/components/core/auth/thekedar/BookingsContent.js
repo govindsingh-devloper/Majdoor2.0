@@ -5,9 +5,8 @@ import { ORDER_ENDPOINT } from '../../../../services/api';
 import { useTranslation } from 'react-i18next';
 import gImg8 from "../../../../images/labour-day-5147441_1280.png"
 
-const CARD_CLASSES = 'bg-blue-50 light:bg-zinc-700 p-4 rounded-lg shadow-md';
-const IMAGE_CLASSES = 'w-25 h-25';
-const BUTTON_CLASSES = 'bg-blue-400 text-white p-2 rounded-lg';
+
+
 
 const sectionClasses = 'p-2 border-b border-zinc-200 white:border-zinc-700'
 const cardClasses = 'p-4 rounded-lg text-center'
@@ -36,6 +35,9 @@ const sharedClasses = {
 
   tableHeader: 'px-6 py-3 text-left text-xl font-bold text-zinc-700 uppercase tracking-wider',
   tableRow: 'px-6 py-4 whitespace-nowrap text-lg font-bold text-zinc-700',
+  circle: 'w-12 h-12 rounded-full inline-block mr-2 cursor-pointer hover:bg-gray-200 !important',
+  accept: 'bg-green-600 !important',
+  reject: 'bg-red-500 hover:bg-red-700 !important'
 
 };
 
@@ -43,7 +45,7 @@ const BookingTable = ({ bookings }) => {
   const { t } = useTranslation();
   const { user } = useSelector((state) => state.profile);
   const { token } = useSelector((state) => state.auth)
-  console.log("Merigh",bookings.length);
+  console.log("Merigh", bookings.length);
   return (
     <div className="bg-white shadow overflow-hidden sm:rounded-lg">
       <table className="min-w-full divide-y divide-zinc-200">
@@ -80,36 +82,30 @@ const BookingTable = ({ bookings }) => {
     </div>
   );
 };
+
+
 const TableRow = ({ name, bookingId, address, phoneNumber, work, date, cost, status }) => {
   const [approvalStatus, setApprovalStatus] = useState(null);
 
-  const handleApprove = () => {
-    setApprovalStatus('approved');
-    // Call an API or perform any other action for approval
-  };
 
-  const handleReject = () => {
-    setApprovalStatus('rejected');
-    // Call an API or perform any other action for rejection
-  };
 
-  const {token}=useSelector((state)=>state.auth)
+  const { token } = useSelector((state) => state.auth)
 
-  const handleAccountStatus=async(bookingId,status)=>{
+  const handleAccountStatus = async (bookingId, status) => {
     try {
-      const ps=await apiConnector("PUT",ORDER_ENDPOINT.STATUS_UPDATE_T,{bookingId,status},{
-        headers:{
-          Authorization:`Bearer${token}`
+      const ps = await apiConnector("PUT", ORDER_ENDPOINT.STATUS_UPDATE_T, { bookingId, status }, {
+        headers: {
+          Authorization: `Bearer${token}`
         }
       })
-      if(ps.data.success){
+      if (ps.data.success) {
         console.log(ps.data.message)
       }
-      
-    } catch (error) {
-      console.log("Bhai Error aa gyi",error.message)
 
-      
+    } catch (error) {
+      console.log("Bhai Error aa gyi", error.message)
+
+
     }
   }
   // useEffect(()=>{
@@ -127,16 +123,17 @@ const TableRow = ({ name, bookingId, address, phoneNumber, work, date, cost, sta
       <td className={sharedClasses.tableRow}>{work}</td>
       <td className={sharedClasses.tableRow}>{date}</td>
       <td className={sharedClasses.tableRow}>{cost}</td>
+      <td className={sharedClasses.tableRow}>{status}</td>
       <td className={sharedClasses.tableRow}>
 
         {/* <button className="text-green-500">{status === "Pending" ? "✔️" : ""}</button>
         <button className="text-red-500">{status === "❌" ? "❌" : ""}</button> */}
 
-        {status==="Pending" &&(
-         <div>
-         <button onClick={()=>handleAccountStatus(bookingId,"approved")}>Approved</button>
-         <button onClick={()=>handleAccountStatus(bookingId,"reject")}>Reject</button>
-         </div>
+        {status === "Pending" && (
+          <div>
+            <button className={`${sharedClasses.circle} ${sharedClasses.accept}`} onClick={() => handleAccountStatus(bookingId, "approved")}>{status === "Pending" ? "✔️" : ""}</button>
+            <button className={`${sharedClasses.circle} ${sharedClasses.reject}`} onClick={() => handleAccountStatus(bookingId, "reject")}>{status === "❌" ? "❌" : ""}</button>
+          </div>
         )}
       </td>
     </tr>
@@ -151,24 +148,26 @@ const DashboardContents = () => {
   const [bookings, setBookings] = useState([]);
   const { token } = useSelector((state) => state.auth);
   const { user } = useSelector((state) => state.profile);
+  const hasPendingBookings = bookings.some((booking) => booking.status === "Pending");
   const userid = user ? user._id : null;
   console.log(userid)
   const getThekedarBookings = async () => {
     try {
+      console.log("Fetching bookings for user:", userid);
       const response = await apiConnector("POST", ORDER_ENDPOINT.THEKEDAR_BOOKING, { userid }, {
         headers: {
           Authorization: `Bearer${token}`
         }
       })
-      console.log("esrg",response.data)
+      console.log("Response:", response.data);
       if (response.data.success) {
+        console.log("Bookings:", response.data.data);
         setBookings(response.data.data)
-        console.log('Bookings:', response.data.data);
-        console.log('Bookings',response.data.data.length);
+        console.log('Number of bookings:', response.data.data.length);
       }
 
     } catch (error) {
-      console.log("Customer Booking ERROR", error)
+      console.log("Error fetching bookings:", error);
     }
   };
 
@@ -182,15 +181,15 @@ const DashboardContents = () => {
 
   return (
     <>
-      
 
- <div className="container flex items-center justify-center gap-x-4">
-<img width="24" height="24" src="https://img.icons8.com/external-obvious-line-kerismaker/48/external-eid-ramadan-kareem-line-obvious-line-kerismaker-7.png" alt="external-eid-ramadan-kareem-line-obvious-line-kerismaker-7"/>  
- <div className="text-center text-3xl font-semibold">
-    Namaste, {user.firstName}!
-  </div>
-</div>
-<div className="container">
+
+      <div className="container flex items-center justify-center gap-x-4">
+        <img width="24" height="24" src="https://img.icons8.com/external-obvious-line-kerismaker/48/external-eid-ramadan-kareem-line-obvious-line-kerismaker-7.png" alt="external-eid-ramadan-kareem-line-obvious-line-kerismaker-7" />
+        <div className="text-center text-3xl font-semibold">
+          Namaste, {user.firstName}!
+        </div>
+      </div>
+      <div className="container">
         <div class="flex justify-center">
 
         </div>
@@ -224,8 +223,17 @@ const DashboardContents = () => {
             </div> */}
           <br /><br />
         </section>
+      <div className="container">
+        {/* ... */}
         <h2 className="text-xl font-semibold mb-4">{t("m12")}</h2>
-        <BookingTable bookings={bookings} />
+        {hasPendingBookings ? (
+          <BookingTable bookings={bookings} />
+        ) : (
+          <div className="flex items-center justify-center bg-yellow-300 p-4">
+          <h1>No pending requests</h1>
+        </div>
+        )}
+      </div>
       </div>
 
       {/* <section>
@@ -246,13 +254,13 @@ const DashboardContents = () => {
 
 
 function BookingsContent({ userName }) {
-    const { user } = useSelector((state) => state.profile);
-  
-    return (
-      <>
-      <DashboardContents/>
-      </>
-    );
-  }
-  
-  export default BookingsContent;
+  const { user } = useSelector((state) => state.profile);
+
+  return (
+    <>
+      <DashboardContents />
+    </>
+  );
+}
+
+export default BookingsContent;

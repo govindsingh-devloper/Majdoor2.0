@@ -1,3 +1,6 @@
+const dotenv=require("dotenv");
+dotenv.config();
+
 const express=require("express");
 const app=express();
 const cors = require("cors");
@@ -20,7 +23,7 @@ const orderRoutes=require("./routes/order")
 const database=require("./config/database");
 const cookieParser=require("cookie-parser");
 
-app.use(
+app.use( 
 	cors({
 		origin:"http://localhost:3000",
 		credentials:true,
@@ -30,8 +33,7 @@ app.use(
 const {cloudinaryConnect}=require("./config/cloudinary")
 const fileupload=require("express-fileupload")
 
-const dotenv=require("dotenv");
-dotenv.config();
+
 
 
 const PORT=process.env.PORT ||4000;
