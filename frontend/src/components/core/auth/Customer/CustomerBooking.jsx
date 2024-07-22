@@ -2,7 +2,10 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 import { apiConnector } from '../../../../services/apiconnector';
 import { ORDER_ENDPOINT } from '../../../../services/api';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import ReviewModal from '../../../common/ReviewModal';
+import IconBtn from '../../../common/IconBtn';
+import { getorders, orderCreated } from '../../../../services/operations/MajdoorAuthAPI';
 
 
 const sectionClasses = 'p-2 border-b border-zinc-200 white:border-zinc-700'
@@ -12,6 +15,8 @@ const valueClasses = 'font-bold'
 
 
 const CustomerBooking = () => {
+  
+  const dispatch=useDispatch();
   const [bookings, setBookings] = useState([]);
   const [bookingss, setBookingss] = useState([]);
   const { user } = useSelector((state) => state.profile)
@@ -20,6 +25,9 @@ const CustomerBooking = () => {
   const [approvedCount, setApprovedCount] = useState(0);
   const [rejectedCount, setRejectedCount] = useState(0);
   const [pendingCount, setPendingCount] = useState(0);
+  const [review ,setReview]=useState(false);
+  const [selectedMajdoorId, setSelectedMajdoorId] = useState(null);
+
 
   const getCustomerBookings = async () => {
     try {
@@ -28,11 +36,12 @@ const CustomerBooking = () => {
           Authorization: `Bearer ${token}`
         }
       });
-      console.log(response.data);
+      // console.log(response.data);
       if (response.data.success) {
         setBookings(response.data.data);
         const counts = response.data.data.reduce((acc, item) => {
           if (item.status === 'approved') {
+          
             acc.approved += 1;
           } else if (item.status === 'reject') {
             acc.rejected += 1;
@@ -53,6 +62,7 @@ const CustomerBooking = () => {
 
   useEffect(() => {
     getCustomerBookings();
+    // dispatch(getorders());
 
   }, [])
 
@@ -64,7 +74,7 @@ const CustomerBooking = () => {
           Authorization: `Bearer${token}`
         }
       })
-      console.log("Thekedar's Data:",response.data)
+      // console.log("Thekedar's Data:",response.data)
 
       if (response.data.success) {
         setBookingss(response.data.data)
@@ -79,6 +89,12 @@ const CustomerBooking = () => {
     getThekedarBookings();
     
   }, [])
+
+
+  // const openReviewModal = () => {
+  //   // setSelectedMajdoorId(majdoorId); // Set the majdoorId in state
+  //   setReview(true); // Open the ReviewModal
+  // };
 
 
   return (
@@ -132,6 +148,7 @@ const CustomerBooking = () => {
                   <th class="py-2 px-4 border-b">Majdoor Name</th>
                   <th class="py-2 px-4 border-b">Skills</th>
                   <th class="py-2 px-4 border-b">Status</th>
+                  <th class="py-2 px-4 border-b">Reviews</th>
                 </tr>
               </thead>
               <tbody>
@@ -144,8 +161,28 @@ const CustomerBooking = () => {
                     <td class="py-2 px-4 border-b">{item.service.skills}</td>
                     <td className={`py-2 px-4 border-b ${item.status === 'approved' ? 'bg-green-500' : item.status === 'Pending' ? 'bg-yellow-500' : 'bg-red-500'}`}>
                       {item.status}
-                    </td>
 
+                    </td>
+                    {/* <td class="py-2 px-4 border-b">{item.status==='approved' &&(
+                      <button onClick={<ReviewModal/>} >
+                        Review
+                      </button>
+                     
+                    )}</td> */}
+
+                    {item.status==='approved' &&(
+                      <div>
+                        <IconBtn
+                          text="ADD Review "
+                          customClasses="ml-Auto"
+                          onclick={()=>{setReview(true)}}
+
+                         
+                        />
+                      </div>
+                    )}
+                    
+ {review && <ReviewModal setReview={setReview} serviceId={item.service._id} />}
 
                   </tr>
                 ))}
@@ -189,7 +226,7 @@ const CustomerBooking = () => {
 
         </div></div>
 
-
+  {/* {review && <ReviewModal setReview={setReview}  />} */}
     </>
   )
 }

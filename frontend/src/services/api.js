@@ -59,5 +59,10 @@ export const contactusEndpoint = {
     THEKEDAARBOOKING_API:BASE_URL + "/auth/ThekedarOrder"
 
   }
+
+  //Rating API
+  export const RATING_ENDPOINT={
+    RATING_API:BASE_URL +"/auth/rating"
+  }
   
 

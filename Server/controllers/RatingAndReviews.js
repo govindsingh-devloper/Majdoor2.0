@@ -1,69 +1,70 @@
+const Majdoor2 = require("../models/Majdoor2");
 const RatingAndReview=require("../models/RatingsAndReviews");
-const Service=require("../models/Service");
+const { mongo, default: mongoose } = require("mongoose");
+// const Service=require("../models/Service");
 
 
 //createRating
+exports.createRating = async (req, res) => {
+    try{
 
-exports.createRating=async(req,res)=>{
-  try {
-      //user id
-      const userId=req.user.id;
-      //fetch Data from req body
-      const{rating,review,serviceId}=req.body;
-      //check if user is booked service or not
-      const serviceDetails=await Service.findOne(
-                                            {_id:userId},
-                                            {serviceEnrolled:{$elementMatch:{$eq:userId}}}
-      );
-      if(!serviceDetails){
-        return res.status(404).json({
-            success:false,
-            message:"User not book this service"
-        })
-      }
-      //check if user already reviewed this service
-      const alreadyReviewed= RatingAndReview.findOne({
-                                               user:userId,
-                                               service:serviceId
-      });
-      if(alreadyReviewed){
-        return res.status(403).json({
-            success:false,
-            message:"Service is already by the user"
-        })
-      }
-      //create rating and review
-      const ratingReview=await RatingAndReview.create({
-                                                 rating,review,
-                                                 service:serviceId,
-                                                 user:userId,
-      })
+        //get user id
+        const userId = req.user.id;
+        //fetchdata from req body
+        const {rating, review, majdoorId} = req.body;
+        //check if user is enrolled or not
+        // const courseDetails = await Course.findOne(
+        //                             {_id:courseId,
+        //                             studentsEnrolled: {$elemMatch: {$eq: userId} },
+        //                         });
 
-      //update service with this rating/review
-      const updatedServiceDetails=await Service.findByIdAndUpdate(serviceId,
-                                      {
-                                        $push:{
-                                            ratingAndReviews:ratingReview._id
+        // if(!courseDetails) {
+        //     return res.status(404).json({
+        //         success:false,
+        //         message:'Student is not enrolled in the course',
+        //     });
+        // }
+        //check if user already reviewed the course
+        const alreadyReviewed = await RatingAndReview.findOne({
+                                                user:userId,
+                                                majdoorName:majdoorId,
+                                            });
+        if(alreadyReviewed) {
+                    return res.status(403).json({
+                        success:false,
+                        message:'Service is already reviewed by the user',
+                    });
+                }
+        //create rating and review
+        const ratingReview = await RatingAndReview.create({
+                                        rating, review, 
+                                        majdoorName:majdoorId,
+                                        user:userId,
+                                    });
+       
+        //update course with this rating/review
+        const updatedCourseDetails = await Majdoor2.findByIdAndUpdate({_id:majdoorId},
+                                    {
+                                        $push: {
+                                            ratingAndReviews: ratingReview._id,
                                         }
-                                      },
-                                    {new:true});
-      console.log(updatedServiceDetails);
-    //return response
-    return res.status(200).json({
-        success:true,
-        message:"Rating And Review created Successfully",
-        ratingReview,
-    })
-  } catch (error) {
-    console.log(error);
-    return res.status(404).json({
-        success:true,
-        message:"Rating And Review Successfully",
-        ratingReview
-    })
-    
-  }
-
+                                    },
+                                    {new: true});
+        console.log(updatedCourseDetails);
+        //return response
+        return res.status(200).json({
+            success:true,
+            message:"Rating and Review created Successfully",
+            ratingReview,
+        })
+    }
+    catch(error) {
+        console.log(error);
+        return res.status(500).json({
+            success:false,
+            message:error.message,
+        })
+    }
 }
 
 
@@ -113,7 +114,7 @@ exports.getAverageRating=async(req,res)=>{
 
 //getALLRating
 
-exports.getAllRating=async(res,res)=>{
+exports.getAllRating=async(req,res)=>{
     try {
         const allReviews=await RatingAndReview.find({},)
                                                 .sort({rating:"desc"})
@@ -122,8 +123,8 @@ exports.getAllRating=async(res,res)=>{
                                                     select:"firstName lastName email image"
                                                 })
                                                 .populate({
-                                                    path:"course",
-                                                    select:"ServiceName",
+                                                    path:"Majddor2",
+                                                    select:"Skills",
 
                                                 })
                                                 .exec();

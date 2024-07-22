@@ -13,7 +13,7 @@ const rootReducer=combineReducers({
      profile:profileReducer,
      categories:categoriesReducer,
      shippingInfoReducer:shippingInfoReducer,
-     orders:ordersReducer,
+     order:ordersReducer,
      orders1:thekerdarbooked
 })
 

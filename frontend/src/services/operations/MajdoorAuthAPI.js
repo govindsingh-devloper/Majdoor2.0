@@ -2,7 +2,7 @@ import { toast } from "react-hot-toast"
 import { setUser } from "../../slices/profileSlice"
 import { setLoading, setToken } from "../../slices/authslice"
 import { apiConnector } from "../apiconnector"
-import { ORDER_ENDPOINT, endpoints } from "../api"
+import { ORDER_ENDPOINT, RATING_ENDPOINT, endpoints } from "../api"
 import { SearchEndpoint } from "../api"
 import { setCategories} from "../../slices/categoriesslice"
 import { setShippingInfo } from "../../slices/shippingInfoslice"
@@ -14,6 +14,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 
 import { setLocations } from "../../slices/categoriesslice";
+// import { createRating } from "../../../../Server/controllers/RatingAndReviews"
 const BASE_URL=process.env.REACT_APP_BASE_URL
 
 
@@ -32,6 +33,8 @@ const {ALL_CATEGORIES,
 
 
 const{ORDER_API,THEKEDAARBOOKING_API}=ORDER_ENDPOINT
+
+const {RATING_API}=RATING_ENDPOINT
 
 
 
@@ -172,7 +175,7 @@ export function login(firstName, contactNumber, navigate) {
       const {data} = await apiConnector('POST', ORDER_API, orderData, config);
   
   
-      console.log(data);
+      console.log("Mera data h bhai ye",data);
       toast.success("Your Request has been sent to Majdoor. Please wait for confirmation.");
         navigate('/CustomerHome');
       dispatch(orderCreated(data));
@@ -222,7 +225,7 @@ export function login(firstName, contactNumber, navigate) {
         state.orders.push(action.payload.order);
       },
       orderCreated1: (state, action) => {
-        state.orders.push(action.payload);
+        state.orders1.push(action.payload);
       },
     },
   });
@@ -252,4 +255,26 @@ export function getLocations() {
 }
 
 
-///////////////////////////////////////////////////////HISTORY API/////////////////////////////////
+///////////////////////////////////////////////////////Ratings API API/////////////////////////////////
+// create a rating for course
+export const createRating = async (data, token) => {
+  const toastId = toast.loading("Loading...")
+  let success = false
+  try {
+    const response = await apiConnector("POST", RATING_API, data, {
+      Authorization: `Bearer ${token}`,
+    })
+    console.log("CREATE RATING API RESPONSE............", response)
+    if (!response?.data?.success) {
+      throw new Error("Could Not Create Rating")
+    }
+    toast.success("Rating Created")
+    success = true
+  } catch (error) {
+    success = false
+    console.log("CREATE RATING API ERROR............", error)
+    toast.error("Rating already given")
+  }
+  toast.dismiss(toastId)
+  return success
+}

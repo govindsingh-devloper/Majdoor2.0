@@ -55,9 +55,9 @@ const BookingTable = ({ bookings }) => {
             <th className={sharedClasses.tableHeader}>{t("m3")}</th>
             <th className={sharedClasses.tableHeader}>{t("m4")}</th>
             <th className={sharedClasses.tableHeader}>{t("m5")}</th>
-            <th className={sharedClasses.tableHeader}>{t("m6")}</th>
+            {/* <th className={sharedClasses.tableHeader}>{t("m6")}</th>
             <th className={sharedClasses.tableHeader}>{t("m7")}</th>
-            <th className={sharedClasses.tableHeader}>{t("m8")}</th>
+            <th className={sharedClasses.tableHeader}>{t("m8")}</th> */}
             <th className={sharedClasses.tableHeader}>{t("m9")}</th>
             <th className={sharedClasses.tableHeader}>{t("m10")}</th>
           </tr>
@@ -70,9 +70,9 @@ const BookingTable = ({ bookings }) => {
               bookingId={booking._id}
               address={booking.address}
               phoneNumber={booking.phoneNumber}
-              work={user.skills}
-              date={booking.date}
-              cost={booking.cost}
+              // work={user.skills}
+              // date={booking.date}
+              // cost={booking.cost}
               status={booking.status}
               n={booking.status}
             />
@@ -120,9 +120,9 @@ const TableRow = ({ name, bookingId, address, phoneNumber, work, date, cost, sta
       <td className={sharedClasses.tableRow}>{bookingId}</td>
       <td className={sharedClasses.tableRow}>{address}</td>
       <td className={sharedClasses.tableRow}>{phoneNumber}</td>
-      <td className={sharedClasses.tableRow}>{work}</td>
+      {/* <td className={sharedClasses.tableRow}>{work}</td>
       <td className={sharedClasses.tableRow}>{date}</td>
-      <td className={sharedClasses.tableRow}>{cost}</td>
+      <td className={sharedClasses.tableRow}>{cost}</td> */}
       <td className={sharedClasses.tableRow}>{status}</td>
       <td className={sharedClasses.tableRow}>
 
@@ -233,6 +233,7 @@ const DashboardContents = () => {
           <h1>No pending requests</h1>
         </div>
         )}
+        {/* <BookingTable bookings={bookings} /> */}
       </div>
       </div>
 

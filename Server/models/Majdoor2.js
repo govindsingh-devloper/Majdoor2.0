@@ -38,6 +38,12 @@ const majdoor2Schema= new mongoose.Schema({
         trim:true,
         required:true,
     },
+    ratingAndReviews: [
+		{
+			type: mongoose.Schema.Types.ObjectId,
+			ref: "RatingAndReview",
+		},
+	],
     thekedarID:{
         type:mongoose.Schema.Types.ObjectId, 
         ref:'Thekedar', 

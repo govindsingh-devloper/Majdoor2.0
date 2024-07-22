@@ -1,8 +1,8 @@
 const mongoose=require("mongoose");
 
 
-exports.ratingAndreviewsSchema=new mongoose.Schema({
-    users:{
+const ratingAndReviewsSchema=new mongoose.Schema({
+    user:{
         type:mongoose.Schema.Types.ObjectId,
         ref:"Customer",
     },
@@ -10,11 +10,17 @@ exports.ratingAndreviewsSchema=new mongoose.Schema({
         type:Number,
         required:true,
     },
-    reviews:{
+    review:{
         type:String,
         required:true,
         trim:true,
-    }
+    },
+    majdoorName: {
+		type: mongoose.Schema.Types.ObjectId,
+		required: true,
+		ref: "Majddor2",
+		index: true,
+	},
 });
 
-module.exports=mongoose.model("RatingAndReviews",ratingAndreviewsSchema)
+module.exports=mongoose.model("RatingAndReviews",ratingAndReviewsSchema)

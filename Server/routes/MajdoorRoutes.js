@@ -14,6 +14,8 @@ const{
     }=require("../controllers/ResetPassword");
 
 const {auth}=require("../middlewares/auth")    
+
+const{createRating}=require("../controllers/RatingAndReviews")
 // Routes for Login, Signup, and Authentication
 
 // ********************************************************************************************************
@@ -44,6 +46,14 @@ router.post("/m-reset-password", resetPassword)
 //Route For Services
 router.get("/CustomerHome",allCategories)
 router.get("/searchMajdoor/:id",singleService)
+
+
+
+// ********************************************************************************************************
+//                                      Rating ANd Reviews  routes
+// ********************************************************************************************************
+
+router.post("/rating",auth,createRating)
 
 // Export the router for use in the main application
 module.exports = router
