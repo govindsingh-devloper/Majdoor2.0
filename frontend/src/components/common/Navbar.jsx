@@ -5,51 +5,38 @@ import { useSelector } from 'react-redux'
 import ProfileDropDown from '../core/auth/ProfileDropDown'
 
 const Navbar = () => {
+  const { token } = useSelector((state) => state.auth);
 
-    const {token}=useSelector((state)=>state.auth);
+  const renderNavLinks = () => {
+    return NavbarLinks.map((link, index) => (
+      <li key={index}>
+        {link.title === "Categories" ? null : (
+          <Link to={link.path}>{link.title}</Link>
+        )}
+      </li>
+    ));
+  };
+
+  const renderLoginSignupButtons = () => {
+    if (token) {
+      return <ProfileDropDown />;
+    }
+
+    return (
+      <>
+        <Link to="/login">Login</Link>
+        <Link to="/signup">Sign Up</Link>
+      </>
+    );
+  };
+
   return (
-    <div>
-        <div>
-            <nav>
-                <ul>
-                    {NavbarLinks.map((link,index)=>(
-                        <li key={index}>
-                        { link.title==="Categories" ?(<div></div>):(
-                            <Link to={link?.path}>
-                            <p >
-                                {link.title}
-                            </p>
+    <nav>
+      <ul>{renderNavLinks()}</ul>
+      <div>{renderLoginSignupButtons()}</div>
+    </nav>
+  );
+};
 
-                            </Link>
-                        )}
-
-                        </li>
-                    ))}
-                </ul>
-            </nav>
-            {/* Login Signup */}
-            <div>
-                {
-                    token===null &&(
-                        <Link to="/login">
-                            <button>Login</button>
-                        </Link>
-                    )
-                }
-                {
-                    token===null &&(
-                        <Link to="/signup">
-                            <button>Signup</button>
-                        </Link>
-                    )
-                }
-                {
-                    token!==null && <ProfileDropDown/>
-                }
-            </div>
-        </div>
-    </div>
-  )
-}
 
 export default Navbar
