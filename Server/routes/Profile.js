@@ -15,7 +15,7 @@ const {
 // Delet User Account
 router.delete("/deleteProfile", auth, deleteAccount)
 router.put("/updateProfile",auth,updateProfile)
-router.get("/getUserDetails", auth, getAllCustomers)
+router.get("/getUserDetails",  getAllCustomers)
 router.put("/updateDisplayPicture", auth, updateDisplayPicture)
 
 module.exports = router
