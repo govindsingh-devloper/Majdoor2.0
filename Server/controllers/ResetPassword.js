@@ -1,6 +1,6 @@
 const Customer=require("../models/Customer");
 const mailSender=require("../utilis/mailSender");
-const bcrypt=require("bcrypt");
+const bcrypt=require("bcryptjs");
 const crypto=require("crypto");
 
 

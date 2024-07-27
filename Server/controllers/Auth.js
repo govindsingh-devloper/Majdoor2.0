@@ -1,7 +1,7 @@
 const Customer=require("../models/Customer");
 const OTP=require("../models/OTP");
 const otpGenerator=require("otp-generator");
-const bcrypt=require("bcrypt");
+const bcrypt=require("bcryptjs");
 const Jwt=require("jsonwebtoken");
 const Profile = require("../models/Profile");
 const mailSender = require("../utilis/mailSender");
